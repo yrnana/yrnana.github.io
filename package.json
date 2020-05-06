@@ -12,7 +12,8 @@
 		"preserve": "yarn build",
 		"serve": "gatsby serve",
 		"clean": "gatsby clean",
-		"deploy": "gh-pages -d public -b master && git add . && git commit -m \"Deploy Blog Powered By Gatsby\" && git push origin source"
+		"deploy": "gh-pages -d public -b master",
+		"source": "git checkout source && git add . && git commit -m \"Deploy Blog Powered By Gatsby\" && git push origin source"
 	},
 	"dependencies": {
 		"@hot-loader/react-dom": "^16.13.0",
