@@ -1,0 +1,17 @@
+{
+	"rules": {
+		"prettier/prettier": "error",
+		"no-unused-vars": "warn",
+		"no-console": "off",
+		"react/react-in-jsx-scope": "off",
+		"react-hooks/rules-of-hooks": "off"
+	},
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"globals": {
+		"__PATH_PREFIX__": true
+	},
+	"extends": ["react-app", "plugin:prettier/recommended"]
+}
