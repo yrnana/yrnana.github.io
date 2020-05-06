@@ -1,21 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import Layout from '../components/layout/Layout'
+import SEO from '../components/layout/seo'
+import PostListTemplate from '../components/post/PostListTemplate'
+
 export default function BlogPostListTemplate({ data, pageContext, location }) {
 	const posts = data.allMarkdownRemark.edges
-	// const { currentPage, numPages } = pageContext
-	// const isFirst = currentPage === 1
-	// const isLast = currentPage === numPages
-	// const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString()
-	// const nextPage = (currentPage + 1).toString()
+	const pageInfo = data.allMarkdownRemark.pageInfo
 
 	return (
-		<>
-			{posts.map(({ node }) => {
-				const title = node.frontmatter.title || node.fields.slug
-				return <div key={node.fields.slug}>{title}</div>
-			})}
-		</>
+		<Layout location={location}>
+			<SEO title={`Page ${pageInfo.currentPage}`} />
+			<PostListTemplate posts={posts} pageInfo={pageInfo} />
+		</Layout>
 	)
 }
 
@@ -33,10 +31,16 @@ export const pageQuery = graphql`
 						slug
 					}
 					frontmatter {
-						date(formatString: "DD MMMM, YYYY")
+						date(formatString: "MMMM DD, YYYY")
 						title
+						description
+						tags
 					}
 				}
+			}
+			pageInfo {
+				currentPage
+				pageCount
 			}
 		}
 	}

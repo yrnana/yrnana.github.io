@@ -4,34 +4,34 @@ const { kebabCase } = require('lodash')
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
+	const postsPerPage = 5
 
-	const result = await graphql(
-		`
-			{
-				postsRemark: allMarkdownRemark(
-					sort: { fields: [frontmatter___date], order: DESC }
-					limit: 1000
-				) {
-					edges {
-						node {
-							fields {
-								slug
-							}
-							frontmatter {
-								title
-								tags
-							}
+	const result = await graphql(`
+		{
+			postsRemark: allMarkdownRemark(
+				sort: { fields: [frontmatter___date], order: DESC }
+				limit: 2000
+			) {
+				edges {
+					node {
+						fields {
+							slug
+						}
+						frontmatter {
+							title
+							tags
 						}
 					}
 				}
-				tagsGroup: allMarkdownRemark(limit: 2000) {
-					group(field: frontmatter___tags) {
-						fieldValue
-					}
+			}
+			tagsGroup: allMarkdownRemark(limit: 2000) {
+				group(field: frontmatter___tags) {
+					fieldValue
+					totalCount
 				}
 			}
-		`
-	)
+		}
+	`)
 
 	if (result.errors) {
 		throw result.errors
@@ -58,30 +58,36 @@ exports.createPages = async ({ graphql, actions }) => {
 	// Create tag-post-list pages
 	const tags = result.data.tagsGroup.group
 	tags.forEach(tag => {
-		createPage({
-			path: `/tags/${kebabCase(tag.fieldValue)}/`,
-			component: path.resolve(`./src/templates/blog-tag-post-list.js`),
-			context: {
-				tag: tag.fieldValue,
-			},
+		Array.from({
+			length: Math.ceil(tag.totalCount / postsPerPage),
+		}).forEach((_, i) => {
+			createPage({
+				path: `/tags/${kebabCase(tag.fieldValue)}/pages/${i + 1}`,
+				component: path.resolve(
+					`./src/templates/blog-tag-post-list.js`
+				),
+				context: {
+					tag: tag.fieldValue,
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+				},
+			})
 		})
 	})
 
 	// Create post-list pages
-	const postsPerPage = 2
-	const numPages = Math.ceil(posts.length / postsPerPage)
-	Array.from({ length: numPages }).forEach((_, i) => {
-		createPage({
-			path: `/page/${i + 1}/`,
-			component: path.resolve('./src/templates/blog-post-list.js'),
-			context: {
-				limit: postsPerPage,
-				skip: i * postsPerPage,
-				numPages,
-				currentPage: i + 1,
-			},
-		})
-	})
+	Array.from({ length: Math.ceil(posts.length / postsPerPage) }).forEach(
+		(_, i) => {
+			createPage({
+				path: `/pages/${i + 1}`,
+				component: path.resolve('./src/templates/blog-post-list.js'),
+				context: {
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+				},
+			})
+		}
+	)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

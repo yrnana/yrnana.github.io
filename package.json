@@ -27,6 +27,7 @@
 		"gatsby-plugin-manifest": "^2.4.2",
 		"gatsby-plugin-offline": "^3.2.1",
 		"gatsby-plugin-react-helmet": "^3.3.1",
+		"gatsby-plugin-remove-trailing-slashes": "^2.3.1",
 		"gatsby-plugin-sharp": "^2.6.1",
 		"gatsby-plugin-typography": "^2.5.1",
 		"gatsby-remark-copy-linked-files": "^2.3.2",
@@ -42,6 +43,7 @@
 		"react-dom": "^16.12.0",
 		"react-helmet": "^6.0.0",
 		"react-typography": "^0.16.19",
+		"styled-components": "^5.1.0",
 		"typography": "^0.16.19",
 		"typography-theme-wordpress-2016": "^0.16.19"
 	},

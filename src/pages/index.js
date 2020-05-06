@@ -1,60 +1,28 @@
-// Gatsby supports TypeScript natively!
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
+import Layout from '../components/layout/Layout'
+import SEO from '../components/layout/seo'
+import PostListTemplate from '../components/post/PostListTemplate'
 
 export default function IndexPage({ data, pageContext, location }) {
 	const posts = data.allMarkdownRemark.edges
+	const pageInfo = data.allMarkdownRemark.pageInfo
 
 	return (
 		<Layout location={location}>
-			<SEO title="All posts" />
-			{posts.map(({ node }) => {
-				const title = node.frontmatter.title || node.fields.slug
-				return (
-					<article key={node.fields.slug}>
-						<header>
-							<h3
-								style={{
-									marginBottom: rhythm(1 / 4),
-								}}
-							>
-								<Link
-									style={{ boxShadow: `none` }}
-									to={node.fields.slug}
-								>
-									{title}
-								</Link>
-							</h3>
-							<small>{node.frontmatter.date}</small>
-						</header>
-						<section>
-							<p
-								dangerouslySetInnerHTML={{
-									__html:
-										node.frontmatter.description ||
-										node.excerpt,
-								}}
-							/>
-						</section>
-					</article>
-				)
-			})}
+			<SEO />
+			<PostListTemplate posts={posts} pageInfo={pageInfo} />
 		</Layout>
 	)
 }
 
 export const pageQuery = graphql`
 	query {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+		allMarkdownRemark(
+			sort: { fields: [frontmatter___date], order: DESC }
+			limit: 5
+		) {
 			edges {
 				node {
 					excerpt
@@ -65,8 +33,13 @@ export const pageQuery = graphql`
 						date(formatString: "MMMM DD, YYYY")
 						title
 						description
+						tags
 					}
 				}
+			}
+			pageInfo {
+				currentPage
+				pageCount
 			}
 		}
 	}

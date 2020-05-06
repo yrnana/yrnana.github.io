@@ -8,7 +8,6 @@ module.exports = {
 		description: `Nana's Dev Log`,
 		siteUrl: `https://yurinadev.github.io/`,
 		social: {
-			twitter: `kylemathews`,
 			github: 'YuriNaDev',
 		},
 	},
@@ -16,8 +15,8 @@ module.exports = {
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
-				path: `${__dirname}/content/blog`,
-				name: `blog`,
+				path: `${__dirname}/content/posts`,
+				name: `posts`,
 			},
 		},
 		{
@@ -92,9 +91,11 @@ module.exports = {
 					'@font-family': "'Noto Sans KR', sans-serif",
 					'@pagination-font-family': "'Noto Sans KR', sans-serif",
 					'@code-family': "'Noto Sans KR', sans-serif",
+					'@font-size-base': '16px',
 				},
 			},
 		},
+		`gatsby-plugin-remove-trailing-slashes`,
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.dev/offline
 		// `gatsby-plugin-offline`,
