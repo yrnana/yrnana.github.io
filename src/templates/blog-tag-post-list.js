@@ -1,22 +1,21 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
+import { kebabCase } from 'lodash'
 
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
 import PostListTemplate from '../components/post/PostListTemplate'
+import { rhythm } from '../utils/typography'
+import { primaryColor } from '../utils/styles'
 
 const Title = styled.h2`
 	text-align: center;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
-	padding-bottom: 0;
-	border-bottom: 0;
+	margin-top: ${rhythm(1)};
+	margin-bottom: ${rhythm(0.75)};
 	font-weight: 400;
-	font-size: 1.5rem;
-	line-height: 2.5rem;
 	strong {
-		color: #7467ef;
+		${primaryColor}
 	}
 `
 
@@ -35,7 +34,10 @@ export default function BlogTagPostListTemplate({
 			<Title>
 				Post tagged with <strong>{tag}</strong>
 			</Title>
-			<PostListTemplate posts={posts} pageInfo={pageInfo} />
+			<PostListTemplate
+				posts={posts}
+				pageInfo={{ baseUrl: `/tags/${kebabCase(tag)}`, ...pageInfo }}
+			/>
 		</Layout>
 	)
 }

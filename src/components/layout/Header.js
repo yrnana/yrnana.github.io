@@ -1,29 +1,25 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
+import { textSecondary, inlineSpacing, alignItems } from '../../utils/styles'
+import { rhythm } from '../../utils/typography'
 
-const FlexBox = styled.header`
-	display: flex;
-	align-items: center;
-	padding-top: 1.75rem;
-	padding-bottom: 1.75rem;
+const HeaderWrapper = styled.header`
+	${alignItems}
+	padding-top: ${rhythm(1.25)};
+	padding-bottom: ${rhythm(1.25)};
 `
 
 const Title = styled.h2`
-	font-size: 1.4rem !important;
-	margin-bottom: 0 !important;
+	font-size: ${rhythm(1)};
+	margin-bottom: 0;
 `
 
 const Nav = styled.nav`
 	margin-left: auto;
-	display: inline-flex;
-	align-items: center;
+	${inlineSpacing}
 	a {
-		color: rgba(0, 0, 0, 0.45);
-		margin-right: 16px;
-		&:last-child {
-			margin-right: 0;
-		}
+		${textSecondary}
 	}
 `
 
@@ -41,15 +37,15 @@ function Header() {
 	const title = site.siteMetadata.title
 
 	return (
-		<FlexBox>
-			<Title level={2}>
+		<HeaderWrapper>
+			<Title>
 				<Link to="/">{title}</Link>
 			</Title>
 			<Nav>
 				<Link to="/about">About</Link>
 				<Link to="/tags">Tags</Link>
 			</Nav>
-		</FlexBox>
+		</HeaderWrapper>
 	)
 }
 

@@ -1,21 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
+import { rhythm } from '../../utils/typography'
+import { textSecondary, markdown } from '../../utils/styles'
 
 const Header = styled.header`
 	text-align: center;
-	margin-bottom: 2rem;
+	margin-top: ${rhythm(1)};
+	margin-bottom: ${rhythm(2.5)};
 `
 
 const Title = styled.h1`
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
-	padding-bottom: 0;
-	border-bottom: 0;
-	font-weight: 700;
+	margin-bottom: ${rhythm(0.5)};
+	font-weight: 900;
 `
 
 const Content = styled.section`
-	margin-bottom: 1.5rem;
+	margin-bottom: ${rhythm(1)};
+	${markdown}
 `
 
 function Post({ post }) {
@@ -23,12 +24,9 @@ function Post({ post }) {
 		<article>
 			<Header>
 				<Title>{post.frontmatter.title}</Title>
-				<p>{post.frontmatter.date}</p>
+				<p css={textSecondary}>{post.frontmatter.date}</p>
 			</Header>
-			<Content
-				// className="ant-typography"
-				dangerouslySetInnerHTML={{ __html: post.html }}
-			/>
+			<Content dangerouslySetInnerHTML={{ __html: post.html }} />
 		</article>
 	)
 }

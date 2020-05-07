@@ -1,26 +1,19 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { kebabCase } from 'lodash'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
+import Tag from '../components/post/Tag'
+import { spacing } from '../utils/styles'
+import { rhythm } from '../utils/typography'
 
 const Title = styled.h2`
 	text-align: center;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
-	padding-bottom: 0;
-	border-bottom: 0;
+	margin-top: ${rhythm(1)};
+	margin-bottom: ${rhythm(2.5)};
 	font-weight: 700;
-	font-size: 1.5rem;
-	line-height: 2.5rem;
-`
-
-const TagList = styled.div`
-	.ant-tag {
-		cursor: pointer;
-	}
 `
 
 export default function TagsPage({ data, pageContext, location }) {
@@ -38,18 +31,16 @@ export default function TagsPage({ data, pageContext, location }) {
 		<Layout location={location}>
 			<SEO title="Tags" />
 			<Title>Tags</Title>
-			<TagList>
+			<div css={spacing}>
 				{group.map(tag => (
-					<Link
+					<Tag
 						key={tag.fieldValue}
+						type={getColor(tag.totalCount)}
 						to={`/tags/${kebabCase(tag.fieldValue)}/pages/1`}
-					>
-						{/* <Tag color={getColor(tag.totalCount)}>
-							{tag.fieldValue} ({tag.totalCount})
-						</Tag> */}
-					</Link>
+						label={`${tag.fieldValue} (${tag.totalCount})`}
+					/>
 				))}
-			</TagList>
+			</div>
 		</Layout>
 	)
 }
