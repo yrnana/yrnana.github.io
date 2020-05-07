@@ -1,23 +1,30 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
-import { Typography, Space } from 'antd'
-import { rhythm } from '../../utils/typography'
 
 const FlexBox = styled.header`
 	display: flex;
 	align-items: center;
-	padding-top: ${rhythm(1)};
-	padding-bottom: ${rhythm(1)};
+	padding-top: 1.75rem;
+	padding-bottom: 1.75rem;
 `
 
-const Title = styled(Typography.Title)`
+const Title = styled.h2`
 	font-size: 1.4rem !important;
 	margin-bottom: 0 !important;
 `
 
 const Nav = styled.nav`
 	margin-left: auto;
+	display: inline-flex;
+	align-items: center;
+	a {
+		color: rgba(0, 0, 0, 0.45);
+		margin-right: 16px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
 `
 
 function Header() {
@@ -39,16 +46,8 @@ function Header() {
 				<Link to="/">{title}</Link>
 			</Title>
 			<Nav>
-				<Space size="middle" align="center">
-					<Link to="/about">
-						<Typography.Text type="secondary">
-							About
-						</Typography.Text>
-					</Link>
-					<Link to="/tags">
-						<Typography.Text type="secondary">Tags</Typography.Text>
-					</Link>
-				</Space>
+				<Link to="/about">About</Link>
+				<Link to="/tags">Tags</Link>
 			</Nav>
 		</FlexBox>
 	)

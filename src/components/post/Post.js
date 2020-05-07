@@ -1,20 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { rhythm } from '../../utils/typography'
 
 const Header = styled.header`
 	text-align: center;
-	margin-bottom: ${rhythm(2)};
+	margin-bottom: 2rem;
 `
 
 const Title = styled.h1`
-	margin-top: ${rhythm(0.5)};
-	margin-bottom: ${rhythm(0.5)};
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	padding-bottom: 0;
+	border-bottom: 0;
 	font-weight: 700;
 `
 
 const Content = styled.section`
-	margin-bottom: ${rhythm(1.5)};
+	margin-bottom: 1.5rem;
 `
 
 function Post({ post }) {

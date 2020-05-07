@@ -5,14 +5,16 @@ import styled from 'styled-components'
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
 import PostListTemplate from '../components/post/PostListTemplate'
-import { rhythm, scale } from '../utils/typography'
 
 const Title = styled.h2`
 	text-align: center;
-	margin-top: ${rhythm(0.5)};
-	margin-bottom: ${rhythm(0.5)};
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	padding-bottom: 0;
+	border-bottom: 0;
 	font-weight: 400;
-	${scale(0.5)}
+	font-size: 1.5rem;
+	line-height: 2.5rem;
 	strong {
 		color: #7467ef;
 	}
@@ -30,7 +32,7 @@ export default function BlogTagPostListTemplate({
 	return (
 		<Layout location={location}>
 			<SEO title={`Tag : ${tag}`} />
-			<Title level={3}>
+			<Title>
 				Post tagged with <strong>{tag}</strong>
 			</Title>
 			<PostListTemplate posts={posts} pageInfo={pageInfo} />

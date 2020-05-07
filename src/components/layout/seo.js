@@ -55,7 +55,7 @@ const SEO = ({ description = '', lang = 'ko', meta = [], title = '' }) => {
 			link={[
 				{
 					href:
-						'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap',
+						'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap',
 					rel: 'stylesheet',
 				},
 			]}

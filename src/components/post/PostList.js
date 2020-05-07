@@ -1,21 +1,19 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { kebabCase } from 'lodash'
-import { Typography, Space, Tag } from 'antd'
 import styled from 'styled-components'
-import { rhythm } from '../../utils/typography'
 
 const List = styled.ul`
 	list-style: none;
 	margin: 0;
 	li {
-		padding: ${rhythm(1.5)} 0;
+		padding: 2.5rem 0;
 		margin-bottom: 0;
 		border-bottom: 1px solid #e5e5e5;
 	}
 `
 
-const Title = styled(Typography.Title)`
+const Title = styled.h3`
 	a {
 		color: rgba(0, 0, 0, 0.85);
 		&:hover {
@@ -24,12 +22,15 @@ const Title = styled(Typography.Title)`
 	}
 `
 
-const Footer = styled(Space)`
-	margin-top: ${rhythm(0.5)};
+const Footer = styled.div`
+	margin-top: 0.75rem;
+	display: flex;
+	align-items: center;
 `
 
-const FormattedDate = styled(Typography.Text)`
-	font-size: ${rhythm(0.45)};
+const FormattedDate = styled.span`
+	font-size: 0.8rem;
+	color: rgba(0, 0, 0, 0.45);
 `
 
 function PostList({ posts }) {
@@ -37,7 +38,7 @@ function PostList({ posts }) {
 		<List>
 			{posts.map(({ node }) => (
 				<li key={node.fields.slug}>
-					<Title level={3}>
+					<Title>
 						<Link to={node.fields.slug}>
 							{node.frontmatter.title}
 						</Link>
@@ -51,15 +52,10 @@ function PostList({ posts }) {
 							}}
 						/>
 					</section>
-					<Footer size="middle">
-						<FormattedDate type="secondary">
-							{node.frontmatter.date}
-						</FormattedDate>
+					<Footer>
+						<FormattedDate>{node.frontmatter.date}</FormattedDate>
 						{node.frontmatter.tags && (
-							<>
-								<small>-</small>
-								<TagList tags={node.frontmatter.tags} />
-							</>
+							<TagList tags={node.frontmatter.tags} />
 						)}
 					</Footer>
 				</li>
@@ -70,13 +66,18 @@ function PostList({ posts }) {
 
 function TagList({ tags }) {
 	return (
-		<div>
-			{tags.map(tag => (
-				<Tag key={tag}>
-					<Link to={`/tags/${kebabCase(tag)}/pages/1`}>{tag}</Link>
-				</Tag>
-			))}
-		</div>
+		<>
+			<small>-</small>
+			<div>
+				{/* {tags.map(tag => (
+					<Tag key={tag}>
+						<Link to={`/tags/${kebabCase(tag)}/pages/1`}>
+							{tag}
+						</Link>
+					</Tag>
+				))} */}
+			</div>
+		</>
 	)
 }
 

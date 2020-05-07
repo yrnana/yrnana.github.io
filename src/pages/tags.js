@@ -2,18 +2,19 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { kebabCase } from 'lodash'
 import styled from 'styled-components'
-import { Tag } from 'antd'
 
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
-import { rhythm, scale } from '../utils/typography'
 
 const Title = styled.h2`
 	text-align: center;
-	margin-top: ${rhythm(0.5)};
-	margin-bottom: ${rhythm(0.5)};
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	padding-bottom: 0;
+	border-bottom: 0;
 	font-weight: 700;
-	${scale(0.5)}
+	font-size: 1.5rem;
+	line-height: 2.5rem;
 `
 
 const TagList = styled.div`
@@ -36,16 +37,16 @@ export default function TagsPage({ data, pageContext, location }) {
 	return (
 		<Layout location={location}>
 			<SEO title="Tags" />
-			<Title level={2}>Tags</Title>
+			<Title>Tags</Title>
 			<TagList>
 				{group.map(tag => (
-					<Link to={`/tags/${kebabCase(tag.fieldValue)}/pages/1`}>
-						<Tag
-							key={tag.fieldValue}
-							color={getColor(tag.totalCount)}
-						>
+					<Link
+						key={tag.fieldValue}
+						to={`/tags/${kebabCase(tag.fieldValue)}/pages/1`}
+					>
+						{/* <Tag color={getColor(tag.totalCount)}>
 							{tag.fieldValue} ({tag.totalCount})
-						</Tag>
+						</Tag> */}
 					</Link>
 				))}
 			</TagList>

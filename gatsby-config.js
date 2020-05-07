@@ -70,32 +70,13 @@ module.exports = {
 			},
 		},
 		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-remove-trailing-slashes`,
 		{
 			resolve: `gatsby-plugin-typography`,
 			options: {
 				pathToConfigModule: `src/utils/typography`,
 			},
 		},
-		{
-			resolve: 'gatsby-plugin-antd',
-			options: {
-				style: true,
-			},
-		},
-		{
-			resolve: 'gatsby-plugin-less',
-			options: {
-				javascriptEnabled: true,
-				modifyVars: {
-					'@primary-color': '#7467ef',
-					'@font-family': "'Noto Sans KR', sans-serif",
-					'@pagination-font-family': "'Noto Sans KR', sans-serif",
-					'@code-family': "'Noto Sans KR', sans-serif",
-					'@font-size-base': '16px',
-				},
-			},
-		},
-		`gatsby-plugin-remove-trailing-slashes`,
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.dev/offline
 		// `gatsby-plugin-offline`,

@@ -1,37 +1,74 @@
 import Typography from 'typography'
-import Wordpress2016 from 'typography-theme-wordpress-2016'
+/*
+import githubTheme from 'typography-theme-github'
 
-Wordpress2016.overrideThemeStyles = () => {
+// https://github.com/KyleAMathews/typography.js/blob/master/packages/typography-theme-github/src/index.js
+githubTheme.baseLineHeight = 1.5
+githubTheme.headerLineHeight = 1.25
+githubTheme.bodyFontFamily = ['Noto Sans KR', 'sans-serif']
+githubTheme.headerFontFamily = ['Noto Sans KR', 'sans-serif']
+githubTheme.blockMarginBottom = 1 / 1.5
+githubTheme.overrideThemeStyles = () => {
 	return {
-		h1: {
-			'font-family': "'Noto Sans KR', sans-serif",
-		},
 		a: {
-			boxShadow: `none`,
+			color: '#7467ef',
+		},
+		h1: {
+			marginTop: '24px',
+			marginBottom: '16px',
+			paddingBottom: '.3em',
+			fontWeight: 600,
+		},
+		h2: {
+			marginTop: '24px',
+			marginBottom: '16px',
+			paddingBottom: '.3em',
+			fontWeight: 600,
+		},
+		h3: {
+			marginTop: '24px',
+			marginBottom: '16px',
+			fontWeight: 600,
+		},
+		h4: {
+			marginTop: '24px',
+			marginBottom: '16px',
+			fontWeight: 600,
+		},
+		h5: {
+			marginTop: '24px',
+			marginBottom: '16px',
+			fontWeight: 600,
+		},
+		h6: {
+			marginTop: '24px',
+			marginBottom: '16px',
+			fontWeight: 600,
+		},
+		'h3,h4,h5,h6': {
+			marginTop: '24px',
+			marginBottom: '16px',
 		},
 		blockquote: {
-			'font-size': 'inherit',
-			'line-height': 'inherit',
+			borderLeft: '.25em solid #dfe2e5',
+			color: '#6a737d',
+			paddingLeft: '1rem',
+			paddingRight: '1rem',
 		},
-		// 'a.gatsby-resp-image-link': {
-		// 	boxShadow: `none`,
-		// },
 	}
 }
 
-delete Wordpress2016.googleFonts
+const typography = new Typography(githubTheme)
+console.log(typography)
+console.log(typography.toJSON())
+*/
 
 const typography = new Typography({
-	...Wordpress2016,
-	headerFontFamily: ['Noto Sans KR', 'sans-serif'],
 	bodyFontFamily: ['Noto Sans KR', 'sans-serif'],
+	headerFontFamily: ['Noto Sans KR', 'sans-serif'],
+	baseLineHeight: 1.5,
+	headerLineHeight: 1.25,
+	blockMarginBottom: 1 / 1.5,
 })
 
-// Hot reload typography in development.
-if (process.env.NODE_ENV !== `production`) {
-	typography.injectStyles()
-}
-
 export default typography
-export const rhythm = typography.rhythm
-export const scale = typography.scale
