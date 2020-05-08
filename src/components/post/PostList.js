@@ -32,7 +32,7 @@ function PostList({ posts }) {
 	return (
 		<List>
 			{posts.map(({ node }) => (
-				<li key={node.fields.slug}>
+				<li key={node.id}>
 					<h2
 						css={css`
 							a {

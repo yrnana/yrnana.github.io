@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { rhythm } from '../../utils/typography'
 import { textSecondary, markdown } from '../../utils/styles'
 
@@ -26,7 +28,11 @@ function Post({ post }) {
 				<Title>{post.frontmatter.title}</Title>
 				<p css={textSecondary}>{post.frontmatter.date}</p>
 			</Header>
-			<Content dangerouslySetInnerHTML={{ __html: post.html }} />
+			<Content>
+				<MDXProvider>
+					<MDXRenderer>{post.body}</MDXRenderer>
+				</MDXProvider>
+			</Content>
 		</article>
 	)
 }

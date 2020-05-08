@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+// TODO: PostNav 작성
 function PostNav({ previous, next }) {
 	return (
 		<nav>

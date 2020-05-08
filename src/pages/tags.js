@@ -17,7 +17,7 @@ const Title = styled.h2`
 `
 
 export default function TagsPage({ data, pageContext, location }) {
-	const group = data.allMarkdownRemark.group
+	const group = data.allMdx.group
 
 	function getColor(count) {
 		if (count < 5) return 'purple'
@@ -47,12 +47,7 @@ export default function TagsPage({ data, pageContext, location }) {
 
 export const pageQuery = graphql`
 	query {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-		allMarkdownRemark(limit: 2000) {
+		allMdx(limit: 2000) {
 			group(field: frontmatter___tags) {
 				fieldValue
 				totalCount

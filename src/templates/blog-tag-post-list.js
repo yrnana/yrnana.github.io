@@ -25,8 +25,8 @@ export default function BlogTagPostListTemplate({
 	location,
 }) {
 	const { tag } = pageContext
-	const posts = data.allMarkdownRemark.edges
-	const pageInfo = data.allMarkdownRemark.pageInfo
+	const posts = data.allMdx.edges
+	const pageInfo = data.allMdx.pageInfo
 
 	return (
 		<Layout location={location}>
@@ -44,7 +44,7 @@ export default function BlogTagPostListTemplate({
 
 export const pageQuery = graphql`
 	query($tag: String, $skip: Int!, $limit: Int!) {
-		allMarkdownRemark(
+		allMdx(
 			sort: { fields: [frontmatter___date], order: DESC }
 			filter: { frontmatter: { tags: { in: [$tag] } } }
 			limit: $limit
@@ -52,6 +52,7 @@ export const pageQuery = graphql`
 		) {
 			edges {
 				node {
+					id
 					excerpt
 					fields {
 						slug

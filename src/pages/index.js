@@ -6,8 +6,8 @@ import SEO from '../components/layout/seo'
 import PostListTemplate from '../components/post/PostListTemplate'
 
 export default function IndexPage({ data, pageContext, location }) {
-	const posts = data.allMarkdownRemark.edges
-	const pageInfo = data.allMarkdownRemark.pageInfo
+	const posts = data.allMdx.edges
+	const pageInfo = data.allMdx.pageInfo
 
 	return (
 		<Layout location={location}>
@@ -19,12 +19,10 @@ export default function IndexPage({ data, pageContext, location }) {
 
 export const pageQuery = graphql`
 	query {
-		allMarkdownRemark(
-			sort: { fields: [frontmatter___date], order: DESC }
-			limit: 5
-		) {
+		allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 5) {
 			edges {
 				node {
+					id
 					excerpt
 					fields {
 						slug

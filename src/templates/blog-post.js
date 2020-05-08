@@ -6,7 +6,7 @@ import SEO from '../components/layout/seo'
 import PostTemplate from '../components/post/PostTemplate'
 
 export default function BlogPostTemplate({ data, pageContext, location }) {
-	const post = data.markdownRemark
+	const post = data.mdx
 
 	return (
 		<Layout location={location}>
@@ -20,11 +20,11 @@ export default function BlogPostTemplate({ data, pageContext, location }) {
 }
 
 export const pageQuery = graphql`
-	query($slug: String!) {
-		markdownRemark(fields: { slug: { eq: $slug } }) {
+	query($id: String) {
+		mdx(id: { eq: $id }) {
 			id
+			body
 			excerpt(pruneLength: 160)
-			html
 			frontmatter {
 				title
 				date(formatString: "MMMM DD, YYYY")
