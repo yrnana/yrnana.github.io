@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { kebabCase } from 'lodash'
+import { kebabCase, isEmpty } from 'lodash'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import {
@@ -60,7 +60,7 @@ function PostList({ posts }) {
 						<small css={textSecondary}>
 							{node.frontmatter.date}
 						</small>
-						{node.frontmatter.tags && (
+						{!isEmpty(node.frontmatter.tags) && (
 							<TagList tags={node.frontmatter.tags} />
 						)}
 					</PostInfo>

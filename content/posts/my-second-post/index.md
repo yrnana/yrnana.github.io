@@ -1,7 +1,7 @@
 ---
 title: My Second Post!
-date: "2015-05-06T23:46:37.121Z"
-tags: ["animals"]
+date: 2015-05-06 23:46:37
+tags: [animals]
 ---
 
 Wow! I love blogging so much already.

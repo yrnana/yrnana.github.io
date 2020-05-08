@@ -1,16 +1,16 @@
 ---
 title: Markdown Sample
-date: '2015-05-06T23:46:37.121Z'
-tags: ['markdown']
+date: 2015-05-06 23:46:37
+tags: [markdown]
 ---
 
 ---
 
 **Advertisement :)**
 
--   **[pica](https://nodeca.github.io/pica/demo/)** - high quality and fast image
+- **[pica](https://nodeca.github.io/pica/demo/)** - high quality and fast image
     resize in browser.
--   **[babelfish](https://github.com/nodeca/babelfish/)** - developer friendly
+- **[babelfish](https://github.com/nodeca/babelfish/)** - developer friendly
     i18n with plurals support and easy syntax.
 
 You will like those projects!
@@ -73,13 +73,14 @@ _This is italic text_
 
 Unordered
 
--   Create a list by starting a line with `+`, `-`, or `*`
--   Sub-lists are made by indenting 2 spaces:
-    -   Marker character change forces new list start:
-        -   Ac tristique libero volutpat at
-        *   Facilisis in pretium nisl aliquet
-        -   Nulla volutpat aliquam velit
--   Very easy!
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    - Ac tristique libero volutpat at
+    - Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+  - 이상하다?
+- Very easy!
 
 Ordered
 
@@ -128,7 +129,7 @@ Syntax highlighting
 
 ```js
 var foo = function (bar) {
-	return bar++ // highlight-line
+ return bar++ // highlight-line
 }
 
 console.log(foo(5))
@@ -156,7 +157,7 @@ Right aligned columns
 
 [link with title](http://nodeca.github.io/pica/demo/ 'title text!')
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+Autoconverted link <https://github.com/nodeca/pica> (enable linkify to see)
 
 ## Images
 
@@ -186,8 +187,8 @@ see [how to change output](https://github.com/markdown-it/markdown-it-emoji#chan
 
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
--   19^th^
--   H~2~O
+- 19^th^
+- H~2~O
 
 ### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
 
