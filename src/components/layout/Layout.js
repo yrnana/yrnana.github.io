@@ -1,8 +1,14 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/core'
+
 import Header from './Header'
+import Footer from './Footer'
+
 import { rhythm } from '../../utils/typography'
 import { md, lg } from '../../utils/breakpoints'
+import { paddingTransition } from '../../utils/styles'
+import BackToTop from './BackToTop'
 
 const Container = styled.div`
 	width: 100%;
@@ -11,6 +17,7 @@ const Container = styled.div`
 	margin: 0 auto;
 	padding-left: ${rhythm(1)};
 	padding-right: ${rhythm(1)};
+	${paddingTransition}
 	@media (min-width: ${lg}) {
 		max-width: ${lg};
 	}
@@ -23,8 +30,25 @@ const Container = styled.div`
 function Layout({ location, children }) {
 	return (
 		<Container>
+			<Global
+				styles={css`
+					::-moz-selection {
+						background-color: #7467ef;
+					}
+					::selection {
+						background-color: #7467ef;
+					}
+					h6::selection,
+					blockquote p::selection,
+					a::selection {
+						color: #fff;
+					}
+				`}
+			/>
+			<BackToTop />
 			<Header pathname={location.pathname} />
 			<main>{children}</main>
+			<Footer />
 		</Container>
 	)
 }

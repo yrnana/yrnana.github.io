@@ -18,13 +18,21 @@ export const inlineSpacing = css`
 	& > * {
 		margin-right: ${rhythm(1 / 1.5)};
 		&:last-child {
-			margin-right: 0;
+			margin-right: 0 !important;
 		}
 	}
 `
 
+export const fontSizeSmall = css`
+	font-size: 80%;
+`
+
 export const primaryColor = css`
 	color: #7467ef;
+`
+
+export const primaryBgColor = css`
+	background-color: #7467ef;
 `
 
 export const textPrimary = css`
@@ -179,24 +187,39 @@ export const markdown = css`
 			display: inline;
 		}
 	}
-	/* code */
+`
+
+export const prismStyles = css`
+	.gatsby-highlight {
+		code[class*='language-'],
+		pre[class*='language-'] {
+			font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
+				'Andale Mono', 'Ubuntu Mono', monospace;
+		}
+		& + .gatsby-highlight {
+			margin-top: ${rhythm(1)};
+		}
+	}
 	.gatsby-highlight-code-line {
-		background-color: #feb;
 		display: block;
 		margin-right: -1em;
 		margin-left: -1em;
 		padding-right: 1em;
 		padding-left: 0.75em;
 		border-left: 0.25em solid #f99;
+		background-color: #feb;
 	}
-	code[class*='language-'],
-	pre[class*='language-'] {
-		font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
-			'Andale Mono', 'Ubuntu Mono', monospace;
-	}
-	*:not(pre) > code[class*='language-'] {
+	:not(pre) > code[class*='language-'] {
 		border-radius: 0.1em;
 		padding-left: 0.2em;
 		padding-right: 0.2em;
 	}
+`
+
+export const marginTransition = css`
+	transition: margin 0.3s;
+`
+
+export const paddingTransition = css`
+	transition: margin 0.3s;
 `

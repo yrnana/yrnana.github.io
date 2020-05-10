@@ -1,3 +1,7 @@
+require('dotenv').config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
 	siteMetadata: {
 		title: `Nana's Log`,
@@ -51,13 +55,14 @@ module.exports = {
 				],
 			},
 		},
-		// {
-		// 	resolve: `gatsby-plugin-google-analytics`,
-		// 	options: {
-		// 		//trackingId: `ADD YOUR TRACKING ID HERE`,
-		// 	},
-		// },
-		// `gatsby-plugin-feed`,
+		{
+			resolve: `gatsby-plugin-google-analytics`,
+			options: {
+				trackingId: process.env.GATSBY_GOOGLE_ANALYTICS,
+			},
+		},
+		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-sitemap`,
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
@@ -70,7 +75,8 @@ module.exports = {
 				icon: `content/assets/gatsby-icon.png`,
 			},
 		},
-		`gatsby-plugin-react-helmet`,
+		// https://www.gatsbyjs.org/docs/adding-an-rss-feed/
+		// `gatsby-plugin-feed`,
 		`gatsby-plugin-remove-trailing-slashes`,
 		{
 			resolve: `gatsby-plugin-typography`,

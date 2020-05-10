@@ -1,13 +1,26 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from '@emotion/styled'
-import { textSecondary, inlineSpacing, alignItems } from '../../utils/styles'
+
+import {
+	primaryColor,
+	textSecondary,
+	inlineSpacing,
+	alignItems,
+	paddingTransition,
+} from '../../utils/styles'
+import { md } from '../../utils/breakpoints'
 import { rhythm } from '../../utils/typography'
 
 const HeaderWrapper = styled.header`
 	${alignItems}
-	padding-top: ${rhythm(1.25)};
-	padding-bottom: ${rhythm(1.25)};
+	${paddingTransition}
+	padding-top: ${rhythm(1)};
+	padding-bottom: ${rhythm(1)};
+	@media (min-width: ${md}) {
+		padding-top: ${rhythm(1.25)};
+		padding-bottom: ${rhythm(1.25)};
+	}
 `
 
 const Title = styled.h2`
@@ -20,6 +33,9 @@ const Nav = styled.nav`
 	${inlineSpacing}
 	a {
 		${textSecondary}
+		&.active {
+			${primaryColor}
+		}
 	}
 `
 
@@ -42,8 +58,15 @@ function Header() {
 				<Link to="/">{title}</Link>
 			</Title>
 			<Nav>
-				<Link to="/about">About</Link>
-				<Link to="/tags">Tags</Link>
+				<Link to="/about" activeClassName="active">
+					About
+				</Link>
+				<Link to="/archive" activeClassName="active">
+					Archive
+				</Link>
+				<Link to="/tags" activeClassName="active">
+					Tags
+				</Link>
 			</Nav>
 		</HeaderWrapper>
 	)

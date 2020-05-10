@@ -1,46 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { kebabCase } from 'lodash'
-import styled from '@emotion/styled'
 
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
-import Tag from '../components/post/Tag'
-import { spacing } from '../utils/styles'
-import { rhythm } from '../utils/typography'
-
-const Title = styled.h2`
-	text-align: center;
-	margin-top: ${rhythm(1)};
-	margin-bottom: ${rhythm(2.5)};
-	font-weight: 700;
-`
+import Tags from '../components/tag/Tags'
 
 export default function TagsPage({ data, pageContext, location }) {
-	const group = data.allMdx.group
-
-	function getColor(count) {
-		if (count < 5) return 'purple'
-		else if (count < 10) return 'blue'
-		else if (count < 20) return 'green'
-		else if (count < 30) return 'orange'
-		else return 'magenta'
-	}
+	const tags = data.allMdx.group
 
 	return (
 		<Layout location={location}>
 			<SEO title="Tags" />
-			<Title>Tags</Title>
-			<div css={spacing}>
-				{group.map(tag => (
-					<Tag
-						key={tag.fieldValue}
-						type={getColor(tag.totalCount)}
-						to={`/tags/${kebabCase(tag.fieldValue)}/pages/1`}
-						label={`${tag.fieldValue} (${tag.totalCount})`}
-					/>
-				))}
-			</div>
+			<Tags tags={tags} />
 		</Layout>
 	)
 }

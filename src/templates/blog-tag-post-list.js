@@ -6,16 +6,22 @@ import { kebabCase } from 'lodash'
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
 import PostListTemplate from '../components/post/PostListTemplate'
+
 import { rhythm } from '../utils/typography'
-import { primaryColor } from '../utils/styles'
+import { primaryColor, marginTransition } from '../utils/styles'
+import { md } from '../utils/breakpoints'
 
 const Title = styled.h2`
 	text-align: center;
 	margin-top: ${rhythm(1)};
-	margin-bottom: ${rhythm(0.75)};
+	margin-bottom: ${rhythm(0.5)};
 	font-weight: 400;
+	${marginTransition}
 	strong {
 		${primaryColor}
+	}
+	@media (min-width: ${md}) {
+		margin-bottom: ${rhythm(0.75)};
 	}
 `
 
@@ -58,8 +64,8 @@ export const pageQuery = graphql`
 						slug
 					}
 					frontmatter {
-						date(formatString: "MMMM DD, YYYY")
 						title
+						date
 						description
 						tags
 					}

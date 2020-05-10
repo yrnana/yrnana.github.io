@@ -53,7 +53,6 @@ function Tag({ to, label, type = 'default' }) {
 				display: inline-block;
 				vertical-align: middle;
 				height: auto;
-				margin: 0;
 				padding: 0 7px;
 				font-size: 12px;
 				line-height: 20px;

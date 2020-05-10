@@ -52,16 +52,19 @@ typings/
 *.tgz
 
 # dotenv environment variable files
-.env*
+.env.production
+.env.development
 
 # gatsby files
 .cache/
 public
+.backup/
 
 # Mac files
 .DS_Store
 
 # Yarn
+yarn.lock
 yarn-error.log
 .pnp/
 .pnp.js

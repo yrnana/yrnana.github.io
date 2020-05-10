@@ -1,10 +1,11 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const moment = require('moment')
 const { kebabCase } = require('lodash')
+
+const postsPerPage = 5
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
 	const { createPage } = actions
-	const postsPerPage = 5
 
 	const result = await graphql(`
 		{
@@ -55,6 +56,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		})
 	})
 
+	// Create index page
+	createPage({
+		path: `/`,
+		component: path.resolve('./src/templates/blog-post-list.js'),
+		context: {
+			limit: postsPerPage,
+			skip: 0 * postsPerPage,
+		},
+	})
+
+	// Create post-list pages
+	Array.from({ length: Math.ceil(posts.length / postsPerPage) }).forEach(
+		(_, i) => {
+			createPage({
+				path: `/pages/${i + 1}`,
+				component: path.resolve('./src/templates/blog-post-list.js'),
+				context: {
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+				},
+			})
+		}
+	)
+
 	// Create tag-post-list pages
 	const tags = result.data.tagsGroup.group
 	tags.forEach(tag => {
@@ -74,31 +99,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			})
 		})
 	})
-
-	// Create post-list pages
-	Array.from({ length: Math.ceil(posts.length / postsPerPage) }).forEach(
-		(_, i) => {
-			createPage({
-				path: `/pages/${i + 1}`,
-				component: path.resolve('./src/templates/blog-post-list.js'),
-				context: {
-					limit: postsPerPage,
-					skip: i * postsPerPage,
-				},
-			})
-		}
-	)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
 	const { createNodeField } = actions
 
 	if (node.internal.type === 'Mdx') {
-		const value = createFilePath({ node, getNode, trailingSlash: false })
+		const dirName = path.basename(path.dirname(node.fileAbsolutePath))
+		const slug = `/posts/${dirName.split(`---`)[1]}`
 		createNodeField({
 			name: `slug`,
 			node,
-			value: `/posts${value}`,
+			value: slug,
+		})
+		const year = moment(node.frontmatter.date).local().year()
+		createNodeField({
+			name: `year`,
+			node,
+			value: year,
 		})
 	}
 }

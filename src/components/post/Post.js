@@ -1,14 +1,27 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { MDXProvider } from '@mdx-js/react'
+import { Global } from '@emotion/core'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+
 import { rhythm } from '../../utils/typography'
-import { textSecondary, markdown } from '../../utils/styles'
+import { md } from '../../utils/breakpoints'
+import {
+	textSecondary,
+	markdown,
+	prismStyles,
+	marginTransition,
+} from '../../utils/styles'
+import TagList from './TagList'
+import { formatDate } from '../../utils/functions'
 
 const Header = styled.header`
 	text-align: center;
 	margin-top: ${rhythm(1)};
-	margin-bottom: ${rhythm(2.5)};
+	margin-bottom: ${rhythm(2.25)};
+	${marginTransition}
+	@media (min-width: ${md}) {
+		margin-bottom: ${rhythm(2.5)};
+	}
 `
 
 const Title = styled.h1`
@@ -16,23 +29,20 @@ const Title = styled.h1`
 	font-weight: 900;
 `
 
-const Content = styled.section`
-	margin-bottom: ${rhythm(1)};
-	${markdown}
-`
-
 function Post({ post }) {
 	return (
 		<article>
 			<Header>
 				<Title>{post.frontmatter.title}</Title>
-				<p css={textSecondary}>{post.frontmatter.date}</p>
+				<time dateTime={post.frontmatter.date} css={textSecondary}>
+					{formatDate(post.frontmatter.date)}
+				</time>
 			</Header>
-			<Content>
-				<MDXProvider>
-					<MDXRenderer>{post.body}</MDXRenderer>
-				</MDXProvider>
-			</Content>
+			<section css={markdown}>
+				<Global styles={prismStyles} />
+				<MDXRenderer>{post.body}</MDXRenderer>
+			</section>
+			<TagList tags={post.frontmatter.tags} />
 		</article>
 	)
 }

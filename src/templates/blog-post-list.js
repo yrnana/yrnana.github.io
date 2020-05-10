@@ -9,9 +9,12 @@ export default function BlogPostListTemplate({ data, pageContext, location }) {
 	const posts = data.allMdx.edges
 	const pageInfo = data.allMdx.pageInfo
 
+	const title =
+		pageInfo.currentPage === 1 ? null : `Page ${pageInfo.currentPage}`
+
 	return (
 		<Layout location={location}>
-			<SEO title={`Page ${pageInfo.currentPage}`} />
+			<SEO title={title} />
 			<PostListTemplate posts={posts} pageInfo={pageInfo} />
 		</Layout>
 	)
@@ -32,8 +35,8 @@ export const pageQuery = graphql`
 						slug
 					}
 					frontmatter {
-						date(formatString: "MMMM DD, YYYY")
 						title
+						date
 						description
 						tags
 					}

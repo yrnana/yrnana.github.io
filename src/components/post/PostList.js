@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { kebabCase, isEmpty } from 'lodash'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+
 import {
+	fontSizeSmall,
 	textPrimary,
 	textSecondary,
 	primaryColor,
 	inlineSpacing,
 } from '../../utils/styles'
 import { rhythm } from '../../utils/typography'
-import Tag from './Tag'
+import TagList from './TagList'
+import { formatDate } from '../../utils/functions'
 
 const List = styled.ul`
 	list-style: none;
@@ -57,40 +59,17 @@ function PostList({ posts }) {
 						/>
 					</section>
 					<PostInfo>
-						<small css={textSecondary}>
-							{node.frontmatter.date}
-						</small>
-						{!isEmpty(node.frontmatter.tags) && (
-							<TagList tags={node.frontmatter.tags} />
-						)}
+						<time
+							dateTime={node.frontmatter.date}
+							css={[fontSizeSmall, textSecondary]}
+						>
+							{formatDate(node.frontmatter.date)}
+						</time>
+						<TagList tags={node.frontmatter.tags} isList />
 					</PostInfo>
 				</li>
 			))}
 		</List>
-	)
-}
-
-function TagList({ tags }) {
-	return (
-		<>
-			<small>-</small>
-			<div
-				css={css`
-					${inlineSpacing}
-					& > * {
-						margin-right: 8px !important;
-					}
-				`}
-			>
-				{tags.map(tag => (
-					<Tag
-						key={tag}
-						to={`/tags/${kebabCase(tag)}/pages/1`}
-						label={tag}
-					/>
-				))}
-			</div>
-		</>
 	)
 }
 
