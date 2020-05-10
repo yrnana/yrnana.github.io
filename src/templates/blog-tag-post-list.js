@@ -5,7 +5,7 @@ import { kebabCase } from 'lodash'
 
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
-import PostListTemplate from '../components/post/PostListTemplate'
+import PostListTemplate from '../components/post/list/PostListTemplate'
 
 import { rhythm } from '../utils/typography'
 import { primaryColor, marginTransition } from '../utils/styles'

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 import { throttle } from 'lodash'
 
-import { primaryBgColor } from '../../utils/styles'
+import { primaryBgColor } from '../../../utils/styles'
 
 function PageProgressBar() {
 	const [width, setWidth] = useState(0)

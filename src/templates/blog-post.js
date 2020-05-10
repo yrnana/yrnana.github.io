@@ -3,8 +3,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout/Layout'
 import SEO from '../components/layout/seo'
-import PostTemplate from '../components/post/PostTemplate'
-import PageProgressBar from '../components/post/PageProgressBar'
+import PostTemplate from '../components/post/one/PostTemplate'
 
 export default function BlogPostTemplate({ data, pageContext, location }) {
 	const post = data.mdx
@@ -15,7 +14,6 @@ export default function BlogPostTemplate({ data, pageContext, location }) {
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
 			/>
-			<PageProgressBar />
 			<PostTemplate post={post} {...pageContext} />
 		</Layout>
 	)
@@ -36,6 +34,7 @@ export const pageQuery = graphql`
 				description
 				tags
 			}
+			tableOfContents
 		}
 	}
 `

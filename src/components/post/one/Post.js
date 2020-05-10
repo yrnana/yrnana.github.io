@@ -3,16 +3,17 @@ import styled from '@emotion/styled'
 import { Global } from '@emotion/core'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import { rhythm } from '../../utils/typography'
-import { md } from '../../utils/breakpoints'
+import TagList from '../TagList'
+
+import { rhythm } from '../../../utils/typography'
+import { md } from '../../../utils/breakpoints'
 import {
 	textSecondary,
 	markdown,
 	prismStyles,
 	marginTransition,
-} from '../../utils/styles'
-import TagList from './TagList'
-import { formatDate } from '../../utils/functions'
+} from '../../../utils/styles'
+import { formatDate } from '../../../utils/functions'
 
 const Header = styled.header`
 	text-align: center;

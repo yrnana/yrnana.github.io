@@ -3,16 +3,17 @@ import { Link } from 'gatsby'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
+import TagList from '../TagList'
+
 import {
 	fontSizeSmall,
 	textPrimary,
 	textSecondary,
 	primaryColor,
 	inlineSpacing,
-} from '../../utils/styles'
-import { rhythm } from '../../utils/typography'
-import TagList from './TagList'
-import { formatDate } from '../../utils/functions'
+} from '../../../utils/styles'
+import { rhythm } from '../../../utils/typography'
+import { formatDate } from '../../../utils/functions'
 
 const List = styled.ul`
 	list-style: none;

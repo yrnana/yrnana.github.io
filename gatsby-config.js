@@ -32,10 +32,10 @@ module.exports = {
 		},
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
-		`gatsby-plugin-mdx`,
 		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {
+				rehypePlugins: [require('rehype-slug')],
 				gatsbyRemarkPlugins: [
 					{
 						resolve: `gatsby-remark-images`,
@@ -49,12 +49,19 @@ module.exports = {
 							wrapperStyle: `margin-bottom: 1rem`,
 						},
 					},
+					{
+						resolve: 'gatsby-remark-external-links',
+						options: {
+							target: '_blank',
+						},
+					},
 					`gatsby-remark-copy-linked-files`,
 					`gatsby-remark-smartypants`,
 					`gatsby-remark-prismjs`,
 				],
 			},
 		},
+		`gatsby-plugin-catch-links`,
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {

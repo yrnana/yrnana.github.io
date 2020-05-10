@@ -5,8 +5,8 @@ import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-import { rhythm } from '../../utils/typography'
-import { textSecondary } from '../../utils/styles'
+import { rhythm } from '../../../utils/typography'
+import { textSecondary } from '../../../utils/styles'
 
 const NavLink = styled(Link)`
 	small {

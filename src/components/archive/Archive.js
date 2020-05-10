@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 
 import ArchiveItem from './ArchiveItem'
 
 import { marginTransition } from '../../utils/styles'
 import { md } from '../../utils/breakpoints'
 import { rhythm } from '../../utils/typography'
-import { css } from '@emotion/core'
 
 const Title = styled.h1`
 	text-align: center;
