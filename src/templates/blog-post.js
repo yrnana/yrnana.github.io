@@ -10,7 +10,7 @@ export default function BlogPostTemplate({ data, pageContext, location }) {
 	const { next, previous } = pageContext
 
 	return (
-		<Layout location={location}>
+		<Layout>
 			<SEO
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}

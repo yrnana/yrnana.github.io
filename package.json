@@ -9,6 +9,7 @@
 		"prebuild": "yarn clean",
 		"build": "gatsby build",
 		"develop": "gatsby develop",
+		"prestart": "yarn clean",
 		"start": "yarn develop",
 		"preserve": "yarn build",
 		"serve": "gatsby serve",

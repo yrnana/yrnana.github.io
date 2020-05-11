@@ -114,6 +114,7 @@ const PaginationItem = styled.li`
 		text-align: center;
 		background-color: ${props =>
 			props.current ? 'rgba(0, 0, 0, 0.08)' : 'transparent'};
+		pointer-events: ${props => (props.current ? 'none' : 'auto')};
 		&:hover {
 			color: inherit;
 			background-color: rgba(0, 0, 0, 0.04);

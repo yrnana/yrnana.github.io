@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Global } from '@emotion/core'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import TagList from '../TagList'
@@ -10,7 +9,6 @@ import { md } from '../../../utils/breakpoints'
 import {
 	textSecondary,
 	markdown,
-	prismStyles,
 	marginTransition,
 } from '../../../utils/styles'
 import { formatDate } from '../../../utils/functions'
@@ -42,7 +40,6 @@ function Post({ post, series }) {
 			</Header>
 			{series && <Series series={series} />}
 			<section css={markdown}>
-				<Global styles={prismStyles} />
 				<MDXRenderer>{post.body}</MDXRenderer>
 			</section>
 			<TagList tags={post.frontmatter.tags} />

@@ -13,7 +13,7 @@ export default function BlogPostListTemplate({ data, pageContext, location }) {
 		pageInfo.currentPage === 1 ? null : `Page ${pageInfo.currentPage}`
 
 	return (
-		<Layout location={location}>
+		<Layout>
 			<SEO title={title} />
 			<PostListTemplate posts={posts} pageInfo={pageInfo} />
 		</Layout>

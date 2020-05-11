@@ -9,7 +9,7 @@ export default function TagsPage({ data, pageContext, location }) {
 	const tags = data.allMdx.group
 
 	return (
-		<Layout location={location}>
+		<Layout>
 			<SEO title="Tags" />
 			<Tags tags={tags} />
 		</Layout>

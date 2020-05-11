@@ -35,7 +35,7 @@ export default function BlogTagPostListTemplate({
 	const pageInfo = data.allMdx.pageInfo
 
 	return (
-		<Layout location={location}>
+		<Layout>
 			<SEO title={`Tag : ${tag}`} />
 			<Title>
 				Post tagged with <strong>{tag}</strong>

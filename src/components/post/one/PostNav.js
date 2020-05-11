@@ -7,12 +7,14 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import { rhythm } from '../../../utils/typography'
 import { textSecondary } from '../../../utils/styles'
+import { sm } from '../../../utils/breakpoints'
 
 const NavLink = styled(Link)`
 	small {
 		display: block;
 		padding-bottom: ${rhythm(0.25)};
-		text-align: ${props => (props.rel === 'next' ? 'right' : 'left')};
+		margin-left: 26px;
+		margin-right: 26px;
 		${textSecondary}
 	}
 	&:hover {
@@ -30,22 +32,32 @@ const NavLink = styled(Link)`
 	}
 `
 
+const ulStyles = css`
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	li {
+		margin: 0;
+		&:last-child {
+			text-align: right;
+		}
+	}
+	@media (min-width: ${sm}) {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		li {
+			flex-grow: 0;
+			max-width: 48%;
+			flex-basis: 48%;
+		}
+	}
+`
+
 function PostNav({ previous, next }) {
 	return (
 		<nav>
-			<ul
-				css={css`
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					list-style: none;
-					padding: 0;
-					margin: 0;
-					li {
-						margin: 0;
-					}
-				`}
-			>
+			<ul css={ulStyles}>
 				<li>
 					{previous && (
 						<NavLink to={previous.fields.slug} rel="prev">

@@ -4,10 +4,11 @@ import styled from '@emotion/styled'
 import { findLast, throttle, isEmpty } from 'lodash'
 
 import { rhythm } from '../../../utils/typography'
-import { textSecondary, primaryColor, textPrimary } from '../../../utils/styles'
+import { textSecondary, primaryColor } from '../../../utils/styles'
 
 const tocWidth = `200px`
 const tocBreakpoint = '@media (max-width: 1400px)'
+
 export const tocParentStyles = css`
 	display: flex;
 	align-items: flex-start;
@@ -42,14 +43,15 @@ const Toc = styled.div`
 			margin-top: ${rhythm(0.25)};
 		}
 	}
-	a {
-		${textSecondary}
-		&.active {
-			${primaryColor}
-		}
-	}
 	${tocBreakpoint} {
 		display: none;
+	}
+`
+
+const linkStyles = css`
+	${textSecondary}
+	&.active {
+		${primaryColor}
 	}
 `
 
@@ -61,6 +63,7 @@ function List({ items, active }) {
 					<a
 						href={item.url}
 						className={active === item.url ? 'active' : null}
+						css={linkStyles}
 					>
 						{item.title}
 					</a>

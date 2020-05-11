@@ -1,6 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faInbox, faTags } from '@fortawesome/free-solid-svg-icons'
 
 import {
 	primaryColor,
@@ -9,7 +11,7 @@ import {
 	alignItems,
 	paddingTransition,
 } from '../../utils/styles'
-import { md } from '../../utils/breakpoints'
+import { md, sm } from '../../utils/breakpoints'
 import { rhythm } from '../../utils/typography'
 
 const HeaderWrapper = styled.header`
@@ -39,6 +41,16 @@ const Nav = styled.nav`
 			cursor: pointer;
 		}
 	}
+	@media (min-width: ${sm}) {
+		svg {
+			display: none;
+		}
+	}
+	@media (max-width: ${sm}) {
+		span {
+			display: none;
+		}
+	}
 `
 
 function Header() {
@@ -61,13 +73,16 @@ function Header() {
 			</Title>
 			<Nav>
 				<Link to="/about" activeClassName="active">
-					About
+					<FontAwesomeIcon icon={faUser} />
+					<span>About</span>
 				</Link>
 				<Link to="/archive" activeClassName="active">
-					Archive
+					<FontAwesomeIcon icon={faInbox} />
+					<span>Archive</span>
 				</Link>
 				<Link to="/tags" activeClassName="active">
-					Tags
+					<FontAwesomeIcon icon={faTags} />
+					<span>Tags</span>
 				</Link>
 			</Nav>
 		</HeaderWrapper>

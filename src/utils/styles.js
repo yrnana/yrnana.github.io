@@ -124,7 +124,7 @@ export const markdown = css`
 		padding-left: ${rhythm(2 / 1.5)};
 		ul,
 		ol {
-			/* margin-top: 0; */
+			margin-top: 0.25em;
 			margin-bottom: 0;
 		}
 		li {
@@ -190,12 +190,12 @@ export const markdown = css`
 `
 
 export const prismStyles = css`
+	code[class*='language-'],
+	pre[class*='language-'] {
+		font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
+			'Andale Mono', 'Ubuntu Mono', monospace;
+	}
 	.gatsby-highlight {
-		code[class*='language-'],
-		pre[class*='language-'] {
-			font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
-				'Andale Mono', 'Ubuntu Mono', monospace;
-		}
 		& + .gatsby-highlight {
 			margin-top: ${rhythm(1)};
 		}

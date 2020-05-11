@@ -77,7 +77,7 @@
 - [x] h1 link : tableOfContents
 - [x] markdown ol ul margin & list style 변경
 - [x] 관련글 기능
-- [ ] 상단 메뉴 media screen icon으로 변경 (font awesome?)
+- [x] 상단 메뉴 media screen icon으로 변경 (font awesome?)
 - [ ] 검색 기능
-- [ ] about.js
-- [ ] 한글 제목 문서
+- [x] about.js
+- [x] 한글 제목 문서

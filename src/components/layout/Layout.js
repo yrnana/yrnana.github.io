@@ -7,7 +7,7 @@ import Footer from './Footer'
 
 import { rhythm } from '../../utils/typography'
 import { md, lg } from '../../utils/breakpoints'
-import { paddingTransition } from '../../utils/styles'
+import { paddingTransition, prismStyles } from '../../utils/styles'
 import BackToTop from './BackToTop'
 
 const Container = styled.div`
@@ -27,11 +27,12 @@ const Container = styled.div`
 	}
 `
 
-function Layout({ location, children }) {
+function Layout({ children }) {
 	return (
 		<Container>
 			<Global
 				styles={css`
+					${prismStyles}
 					::-moz-selection {
 						background-color: #7467ef;
 					}
@@ -46,7 +47,7 @@ function Layout({ location, children }) {
 				`}
 			/>
 			<BackToTop />
-			<Header pathname={location.pathname} />
+			<Header />
 			<main>{children}</main>
 			<Footer />
 		</Container>

@@ -10,7 +10,7 @@ export default function ArchivePage({ data, pageContext, location }) {
 	const archives = orderBy(data.allMdx.group, ['fieldValue'], ['desc'])
 
 	return (
-		<Layout location={location}>
+		<Layout>
 			<SEO title="Archive" />
 			<Archive archives={archives} />
 		</Layout>
