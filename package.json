@@ -16,8 +16,8 @@
 		"clean": "gatsby clean",
 		"deploy": "gh-pages -d public -b master",
 		"source": "git checkout source && git add . && git commit -m \"Deploy Blog Powered By Gatsby\" && git push origin source",
-		"create-post": "node scripts/create-post.js && yarn clean",
-		"update-post": "node scripts/update-post.js && yarn clean"
+		"create-post": "node scripts/create-post.js",
+		"update-post": "node scripts/update-post.js"
 	},
 	"dependencies": {
 		"@emotion/cache": "^10.0.29",
