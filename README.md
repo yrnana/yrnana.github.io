@@ -74,8 +74,10 @@
 - [x] create-post.js 작성
 - [x] update-post.js 작성 (가장 최근 작성한 문서들 불러와서 선택시 date값 update)
 - [x] 404 page
-- [ ] h1 link : tableOfContents
-- [ ] 관련글 기능
+- [x] h1 link : tableOfContents
+- [x] markdown ol ul margin & list style 변경
+- [x] 관련글 기능
 - [ ] 상단 메뉴 media screen icon으로 변경 (font awesome?)
 - [ ] 검색 기능
 - [ ] about.js
+- [ ] 한글 제목 문서

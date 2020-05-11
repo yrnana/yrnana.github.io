@@ -1,10 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import { css } from '@emotion/core'
 import styled from '@emotion/styled'
+import { findLast, throttle, isEmpty } from 'lodash'
 
 import { rhythm } from '../../../utils/typography'
-import { textSecondary } from '../../../utils/styles'
+import { textSecondary, primaryColor, textPrimary } from '../../../utils/styles'
+
+const tocWidth = `200px`
+const tocBreakpoint = '@media (max-width: 1400px)'
+export const tocParentStyles = css`
+	display: flex;
+	align-items: flex-start;
+	margin-right: -${tocWidth};
+	${tocBreakpoint} {
+		margin-right: 0;
+	}
+`
 
 const Toc = styled.div`
+	width: ${tocWidth};
+	max-width: ${tocWidth};
 	order: 2;
 	position: sticky;
 	top: ${rhythm(1.25)};
@@ -29,41 +44,93 @@ const Toc = styled.div`
 	}
 	a {
 		${textSecondary}
+		&.active {
+			${primaryColor}
+		}
+	}
+	${tocBreakpoint} {
+		display: none;
 	}
 `
 
-function List({ items }) {
+function List({ items, active }) {
 	return (
 		<ul>
 			{items.map(item => (
 				<li key={item.title}>
-					<a href={item.url}>{item.title}</a>
-					{item.items && <List items={item.items} />}
+					<a
+						href={item.url}
+						className={active === item.url ? 'active' : null}
+					>
+						{item.title}
+					</a>
+					{item.items && <List items={item.items} active={active} />}
 				</li>
 			))}
 		</ul>
 	)
 }
 
-function TableOfContents({ toc, tocStyles }) {
+function TableOfContents({ toc }) {
+	const { items } = toc
+	const [active, setActive] = useState(null)
+
+	const itemIds = useMemo(() => {
+		if (isEmpty(items)) {
+			return []
+		}
+
+		const res = []
+		const recur = x => {
+			x.forEach(({ url, title, items: children }) => {
+				res.push(url.slice(1))
+				if (children && children.length > 0) recur(children)
+			})
+		}
+		recur(items)
+		return res
+	}, [items])
+
 	useEffect(() => {
+		// 첫 접속시 해시가 존재할때 위치 조정
 		let hash = window.location.hash
 		if (hash) {
 			const el = document.getElementById(hash.slice(1))
+			if (!el) return
+
 			const top = el.getBoundingClientRect().top + document.body.scrollTop
 			document.body.scrollTop = top
 			document.documentElement.scrollTop = top
 		}
 	}, [])
 
-	const { items } = toc
+	// 스크롤 시 위치 조정
+	const handleActive = useCallback(() => {
+		const scrollTop =
+			document.body.scrollTop || document.documentElement.scrollTop
+		const curr = findLast(itemIds, id => {
+			const el = document.getElementById(id)
+			const rect = el.getBoundingClientRect()
+			const offsetTop = rect.top + scrollTop
+			return offsetTop - 1 < scrollTop
+		})
+		setActive(curr ? `#${curr}` : null)
+	}, [itemIds])
+
+	useEffect(() => {
+		const onScroll = throttle(handleActive, 200)
+		window.addEventListener('scroll', onScroll)
+		return () => {
+			window.removeEventListener('scroll', onScroll)
+		}
+	}, [handleActive])
 
 	return (
-		<Toc css={tocStyles}>
+		<Toc>
 			{items && (
 				<>
 					<h4>Table Of Contents</h4>
-					<List items={items} />
+					<List items={items} active={active} />
 				</>
 			)}
 		</Toc>
@@ -71,7 +138,3 @@ function TableOfContents({ toc, tocStyles }) {
 }
 
 export default TableOfContents
-
-// https://stackoverflow.com/questions/9979827/change-active-menu-item-on-page-scroll
-// http://jsfiddle.net/mekwall/up4nu/
-// scroll hash link active

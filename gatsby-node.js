@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 						}
 						frontmatter {
 							title
+							series
 						}
 					}
 				}
@@ -44,12 +45,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		const previous =
 			index === posts.length - 1 ? null : posts[index + 1].node
 		const next = index === 0 ? null : posts[index - 1].node
+		const series = post.node.frontmatter.series
 
 		createPage({
 			path: post.node.fields.slug,
 			component: path.resolve(`./src/templates/blog-post.js`),
 			context: {
 				id: post.node.id,
+				series,
 				previous,
 				next,
 			},

@@ -15,12 +15,7 @@ inquirer
 		{
 			type: 'input',
 			name: 'slug',
-			message: 'slug (in english)',
-			validate: function (value) {
-				if (!value || !/^[a-z0-9 ]+$/i.test(value))
-					return '유효한 slug 값이 아닙니다.'
-				return true
-			},
+			message: 'post title',
 		},
 	])
 	.then(({ slug }) => {
@@ -37,10 +32,11 @@ inquirer
 		const content =
 			[
 				'---',
-				'title: ',
+				`title: ${slug}`,
 				`date: ${date.format('YYYY-MM-DDTHH:mm:ssZ')}`,
 				'description: ',
 				'tags: []',
+				'series: ',
 				'---',
 			].join('\r\n') + '\r\n'
 

@@ -124,7 +124,7 @@ export const markdown = css`
 		padding-left: ${rhythm(2 / 1.5)};
 		ul,
 		ol {
-			margin-top: 0;
+			/* margin-top: 0; */
 			margin-bottom: 0;
 		}
 		li {

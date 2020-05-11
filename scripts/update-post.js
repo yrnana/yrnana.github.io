@@ -1,7 +1,9 @@
 /**
  * update-post.js
  *
- * 가장 최근 작성한 post 목록을 불러오고 선택한 post의 date값을 update
+ * 가장 최근 작성한 post 목록을 불러오고 선택한 post의
+ * 1. 날짜 업데이트
+ * 2. 제목 업데이트
  */
 
 const fs = require('fs')

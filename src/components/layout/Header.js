@@ -35,6 +35,8 @@ const Nav = styled.nav`
 		${textSecondary}
 		&.active {
 			${primaryColor}
+			pointer-events: none;
+			cursor: pointer;
 		}
 	}
 `

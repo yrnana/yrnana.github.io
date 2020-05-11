@@ -5,29 +5,11 @@ import { DiscussionEmbed } from 'disqus-react'
 import Post from './Post'
 import PostNav from './PostNav'
 import PageProgressBar from './PageProgressBar'
-import TableOfContents from './TableOfContents'
+import TableOfContents, { tocParentStyles } from './TableOfContents'
 
 import { rhythm } from '../../../utils/typography'
 
-const tocWidth = `200px`
-const tocBreakpoint = '@media (max-width: 1400px)'
-const tocStyles = css`
-	width: ${tocWidth};
-	max-width: ${tocWidth};
-	${tocBreakpoint} {
-		display: none;
-	}
-`
-const postWrapperStyles = css`
-	display: flex;
-	align-items: flex-start;
-	margin-right: -${tocWidth};
-	${tocBreakpoint} {
-		margin-right: 0;
-	}
-`
-
-function PostTemplate({ post, previous, next }) {
+function PostTemplate({ post, series, previous, next }) {
 	const disqusConfig = {
 		shortname: process.env.GATSBY_DISQUS_NAME,
 		config: {
@@ -39,18 +21,15 @@ function PostTemplate({ post, previous, next }) {
 	return (
 		<>
 			<PageProgressBar />
-			<div css={postWrapperStyles}>
-				<TableOfContents
-					toc={post.tableOfContents}
-					tocStyles={tocStyles}
-				/>
+			<div css={tocParentStyles}>
+				<TableOfContents toc={post.tableOfContents} />
 				<div
 					css={css`
 						order: 1;
 						flex: 1;
 					`}
 				>
-					<Post post={post} />
+					<Post post={post} series={series} />
 					<hr
 						css={css`
 							margin-top: ${rhythm(1.5)};

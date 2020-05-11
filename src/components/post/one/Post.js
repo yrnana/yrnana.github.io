@@ -14,6 +14,7 @@ import {
 	marginTransition,
 } from '../../../utils/styles'
 import { formatDate } from '../../../utils/functions'
+import Series from './Series'
 
 const Header = styled.header`
 	text-align: center;
@@ -30,7 +31,7 @@ const Title = styled.h1`
 	font-weight: 900;
 `
 
-function Post({ post }) {
+function Post({ post, series }) {
 	return (
 		<article>
 			<Header>
@@ -39,6 +40,7 @@ function Post({ post }) {
 					{formatDate(post.frontmatter.date)}
 				</time>
 			</Header>
+			{series && <Series series={series} />}
 			<section css={markdown}>
 				<Global styles={prismStyles} />
 				<MDXRenderer>{post.body}</MDXRenderer>
