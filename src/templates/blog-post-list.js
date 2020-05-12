@@ -12,9 +12,14 @@ export default function BlogPostListTemplate({ data, pageContext, location }) {
 	const title =
 		pageInfo.currentPage === 1 ? null : `Page ${pageInfo.currentPage}`
 
+	const description =
+		pageInfo.currentPage === 1
+			? null
+			: `Posts of page ${pageInfo.currentPage}`
+
 	return (
 		<Layout>
-			<SEO title={title} />
+			<SEO title={title} description={description} />
 			<PostListTemplate posts={posts} pageInfo={pageInfo} />
 		</Layout>
 	)

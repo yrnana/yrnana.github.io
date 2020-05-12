@@ -23,7 +23,7 @@ const Title = styled.h1`
 export default function AboutTemplate({ children }) {
 	return (
 		<Layout>
-			<SEO title="About" />
+			<SEO title="About" description="About Page" />
 			<Title>About</Title>
 			{children}
 		</Layout>

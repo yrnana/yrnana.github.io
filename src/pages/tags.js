@@ -10,7 +10,7 @@ export default function TagsPage({ data, pageContext, location }) {
 
 	return (
 		<Layout>
-			<SEO title="Tags" />
+			<SEO title="Tags" description="Tags Page" />
 			<Tags tags={tags} />
 		</Layout>
 	)

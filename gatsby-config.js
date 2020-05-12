@@ -7,7 +7,7 @@ module.exports = {
 		title: `Nana's Log`,
 		author: {
 			name: `Yuri Na`,
-			summary: `Bachelor of Electrical & Electronic Eng. , Yonsei Univ`,
+			summary: `LG CNS Enterprise Application Development Associate`,
 		},
 		description: `Nana's Dev Log`,
 		siteUrl: `https://yurinadev.github.io/`,
@@ -83,7 +83,7 @@ module.exports = {
 			},
 		},
 		// https://www.gatsbyjs.org/docs/adding-an-rss-feed/
-		// `gatsby-plugin-feed`,
+		// `gatsby-plugin-feed-mdx`,
 		`gatsby-plugin-remove-trailing-slashes`,
 		{
 			resolve: `gatsby-plugin-typography`,

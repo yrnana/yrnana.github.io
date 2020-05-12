@@ -11,7 +11,7 @@ export default function ArchivePage({ data, pageContext, location }) {
 
 	return (
 		<Layout>
-			<SEO title="Archive" />
+			<SEO title="Archive" description="Archive Page" />
 			<Archive archives={archives} />
 		</Layout>
 	)

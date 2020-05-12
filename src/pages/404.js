@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 export default function NotFoundPage({ location }) {
 	return (
 		<Layout>
-			<SEO title="404 Not Found" />
+			<SEO title="404 Not Found" description="404 Page" />
 			<Wrapper>
 				<h1>404</h1>
 				<h2>PAGE NOT FOUND</h2>

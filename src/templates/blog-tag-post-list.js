@@ -36,7 +36,7 @@ export default function BlogTagPostListTemplate({
 
 	return (
 		<Layout>
-			<SEO title={`Tag : ${tag}`} />
+			<SEO title={`Tag : ${tag}`} description={`Posts of Tag '${tag}'`} />
 			<Title>
 				Post tagged with <strong>{tag}</strong>
 			</Title>

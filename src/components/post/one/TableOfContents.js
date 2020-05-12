@@ -14,6 +14,7 @@ export const tocParentStyles = css`
 	align-items: flex-start;
 	margin-right: -${tocWidth};
 	${tocBreakpoint} {
+		display: block;
 		margin-right: 0;
 	}
 `
