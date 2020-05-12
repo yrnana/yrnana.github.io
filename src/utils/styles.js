@@ -92,7 +92,7 @@ export const markdown = css`
 	h4,
 	h5,
 	h6 {
-		margin-top: ${rhythm(1)};
+		margin-top: ${rhythm(1.5)};
 		code {
 			font-size: inherit;
 		}
@@ -192,6 +192,7 @@ export const markdown = css`
 export const prismStyles = css`
 	code[class*='language-'],
 	pre[class*='language-'] {
+		font-size: 14px;
 		font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
 			'Andale Mono', 'Ubuntu Mono', monospace;
 	}
@@ -210,6 +211,7 @@ export const prismStyles = css`
 		background-color: #feb;
 	}
 	:not(pre) > code[class*='language-'] {
+		font-size: inherit;
 		border-radius: 0.1em;
 		padding-left: 0.2em;
 		padding-right: 0.2em;

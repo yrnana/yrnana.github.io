@@ -38,16 +38,18 @@ function PostTemplate({ post, series, previous, next }) {
 						`}
 					/>
 					<PostNav previous={previous} next={next} />
-					<div
-						css={css`
-							margin-top: ${rhythm(1.5)};
-							iframe {
-								margin-bottom: 0;
-							}
-						`}
-					>
-						<DiscussionEmbed {...disqusConfig} />
-					</div>
+					{process.env.NODE_ENV === 'production' && (
+						<div
+							css={css`
+								margin-top: ${rhythm(1.5)};
+								iframe {
+									margin-bottom: 0;
+								}
+							`}
+						>
+							<DiscussionEmbed {...disqusConfig} />
+						</div>
+					)}
 				</div>
 			</div>
 		</>
@@ -55,6 +57,7 @@ function PostTemplate({ post, series, previous, next }) {
 }
 
 const areEqual = (prevProps, nextProps) =>
+	process.env.NODE_ENV === 'production' &&
 	prevProps.post.id === nextProps.post.id
 
 export default memo(PostTemplate, areEqual)
