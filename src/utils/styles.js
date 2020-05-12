@@ -15,6 +15,7 @@ export const spacing = css`
 export const inlineSpacing = css`
 	display: inline-flex;
 	align-items: center;
+	flex-wrap: wrap;
 	& > * {
 		margin-right: ${rhythm(1 / 1.5)};
 		&:last-child {

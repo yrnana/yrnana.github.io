@@ -14,6 +14,7 @@ import {
 } from '../../../utils/styles'
 import { rhythm } from '../../../utils/typography'
 import { formatDate } from '../../../utils/functions'
+import { md } from '../../../utils/breakpoints'
 
 const List = styled.ul`
 	list-style: none;
@@ -29,6 +30,17 @@ const List = styled.ul`
 const PostInfo = styled.div`
 	${inlineSpacing}
 	margin-top: ${rhythm(1 / 1.5)};
+	@media (max-width: ${md}) {
+		time {
+			flex-basis: 100%;
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: ${rhythm(0.5)};
+		}
+		small {
+			display: none;
+		}
+	}
 `
 
 function PostList({ posts }) {
