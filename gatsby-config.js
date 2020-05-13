@@ -68,6 +68,26 @@ module.exports = {
 			},
 		},
 		`gatsby-plugin-catch-links`,
+		`gatsby-plugin-remove-trailing-slashes`,
+		{
+			resolve: `gatsby-plugin-typography`,
+			options: {
+				pathToConfigModule: `src/utils/typography`,
+			},
+		},
+		`gatsby-plugin-emotion`,
+		{
+			resolve: `gatsby-plugin-prefetch-google-fonts`,
+			options: {
+				fonts: [
+					{
+						family: `Noto Sans KR`,
+						subsets: [`latin`, `korean`],
+						variants: [`400`, `700`, `900`],
+					},
+				],
+			},
+		},
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
@@ -83,23 +103,68 @@ module.exports = {
 				short_name: `NanaLog`,
 				start_url: `/`,
 				background_color: `#ffffff`,
-				theme_color: `#663399`,
-				display: `minimal-ui`,
+				theme_color: `#7467ef`,
+				display: `standalone`,
 				icon: `content/assets/gatsby-icon.png`,
 			},
 		},
-		// https://www.gatsbyjs.org/docs/adding-an-rss-feed/
-		// `gatsby-plugin-feed-mdx`,
-		`gatsby-plugin-remove-trailing-slashes`,
 		{
-			resolve: `gatsby-plugin-typography`,
+			resolve: `gatsby-plugin-feed-mdx`,
 			options: {
-				pathToConfigModule: `src/utils/typography`,
+				query: `{
+					site {
+						siteMetadata {
+							title
+							description
+							siteUrl
+						}
+					}
+				}`,
+				feeds: [
+					{
+						serialize: ({ query: { site, allMdx } }) => {
+							return allMdx.edges.map(edge => {
+								return Object.assign(
+									{},
+									edge.node.frontmatter,
+									{
+										description:
+											edge.node.frontmatter.description ||
+											edge.node.excerpt,
+										url:
+											site.siteMetadata.siteUrl +
+											edge.node.fields.slug,
+										guid:
+											site.siteMetadata.siteUrl +
+											edge.node.fields.slug,
+										language: 'ko-kr',
+									}
+								)
+							})
+						},
+						query: `{
+							allMdx(sort: { order: DESC, fields:  [frontmatter___date] }) {
+								edges {
+									node {
+										excerpt
+										fields { 
+											slug
+										}
+										frontmatter {
+											date
+											title
+											description
+										}
+									}
+								}
+							}
+						}`,
+						output: '/rss.xml',
+						title: "Nana's Log : RSS Feed",
+						match: '^/posts/',
+					},
+				],
 			},
 		},
-		`gatsby-plugin-emotion`,
-		// this (optional) plugin enables Progressive Web App + Offline functionality
-		// To learn more, visit: https://gatsby.dev/offline
-		// `gatsby-plugin-offline`,
 	],
 }

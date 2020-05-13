@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { isEmpty } from 'lodash'
 
 import 'katex/dist/katex.min.css'
 
@@ -11,11 +12,24 @@ export default function BlogPostTemplate({ data, pageContext, location }) {
 	const { post, series } = data
 	const { next, previous } = pageContext
 
+	const image = post.frontmatter.image
+		? post.frontmatter.image.childImageSharp.original
+		: null
+
+	const meta = [
+		!isEmpty(post.frontmatter.tags) && {
+			name: `keywords`,
+			content: post.frontmatter.tags.join(','),
+		},
+	].filter(Boolean)
+
 	return (
 		<Layout>
 			<SEO
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
+				image={image}
+				meta={meta}
 			/>
 			<PostTemplate
 				post={post}
@@ -45,6 +59,15 @@ export const pageQuery = graphql`
 				date
 				description
 				tags
+				image {
+					childImageSharp {
+						original {
+							width
+							height
+							src
+						}
+					}
+				}
 			}
 			tableOfContents
 		}

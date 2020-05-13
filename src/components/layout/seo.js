@@ -2,13 +2,14 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-const SEO = ({ description = '', lang = 'ko', meta = [], title = null }) => {
+function SEO({ title = null, description = '', image = null, meta = [] }) {
 	const { site } = useStaticQuery(graphql`
 		query {
 			site {
 				siteMetadata {
 					title
 					description
+					siteUrl
 				}
 			}
 		}
@@ -16,10 +17,12 @@ const SEO = ({ description = '', lang = 'ko', meta = [], title = null }) => {
 
 	const metaDescription = description || site.siteMetadata.description
 	const metaTitle = `${title ? `${title} | ` : ''}` + site.siteMetadata.title
+	const metaImage =
+		image && image.src ? `${site.siteMetadata.siteUrl}${image.src}` : null
 
 	return (
 		<Helmet
-			htmlAttributes={{ lang }}
+			htmlAttributes={{ lang: 'ko' }}
 			title={metaTitle}
 			meta={[
 				{
@@ -39,10 +42,6 @@ const SEO = ({ description = '', lang = 'ko', meta = [], title = null }) => {
 					content: metaDescription,
 				},
 				{
-					name: `twitter:card`,
-					content: `summary`,
-				},
-				{
 					name: `twitter:title`,
 					content: metaTitle,
 				},
@@ -50,14 +49,36 @@ const SEO = ({ description = '', lang = 'ko', meta = [], title = null }) => {
 					name: `twitter:description`,
 					content: metaDescription,
 				},
-			].concat(meta)}
-			link={[
-				{
-					href:
-						'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap',
-					rel: 'stylesheet',
-				},
-			]}
+			]
+				.concat(
+					metaImage
+						? [
+								{
+									property: 'og:image',
+									content: metaImage,
+								},
+								{
+									property: 'og:image:width',
+									content: image.width,
+								},
+								{
+									property: 'og:image:height',
+									content: image.height,
+								},
+								{
+									name: 'twitter:card',
+									content: 'summary_large_image',
+								},
+						  ]
+						: [
+								{
+									name: 'twitter:card',
+									content: 'summary',
+								},
+						  ]
+				)
+				.concat(meta)}
+			defer={false}
 		/>
 	)
 }
