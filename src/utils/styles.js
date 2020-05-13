@@ -1,6 +1,8 @@
 import { css } from '@emotion/core'
 import { rhythm } from './typography'
 
+export const mainColor = '#7467ef'
+
 export const spacing = css`
 	display: flex;
 	flex-wrap: wrap;
@@ -29,11 +31,11 @@ export const fontSizeSmall = css`
 `
 
 export const primaryColor = css`
-	color: #7467ef;
+	color: ${mainColor};
 `
 
 export const primaryBgColor = css`
-	background-color: #7467ef;
+	background-color: ${mainColor};
 `
 
 export const textPrimary = css`
@@ -49,7 +51,15 @@ export const alignItems = css`
 	align-items: center;
 `
 
-export const markdown = css`
+export const marginTransition = css`
+	transition: margin 0.3s;
+`
+
+export const paddingTransition = css`
+	transition: margin 0.3s;
+`
+
+export const markdownStyles = css`
 	word-wrap: break-word;
 	& > {
 		&:first-child {
@@ -217,12 +227,27 @@ export const prismStyles = css`
 		padding-left: 0.2em;
 		padding-right: 0.2em;
 	}
+	.token.operator {
+		background: inherit;
+	}
 `
 
-export const marginTransition = css`
-	transition: margin 0.3s;
-`
-
-export const paddingTransition = css`
-	transition: margin 0.3s;
+export const globalStyles = css`
+	${prismStyles}
+	::-moz-selection {
+		color: #fff;
+		background-color: ${mainColor};
+	}
+	::selection {
+		color: #fff;
+		background-color: ${mainColor};
+	}
+	a {
+		${primaryColor}
+		text-decoration: none;
+		transition: color 0.3s;
+		&:hover {
+			color: #a395fc;
+		}
+	}
 `

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Global, css } from '@emotion/core'
+import { Global } from '@emotion/core'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -8,7 +8,7 @@ import BackToTop from './BackToTop'
 
 import { rhythm } from '../../utils/typography'
 import { md, lg } from '../../utils/breakpoints'
-import { paddingTransition, prismStyles } from '../../utils/styles'
+import { paddingTransition, globalStyles } from '../../utils/styles'
 
 const Container = styled.div`
 	width: 100%;
@@ -30,22 +30,7 @@ const Container = styled.div`
 function Layout({ children }) {
 	return (
 		<Container>
-			<Global
-				styles={css`
-					${prismStyles}
-					::-moz-selection {
-						background-color: #7467ef;
-					}
-					::selection {
-						background-color: #7467ef;
-					}
-					h6::selection,
-					blockquote p::selection,
-					a::selection {
-						color: #fff;
-					}
-				`}
-			/>
+			<Global styles={globalStyles} />
 			<BackToTop />
 			<Header />
 			<main>{children}</main>

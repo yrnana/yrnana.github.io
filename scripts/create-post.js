@@ -37,6 +37,7 @@ inquirer
 				`date: ${date.format('YYYY-MM-DDTHH:mm:ssZ')}`,
 				'description: ',
 				'tags: []',
+				'image: ',
 				'series: ',
 				'---',
 			].join('\r\n') + '\r\n'

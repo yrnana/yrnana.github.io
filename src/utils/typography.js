@@ -11,16 +11,6 @@ const typography = new Typography({
 	headerWeight: 700,
 	bodyColor: 'rgba(0, 0, 0, 0.8)',
 	headerColor: 'inherit',
-	overrideStyles: () => ({
-		a: {
-			color: '#7467ef',
-			textDecoration: 'none',
-			transition: 'color .3s',
-		},
-		'a:hover': {
-			color: '#a395fc',
-		},
-	}),
 })
 
 export default typography

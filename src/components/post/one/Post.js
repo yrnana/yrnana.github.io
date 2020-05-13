@@ -9,7 +9,7 @@ import { rhythm } from '../../../utils/typography'
 import { md } from '../../../utils/breakpoints'
 import {
 	textSecondary,
-	markdown,
+	markdownStyles,
 	marginTransition,
 } from '../../../utils/styles'
 import { formatDate } from '../../../utils/functions'
@@ -39,7 +39,7 @@ function Post({ post, series }) {
 				</time>
 			</Header>
 			{series && <Series series={series} />}
-			<section css={markdown}>
+			<section css={markdownStyles}>
 				<MDXRenderer>{post.body}</MDXRenderer>
 			</section>
 			<TagList tags={post.frontmatter.tags} />

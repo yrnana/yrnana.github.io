@@ -105,7 +105,7 @@ module.exports = {
 				background_color: `#ffffff`,
 				theme_color: `#7467ef`,
 				display: `standalone`,
-				icon: `content/assets/gatsby-icon.png`,
+				icon: `content/assets/android-chrome-512x512.png`,
 			},
 		},
 		{
