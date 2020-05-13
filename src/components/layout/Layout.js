@@ -4,11 +4,11 @@ import { Global, css } from '@emotion/core'
 
 import Header from './Header'
 import Footer from './Footer'
+import BackToTop from './BackToTop'
 
 import { rhythm } from '../../utils/typography'
 import { md, lg } from '../../utils/breakpoints'
 import { paddingTransition, prismStyles } from '../../utils/styles'
-import BackToTop from './BackToTop'
 
 const Container = styled.div`
 	width: 100%;

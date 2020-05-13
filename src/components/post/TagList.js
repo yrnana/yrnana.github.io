@@ -4,12 +4,13 @@ import styled from '@emotion/styled'
 
 import Tag from '../tag/Tag'
 
-import { inlineSpacing } from '../../utils/styles'
+import { spacing } from '../../utils/styles'
 import { rhythm } from '../../utils/typography'
 
 const Wrapper = styled.div`
-	margin-top: ${props => (props.isList ? 0 : rhythm(1.5))};
-	${inlineSpacing}
+	${spacing}
+	margin: -4px !important;
+	margin-top: ${props => (props.isList ? '-4px' : rhythm(1.5))} !important;
 	& > * {
 		margin-right: 8px;
 	}

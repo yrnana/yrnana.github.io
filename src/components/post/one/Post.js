@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import TagList from '../TagList'
+import Series from './Series'
 
 import { rhythm } from '../../../utils/typography'
 import { md } from '../../../utils/breakpoints'
@@ -12,7 +13,6 @@ import {
 	marginTransition,
 } from '../../../utils/styles'
 import { formatDate } from '../../../utils/functions'
-import Series from './Series'
 
 const Header = styled.header`
 	text-align: center;

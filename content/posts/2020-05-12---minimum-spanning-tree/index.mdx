@@ -24,13 +24,14 @@ series:
 
 ## 크루스칼 알고리즘 (Kruskal's algorithm)
 
-Greedy method를 이용하여 네트워크의 모든 정점을 최소 비용으로 연결하는 해답을 구하는 알고리즘
+- Greedy method를 이용하여 네트워크의 모든 정점을 최소 비용으로 연결하는 해답을 구하는 알고리즘
+- 시간 복잡도 $O(e\log_2e)$
 
 1. 간선들을 가중치의 오름차순으로 정렬한다.
 2. 가중치가 가장 작은 간선을 고르고, 각 단계에서 사이클을 이루지 않는 최소 비용 간선을 선택한다.
 3. $V-1$개의 간선이 포함될때까지 반복한다.
 
-### 크루스칼 알고리즘 구현
+### 크루스칼 알고리즘 로직
 
 ![mst sample](./mst-sample.jpg)
 
@@ -89,7 +90,7 @@ def union(parent, rank, x, y):
 
 
 def kruskal(v, e):
-    answer = []
+    result = []
     parent, rank = [], []
 
     # 간선을 가중치 순으로 정렬한다
@@ -103,30 +104,32 @@ def kruskal(v, e):
         src, dist, weight = edge
         x, y = find(parent, src), find(parent, dist)
         if x != y:  # head가 다름 (사이클이 형성되지 않음)
-            answer.append(edge)
+            result.append(edge)
             union(parent, rank, x, y)
-            if len(answer) == v - 1:
+            if len(result) == v - 1:
                 break
 
-    print(answer)
+    return result
 
 
-vertices = 9
-edges = [
-    [7, 6, 1],
-    [8, 2, 2],
-    [6, 5, 2],
-    [0, 1, 4],
-    [2, 5, 4],
-    [8, 6, 6],
-    [2, 3, 7],
-    [7, 8, 7],
-    [0, 7, 8],
-    [1, 2, 8],
-    [3, 4, 9],
-    [5, 4, 10],
-    [1, 7, 11],
-    [3, 5, 14],
-]
-kruskal(vertices, edges)
+if __name__ == '__main__':
+    vertices = 9
+    edges = [
+        [7, 6, 1],
+        [8, 2, 2],
+        [6, 5, 2],
+        [0, 1, 4],
+        [2, 5, 4],
+        [8, 6, 6],
+        [2, 3, 7],
+        [7, 8, 7],
+        [0, 7, 8],
+        [1, 2, 8],
+        [3, 4, 9],
+        [5, 4, 10],
+        [1, 7, 11],
+        [3, 5, 14],
+    ]
+    ans = kruskal(vertices, edges)
+    print(ans)
 ```

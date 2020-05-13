@@ -9,6 +9,7 @@ const path = require('path')
 const inquirer = require('inquirer')
 const moment = require('moment')
 const { kebabCase } = require('lodash')
+const { exec } = require('child_process')
 
 inquirer
 	.prompt([
@@ -43,6 +44,9 @@ inquirer
 		// markdown 파일 생성
 		const mdxPath = path.resolve(dirPath, 'index.mdx')
 		fs.appendFileSync(mdxPath, content)
+
+		// 파일 열기
+		exec(`code ${dirPath}/index.mdx`)
 	})
 	.catch(error => {
 		console.error(error)
