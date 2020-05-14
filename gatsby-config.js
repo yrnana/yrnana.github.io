@@ -77,18 +77,6 @@ module.exports = {
 		},
 		`gatsby-plugin-emotion`,
 		{
-			resolve: `gatsby-plugin-prefetch-google-fonts`,
-			options: {
-				fonts: [
-					{
-						family: `Noto Sans KR`,
-						subsets: [`latin`, `korean`],
-						variants: [`400`, `700`, `900`],
-					},
-				],
-			},
-		},
-		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
 				trackingId: process.env.GATSBY_GOOGLE_ANALYTICS,

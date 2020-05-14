@@ -79,6 +79,13 @@ function SEO({ title = null, description = '', image = null, meta = [] }) {
 				)
 				.concat(meta)}
 			defer={false}
+			link={[
+				{
+					href:
+						'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=block',
+					rel: 'stylesheet',
+				},
+			]}
 		/>
 	)
 }
