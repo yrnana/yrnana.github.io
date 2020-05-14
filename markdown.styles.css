@@ -1,0 +1,14 @@
+.vscode-body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.vscode-body code,
+.vscode-body pre {
+	font-size: 14px;
+	font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
+		'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+.vscode-body :not(pre) > code {
+	font-size: inherit;
+}

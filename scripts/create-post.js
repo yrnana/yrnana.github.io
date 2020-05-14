@@ -33,7 +33,7 @@ inquirer
 		const content =
 			[
 				'---',
-				`title: ${slug}`,
+				`title: "${slug}"`,
 				`date: ${date.format('YYYY-MM-DDTHH:mm:ssZ')}`,
 				'description: ',
 				'tags: []',

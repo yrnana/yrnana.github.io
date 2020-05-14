@@ -72,7 +72,7 @@ inquirer
 			// 제목 업데이트
 			content.map((line, i) => {
 				if (line.startsWith('title: ')) {
-					content[i] = `title: ${slug}`
+					content[i] = `title: "${slug}"`
 					return true
 				}
 				return false
