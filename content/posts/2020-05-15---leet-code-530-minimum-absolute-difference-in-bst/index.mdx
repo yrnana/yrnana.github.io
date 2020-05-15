@@ -1,0 +1,63 @@
+---
+title: "[LeetCode] 530. Minimum Absolute Difference in BST"
+date: 2020-05-15T15:31:41+09:00
+tags: [Algorithm, LeetCode, Tree, Binary Search Tree]
+---
+
+# Problem
+
+> Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.
+>
+> 음수가 아닌 수로 구성된 이진 탐색 트리가 주어졌을 때, 임의의 두 개의 노드 간 값의 차이가 가장 작을 때의 차이값을 구해라.  
+> **참고**: 이진 탐색 트리는 최소 2개 이상의 노드를 가진다.
+
+```
+Input:
+   1
+    \
+     3
+    /
+   2
+
+Output:
+1
+
+Explanation:
+The minimum absolute difference is 1, which is the difference between 2 and 1 (or between 2 and 3).
+```
+
+# Solution
+
+이진 탐색 트리의 노드는 왼쪽 서브 트리의 값들보다 크고 오른쪽 서브 트리의 값들보다 작다는 특징을 가지고 있다. 우리는 최소 차이값을 찾는 것이기 떄문에, **왼쪽 서브 트리의 노드와 오른쪽 서브 트리의 노드 사이의 차이값을 구할 필요가 없다.** (루트 노드와의 차이가 무조건 더 작을 것이기 때문에)
+
+따라서 재귀 함수를 통해 루트 노드부터 리프 노드까지 각 순간마다의 최소, 최대값을 전달한 후, 리프 노드에서 그 값의 차이를 반환한다. 여기서 왼쪽을 계산하는 경우 현재 값이 최대값보다 더 작으므로 현재 값으로 최대값을 대체하고, 오른쪽을 계산하는 경우 현재 값이 최소값보다 더 크므로 현재값으로 최소값을 대체하여 최대값과 최소값 사이의 차이를 줄인다. 최종적으로 리프 노드에 도달 했을때, **루트 노드부터 리프 노드까지의 경로에서 최대, 최소값의 차이를 구하는 것**이 핵심이다.
+
+시간 복잡도 $O(N)$  
+공간 복잡도 $O(1)$
+
+```py
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def diff_util(node, l, h):
+    if not node:
+        return h - l
+    left = diff_util(node.left, l, node.val)
+    right = diff_util(node.right, node.val, h)
+    return min(left, right)
+
+
+def get_min_diff(root):
+    return diff_util(root, float('-inf'), float('inf'))
+
+
+if __name__ == '__main__':
+    tree = TreeNode(1)
+    tree.right = TreeNode(3)
+    tree.right.left = TreeNode(2)
+    print(get_min_diff(tree))
+```
