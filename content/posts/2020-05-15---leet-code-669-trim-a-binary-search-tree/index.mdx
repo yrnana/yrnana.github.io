@@ -1,0 +1,91 @@
+---
+title: "[LeetCode] 669. Trim a Binary Search Tree"
+date: 2020-05-15T21:36:48+09:00
+tags: [Algorithm, LeetCode, Tree, Binary Search Tree]
+---
+
+# Problem
+
+> Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R >= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree.
+>
+> 이진 탐색 트리와 최저값, 최고값이 L과 R로 주어지면 트리의 모든 요소가 L과 R 사이에 존재하도록 트리를 잘라라. 루트 노드를 바꿔야 할 수도 있는데 결과값으로 새로운 루트 노드를 반환해야 한다.
+
+```
+Example 1:
+Input:
+    1
+   / \
+  0   2
+
+  L = 1
+  R = 2
+
+Output:
+    1
+      \
+       2
+
+Example 2:
+Input:
+    3
+   / \
+  0   4
+   \
+    2
+   /
+  1
+
+  L = 1
+  R = 3
+
+Output:
+      3
+     /
+   2
+  /
+ 1
+```
+
+# Solution
+
+재귀 함수는 현재 노드가 [L, R] 사이에 있는지 확인하고 해당하는 결과값을 반환한다.
+
+1. 노드가 없으면 null을 반환한다.
+2. 현재 노드가 L보다 작으면 이진 탐색 트리이므로 왼쪽 서브 트리에는 L보다 작은 수만 있다. 따라서 오른쪽 노드로 재귀함수를 실행하고 이 값을 반환한다.
+3. 현재 노드가 R보다 크면 이진 탐색 트리이므로 오른쪽 서브 트리에는 R보다 큰 수만 있다. 따라서 왼쪽 노드로 재귀함수를 실행하고 이 값을 반환한다.
+4. 현재 노드가 L과 R 사이에 있으면 현재 노드도 새로운 트리에 포함되어야 한다. 현재 노드의 왼쪽과 오른쪽 노드를 각각 재귀함수로 구하고, 현재 노드를 반환하면 된다.
+
+시간 복잡도 $O(N)$
+
+```py
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def trim_bst(root, L, R):
+    if not root:
+        return None
+    if L > root.val:
+        return trim_bst(root.right, L, R)
+    elif R < root.val:
+        return trim_bst(root.left, L, R)
+    root.left = trim_bst(root.left, L, R)
+    root.right = trim_bst(root.right, L, R)
+    return root
+
+
+if __name__ == '__main__':
+    tree = TreeNode(1)
+    tree.left = TreeNode(0)
+    tree.right = TreeNode(2)
+    print(trim_bst(tree, 1, 2))
+    tree = TreeNode(3)
+    tree.left = TreeNode(0)
+    tree.right = TreeNode(4)
+    tree.left.right = TreeNode(2)
+    tree.left.right.left = TreeNode(1)
+    print(trim_bst(tree, 1, 3))
+```

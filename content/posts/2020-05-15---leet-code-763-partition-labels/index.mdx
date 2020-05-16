@@ -1,0 +1,43 @@
+---
+title: "[LeetCode] 763. Partition Labels"
+date: 2020-05-15T22:21:34+09:00
+tags: [Algorithm, LeetCode, Two Pointers, Greedy]
+---
+
+# Problem
+
+> A string `S` of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.
+>
+> 소문자 문자열 S가 주어집니다. 우리는 이 문자열을 가능한 많은 부분으로 분할해서 각 문자가 한 부분에 나타나도록 하려고 하고, 이 부분들의 크기를 나타내는 정수 배열을 반환하고 싶다.
+
+```
+Input: S = "ababcbacadefegdehijhklij"
+Output: [9,7,8]
+Explanation:
+The partition is "ababcbaca", "defegde", "hijhklij".
+This is a partition so that each letter appears in at most one part.
+A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
+```
+
+# Solution
+
+각 문자가 가장 마지막에 나오는 시점의 인덱스를 key-value로 저장하고, 루프에서는 현재 문자가 마지막에 나오는 시점의 인덱스(=last[c])와 기존 값(=j)을 비교해서 더 큰 값으로 업데이트 한다. 이렇게 하면 루프를 돌 때마다 거쳐간 문자들이 마지막에 나오는 인덱스 값들 중 가장 큰 값이 저장될 것 이다. 이 값과 루프 시점의 인덱스를 비교해서 동일하면 문자열을 자를 수 있다.
+
+시간 복잡도 $O(N)$
+
+```py
+def partition(S):
+    last = {c: i for i, c in enumerate(S)}
+    j = anchor = 0
+    ans = []
+    for i, c in enumerate(S):
+        j = max(j, last[c])
+        if i == j:
+            ans.append(i - anchor + 1)
+            anchor = i + 1
+    return ans
+
+
+if __name__ == '__main__':
+    print(partition('ababcbacadefegdehijhklij'))
+```
