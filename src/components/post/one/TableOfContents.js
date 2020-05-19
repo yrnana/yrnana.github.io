@@ -10,6 +10,8 @@ const tocWidth = `200px`
 const tocBreakpoint = '@media (max-width: 1400px)'
 
 export const tocParentStyles = css`
+	position: relative;
+	width: 100%;
 	display: flex;
 	align-items: flex-start;
 	margin-right: -${tocWidth};
@@ -20,9 +22,11 @@ export const tocParentStyles = css`
 `
 
 const Toc = styled.div`
+	order: 2;
+	flex: 1 0 ${tocWidth};
 	width: ${tocWidth};
 	max-width: ${tocWidth};
-	order: 2;
+	min-width: ${tocWidth};
 	position: sticky;
 	top: ${rhythm(1.25)};
 	padding-left: ${rhythm(1)};

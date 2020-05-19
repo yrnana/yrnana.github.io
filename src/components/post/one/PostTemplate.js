@@ -25,6 +25,9 @@ function PostTemplate({ post, series, previous, next }) {
 				<TableOfContents toc={post.tableOfContents} />
 				<div
 					css={css`
+						width: 100%;
+						max-width: 100%;
+						min-width: 100%;
 						order: 1;
 						flex: 1;
 					`}

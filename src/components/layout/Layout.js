@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Global } from '@emotion/core'
+import { Global, css } from '@emotion/core'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -33,7 +33,13 @@ function Layout({ children }) {
 			<Global styles={globalStyles} />
 			<BackToTop />
 			<Header />
-			<main>{children}</main>
+			<main
+				css={css`
+					position: relative;
+				`}
+			>
+				{children}
+			</main>
 			<Footer />
 		</Container>
 	)
