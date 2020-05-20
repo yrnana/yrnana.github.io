@@ -1,0 +1,36 @@
+---
+title: "[프로그래머스] 순위"
+date: 2020-05-20T20:15:09+09:00
+tags: [Algorithm, Programmers, Graph]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/49191>
+
+# Solution
+
+```py
+def solution(n, results):
+    conn = [[False] * n for i in range(n)]
+    for i in range(n):
+        conn[i][i] = True
+    for i, j in results:
+        conn[i - 1][j - 1] = True
+    for i in range(n):
+        for j in range(n):
+            if conn[j][i]:
+                for k in range(n):
+                    if conn[i][k]:
+                        conn[j][k] = True  # j-i + i-k = j-k
+    answer = 0
+    for i in range(n):
+        if all((conn[i][j] or conn[j][i]) for j in range(n)):  # i에 대해 모든 위치를 알 수 있다면
+            answer += 1
+    return answer
+
+
+# [A, B] : A가 B를 이겼다.
+print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))  # 2
+print(solution(7, [[3, 7], [4, 6], [2, 3], [6, 2], [7, 1], [1, 5]]))  # 7
+```

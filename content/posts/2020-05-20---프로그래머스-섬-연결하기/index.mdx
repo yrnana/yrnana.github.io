@@ -1,0 +1,54 @@
+---
+title: "[프로그래머스] 섬 연결하기"
+date: 2020-05-20T20:14:15+09:00
+tags: [Algorithm, Programmers, Greedy]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42861>
+
+# Solution
+
+[Minimum Spanning Tree](/posts/minimum-spanning-tree)
+
+```py
+# i가 속한 집합의 head 반환
+def find(parent, i):
+    if parent[i] == i:
+        return i
+    return find(parent, parent[i])
+
+
+# x와 y가 속한 집합을 하나로 합친다 (깊이가 적은 트리를 깊은 트리의 루트 아래 추가)
+def union(parent, rank, x, y):
+    xroot = find(parent, x)
+    yroot = find(parent, y)
+    if rank[xroot] < rank[yroot]:
+        parent[xroot] = yroot
+    elif rank[xroot] > rank[yroot]:
+        parent[yroot] = xroot
+    else:
+        parent[yroot] = xroot
+        rank[xroot] += 1
+
+
+def solution(n, costs):
+    result = []
+    parent, rank = [], []
+    costs.sort(key=lambda x: x[2])  # 간선을 가중치 순으로 정렬한다
+    for node in range(n):
+        parent.append(node)  # [0, 1, 2, 3]
+        rank.append(0)  # [0, 0, 0, 0]
+    for src, dist, cost in costs:
+        x, y = find(parent, src), find(parent, dist)
+        if x != y:  # head가 다름 (사이클 x)
+            result.append(cost)
+            union(parent, rank, x, y)
+            if len(result) == n - 1:
+                break
+    return sum(result)
+
+
+print(solution(4, [[0, 1, 1], [0, 2, 2], [1, 2, 5], [1, 3, 1], [2, 3, 8]]))  # 4
+```

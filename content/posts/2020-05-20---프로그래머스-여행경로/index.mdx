@@ -1,0 +1,45 @@
+---
+title: "[프로그래머스] 여행경로"
+date: 2020-05-20T20:14:49+09:00
+tags: [Algorithm, Programmers, DFS]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/43164>
+
+# Solution
+
+```py
+from collections import defaultdict, deque
+
+
+def dfs(answer, edges, src, cnt):
+    answer.append(src)
+    if cnt == 0:  # 티켓을 다 썼다면
+        return True
+    for i in range(len(edges[src])):
+        dist = edges[src].popleft()
+        if dfs(answer, edges, dist, cnt - 1):
+            return True
+        edges[src].append(dist)
+    answer.pop()
+    return False
+
+
+def solution(tickets):
+    answer = []
+    edges = defaultdict(list)
+    for src, dist in tickets:
+        edges[src].append(dist)
+    for k, v in edges.items():
+        edges[k] = deque(sorted(v))
+    dfs(answer, edges, 'ICN', len(tickets))
+    return answer
+
+
+print(solution([['ICN', 'JFK'], ['HND', 'IAD'], ['JFK', 'HND']]))  # [ICN, JFK, HND, IAD]
+print(solution(
+    [['ICN', 'SFO'], ['ICN', 'ATL'], ['SFO', 'ATL'], ['ATL', 'ICN'], ['ATL', 'SFO']]))  # [ICN, ATL, ICN, SFO, ATL, SFO]
+print(solution([['ICN', 'COO'], ['ICN', 'BOO'], ['COO', 'ICN']]))  # ['ICN', 'COO', 'ICN', 'BOO']
+```

@@ -1,0 +1,65 @@
+---
+title: "[프로그래머스] N-Queen"
+date: 2020-05-20T20:15:24+09:00
+tags: [Algorithm, Programmers, Backtracking]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/12952>
+
+# Solution
+
+시간초과 발생하는 코드
+
+```py
+def nq_util(board, cnt, n):
+    # cnt : 퀸이 배치된 개수
+    if cnt == n:
+        return 1
+    res = 0
+    for i in range(n):
+        # 이미 배치가 된 퀸 목록을 참고해서 i번째 칸에 퀸이 배치될 수 있는지 확인
+        # j번째 줄에 있는 퀸과 다른 칸에 있고 대각선에 다른 곳에 있어야 한다.
+        if all((board[j] != i and abs(cnt - j) != abs(i - board[j])) for j in range(cnt)):
+            board[cnt] = i
+            res += nq_util(board, cnt + 1, n)
+    return res
+
+
+def solution(n):
+    # board[i] = i번째 행에 퀸이 몇번째 열에 있는지
+    board = [0 for i in range(n)]
+    return nq_util(board, 0, n)
+
+
+print(solution(4))  # 2
+```
+
+최적화한 코드
+
+```py
+def solution(n):
+    ans = 0
+    queens = [-1] * n
+    columns = [True] * n + [False]  # || col with dummy for boundary
+    back = [True] * n * 2  # \ col - row
+    forward = [True] * n * 2  # / col + row
+    row = col = 0
+    while True:
+        if columns[col] and back[col - row + n] and forward[col + row]:
+            queens[row] = col
+            columns[col] = back[col - row + n] = forward[col + row] = False
+            row += 1
+            col = 0
+            if row == n:
+                ans += 1
+        else:
+            if row == n or col == n:
+                if row == 0:
+                    return ans
+                row -= 1
+                col = queens[row]
+                columns[col] = back[col - row + n] = forward[col + row] = True
+            col += 1
+```

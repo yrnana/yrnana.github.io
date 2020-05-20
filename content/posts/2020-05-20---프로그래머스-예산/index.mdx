@@ -1,0 +1,35 @@
+---
+title: "[프로그래머스] 예산"
+date: 2020-05-20T18:22:46+09:00
+tags: [Algorithm, Programmers, Binary Search]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/43237>
+
+# Solution
+
+```py
+def solution(budgets, M):
+    answer = 0
+    budgets.sort()
+    l, r = 0, budgets[-1]
+    while l <= r:
+        mid = (l + r) // 2
+        tot = 0
+        for x in budgets:
+            tot += min(mid, x)
+        if tot == M:
+            return mid
+        elif tot < M:
+            answer = mid  # M보다 작거나 같아야 하므로
+            l = mid + 1
+        else:
+            r = mid - 1
+    return answer
+
+
+print(solution([120, 110, 140, 150], 485))  # 127
+
+```
