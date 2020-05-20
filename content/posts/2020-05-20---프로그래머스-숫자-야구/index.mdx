@@ -1,0 +1,43 @@
+---
+title: "[프로그래머스] 숫자 야구"
+date: 2020-05-20T13:18:48+09:00
+tags: [Algorithm, Programmers, Brute Force]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42841>
+
+# Solution
+
+```py
+from itertools import permutations
+
+
+# n1: A가 제시한 값, n2: 가능한 숫자 조합
+def game(n1, n2):
+    n1, n2 = str(n1), str(n2)
+    s, b = 0, 0
+    for i in range(3):
+        if n1[i] == n2[i]:
+            s += 1
+        elif n1[i] in n2:
+            b += 1
+    return [s, b]  # 게임결과 strike, ball
+
+
+def solution(baseball):
+    # (1 ~ 9) 중 3가지 숫자로 만들 수 있는 모든 가능한 숫자 조합
+    p = [n[0] * 100 + n[1] * 10 + n[2] for n in permutations(range(1, 10), 3)]
+    for num, s, b in baseball:
+        temp = []
+        for i, n in enumerate(p):
+            rs, rb = game(num, n)
+            if rs == s and rb == b:
+                temp.append(n)
+        p = temp
+    return len(p)
+
+
+print(solution([[123, 1, 1], [356, 1, 0], [327, 2, 0], [489, 0, 1]]))  # 2
+```

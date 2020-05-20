@@ -1,0 +1,38 @@
+---
+title: "[프로그래머스] 조이스틱"
+date: 2020-05-20T13:18:40+09:00
+tags: [Algorithm, Programmers, Greedy]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42860>
+
+# Solution
+
+좌우이동거리를 계산할 때, 오른쪽으로 갔다가 왼쪽으로 돌아가는 경우 (ex: BBAAAAAAAAABB) 가 있다는 것을 고려해야 한다. `i`는 시작시점에서 현재 위치까지 오는데 이동거리(=오른쪽으로 이동)이고, `n - next_idx`는 끝에서 현재 위치 이후의 A가 나오기 전까지 오는데 이동거리(=왼쪽으로 이동)이다. 둘 중 작은 값과 각각의 값을 더하면 총 좌우이동거리가 된다. 이렇게 구한 좌우이동거리를 기존에 계산한 좌우이동거리와 비교하여 최소 좌우이동거리를 찾는다.
+
+```py
+def solution(name):
+    answer = 0
+    n = len(name)
+    leftright = n - 1  # 좌우로 이동하는 최대 이동 거리
+    for i in range(n):
+        # ==== 상하 이동 거리 계산 ====
+        if name[i] != 'A':
+            move = ord(name[i]) - ord('A')
+            if move > 13:
+                move = 25 - move + 1
+            answer += move
+        # ==== 좌우 이동 거리 계산 ====
+        next_idx = i + 1  # 다음 문자 idx
+        while next_idx < n and name[next_idx] == 'A':
+            next_idx += 1  # A인 경우 계속 오른쪽으로 이동
+        leftright = min(leftright, i + n - next_idx + min(i, n - next_idx))
+    return answer + leftright
+
+
+print(solution('JEROEN'))  # 56
+print(solution('JAN'))  # 23
+print(solution('BBAAAAAABB'))  # 8
+```

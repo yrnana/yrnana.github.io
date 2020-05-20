@@ -1,0 +1,30 @@
+---
+title: "[프로그래머스] 올바른 괄호"
+date: 2020-05-20T12:52:42+09:00
+tags: [Algorithm, Programmers, Stack]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/12909>
+
+# Solution
+
+```py
+def solution(s):
+    stack = []
+    for x in s:
+        if x == '(':
+            stack.append(x)
+        else:
+            if not stack or stack[-1] == ')':
+                return False
+            stack.pop()
+    return False if stack else True
+
+
+print(solution('()()'))  # true
+print(solution('(())()'))  # true
+print(solution(')()('))  # false
+print(solution('(()('))  # false
+```

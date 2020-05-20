@@ -21,10 +21,10 @@ const Title = styled.h1`
 
 function Tags({ tags }) {
 	function getColor(count) {
-		if (count < 5) return 'purple'
-		else if (count < 10) return 'blue'
-		else if (count < 20) return 'green'
-		else if (count < 30) return 'orange'
+		if (count < 10) return 'purple'
+		else if (count < 30) return 'blue'
+		else if (count < 50) return 'green'
+		else if (count < 100) return 'orange'
 		else return 'magenta'
 	}
 

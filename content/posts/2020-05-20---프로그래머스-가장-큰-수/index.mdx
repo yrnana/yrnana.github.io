@@ -1,0 +1,60 @@
+---
+title: "[프로그래머스] 가장 큰 수"
+date: 2020-05-20T13:17:58+09:00
+tags: [Algorithm, Programmers, Sorting]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42746>
+
+# Solution
+
+python에서 java의 comparator과 같이 비교 함수를 작성할 때는 functools의 cmp_to_key를 사용한다.
+
+```py
+from functools import cmp_to_key
+
+
+def sort_func(a, b):
+    if a == b:
+        return 0
+    if a + b <= b + a:
+        return 1
+    return -1
+
+
+def solution(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=cmp_to_key(sort_func))
+    answer = ''.join(numbers)
+    for x in answer:
+        if x != '0':
+            return answer
+    return '0'
+
+
+print(solution([6, 10, 2]))  # 6210
+print(solution([3, 30, 34, 5, 9]))  # 9534330
+print(solution([12, 121]))  # 12121
+```
+
+## cmp_to_key 사용 예제
+
+정렬 함수가 양수를 반환하면 parameter x, y 중 y를 앞으로 보낸다.
+
+```py
+from functools import cmp_to_key
+
+
+def sort_func(x, y):
+    if x > y:
+        return 1  # y를 앞으로 보냄
+    if x == y:
+        return 0
+    return -1  # x < y, x를 앞으로 보냄
+
+
+arr = [1, 3, 2, 5, 4]
+arr.sort(key=cmp_to_key(sort_func))  # [1, 2, 3, 4, 5]
+```

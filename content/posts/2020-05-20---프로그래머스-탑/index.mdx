@@ -1,0 +1,32 @@
+---
+title: "[프로그래머스] 탑"
+date: 2020-05-20T13:18:31+09:00
+tags: [Algorithm, Programmers, Stack]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42588>
+
+# Solution
+
+```py
+def solution(heights):
+    answer = [0]
+    stack = [(1, heights[0])]
+    for i in range(1, len(heights)):
+        h = heights[i]  # 현재 탑 높이
+        while stack and stack[-1][1] <= h:
+            stack.pop()  # 현재 탑 높이보다 작거나 같다면 pop
+        if not stack:
+            answer.append(0)
+        else:  # 현재 탑 보다 높은 탑이 존재하면 현재 신호를 수신한다.
+            answer.append(stack[-1][0])
+        stack.append((i + 1, h))  # 현재 탑 번호, 현재 탑 높이
+    return answer
+
+
+print(solution([6, 9, 5, 7, 4]))  # [0,0,2,2,4]
+print(solution([3, 9, 9, 3, 5, 7, 2]))  # [0,0,0,3,3,3,6]
+print(solution([1, 5, 3, 6, 7, 6, 5]))  # [0,0,2,0,0,5,6]
+```

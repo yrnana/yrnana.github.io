@@ -1,0 +1,25 @@
+---
+title: "[프로그래머스] 최솟값 만들기"
+date: 2020-05-20T13:18:11+09:00
+tags: [Algorithm, Programmers]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/12941>
+
+# Solution
+
+```py
+def solution(A, B):
+    answer = 0
+    A.sort()
+    B.sort(reverse=True)
+    for i in range(len(A)):
+        answer += A[i] * B[i]
+    return answer
+
+
+print(solution([1, 4, 2], [5, 4, 4]))  # 29
+print(solution([1, 2], [3, 4]))  # 10
+```

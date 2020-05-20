@@ -1,0 +1,33 @@
+---
+title: "[프로그래머스] 프린터"
+date: 2020-05-20T13:18:22+09:00
+tags: [Algorithm, Programmers, Queue, Priority Queue]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42587>
+
+# Solution
+
+```py
+from collections import deque
+
+
+def solution(priorities, location):
+    # (인덱스, 우선순위)
+    queue = deque([(i, p) for i, p in enumerate(priorities)])
+    answer = 0
+    while True:
+        j = queue.popleft()  # 가장 앞에 있는 문서
+        if any(j[1] < q[1] for q in queue):
+            queue.append(j)
+        else:
+            answer += 1  # 인쇄
+            if j[0] == location:
+                return answer
+
+
+print(solution([2, 1, 3, 2], 2))  # 1
+print(solution([1, 1, 9, 1, 1, 1], 0))  # 5
+```

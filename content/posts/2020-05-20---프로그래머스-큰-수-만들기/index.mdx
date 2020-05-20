@@ -1,0 +1,31 @@
+---
+title: "[프로그래머스] 큰 수 만들기"
+date: 2020-05-20T13:19:02+09:00
+tags: [Algorithm, Programmers, Greedy]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42883>
+
+# Solution
+
+```py
+def solution(number, k):
+    stack = []
+    for n in number:
+        # 뺄 수 있는 수가 남았고, 스택에 있는 수가 현재 수보다 작으면 빼버린다
+        while k > 0 and stack and stack[-1] < n:
+            k -= 1
+            stack.pop()
+        stack.append(n)
+    while k > 0:
+        stack.pop()
+        k -= 1
+    return ''.join(stack)
+
+
+print(solution('1924', 2))  # 94
+print(solution('1231234', 3))  # 3234
+print(solution('4177252841', 4))  # 775841
+```

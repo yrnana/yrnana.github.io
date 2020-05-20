@@ -1,0 +1,32 @@
+---
+title: "[프로그래머스] 기능개발"
+date: 2020-05-20T13:17:43+09:00
+tags: [Algorithm, Programmers, Stack]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42586>
+
+# Solution
+
+```py
+from math import ceil
+
+
+def solution(progresses, speeds):
+    answer = []
+    stack = [ceil((100 - progresses[0]) / speeds[0])]
+    for i in range(1, len(progresses)):
+        x = ceil((100 - progresses[i]) / speeds[i])
+        if stack[0] < x:
+            answer.append(len(stack))
+            stack = []
+        stack.append(x)
+    if stack:
+        answer.append(len(stack))
+    return answer
+
+
+print(solution([93, 30, 55], [1, 30, 5]))  # [2, 1]
+```

@@ -1,0 +1,39 @@
+---
+title: "[프로그래머스] 모의고사"
+date: 2020-05-20T11:20:17+09:00
+tags: [Algorithm, Programmers, Brute Force]
+---
+
+# Problem
+
+<https://programmers.co.kr/learn/courses/30/lessons/42840>
+
+# Solution
+
+```py
+def solution(answers):
+    answer = []
+    m1 = [1, 2, 3, 4, 5]
+    m2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    m3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    p = [0, 0, 0]
+    for i in range(len(answers)):
+        if answers[i] == m1[i % len(m1)]:
+            p[0] += 1
+        if answers[i] == m2[i % len(m2)]:
+            p[1] += 1
+        if answers[i] == m3[i % len(m3)]:
+            p[2] += 1
+    max_val = float('-inf')
+    for i in range(len(p)):
+        if p[i] > max_val:
+            max_val = p[i]
+            answer = [i + 1]
+        elif p[i] == max_val:
+            answer.append(i + 1)
+    return answer
+
+
+print(solution([1, 2, 3, 4, 5]))  # [1]
+print(solution([1, 3, 2, 4, 2]))  # [1,2,3]
+```
