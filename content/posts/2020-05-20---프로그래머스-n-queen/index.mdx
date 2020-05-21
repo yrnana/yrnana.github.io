@@ -36,6 +36,8 @@ def solution(n):
 print(solution(4))  # 2
 ```
 
+<br />
+
 최적화한 코드
 
 ```py
@@ -43,10 +45,11 @@ def solution(n):
     ans = 0
     queens = [-1] * n
     columns = [True] * n + [False]  # || col with dummy for boundary
-    back = [True] * n * 2  # \ col - row
-    forward = [True] * n * 2  # / col + row
+    back = [True] * n * 2  # \ row - col + n 이 일정함
+    forward = [True] * n * 2  # / row + col 이 일정함
     row = col = 0
     while True:
+        # 퀸이 배치될 수 있는가?
         if columns[col] and back[col - row + n] and forward[col + row]:
             queens[row] = col
             columns[col] = back[col - row + n] = forward[col + row] = False
@@ -54,12 +57,12 @@ def solution(n):
             col = 0
             if row == n:
                 ans += 1
-        else:
+        else:  # 백트래킹
             if row == n or col == n:
                 if row == 0:
                     return ans
                 row -= 1
                 col = queens[row]
-                columns[col] = back[col - row + n] = forward[col + row] = True
+                columns[col] = back[col - row + n] = forward[col + row] = True  # 초기화
             col += 1
 ```

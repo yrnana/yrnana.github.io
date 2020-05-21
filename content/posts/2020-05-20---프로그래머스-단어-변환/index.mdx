@@ -1,7 +1,7 @@
 ---
 title: "[프로그래머스] 단어 변환"
 date: 2020-05-20T20:15:39+09:00
-tags: [Algorithm, Programmers, DFS]
+tags: [Algorithm, Programmers, Dijkstra, Graph]
 ---
 
 # Problem
@@ -11,5 +11,58 @@ tags: [Algorithm, Programmers, DFS]
 # Solution
 
 ```py
+from collections import defaultdict, deque
+from itertools import combinations
 
+
+def is_adj(a, b):
+    # 한 글자만 다른가?
+    cnt = 0
+    for k, v in enumerate(a):
+        if v != b[k]:
+            cnt += 1
+            if cnt > 1:
+                return False
+    return True if cnt == 1 else False
+
+
+def solution(begin, target, words):
+    n = len(words)
+    # 인접리스트 (undirected, unweighted graph)
+    adj = defaultdict(deque)
+    for i in range(n):
+        if is_adj(begin, words[i]):
+            adj[begin].append(words[i])
+            adj[words[i]].append(begin)
+    for a, b in combinations(words, 2):
+        if is_adj(a, b):
+            adj[a].append(b)
+            adj[b].append(a)
+
+    visited = set()  # 방문한 노드들의 집합
+    min_d = dict()  # begin에서 각 노드까지의 최단거리
+    min_d[begin] = 0
+
+    stack = [(begin, 0)]  # (노드, 현재 path에서 begin부터 이 노드까지 도달하는데 최단거리)
+    while stack:
+        node, d = stack.pop()
+        if node not in visited:
+            visited.add(node)
+            if node == target:
+                break
+            for neighbor in adj[node]:
+                if neighbor in visited:
+                    continue
+                prev_min = min_d.get(neighbor)
+                new = d + 1
+                if not prev_min or new < prev_min:
+                    min_d[neighbor] = new
+                    stack.append((neighbor, new))
+    return min_d[target] if min_d.get(target) else 0
+
+
+print(solution('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog']))  # 4
+print(solution('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log']))  # 0
+print(solution('hit', 'wow', ['hot', 'dot', 'dog', 'wow']))  # 0
+print(solution('hit', 'lot', ['hot', 'dot', 'dog', 'lot', 'log']))  # 2
 ```

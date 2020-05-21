@@ -11,5 +11,56 @@ tags: [Algorithm, Programmers, Dynamic Programming]
 # Solution
 
 ```py
+"""
+N = 1
+5
 
+N = 2
+55
+10(5+5), 25(5*5), 1(5/5), 0(5-5) = N(1)과 N(1)을 사칙연산
+
+N = 3
+555
+15((5 + 5) + 5), 5((5 + 5) - 5), 2((5 + 5) / 5), 50((5 + 5) * 5)
+30((55) + 5), 20((55) - 5)), 5((55) / 5), 125((55) * 5)
+=> 555 U
+N(2)와 N(1)을 사칙연산 U
+N(1)와 N(2)을 사칙연산
+
+N = 4
+5555
+N(1) & N(3) U
+N(2) & N(2) U
+N(3) & N(1)
+"""
+
+
+def solution(N, number):
+    # 1. [ SET x 8 ] 초기화
+    s = [set() for x in range(8)]
+
+    # 2. 각 set마다 기본 수 "N" * i 수 초기화
+    for i, x in enumerate(s, start=1):
+        x.add(int(str(N) * i))
+
+    # 3. n 일반화
+    for i in range(1, 8):
+        for j in range(i):
+            for op1 in s[j]:
+                for op2 in s[i - j - 1]:
+                    s[i].add(op1 + op2)
+                    s[i].add(op1 - op2)
+                    s[i].add(op1 * op2)
+                    if op2 != 0:
+                        s[i].add(op1 // op2)
+        if number in s[i]:
+            answer = i + 1
+            break
+    else:
+        answer = -1
+    return answer
+
+
+print(solution(5, 12))  # 4
+print(solution(2, 11))  # 3
 ```
