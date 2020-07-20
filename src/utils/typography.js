@@ -1,8 +1,8 @@
 import Typography from 'typography'
 
 const typography = new Typography({
-	bodyFontFamily: ['Noto Sans KR', 'sans-serif'],
-	headerFontFamily: ['Noto Sans KR', 'sans-serif'],
+	bodyFontFamily: ['KoPubWorld Dotum', 'Noto Sans KR', 'sans-serif'],
+	headerFontFamily: ['KoPubWorld Dotum', 'Noto Sans KR', 'sans-serif'],
 	baseLineHeight: 1.5,
 	headerLineHeight: 1.25,
 	blockMarginBottom: 1 / 1.5,

@@ -82,7 +82,7 @@ function SEO({ title = null, description = '', image = null, meta = [] }) {
 			link={[
 				{
 					href:
-						'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=block',
+						'https://cdn.jsdelivr.net/npm/font-kopubworld@1.0.3/css/dotum.css',
 					rel: 'stylesheet',
 				},
 			]}

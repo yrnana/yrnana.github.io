@@ -204,7 +204,7 @@ export const prismStyles = css`
 	code[class*='language-'],
 	pre[class*='language-'] {
 		font-size: 14px;
-		font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, Monaco,
+		font-family: 'JetBrains Mono', 'KoPubWorld Dotum', 'Noto Sans KR', Consolas, Monaco,
 			'Andale Mono', 'Ubuntu Mono', monospace;
 	}
 	.gatsby-highlight {
@@ -229,6 +229,9 @@ export const prismStyles = css`
 	}
 	.token.operator {
 		background: inherit;
+	}
+	del {
+		color: #aaa;
 	}
 `
 
