@@ -51,8 +51,8 @@ export default function BlogTagPostListTemplate({
 export const pageQuery = graphql`
 	query($tag: String, $skip: Int!, $limit: Int!) {
 		allMdx(
+			filter: { frontmatter: { draft: { ne: true }, tags: { in: [$tag] } } }
 			sort: { fields: [frontmatter___date], order: DESC }
-			filter: { frontmatter: { tags: { in: [$tag] } } }
 			limit: $limit
 			skip: $skip
 		) {

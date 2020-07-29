@@ -19,7 +19,11 @@ export default function ArchivePage({ data, pageContext, location }) {
 
 export const pageQuery = graphql`
 	query {
-		allMdx(limit: 2000, sort: { fields: frontmatter___date, order: DESC }) {
+		allMdx(
+			filter: { frontmatter: { draft: { ne: true } } }
+			sort: { fields: frontmatter___date, order: DESC }
+			limit: 2000
+		) {
 			group(field: fields___year) {
 				edges {
 					node {

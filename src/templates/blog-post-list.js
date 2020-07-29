@@ -28,6 +28,7 @@ export default function BlogPostListTemplate({ data, pageContext, location }) {
 export const pageQuery = graphql`
 	query($skip: Int!, $limit: Int!) {
 		allMdx(
+			filter: { frontmatter: { draft: { ne: true } } }
 			sort: { fields: [frontmatter___date], order: DESC }
 			limit: $limit
 			skip: $skip
