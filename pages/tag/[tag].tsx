@@ -14,7 +14,11 @@ const PostListFilteredByTagPage: NextPage<PageProps> = ({ tag, postList }) => {
     <Layout>
       {/* TODO: seo */}
       <Seo title="tag hello" />
-      <h2>Tag : {tag}</h2>
+      <h2 className="text-center mb-10">
+        <div className="inline-block rounded-full px-6 py-2 text-indigo-500 bg-indigo-100 text-2xl font-semibold">
+          {tag}
+        </div>
+      </h2>
       <PostList posts={postList.data} />
     </Layout>
   );

@@ -16,10 +16,10 @@ const PostListItem: React.VFC<PostSummary> = ({
           <h2 className="text-2xl font-normal">{title}</h2>
         </a>
       </Link>
-      <div className="text-gray-500 mt-1">{format(new Date(date), 'PP')}</div>
-      {excerpt && <div className="mt-1">{excerpt}</div>}
+      <div className="text-gray-500 mt-2">{format(new Date(date), 'PP')}</div>
+      {excerpt && <div className="mt-2">{excerpt}</div>}
       {tags && (
-        <div className="flex flex-row flex-wrap space-x-3 mt-2">
+        <div className="flex flex-row flex-wrap space-x-3 mt-3">
           {tags.map((tag) => (
             <Tag key={tag} name={tag} color="purple" />
           ))}
