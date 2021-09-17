@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import PostListItem from './PostListItem';
 
 export interface PostListProps {
   posts: PostSummary[];
@@ -6,22 +6,11 @@ export interface PostListProps {
 
 const PostList: React.VFC<PostListProps> = ({ posts }) => {
   return (
-    <ul>
+    <div className="flex flex-col space-y-10">
       {posts.map((post) => (
-        <li key={post.slug}>
-          <Link href={`/post/${post.slug}`}>
-            <a>
-              <h2>{post.title}</h2>
-            </a>
-          </Link>
-          <div>
-            <div>{post.date}</div>
-            {post.excerpt && <div>{post.excerpt}</div>}
-            {post.tags && <div>{post.tags}</div>}
-          </div>
-        </li>
+        <PostListItem key={post.slug} {...post} />
       ))}
-    </ul>
+    </div>
   );
 };
 

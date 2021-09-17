@@ -106,6 +106,8 @@ export const postList: Pageable<PostSummary> = {
       title:
         'Laudantium rerum distinctio nesciunt error expedita corrupti sunt',
       tags: ['CX-9', 'Camaro', 'Roadster', 'A8', 'Model S'],
+      excerpt:
+        'Dignissimos autem nisi dolores quia in at assumenda fuga. Laborum autem quasi. Est repudiandae doloremque eos beatae ullam recusandae tenetur. Quae nostrum expedita. Iusto dolor vero.',
     },
     {
       slug: '2021-07-06--est-nisi-delectus-alias-sequi-consectetur-sunt',
@@ -118,6 +120,7 @@ export const postList: Pageable<PostSummary> = {
       date: '2021-07-04T13:44:19+09:00',
       title:
         'Perspiciatis facilis inventore odio qui recusandae aspernatur quibusdam nihil',
+      excerpt: 'Dolorum aut et non excepturi officia temporibus beatae et.',
     },
     {
       slug: '2021-06-27--veniam-eligendi-rerum-totam-autem',
@@ -142,6 +145,8 @@ export const postList: Pageable<PostSummary> = {
       date: '2021-02-07T08:30:51+09:00',
       title: 'Totam voluptas eius unde fugiat assumenda ab corporis est eos',
       tags: ['Camaro', 'Charger', 'ATS'],
+      excerpt:
+        'Eum iusto at ipsa voluptas. Illo autem aspernatur et non. Omnis ab eum laboriosam dolore. Eum nobis accusamus esse dolor id nobis totam dolor repellat. Nobis est maiores et veniam alias sit voluptates. Ut impedit quisquam deserunt expedita veritatis qui provident laudantium et.',
     },
     {
       slug: '2020-12-30--labore-deleniti-dolores-nisi-ducimus-blanditiis-et',
