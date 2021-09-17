@@ -1,5 +1,5 @@
-import PostListItem from './PostListItem';
 import NoData from '~/components/common/NoData';
+import PostListItem from './PostListItem';
 
 export interface PostListProps {
   posts: PostSummary[];

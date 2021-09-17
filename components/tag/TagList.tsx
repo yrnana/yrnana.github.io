@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import Tag from './Tag';
 import NoData from '~/components/common/NoData';
+import Tag from './Tag';
 
 export interface TagListProps {
   tags: TagDetail[];
