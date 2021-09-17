@@ -24,13 +24,11 @@ Count_InVisible.storyName = '갯수 미표기';
 
 export const Color = () => (
   <div className="flex flex-col space-y-4 items-start">
-    <Tag name="Typescript" color="red" count={10} />
+    <Tag name="Typescript" color="pink" count={10} />
     <Tag name="Typescript" color="yellow" count={10} />
     <Tag name="Typescript" color="green" count={10} />
     <Tag name="Typescript" color="blue" count={10} />
-    <Tag name="Typescript" color="indigo" count={10} />
     <Tag name="Typescript" color="purple" count={10} />
-    <Tag name="Typescript" color="pink" count={10} />
   </div>
 );
 Color.storyName = '색상';

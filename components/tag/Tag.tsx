@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export interface TagProps {
   name: string;
-  color: 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
+  color: TagColor;
   count?: number;
 }
 
