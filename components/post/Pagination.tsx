@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 import { LeftIcon, RightIcon } from '~/components/common/Icon';

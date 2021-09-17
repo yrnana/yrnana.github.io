@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import Tag from './Tag';
+import NoData from '~/components/common/NoData';
 
 export interface TagListProps {
   tags: TagDetail[];
@@ -7,6 +8,11 @@ export interface TagListProps {
 
 const TagList: React.VFC<TagListProps> = ({ tags }) => {
   const { m, σ } = useMemo(() => getMeanAndDeviation(tags), [tags]);
+
+  if (tags.length === 0) {
+    return <NoData />;
+  }
+
   return (
     <div className="flex flex-col space-y-4 items-start">
       {tags.map((tag) => (

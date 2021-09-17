@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const LeftIcon: React.VFC = () => {
   return (
     <svg
@@ -29,6 +27,25 @@ export const RightIcon: React.VFC = () => {
         fillRule="evenodd"
         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
         clipRule="evenodd"
+      />
+    </svg>
+  );
+};
+
+export const ExclamationCircle: React.VFC = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       />
     </svg>
   );
