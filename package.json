@@ -11,6 +11,7 @@
     "url": "https://github.com/yrnana/yrnana.github.io.git"
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "open http://localhost:3000 & next dev",
     "build": "next build",
     "start": "next start",
@@ -38,6 +39,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
@@ -55,6 +58,7 @@
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "gh-pages": "^3.2.3",
+    "husky": "^7.0.0",
     "postcss": "^8.3.6",
     "prettier": "^2.4.1",
     "storybook-addon-next-router": "^3.0.8",
