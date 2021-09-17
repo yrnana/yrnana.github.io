@@ -15,22 +15,22 @@ const Template: ComponentStory<typeof Post> = (args) => <Post {...args} />;
 export const Default = Template.bind({});
 Default.storyName = '기본';
 
-export const Long_Title = Template.bind({});
-Long_Title.storyName = '긴 제목';
-Long_Title.args = {
+export const LongTitle = Template.bind({});
+LongTitle.storyName = '긴 제목';
+LongTitle.args = {
   title:
     '긴 제목입니다 제목이 길어요 제목이 깁니다 긴 제목입니다 제목이 길어요 제목이 깁니다 긴 제목입니다 제목이 길어요 제목이 깁니다 긴 제목입니다 제목이 길어요 제목이 깁니다 긴 제목입니다 제목이 길어요 제목이 깁니다 긴 제목입니다 제목이 길어요 제목이 깁니다 긴 제목입니다 제목이 길어요 제목이 깁니다',
 };
 
-export const No_Tag = Template.bind({});
-No_Tag.storyName = '태그 없음';
-No_Tag.args = {
+export const NoTag = Template.bind({});
+NoTag.storyName = '태그 없음';
+NoTag.args = {
   tags: undefined,
 };
 
-export const No_Preview = Template.bind({});
-No_Preview.storyName = '이미지 없음';
-No_Preview.args = {
+export const NoPreview = Template.bind({});
+NoPreview.storyName = '이미지 없음';
+NoPreview.args = {
   preview: undefined,
 };
 

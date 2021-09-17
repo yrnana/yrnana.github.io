@@ -13,14 +13,14 @@ export default {
 
 const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
 
-export const Count_Visible = Template.bind({});
-Count_Visible.storyName = '갯수 표기';
-Count_Visible.args = {
+export const CountVisible = Template.bind({});
+CountVisible.storyName = '갯수 표기';
+CountVisible.args = {
   count: 10,
 };
 
-export const Count_InVisible = Template.bind({});
-Count_InVisible.storyName = '갯수 미표기';
+export const CountInVisible = Template.bind({});
+CountInVisible.storyName = '갯수 미표기';
 
 export const Color = () => (
   <div className="flex flex-col space-y-4 items-start">

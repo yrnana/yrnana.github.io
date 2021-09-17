@@ -10,9 +10,9 @@ const Template: ComponentStory<typeof Pagination> = (args) => (
   <Pagination {...args} />
 );
 
-export const Pages1_curr1 = Template.bind({});
-Pages1_curr1.storyName = '페이지 1개 / 현재 1페이지';
-Pages1_curr1.args = {
+export const Pages1Curr1 = Template.bind({});
+Pages1Curr1.storyName = '페이지 1개 / 현재 1페이지';
+Pages1Curr1.args = {
   first: true,
   last: true,
   size: 10,
@@ -21,9 +21,9 @@ Pages1_curr1.args = {
   totalPages: 1,
 };
 
-export const Pages5_curr1 = Template.bind({});
-Pages5_curr1.storyName = '페이지 5개 / 현재 1페이지';
-Pages5_curr1.args = {
+export const Pages5Curr1 = Template.bind({});
+Pages5Curr1.storyName = '페이지 5개 / 현재 1페이지';
+Pages5Curr1.args = {
   first: true,
   last: false,
   size: 10,
@@ -32,9 +32,9 @@ Pages5_curr1.args = {
   totalPages: 5,
 };
 
-export const Pages5_curr3 = Template.bind({});
-Pages5_curr3.storyName = '페이지 5개 / 현재 3페이지';
-Pages5_curr3.args = {
+export const Pages5Curr3 = Template.bind({});
+Pages5Curr3.storyName = '페이지 5개 / 현재 3페이지';
+Pages5Curr3.args = {
   first: false,
   last: false,
   size: 10,
@@ -43,9 +43,9 @@ Pages5_curr3.args = {
   totalPages: 5,
 };
 
-export const Pages5_curr5 = Template.bind({});
-Pages5_curr5.storyName = '페이지 5개 / 현재 5페이지';
-Pages5_curr5.args = {
+export const Pages5Curr5 = Template.bind({});
+Pages5Curr5.storyName = '페이지 5개 / 현재 5페이지';
+Pages5Curr5.args = {
   first: false,
   last: true,
   size: 10,
@@ -54,9 +54,9 @@ Pages5_curr5.args = {
   totalPages: 5,
 };
 
-export const Pages20_curr1 = Template.bind({});
-Pages20_curr1.storyName = '페이지 20개 / 현재 1페이지';
-Pages20_curr1.args = {
+export const Pages20Curr1 = Template.bind({});
+Pages20Curr1.storyName = '페이지 20개 / 현재 1페이지';
+Pages20Curr1.args = {
   first: true,
   last: false,
   size: 10,
@@ -65,9 +65,9 @@ Pages20_curr1.args = {
   totalPages: 20,
 };
 
-export const Pages20_curr10 = Template.bind({});
-Pages20_curr10.storyName = '페이지 20개 / 현재 10페이지';
-Pages20_curr10.args = {
+export const Pages20Curr10 = Template.bind({});
+Pages20Curr10.storyName = '페이지 20개 / 현재 10페이지';
+Pages20Curr10.args = {
   first: false,
   last: false,
   size: 10,
@@ -76,9 +76,9 @@ Pages20_curr10.args = {
   totalPages: 20,
 };
 
-export const Pages20_Curr20 = Template.bind({});
-Pages20_Curr20.storyName = '페이지 20개 / 현재 20페이지';
-Pages20_Curr20.args = {
+export const Pages20Curr20 = Template.bind({});
+Pages20Curr20.storyName = '페이지 20개 / 현재 20페이지';
+Pages20Curr20.args = {
   first: false,
   last: true,
   size: 10,
