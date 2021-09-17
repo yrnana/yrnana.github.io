@@ -19,7 +19,7 @@ const PostListItem: React.VFC<PostSummary> = ({
       <div className="text-gray-500 mt-1">{format(new Date(date), 'PP')}</div>
       {excerpt && <div className="mt-1">{excerpt}</div>}
       {tags && (
-        <div className="flex flex-row space-x-3 mt-2">
+        <div className="flex flex-row flex-wrap space-x-3 mt-2">
           {tags.map((tag) => (
             <Tag key={tag} name={tag} color="purple" />
           ))}
