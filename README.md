@@ -1,5 +1,35 @@
 # yrnana.github.io
 
+## Stack
+
+- Next.js (SSG)
+- Typescript
+- Storybook
+- TailwindCSS
+- ESlint
+- Prettier
+
+## Getting Started
+
+### 설치 및 개발환경 실행
+
+```sh
+npm install
+npm run dev
+```
+
+### 스토리북 실행
+
+```sh
+npm run storybook
+```
+
+### 깃헙 배포
+
+```sh
+npm run deploy
+```
+
 ## Route
 
 - `/` : PostList
@@ -9,18 +39,3 @@
 - `/post/:slug` : Post
 - `/about`
 - `/archive` : PostList (Timeline)
-
-## 할 일
-
-- [x] filter published
-- [ ] pagination
-- [ ] markdown parse
-  - [ ] code block
-- [ ] oembed
-  - [ ] twitter
-  - [ ] youtube
-  - [ ] codesandbox
-- [ ] 404
-- [ ] markdown about
-- [ ] github comment
-- [ ] 슬러그 업데이트 shell & alias
