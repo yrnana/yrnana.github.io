@@ -6,7 +6,7 @@ const Header: React.VFC = () => {
     <header className="flex flex-row items-center">
       <div className="mr-auto">
         <Link href="/">
-          <a className="text-2xl font-semibold">nana.log</a>
+          <a className="text-2xl font-semibold font-mono">nana.log</a>
         </Link>
       </div>
       <nav className="flex flex-row items-center space-x-4">
