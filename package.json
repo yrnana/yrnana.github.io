@@ -59,9 +59,9 @@
     "eslint-config-prettier": "^8.3.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.0",
+    "next-router-mock": "^0.5.1",
     "postcss": "^8.3.6",
     "prettier": "^2.4.1",
-    "storybook-addon-next-router": "^3.0.8",
     "tailwindcss": "^2.2.15",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.4.3"
