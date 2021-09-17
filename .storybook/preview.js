@@ -1,4 +1,5 @@
-import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { action } from '@storybook/addon-actions';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import 'tailwindcss/tailwind.css';
 
@@ -9,12 +10,22 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-  nextRouter: {
-    Provider: RouterContext.Provider,
-  },
   controls: {
     matchers: {
       date: /Date$/,
     },
   },
 };
+
+/** @type {import("@storybook/addons").BaseDecorators } */
+export const decorators = [
+  (StoryFn) => (
+    <MemoryRouterProvider
+      url="/"
+      onPush={action('push')}
+      onReplace={action('replace')}
+    >
+      {StoryFn()}
+    </MemoryRouterProvider>
+  ),
+];

@@ -14,7 +14,6 @@ module.exports = {
         },
       },
     },
-    'storybook-addon-next-router',
   ],
   features: {
     previewCsfV3: true,
