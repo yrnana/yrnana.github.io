@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import cx from 'classnames';
 import { getPathFromUrl } from '~/helpers/utils';
 
 export interface ActiveLinkProps {
@@ -9,7 +10,6 @@ export interface ActiveLinkProps {
 const ActiveLink: React.FC<ActiveLinkProps> = ({ children, href }) => {
   const router = useRouter();
 
-  // TODO: active link color
   const isActive = getPathFromUrl(router?.asPath) === href;
 
   const onClick = (e: React.MouseEvent) => {
@@ -18,7 +18,13 @@ const ActiveLink: React.FC<ActiveLinkProps> = ({ children, href }) => {
   };
 
   return (
-    <a href={href} onClick={onClick}>
+    <a
+      href={href}
+      onClick={onClick}
+      className={cx('hover:text-purple-500', {
+        'text-purple-500': isActive,
+      })}
+    >
       {children}
     </a>
   );

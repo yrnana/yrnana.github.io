@@ -1,3 +1,5 @@
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
+import { action } from '@storybook/addon-actions';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import HeaderComponent from '~/components/layout/Header';
 
@@ -7,7 +9,13 @@ export default {
 } as ComponentMeta<typeof HeaderComponent>;
 
 const Template: ComponentStory<typeof HeaderComponent> = () => (
-  <HeaderComponent />
+  <MemoryRouterProvider
+    url="/about"
+    onPush={action('push')}
+    onReplace={action('replace')}
+  >
+    <HeaderComponent />
+  </MemoryRouterProvider>
 );
 
 export const Header = Template.bind({});
