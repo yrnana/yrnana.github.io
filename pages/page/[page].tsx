@@ -1,25 +1,19 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import Pagination from '~/components/post/Pagination';
-import PostList from '~/components/post/PostList';
 import { getPostList, getRawPosts } from '~/helpers/api';
 import { getTotalPages } from '~/helpers/utils';
+import PostListTemplate from '~/templates/PostListTemplate';
 
 type PageProps = {
   postList: Pageable<PostSummary>;
 };
 
 const PostListWithPaginationPage: NextPage<PageProps> = ({ postList }) => {
-  const { data, ...paginationProps } = postList;
-
   return (
-    <Layout>
-      {/* TODO: seo */}
+    <>
       <Seo title="page 2" />
-      <PostList posts={data} />
-      <Pagination {...paginationProps} />
-    </Layout>
+      <PostListTemplate postList={postList} hasPagination />
+    </>
   );
 };
 

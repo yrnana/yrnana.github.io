@@ -1,8 +1,8 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import Post from '~/components/post/Post';
 import { getRawPosts, getPostDetail } from '~/helpers/api';
+import { markdownToHtml } from '~/helpers/utils';
+import PostTemplate from '~/templates/PostTemplate';
 
 type PageProps = {
   postDetail: PostDetail;
@@ -10,10 +10,10 @@ type PageProps = {
 
 const PostPage: NextPage<PageProps> = ({ postDetail }) => {
   return (
-    <Layout>
+    <>
       <Seo title={postDetail.title} />
-      <Post {...postDetail} />
-    </Layout>
+      <PostTemplate postDetail={postDetail} />
+    </>
   );
 };
 
@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths<Params> = () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<PageProps, Params> = ({
+export const getStaticProps: GetStaticProps<PageProps, Params> = async ({
   params,
 }) => {
   const slug = params?.slug;
@@ -45,9 +45,13 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = ({
     };
   }
   const postDetail = getPostDetail(slug);
+  const content = await markdownToHtml(postDetail.content);
   return {
     props: {
-      postDetail,
+      postDetail: {
+        ...postDetail,
+        content,
+      },
     },
   };
 };

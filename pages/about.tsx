@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
+import AboutTemplate from '~/templates/AboutTemplate';
 
 type PageProps = {
   //
@@ -8,10 +8,10 @@ type PageProps = {
 
 const AboutPage: NextPage<PageProps> = ({}) => {
   return (
-    <Layout>
+    <>
       <Seo title="About" />
-      About
-    </Layout>
+      <AboutTemplate />
+    </>
   );
 };
 

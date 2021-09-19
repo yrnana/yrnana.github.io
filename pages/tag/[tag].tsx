@@ -1,8 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import PostList from '~/components/post/PostList';
 import { getPostListByTag, getTags } from '~/helpers/api';
+import PostListTemplate from '~/templates/PostListTemplate';
 
 type PageProps = {
   tag: string;
@@ -11,16 +10,10 @@ type PageProps = {
 
 const PostListFilteredByTagPage: NextPage<PageProps> = ({ tag, postList }) => {
   return (
-    <Layout>
-      {/* TODO: seo */}
+    <>
       <Seo title="tag hello" />
-      <h2 className="text-center mb-10">
-        <div className="inline-block rounded-full px-6 py-2 text-indigo-500 bg-indigo-100 text-2xl font-semibold">
-          {tag}
-        </div>
-      </h2>
-      <PostList posts={postList.data} />
-    </Layout>
+      <PostListTemplate tag={tag} postList={postList} />
+    </>
   );
 };
 
