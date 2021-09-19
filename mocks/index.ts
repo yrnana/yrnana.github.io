@@ -88,7 +88,7 @@ export const postDetail: PostDetail = {
   title: 'Sit eveniet alias necessitatibus qui',
   content:
     'Consectetur iste laborum sit quos consectetur consequatur quia. Recusandae nam autem tempora quam error magni. Commodi optio laboriosam ut omnis delectus consequatur ab ratione dolorum. Quisquam minus dolor corrupti. Aliquid delectus eius vero quia nostrum.\n \rAut sint doloribus. Est impedit adipisci minima optio distinctio. Dicta labore velit natus et. Iusto commodi alias voluptatum quo voluptatem. Et sed impedit distinctio aut dolorem soluta exercitationem eos sed.\n \rNumquam soluta impedit. Et eos ullam id veritatis. Veritatis ea iusto alias.',
-  tags: ['Cruze', 'Land Cruiser', 'Land Cruiser', 'Altima', 'Impala'],
+  tags: ['Cruze', 'Land Cruiser', 'Altima', 'Impala'],
   preview: 'http://placeimg.com/640/480/animals',
 };
 

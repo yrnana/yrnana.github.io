@@ -2,6 +2,9 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 /** @type {import("@storybook/react/types").StorybookConfig } */
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: ['../stories/**/*.stories.tsx'],
   addons: [
     '@storybook/addon-links',
@@ -18,16 +21,19 @@ module.exports = {
   features: {
     previewCsfV3: true,
   },
-  webpackFinal: async (config, options) => {
+  webpackFinal: async (config, { isServer }) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({
         extensions: config.resolve.extensions,
       }),
     ];
-    config.node = {
-      fs: 'empty',
-    };
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+        path: require.resolve('path-browserify'),
+      };
+    }
     return config;
   },
 };

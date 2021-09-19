@@ -1,0 +1,104 @@
+@import 'highlight.js/styles/base16/horizon-dark.css';
+
+html {
+  font-size: 18px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.markdown {
+  & > *:first-child {
+    margin-top: 0 !important;
+  }
+  & > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-6 mb-4 font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl pb-2 border-b;
+  }
+
+  h2 {
+    @apply text-3xl pb-2 border-b;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-base;
+  }
+
+  h5 {
+    @apply text-sm;
+  }
+
+  h6 {
+    @apply text-sm text-gray-500;
+  }
+
+  p,
+  code,
+  blockquote,
+  ol,
+  ul {
+    @apply mb-4;
+  }
+
+  blockquote {
+    @apply border-l-6 px-4;
+  }
+
+  a {
+    @apply text-purple-500;
+  }
+
+  ol,
+  ul {
+    @apply pl-4;
+    li + li {
+      @apply mt-1;
+    }
+    ol,
+    ul {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  ol {
+    @apply list-decimal;
+    ol {
+      @apply list-lower-roman;
+    }
+  }
+
+  ul {
+    @apply list-disc;
+    ul {
+      @apply list-circle;
+    }
+  }
+
+  /* :not(pre) > code {
+    padding: .11em .3em;
+    margin: 0 .1em;
+    border-radius: .3em;
+    white-space: normal;
+    background: #fffbfe;
+    color: #da3a6a;
+    border: 1.2px solid #da3a6a;
+  } */
+}

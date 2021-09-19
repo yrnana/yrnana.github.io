@@ -1,7 +1,7 @@
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import { action } from '@storybook/addon-actions';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import 'tailwindcss/tailwind.css';
+import 'styles/globals.css';
 
 /** @type {import("@storybook/addons").Parameters } */
 export const parameters = {

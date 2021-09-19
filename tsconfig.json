@@ -12,14 +12,18 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "useUnknownInCatchVariables": false,
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "~/assets/*": ["./assets/*"],
       "~/components/*": ["./components/*"],
-      "~/pages/*": ["./pages/*"],
       "~/helpers/*": ["./helpers/*"],
+      "~/mocks": ["./mocks"],
+      "~/pages/*": ["./pages/*"],
       "~/stories/*": ["./stories/*"],
-      "~/mocks": ["./mocks"]
+      "~/styles/*": ["./styles/*"],
+      "~/templates/*": ["./templates/*"]
     }
   },
   "include": ["next-env.d.ts", "types.d.ts", "**/*.ts", "**/*.tsx"],
