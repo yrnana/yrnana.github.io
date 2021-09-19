@@ -1,5 +1,9 @@
 import rehypeHighlight from 'rehype-highlight';
+import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
+import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
@@ -21,7 +25,11 @@ export function getPathFromUrl(url?: string): string | undefined {
 export async function markdownToHtml(markdown: string): Promise<string> {
   const result = await unified()
     .use(remarkParse) // parse markdown content to a syntax tree
+    .use(remarkBreaks)
+    .use(remarkGfm)
+    .use(remarkMath)
     .use(remarkRehype) // markdown syntax tree -> html syntax tree
+    .use(rehypeKatex)
     .use(rehypeHighlight) // highlight syntax tree
     .use(rehypeStringify) // serialize HTML syntax tree
     .process(markdown);
