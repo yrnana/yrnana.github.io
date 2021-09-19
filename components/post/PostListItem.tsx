@@ -13,7 +13,7 @@ const PostListItem: React.VFC<PostSummary> = ({
     <div>
       <Link href={`/post/${slug}`}>
         <a className="hover:text-purple-500">
-          <h2 className="text-2xl font-normal">{title}</h2>
+          <h2 className="text-xl font-medium">{title}</h2>
         </a>
       </Link>
       <div className="text-gray-500 mt-2">{format(new Date(date), 'PP')}</div>
