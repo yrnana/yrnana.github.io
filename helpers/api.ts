@@ -92,7 +92,7 @@ export function getPostList(page = 1, size = PAGE_SIZE): Pageable<PostSummary> {
  */
 export async function getPostDetail(slug: string): Promise<PostDetail> {
   const rawPosts = getRawPostBySlug(slug);
-  const postDetail = omit(rawPosts, ['excerpt', 'published']);
+  const postDetail = omit(rawPosts, ['published']);
   const content = await markdownToHtml(postDetail.content);
   return {
     ...postDetail,

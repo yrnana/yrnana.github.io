@@ -1,3 +1,4 @@
+import { AUTHOR_NAME } from '~/helpers/constants';
 import Header from './Header';
 
 const Layout: React.FC = ({ children }) => {
@@ -6,7 +7,7 @@ const Layout: React.FC = ({ children }) => {
       <Header />
       <main className="my-10">{children}</main>
       <footer className="my-4 sm:my-6 text-center text-gray-700">
-        Copyright &copy; 2021 nana
+        Copyright &copy; 2021 {AUTHOR_NAME}
       </footer>
     </div>
   );

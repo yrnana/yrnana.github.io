@@ -29,7 +29,7 @@ interface Pageable<T> {
 
 type PostSummary = Omit<RawPost, 'content' | 'published' | 'preview'>;
 
-type PostDetail = Omit<RawPost, 'excerpt' | 'published'>;
+type PostDetail = Omit<RawPost, 'published'>;
 
 interface PostGroup {
   year: number;
