@@ -11,7 +11,7 @@ type PageProps = {
 const PostListWithPaginationPage: NextPage<PageProps> = ({ postList }) => {
   return (
     <>
-      <Seo title="page 2" />
+      <Seo title={`page ${postList.page}`} path={`/page/${postList.page}`} />
       <PostListTemplate postList={postList} hasPagination />
     </>
   );

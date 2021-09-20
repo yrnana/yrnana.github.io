@@ -1,8 +1,20 @@
-export const LeftIcon: React.VFC = () => {
+import cx from 'classnames';
+
+export interface IconProps {
+  width?: number;
+  height?: number;
+  className?: string;
+}
+
+export const LeftIcon: React.VFC<IconProps> = ({
+  width = 5,
+  height = 5,
+  className,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
+      className={cx(`w-${width}`, `h-${height}`, className)}
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -15,11 +27,15 @@ export const LeftIcon: React.VFC = () => {
   );
 };
 
-export const RightIcon: React.VFC = () => {
+export const RightIcon: React.VFC<IconProps> = ({
+  width = 5,
+  height = 5,
+  className,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
+      className={cx(`w-${width}`, `h-${height}`, className)}
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -32,11 +48,15 @@ export const RightIcon: React.VFC = () => {
   );
 };
 
-export const ExclamationCircle: React.VFC = () => {
+export const ExclamationCircle: React.VFC<IconProps> = ({
+  width = 6,
+  height = 6,
+  className,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
+      className={cx(`w-${width}`, `h-${height}`, className)}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

@@ -10,7 +10,13 @@ type PageProps = {
 const PostPage: NextPage<PageProps> = ({ postDetail }) => {
   return (
     <>
-      <Seo title={postDetail.title} />
+      <Seo
+        title={postDetail.title}
+        description={postDetail.excerpt}
+        path={`/post/${postDetail.slug}`}
+        image={postDetail.preview}
+        isBlogTitleDisabled
+      />
       <PostTemplate postDetail={postDetail} />
     </>
   );

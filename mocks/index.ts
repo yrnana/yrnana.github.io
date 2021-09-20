@@ -87,8 +87,47 @@ export const postDetail: PostDetail = {
   slug: '2021-04-30--sit-eveniet-alias-necessitatibus-qui',
   date: '2021-04-30T06:13:26+09:00',
   title: 'Sit eveniet alias necessitatibus qui',
-  content:
-    'Consectetur iste laborum sit quos consectetur consequatur quia. Recusandae nam autem tempora quam error magni. Commodi optio laboriosam ut omnis delectus consequatur ab ratione dolorum. Quisquam minus dolor corrupti. Aliquid delectus eius vero quia nostrum.\n \rAut sint doloribus. Est impedit adipisci minima optio distinctio. Dicta labore velit natus et. Iusto commodi alias voluptatum quo voluptatem. Et sed impedit distinctio aut dolorem soluta exercitationem eos sed.\n \rNumquam soluta impedit. Et eos ullam id veritatis. Veritatis ea iusto alias.',
+  content: `
+  <h1>h1 Heading</h1>
+  <h2>h2 Heading</h2>
+  <h3>h3 Heading</h3>
+  <h4>h4 Heading</h4>
+  <h5>h5 Heading</h5>
+  <h6>h6 Heading</h6>
+  <p>텍스트 <strong>강조</strong></p>
+  <p>텍스트 <em>기울기</em></p>
+  <blockquote>
+  <p>이렇게</p>
+  <blockquote>
+  <p>하면됨</p>
+  </blockquote>
+  </blockquote>
+  <ol>
+  <li>첫번째
+  <ol>
+  <li>안녕</li>
+  <li>하세요</li>
+  </ol>
+  </li>
+  <li>두번째</li>
+  <li>세번째</li>
+  </ol>
+  <ul>
+  <li>첫번째</li>
+  <li>두번째
+  <ul>
+  <li>안녕</li>
+  <li>하세요</li>
+  </ul>
+  </li>
+  <li>세번째</li>
+  </ul>
+  <p>인라인 코드는 <code>이렇게</code></p>
+  <pre><code class="hljs language-js"><span class="hljs-comment">// 코드블록</span>
+  <span class="hljs-variable hljs-language">console</span>.<span class="hljs-title hljs-function">log</span>(<span class="hljs-string">'코드블록'</span>);
+  </code></pre>
+  <p><img src="https://octodex.github.com/images/minion.png" alt="Minion"></p>
+  <p><a href="https://yurinadev.github.io">link text</a></p>`.trim(),
   tags: ['Cruze', 'Land Cruiser', 'Altima', 'Impala'],
   preview: 'http://placeimg.com/640/480/animals',
 };

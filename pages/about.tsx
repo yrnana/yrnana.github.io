@@ -10,7 +10,7 @@ type PageProps = {
 const AboutPage: NextPage<PageProps> = ({ content }) => {
   return (
     <>
-      <Seo title="about" />
+      <Seo title="about" path="/about" />
       <MarkdownTemplate content={content} />
     </>
   );
