@@ -22,7 +22,7 @@ CountVisible.args = {
 export const CountInVisible = Template.bind({});
 CountInVisible.storyName = '갯수 미표기';
 
-export const Color = () => (
+export const Color = (): JSX.Element => (
   <div className="flex flex-col space-y-4 items-start">
     <Tag name="Typescript" color="pink" count={10} />
     <Tag name="Typescript" color="yellow" count={10} />
