@@ -3,7 +3,7 @@ title: 'Floyd-Warshall Algorithm'
 date: '2020-05-13T10:29:55+09:00'
 excerpt: '플로이드-워셜 알고리즘 (Floyd Warshall Algorithm)'
 tags: [Algorithm, Floyd-Warshall, Graph]
-preview: '/assets/posts/fwa1.png'
+preview: '/images/sample.jpg'
 published: true
 ---
 
@@ -15,7 +15,7 @@ published: true
 
 ## 플로이드-워셜 알고리즘 로직
 
-![fwa1](/assets/posts/fwa1.png)
+![fwa1](/images/sample.jpg)
 
 임의의 노드 s부터 e까지 가는데 걸리는 최단거리를 저장하는 테이블 d
 

@@ -3,7 +3,7 @@ title: 'Markdown Test'
 date: '2020-05-12T00:56:46+09:00'
 excerpt: '마크다운 테스트 샘플 코드'
 tags: [Markdown]
-preview: '/assets/posts/sample.jpg'
+preview: '/images/sample.jpg'
 published: true
 ---
 
@@ -127,11 +127,11 @@ console.log('코드블록');
 # 7. Image
 
 ![Minion](https://octodex.github.com/images/minion.png)
-![Gatsby Icon](./gatsby-icon.png)
+![Sample](/images/sample.jpg)
 
 ```md
 ![Minion](https://octodex.github.com/images/minion.png)
-![Gatsby Icon](./gatsby-icon.png)
+![Sample](/images/sample.jpg)
 ```
 
 # 8. Link

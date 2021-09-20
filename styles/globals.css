@@ -12,6 +12,18 @@ body {
   @apply subpixel-antialiased;
 }
 
+.responsive-image-wrapper {
+  @apply relative w-full max-w-screen-lg mx-auto mb-10;
+  > div {
+    position: unset !important;
+    img {
+      @apply w-full !important;
+      @apply relative !important;
+      height: unset !important;
+    }
+  }
+}
+
 .markdown {
   & > *:first-child {
     @apply mt-0 !important;
@@ -54,11 +66,10 @@ body {
   }
 
   p,
-  code,
   blockquote,
   ol,
   ul {
-    @apply mb-4;
+    @apply mb-4 text-base;
   }
 
   blockquote {
@@ -96,6 +107,6 @@ body {
   }
 
   :not(pre) > code {
-    @apply border-2 border-purple-500 rounded-md text-purple-500 px-1.5 font-medium;
+    @apply text-base border-2 border-purple-500 rounded-md text-purple-500 px-1.5 font-medium;
   }
 }

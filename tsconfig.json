@@ -16,7 +16,6 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/assets/*": ["./assets/*"],
       "~/components/*": ["./components/*"],
       "~/helpers/*": ["./helpers/*"],
       "~/mocks": ["./mocks"],
