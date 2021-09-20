@@ -2,7 +2,7 @@ import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider';
 import * as NextImage from 'next/image';
 import { action } from '@storybook/addon-actions';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import 'styles/globals.css';
+import '~/styles/globals.css';
 
 // mock next/image
 Object.defineProperty(NextImage, 'default', {
