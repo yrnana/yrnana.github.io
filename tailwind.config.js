@@ -49,6 +49,10 @@ module.exports = {
         circle: 'circle',
         'lower-roman': 'lower-roman',
       },
+      screens: {
+        xl: null,
+        '2xl': null,
+      },
     },
   },
   variants: {

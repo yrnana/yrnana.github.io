@@ -30,15 +30,15 @@ body {
   }
 
   h1 {
-    @apply text-4xl pb-2 border-b;
-  }
-
-  h2 {
     @apply text-3xl pb-2 border-b;
   }
 
+  h2 {
+    @apply text-2xl pb-2 border-b;
+  }
+
   h3 {
-    @apply text-2xl;
+    @apply text-xl;
   }
 
   h4 {
@@ -95,7 +95,7 @@ body {
   }
 
   :not(pre) > code {
-    @apply text-base border-2 border-purple-500 rounded-md text-purple-500 px-1.5 font-medium;
+    @apply text-base border-2 border-purple-500 rounded-md text-purple-500 px-1 mx-0.5 font-medium;
   }
 }
 
