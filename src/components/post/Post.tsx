@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { format } from 'date-fns';
 import parse from 'html-react-parser';
 import Tag from '~/components/tag/Tag';
@@ -14,13 +13,8 @@ const Post: React.VFC<PostDetail> = ({
     <article>
       <header className="text-center my-20">
         {preview && (
-          <div className="responsive-image-wrapper">
-            <Image
-              src={preview}
-              alt={`${title} Preview Image`}
-              layout="fill"
-              objectFit="contain"
-            />
+          <div className="w-full max-w-screen-lg mx-auto mb-10">
+            <img src={preview} alt={`${title} Preview`} />
           </div>
         )}
         <h1 className="text-3xl font-semibold">{title}</h1>
