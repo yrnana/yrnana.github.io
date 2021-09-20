@@ -40,3 +40,5 @@ interface TagDetail {
   name: string;
   count: number;
 }
+
+type TagColor = 'yellow' | 'green' | 'blue' | 'purple' | 'pink';

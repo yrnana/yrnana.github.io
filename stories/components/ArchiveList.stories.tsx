@@ -17,9 +17,9 @@ const Template: ComponentStory<typeof ArchiveList> = (args) => (
 export const Default = Template.bind({});
 Default.storyName = '기본(4개년도)';
 
-export const One_Year = Template.bind({});
-One_Year.storyName = '1개년도';
-One_Year.args = {
+export const OneYear = Template.bind({});
+OneYear.storyName = '1개년도';
+OneYear.args = {
   postGroups: [postGroups[0]],
 };
 

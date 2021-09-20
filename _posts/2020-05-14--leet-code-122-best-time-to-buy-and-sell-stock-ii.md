@@ -2,7 +2,7 @@
 title: '[LeetCode] 122. Best Time to Buy and Sell Stock II'
 date: '2020-05-14T21:03:27+09:00'
 tags: [Algorithm, LeetCode, Array, Greedy]
-image: '/assets/posts/max-profit.png'
+image: '/images/sample.jpg'
 published: true
 ---
 
@@ -35,7 +35,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 # Solution
 
-![profit](/assets/posts/max-profit.png)
+![profit](/images/sample.jpg)
 
 위 그래프와 같이, 큰 이윤을 가져오려면 모든 이윤 구간을 놓치지 않으면 된다. 따라서 현재값과 직전값을 비교해서 현재값이 더 큰 경우만 두 값의 차이를 더해주면 된다.
 

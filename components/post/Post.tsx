@@ -1,3 +1,8 @@
+import Image from 'next/image';
+import { format } from 'date-fns';
+import parse from 'html-react-parser';
+import Tag from '~/components/tag/Tag';
+
 const Post: React.VFC<PostDetail> = ({
   preview,
   title,
@@ -7,13 +12,28 @@ const Post: React.VFC<PostDetail> = ({
 }) => {
   return (
     <article>
-      <header>
-        {preview && <div>{preview}</div>}
-        <h1>{title}</h1>
-        <div>{date}</div>
-        {tags && <div>{tags}</div>}
+      <header className="text-center my-20">
+        {preview && (
+          <div className="responsive-image-wrapper">
+            <Image
+              src={preview}
+              alt={`${title} Preview Image`}
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+        )}
+        <h1 className="text-3xl font-semibold">{title}</h1>
+        <div className="text-gray-500 mt-4">{format(new Date(date), 'PP')}</div>
+        {tags && (
+          <div className="flex flex-row flex-wrap justify-center space-x-3 mt-4">
+            {tags.map((tag) => (
+              <Tag key={tag} name={tag} color="purple" />
+            ))}
+          </div>
+        )}
       </header>
-      <section>{content}</section>
+      <div className="markdown">{parse(content)}</div>
     </article>
   );
 };

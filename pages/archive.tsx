@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
-import ArchiveList from '~/components/archive/ArchiveList';
 import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
+import { getPostGroups } from '~/helpers/api';
+import ArchiveTemplate from '~/templates/ArchiveTemplate';
 
 type PageProps = {
   postGroups: PostGroup[];
@@ -9,19 +9,20 @@ type PageProps = {
 
 const ArchivePage: NextPage<PageProps> = ({ postGroups }) => {
   return (
-    <Layout>
+    <>
       <Seo title="Archive" />
-      <ArchiveList postGroups={postGroups} />
-    </Layout>
+      <ArchiveTemplate postGroups={postGroups} />
+    </>
   );
 };
 
 export default ArchivePage;
 
 export const getStaticProps: GetStaticProps<PageProps> = () => {
+  const postGroups = getPostGroups();
   return {
     props: {
-      postGroups: [],
+      postGroups,
     },
   };
 };

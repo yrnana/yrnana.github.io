@@ -8,6 +8,13 @@ module.exports = {
       fontFamily: {
         mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
       },
+      borderWidth: {
+        6: '6px',
+      },
+      listStyleType: {
+        circle: 'circle',
+        'lower-roman': 'lower-roman',
+      },
     },
   },
   variants: {

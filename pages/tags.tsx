@@ -1,8 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import TagList from '~/components/tag/TagList';
 import { getTags } from '~/helpers/api';
+import TagsTemplate from '~/templates/TagsTemplate';
 
 type PageProps = {
   tags: TagDetail[];
@@ -10,10 +9,10 @@ type PageProps = {
 
 const TagsPage: NextPage<PageProps> = ({ tags }) => {
   return (
-    <Layout>
+    <>
       <Seo title="tags" />
-      <TagList tags={tags} />
-    </Layout>
+      <TagsTemplate tags={tags} />
+    </>
   );
 };
 

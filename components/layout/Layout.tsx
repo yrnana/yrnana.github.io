@@ -2,11 +2,12 @@ import Header from './Header';
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <Header />
-      <main>{children}</main>
-      {/* TODO: footer design */}
-      <footer className="text-center">2021 &copy; nana</footer>
+      <main className="my-10">{children}</main>
+      <footer className="my-4 sm:my-6 text-center text-gray-700">
+        Copyright &copy; 2021 Nana
+      </footer>
     </div>
   );
 };

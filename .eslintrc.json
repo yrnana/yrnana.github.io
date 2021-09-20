@@ -3,9 +3,12 @@
   "overrides": [
     {
       "files": [
-        "pages/**/*.ts?(x)",
         "components/**/*.ts?(x)",
-        "helpers/**/*.ts?(x)"
+        "helpers/**/*.ts?(x)",
+        "pages/**/*.ts?(x)",
+        "stories/**/*.ts?(x)",
+        "mocks/**/*.ts?(x)",
+        "templates/**/*.ts?(x)"
       ],
       "extends": [
         "eslint:recommended",
