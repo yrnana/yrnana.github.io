@@ -9,6 +9,11 @@ import { getTotalPages, markdownToHtml } from '~/helpers/utils';
 const markdownDirectory = join(process.cwd(), '_md');
 const postsDirectory = join(markdownDirectory, 'posts');
 
+/**
+ * 마크다운 파일 1개를 파일이름으로 읽는 함수
+ * @param fileName _md 폴더의 마크다운 파일이름
+ * @returns html string
+ */
 export async function getMarkdownContent(fileName: string): Promise<string> {
   const mdPath = join(markdownDirectory, `${fileName}.md`);
   const md = readFileSync(mdPath, 'utf8');
