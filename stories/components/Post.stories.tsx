@@ -7,6 +7,7 @@ export default {
   component: Post,
   args: {
     ...postDetail,
+    preview: undefined,
   },
 } as ComponentMeta<typeof Post>;
 
@@ -28,55 +29,8 @@ NoTag.args = {
   tags: undefined,
 };
 
-export const NoPreview = Template.bind({});
-NoPreview.storyName = '이미지 없음';
-NoPreview.args = {
-  preview: undefined,
-};
-
-export const Content = Template.bind({});
-Content.storyName = '컨텐츠';
-Content.args = {
-  content: `
-<h1>h1 Heading</h1>
-<h2>h2 Heading</h2>
-<h3>h3 Heading</h3>
-<h4>h4 Heading</h4>
-<h5>h5 Heading</h5>
-<h6>h6 Heading</h6>
-<p>텍스트 <strong>강조</strong></p>
-<p>텍스트 <em>기울기</em></p>
-<blockquote>
-<p>이렇게</p>
-<blockquote>
-<p>하면됨</p>
-</blockquote>
-</blockquote>
-<ol>
-<li>첫번째
-<ol>
-<li>안녕</li>
-<li>하세요</li>
-</ol>
-</li>
-<li>두번째</li>
-<li>세번째</li>
-</ol>
-<ul>
-<li>첫번째</li>
-<li>두번째
-<ul>
-<li>안녕</li>
-<li>하세요</li>
-</ul>
-</li>
-<li>세번째</li>
-</ul>
-<p>인라인 코드는 <code>이렇게</code></p>
-<pre><code class="hljs language-js"><span class="hljs-comment">// 코드블록</span>
-<span class="hljs-variable hljs-language">console</span>.<span class="hljs-title hljs-function">log</span>(<span class="hljs-string">'코드블록'</span>);
-</code></pre>
-<p><img src="https://octodex.github.com/images/minion.png" alt="Minion"></p>
-<p><a href="https://yurinadev.github.io">link text</a></p>
-  `.trim(),
+export const HasPreview = Template.bind({});
+HasPreview.storyName = '이미지 있음';
+HasPreview.args = {
+  preview: postDetail.preview,
 };

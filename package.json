@@ -18,7 +18,7 @@
     "preexport": "npm run build",
     "export": "next export",
     "deploy": "rm -rf node_modules/.cache && npm run export && touch out/.nojekyll && gh-pages -d out",
-    "clean": "rm -rf out",
+    "clean": "rm -rf out & rm -rf .next",
     "lint": "next lint",
     "type-check": "tsc -p tsconfig.json",
     "format": "prettier --check components/ pages/ helpers/ *.{js,ts,tsx,json,css}",
@@ -79,7 +79,6 @@
     "prettier": "^2.4.1",
     "tailwindcss": "^2.2.15",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "^4.4.3",
-    "webpack": "^5.53.0"
+    "typescript": "^4.4.3"
   }
 }

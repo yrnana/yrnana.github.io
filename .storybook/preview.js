@@ -7,7 +7,15 @@ import '~/styles/globals.css';
 // mock next/image
 Object.defineProperty(NextImage, 'default', {
   configurable: true,
-  value: (props) => <NextImage.default {...props} unoptimized />,
+  value: (props) => (
+    <div>
+      <img
+        src={props.src}
+        alt="replaced next/image"
+        style={{ display: 'block', objectFit: 'contain' }}
+      />
+    </div>
+  ),
 });
 
 /** @type {import("@storybook/addons").Parameters } */
