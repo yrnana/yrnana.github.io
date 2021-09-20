@@ -1,7 +1,6 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
 import { getRawPosts, getPostDetail } from '~/helpers/api';
-import { markdownToHtml } from '~/helpers/utils';
 import PostTemplate from '~/templates/PostTemplate';
 
 type PageProps = {
@@ -44,14 +43,10 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async ({
       notFound: true,
     };
   }
-  const postDetail = getPostDetail(slug);
-  const content = await markdownToHtml(postDetail.content);
+  const postDetail = await getPostDetail(slug);
   return {
     props: {
-      postDetail: {
-        ...postDetail,
-        content,
-      },
+      postDetail,
     },
   };
 };
