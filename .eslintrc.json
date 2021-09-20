@@ -2,14 +2,7 @@
   "extends": ["next/core-web-vitals", "prettier"],
   "overrides": [
     {
-      "files": [
-        "components/**/*.ts?(x)",
-        "helpers/**/*.ts?(x)",
-        "pages/**/*.ts?(x)",
-        "stories/**/*.ts?(x)",
-        "mocks/**/*.ts?(x)",
-        "templates/**/*.ts?(x)"
-      ],
+      "files": ["src/**/*.ts?(x)"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
