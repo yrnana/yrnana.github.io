@@ -20,7 +20,8 @@
         ],
         "@typescript-eslint/explicit-module-boundary-types": "warn",
         "@typescript-eslint/ban-ts-comment": "warn",
-        "jsx-a11y/anchor-is-valid": "off"
+        "jsx-a11y/anchor-is-valid": "off",
+        "@next/next/no-img-element": "off"
       }
     }
   ]
