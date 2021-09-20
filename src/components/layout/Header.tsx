@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ActiveLink from '~/components/layout/ActiveLink';
+import { BLOG_TITLE } from '~/helpers/constants';
 
 const Header: React.VFC = () => {
   return (
@@ -7,7 +8,7 @@ const Header: React.VFC = () => {
       <div className="mr-auto">
         <Link href="/">
           <a className="text-2xl font-semibold font-mono hover:text-purple-500">
-            nana.log
+            {BLOG_TITLE}
           </a>
         </Link>
       </div>

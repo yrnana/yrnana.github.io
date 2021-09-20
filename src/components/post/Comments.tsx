@@ -1,4 +1,5 @@
 import { useRef, useLayoutEffect, memo } from 'react';
+import { COMMENT_ISSUE_REPO } from '~/helpers/constants';
 
 const Comments: React.VFC = memo(() => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -8,7 +9,7 @@ const Comments: React.VFC = memo(() => {
     if (container) {
       const script = document.createElement('script');
       script.setAttribute('src', 'https://utteranc.es/client.js');
-      script.setAttribute('repo', 'yrnana/yrnana.github.io-comment');
+      script.setAttribute('repo', COMMENT_ISSUE_REPO);
       script.setAttribute('issue-term', 'pathname');
       script.setAttribute('label', 'comment');
       script.setAttribute('theme', 'github-light');
