@@ -11,7 +11,7 @@ const Post: React.VFC<PostDetail> = ({
 }) => {
   return (
     <article>
-      <header className="text-center my-20">
+      <header className="text-center mt-10 mb-20">
         {preview && (
           <div className="w-full max-w-screen-lg mx-auto mb-10">
             <img src={preview} alt={`${title} Preview`} />

@@ -39,7 +39,7 @@ const Comments: React.VFC = memo(() => {
   return (
     <div
       ref={containerRef}
-      className="my-10 relative"
+      className="mt-10 relative"
       style={{ minHeight: 269 }}
     >
       <div

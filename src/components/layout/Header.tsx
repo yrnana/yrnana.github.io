@@ -4,7 +4,7 @@ import { BLOG_TITLE } from '~/helpers/constants';
 
 const Header: React.VFC = () => {
   return (
-    <header className="flex flex-row items-center my-4 sm:my-6">
+    <header className="mt-4 sm:mt-6 flex flex-row items-center">
       <div className="mr-auto">
         <Link href="/">
           <a className="text-2xl font-semibold font-mono hover:text-purple-500">
