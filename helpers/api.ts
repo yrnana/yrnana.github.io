@@ -1,3 +1,4 @@
+import { getYear } from 'date-fns';
 import { readFileSync, readdirSync } from 'fs';
 import matter from 'gray-matter';
 import { omit } from 'lodash-es';
@@ -117,4 +118,28 @@ export function getTags(): TagDetail[] {
     return prev;
   }, {});
   return Object.entries(tagObj).map(([name, count]) => ({ name, count }));
+}
+
+/**
+ * 연단위 글목록을 반환하는 api
+ * @returns 아카이브 글 목록
+ */
+export function getPostGroups(): PostGroup[] {
+  const rawPosts = getRawPosts();
+  const archiveObj = rawPosts.reduce<Record<number, PostGroup['posts']>>(
+    (prev, { title, date, slug }) => {
+      const year = getYear(new Date(date));
+      const data = { title, date, slug };
+      if (prev[year]) prev[year].push(data);
+      else prev[year] = [data];
+      return prev;
+    },
+    {},
+  );
+  return Object.entries(archiveObj)
+    .map(([year, posts]) => ({
+      year: Number(year),
+      posts,
+    }))
+    .sort((a, b) => (a.year < b.year ? 1 : -1));
 }
