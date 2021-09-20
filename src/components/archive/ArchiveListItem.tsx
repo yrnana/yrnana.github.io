@@ -8,7 +8,12 @@ const ArchiveListItem: React.VFC<PostGroup> = ({ year, posts }) => {
       <div>
         {posts.map((post) => (
           <div key={post.slug}>
-            <Link href={`/post/${post.slug}`}>
+            <Link
+              href={{
+                pathname: '/post/[slug]',
+                query: { slug: post.slug },
+              }}
+            >
               <a className="inline-flex py-1 hover:text-purple-500">
                 <span className="flex-shrink-0 w-16 text-purple-500">
                   {format(new Date(post.date), 'MMM dd')}

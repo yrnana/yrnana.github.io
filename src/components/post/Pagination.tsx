@@ -24,7 +24,12 @@ const Pagination: React.VFC<Omit<Pageable<unknown>, 'data'>> = ({
           <LeftIcon />
         </div>
       ) : (
-        <Link href={`/page/${page - 1}`}>
+        <Link
+          href={{
+            pathname: '/page/[page]',
+            query: { page: page - 1 },
+          }}
+        >
           <a className={cx(pageItemClassName, iconClassName)}>
             <LeftIcon />
           </a>
@@ -38,7 +43,12 @@ const Pagination: React.VFC<Omit<Pageable<unknown>, 'data'>> = ({
           <RightIcon />
         </div>
       ) : (
-        <Link href={`/page/${page + 1}`}>
+        <Link
+          href={{
+            pathname: '/page/[page]',
+            query: { page: page + 1 },
+          }}
+        >
           <a className={cx(pageItemClassName, iconClassName)}>
             <RightIcon />
           </a>
@@ -63,7 +73,12 @@ const PaginationItem: React.VFC<PaginationItemProps> = ({
 }) => {
   if (isPage && !isCurrentPage) {
     return (
-      <Link href={`/page/${page}`}>
+      <Link
+        href={{
+          pathname: '/page/[page]',
+          query: { page },
+        }}
+      >
         <a className={pageItemClassName}>{page}</a>
       </Link>
     );

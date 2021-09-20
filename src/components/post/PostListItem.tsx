@@ -11,7 +11,12 @@ const PostListItem: React.VFC<PostSummary> = ({
 }) => {
   return (
     <div>
-      <Link href={`/post/${slug}`}>
+      <Link
+        href={{
+          pathname: '/post/[slug]',
+          query: { slug },
+        }}
+      >
         <a className="hover:text-purple-500">
           <h2 className="text-xl font-medium">{title}</h2>
         </a>
