@@ -4,9 +4,22 @@ import matter from 'gray-matter';
 import { omit } from 'lodash-es';
 import { join } from 'path';
 import { PAGE_SIZE } from '~/helpers/constants';
-import { getTotalPages } from '~/helpers/utils';
+import { getTotalPages, markdownToHtml } from '~/helpers/utils';
 
-const postsDirectory = join(process.cwd(), '_posts');
+const markdownDirectory = join(process.cwd(), '_md');
+const postsDirectory = join(markdownDirectory, 'posts');
+
+/**
+ * 마크다운 파일 1개를 파일이름으로 읽는 함수
+ * @param fileName _md 폴더의 마크다운 파일이름
+ * @returns html string
+ */
+export async function getMarkdownContent(fileName: string): Promise<string> {
+  const mdPath = join(markdownDirectory, `${fileName}.md`);
+  const md = readFileSync(mdPath, 'utf8');
+  const html = await markdownToHtml(md);
+  return html;
+}
 
 /**
  * `_posts` 디렉토리에 존재하는 모든 글 목록 (slug)
@@ -77,9 +90,14 @@ export function getPostList(page = 1, size = PAGE_SIZE): Pageable<PostSummary> {
  * @param slug
  * @returns 글 정보
  */
-export function getPostDetail(slug: string): PostDetail {
+export async function getPostDetail(slug: string): Promise<PostDetail> {
   const rawPosts = getRawPostBySlug(slug);
-  return omit(rawPosts, ['excerpt', 'published']);
+  const postDetail = omit(rawPosts, ['excerpt', 'published']);
+  const content = await markdownToHtml(postDetail.content);
+  return {
+    ...postDetail,
+    content,
+  };
 }
 
 /**

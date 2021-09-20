@@ -1,4 +1,6 @@
-export interface CommentListProps {}
+export interface CommentListProps {
+  opt: string;
+}
 
 const CommentList: React.VFC<CommentListProps> = () => {
   return <></>;

@@ -1,24 +1,28 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Seo from '~/components/common/Seo';
-import AboutTemplate from '~/templates/AboutTemplate';
+import { getMarkdownContent } from '~/helpers/api';
+import MarkdownTemplate from '~/templates/MarkdownTemplate';
 
 type PageProps = {
-  //
+  content: string;
 };
 
-const AboutPage: NextPage<PageProps> = ({}) => {
+const AboutPage: NextPage<PageProps> = ({ content }) => {
   return (
     <>
-      <Seo title="About" />
-      <AboutTemplate />
+      <Seo title="about" />
+      <MarkdownTemplate content={content} />
     </>
   );
 };
 
 export default AboutPage;
 
-export const getStaticProps: GetStaticProps<PageProps> = () => {
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const content = await getMarkdownContent('about');
   return {
-    props: {},
+    props: {
+      content,
+    },
   };
 };
