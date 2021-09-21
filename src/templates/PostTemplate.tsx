@@ -1,10 +1,6 @@
-import dynamic from 'next/dynamic';
 import Layout from '~/components/layout/Layout';
+import Comments from '~/components/post/Comments';
 import Post from '~/components/post/Post';
-
-const Comments = dynamic(() => import('~/components/post/Comments'), {
-  ssr: false,
-});
 
 export interface PostTemplateProps {
   postDetail: PostDetail;

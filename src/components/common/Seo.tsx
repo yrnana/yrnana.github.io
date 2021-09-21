@@ -27,7 +27,12 @@ const Seo: React.VFC<SeoProps> = ({
       {path && <meta property="og:url" content={`${BLOG_URL}${path}`} />}
       <meta property="og:title" content={metaTitle} />
       {description && <meta property="og:description" content={description} />}
-      {image && <meta property="og:image" content={image}></meta>}
+      {image && (
+        <>
+          <meta property="og:image" content={image} />
+          <link rel="preload" as="image" href={image} />
+        </>
+      )}
     </Head>
   );
 };
