@@ -97,6 +97,24 @@ body {
   :not(pre) > code {
     @apply text-base border-2 border-purple-500 rounded-md text-purple-500 px-1 mx-0.5 font-medium;
   }
+
+  .responsive-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &.iframe-youtube {
+      padding-top: 56.25%;
+    }
+  }
 }
 
 .utterances {
