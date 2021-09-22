@@ -12,6 +12,19 @@ body {
   @apply subpixel-antialiased;
 }
 
+::-moz-selection {
+  @apply bg-purple-500 text-white;
+}
+::selection {
+  @apply bg-purple-500 text-white;
+}
+.hljs ::-moz-selection {
+  @apply bg-purple-500 text-white;
+}
+.hljs ::selection {
+  @apply bg-purple-500 text-white;
+}
+
 .markdown {
   & > *:first-child {
     @apply mt-0 !important;
