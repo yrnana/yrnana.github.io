@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,29 +18,31 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - name: Checkout
+      - name: Checkout 🛎️
         uses: actions/checkout@v2
 
       - name: Cache
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]sx?') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: npm install and export
+      - name: Install and Build 🔧
         run: |
           npm ci
           npm run export
 
       - name: Add .nojekyll
-        run: touch ${{ github.workspace }}/out/.nojekyll
+        run: touch out/.nojekyll
 
-      - name: Deploy
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages

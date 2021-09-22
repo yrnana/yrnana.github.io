@@ -21,7 +21,7 @@
     "clean": "rm -rf out && rm -rf .next && rm -rf node_modules/.cache",
     "lint": "next lint",
     "type-check": "tsc -p tsconfig.json",
-    "format": "prettier --check components/ pages/ helpers/ *.{js,ts,tsx,json,css}",
+    "format": "prettier --check src/ *.{js,ts,tsx,json,css}",
     "storybook": "start-storybook -p 6006 --modern",
     "build-storybook": "build-storybook"
   },
