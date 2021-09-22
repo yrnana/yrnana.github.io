@@ -1,4 +1,5 @@
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import Script from 'next/script';
 import Seo from '~/components/common/Seo';
 import { getRawPosts, getPostDetail } from '~/helpers/api';
 import PostTemplate from '~/templates/PostTemplate';
@@ -18,6 +19,12 @@ const PostPage: NextPage<PageProps> = ({ postDetail }) => {
         isBlogTitleDisabled
       />
       <PostTemplate postDetail={postDetail} />
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        async
+        charSet="utf-8"
+        strategy="lazyOnload"
+      />
     </>
   );
 };

@@ -8,6 +8,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 import { PAGE_SIZE } from '~/helpers/constants';
+import rehypeOembed from './rehypeOembed';
 
 export function getTotalPages(totalElements: number, size = PAGE_SIZE): number {
   return Math.ceil(totalElements / size);
@@ -29,6 +30,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype) // markdown syntax tree -> html syntax tree
+    .use(rehypeOembed)
     .use(rehypeKatex)
     .use(rehypeHighlight) // highlight syntax tree
     .use(rehypeStringify) // serialize HTML syntax tree
