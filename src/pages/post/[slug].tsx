@@ -16,6 +16,8 @@ const PostPage: NextPage<PageProps> = ({ postDetail }) => {
         description={postDetail.excerpt}
         path={`/post/${postDetail.slug}`}
         image={postDetail.preview}
+        keywords={postDetail.tags?.join(',')}
+        type="article"
         isBlogTitleDisabled
       />
       <PostTemplate postDetail={postDetail} />

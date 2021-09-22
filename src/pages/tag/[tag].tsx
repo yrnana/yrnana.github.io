@@ -11,7 +11,7 @@ type PageProps = {
 const PostListFilteredByTagPage: NextPage<PageProps> = ({ tag, postList }) => {
   return (
     <>
-      <Seo title={tag} path={`/tag/${tag}`} />
+      <Seo title={tag} path={`/tag/${tag}`} noindex />
       <PostListTemplate tag={tag} postList={postList} />
     </>
   );

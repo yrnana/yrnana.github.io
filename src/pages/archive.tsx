@@ -10,7 +10,7 @@ type PageProps = {
 const ArchivePage: NextPage<PageProps> = ({ postGroups }) => {
   return (
     <>
-      <Seo title="archive" path="/archive" />
+      <Seo title="archive" path="/archive" noindex />
       <ArchiveTemplate postGroups={postGroups} />
     </>
   );
