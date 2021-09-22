@@ -77,7 +77,7 @@ export function getPostList(page = 1, size = PAGE_SIZE): Pageable<PostSummary> {
   return {
     data: sliced.map((post) => omit(post, ['content', 'published', 'preview'])),
     first: page === 1,
-    last: page === totalPages,
+    last: page === totalPages || totalPages === 0,
     size,
     page,
     totalElements,
