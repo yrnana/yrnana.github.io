@@ -10,7 +10,7 @@ type PageProps = {
 const PostListPage: NextPage<PageProps> = ({ postList }) => {
   return (
     <>
-      <Seo path="/" noindex />
+      <Seo path="/" />
       <PostListTemplate postList={postList} hasPagination />
     </>
   );
