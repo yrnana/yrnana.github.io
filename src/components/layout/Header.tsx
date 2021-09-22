@@ -7,7 +7,7 @@ const Header: React.VFC = () => {
     <header className="mt-4 sm:mt-6 flex flex-row items-center">
       <div className="mr-auto">
         <Link href="/">
-          <a className="text-2xl font-semibold font-mono hover:text-purple-500">
+          <a className="select-none text-2xl font-semibold font-mono hover:text-purple-500">
             {BLOG_TITLE}
           </a>
         </Link>

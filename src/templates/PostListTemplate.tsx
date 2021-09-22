@@ -19,7 +19,7 @@ const PostListTemplate: React.VFC<PostListTemplateProps> = ({
     <Layout>
       {tag && (
         <h2 className="text-center mb-10">
-          <div className="inline-block rounded-full px-6 py-4 text-2xl leading-4 font-semibold text-indigo-500 bg-indigo-100">
+          <div className="select-none inline-block rounded-full px-6 py-4 text-2xl leading-4 font-semibold text-indigo-500 bg-indigo-100">
             {tag}
           </div>
         </h2>
