@@ -10,7 +10,7 @@ type PageProps = {
 const TagsPage: NextPage<PageProps> = ({ tags }) => {
   return (
     <>
-      <Seo title="tags" path="/tags" />
+      <Seo title="tags" path="/tags" noindex />
       <TagsTemplate tags={tags} />
     </>
   );

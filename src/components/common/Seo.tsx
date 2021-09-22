@@ -7,6 +7,8 @@ export interface SeoProps {
   path?: string;
   image?: string;
   isBlogTitleDisabled?: boolean;
+  noindex?: boolean;
+  keywords?: string;
 }
 
 const Seo: React.VFC<SeoProps> = ({
@@ -15,6 +17,8 @@ const Seo: React.VFC<SeoProps> = ({
   path,
   image,
   isBlogTitleDisabled,
+  noindex,
+  keywords,
 }) => {
   const metaTitle = isBlogTitleDisabled
     ? title || BLOG_TITLE
@@ -22,7 +26,9 @@ const Seo: React.VFC<SeoProps> = ({
   return (
     <Head>
       <title>{metaTitle}</title>
+      {noindex && <meta name="robots" content="noindex" />}
       {description && <meta name="description" content={description} />}
+      {keywords && <meta name="keywords" content={keywords} />}
       <meta property="og:type" content="website" />
       {path && <meta property="og:url" content={`${BLOG_URL}${path}`} />}
       <meta property="og:title" content={metaTitle} />
