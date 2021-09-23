@@ -23,7 +23,7 @@
     "type-check": "tsc -p tsconfig.json",
     "format": "prettier --check src/ *.{js,ts,tsx,json,css}",
     "storybook": "start-storybook -p 6006 --modern",
-    "build-storybook": "build-storybook"
+    "create-post": "./scripts/create-post.sh"
   },
   "dependencies": {
     "axios": "^0.21.4",
