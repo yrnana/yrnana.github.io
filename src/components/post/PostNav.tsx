@@ -16,8 +16,8 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
   if (!previous && !next) return null;
 
   return (
-    <div className="flex justify-between mt-10">
-      <div>
+    <div className="flex mt-10">
+      <div className="max-w-2/5">
         {previous && (
           <Link
             to={`/post/${previous.slug}`}
@@ -25,7 +25,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-400 mr-1"
+              className="h-6 w-6 text-gray-400 mr-1 flex-shrink-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -44,7 +44,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
           </Link>
         )}
       </div>
-      <div className="text-right">
+      <div className="max-w-2/5 text-right ml-auto">
         {next && (
           <Link
             to={`/post/${next.slug}`}
@@ -56,7 +56,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-400 ml-1"
+              className="h-6 w-6 text-gray-400 ml-1 flex-shrink-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

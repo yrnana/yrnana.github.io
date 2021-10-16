@@ -49,6 +49,9 @@ module.exports = {
         xl: null,
         '2xl': null,
       },
+      maxWidth: {
+        '2/5': '40%',
+      },
     },
   },
   variants: {
