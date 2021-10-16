@@ -103,7 +103,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-offline`,
   ],
   flags: {
     FAST_DEV: true,
