@@ -9,7 +9,8 @@ published: true
 이런 제목을 어디서 본 것 같은데?
 라고 생각한다면 정상이다.
 
-> https://velog.io/@yrnana/Webpack-보다-더-빠른-빌드툴-Snowpack
+> [https://yrnana.github.io/post/2021-02-11-webpack-snowpack](/post/2021-02-11-webpack-snowpack)  
+> Webpack 보다 더 빠른 빌드툴, Snowpack
 
 `Vite`는 `Snowpack`과 아주 유사한 컨셉의 프론트엔드 빌드툴이다.
 `Vue.js`의 창시자로 유명한 Evan You가 개발했고 이름값을 하는 것 같다. `SvelteKit`도 `Snowpack`을 손절하고 `Vite`로 갈아탄 듯 하다 (웃픈...)

@@ -6,7 +6,7 @@ tags: [React, Table Of Contents, Intersection Observer API]
 published: true
 ---
 
-`Table Of Contents`는 목차를 의미하고, [Intersection Observer API](https://velog.io/@yrnana/Intersection-Observer-API)는 타겟요소가 상위요소(또는 viewport)와 Intersect 하는지 관찰하는 기능을 제공하는 Web API다.
+`Table Of Contents`는 목차를 의미하고, [Intersection Observer API](/post/2021-03-14-intersection-observer-api)는 타겟요소가 상위요소(또는 viewport)와 Intersect 하는지 관찰하는 기능을 제공하는 Web API다.
 
 구현해야 할 기능과 방법을 생각해보면
 

@@ -43,6 +43,7 @@ module.exports = {
     `gatsby-plugin-tsconfig-paths`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-twitter`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

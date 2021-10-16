@@ -8,7 +8,7 @@ published: true
 ---
 
 > 🚨 **Update**  
-> https://velog.io/@yrnana/Webpack-보다-더-빠른-빌드툴-Vite  
+> [https://yrnana.github.io/post/2021-05-26-webpack-vite](/post/2021-05-26-webpack-vite)  
 > `Snowpack`과 유사한 컨셉의 `Vite`를 추천하는 이유
 
 # Snowpack
