@@ -80,7 +80,10 @@ body {
   }
 
   blockquote {
-    @apply border-l-6 px-4 border-purple-400;
+    @apply border-l-6 p-4 border-purple-400 bg-gray-50;
+    > *:last-child {
+      @apply mb-0;
+    }
   }
 
   a {
