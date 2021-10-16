@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-tags-tsx",
+    "path": "/tags",
+    "result": {"data":{"allMdx":{"group":[{"fieldValue":"Hello","totalCount":1},{"fieldValue":"Markdown","totalCount":2}]}},"pageContext":{}},
+    "staticQueryHashes": ["1957264973","3849020454"]}
