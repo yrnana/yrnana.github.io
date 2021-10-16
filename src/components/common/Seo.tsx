@@ -28,7 +28,7 @@ const Seo: React.VFC<SeoProps> = ({
         site {
           siteMetadata {
             title
-            url
+            siteUrl
             defaultImage
           }
         }
@@ -37,7 +37,7 @@ const Seo: React.VFC<SeoProps> = ({
   );
 
   const blogTitle = site?.siteMetadata?.title!;
-  const blogUrl = site?.siteMetadata?.url!;
+  const blogUrl = site?.siteMetadata?.siteUrl!;
   const defaultImage = site?.siteMetadata?.defaultImage!;
 
   const url = `${blogUrl}${pathname}`;

@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     author: 'nana',
     title: 'nana.log',
-    url: 'https://yrnana.github.io',
+    siteUrl: 'https://yrnana.github.io',
     defaultImage: '/nana.log.png',
     commentIssueRepo: 'yrnana/yrnana.github.io-comment',
   },
@@ -84,6 +84,7 @@ module.exports = {
         icon: 'static/favicon.png', // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
   ],
   flags: {

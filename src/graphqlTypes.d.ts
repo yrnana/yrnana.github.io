@@ -2620,6 +2620,7 @@ enum SiteFieldsEnum {
   ChildrenParentParentChildren = 'children___parent___parent___children',
   ChildrenParentParentId = 'children___parent___parent___id',
   FlagsFastDev = 'flags___FAST_DEV',
+  FlagsParallelSourcing = 'flags___PARALLEL_SOURCING',
   Host = 'host',
   Id = 'id',
   InternalContent = 'internal___content',
@@ -2673,8 +2674,8 @@ enum SiteFieldsEnum {
   SiteMetadataCommentIssueRepo = 'siteMetadata___commentIssueRepo',
   SiteMetadataDefaultImage = 'siteMetadata___defaultImage',
   SiteMetadataDescription = 'siteMetadata___description',
+  SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataTitle = 'siteMetadata___title',
-  SiteMetadataUrl = 'siteMetadata___url',
 }
 
 type SiteFilterInput = {
@@ -2691,10 +2692,12 @@ type SiteFilterInput = {
 
 type SiteFlags = {
   FAST_DEV?: Maybe<Scalars['Boolean']>;
+  PARALLEL_SOURCING?: Maybe<Scalars['Boolean']>;
 };
 
 type SiteFlagsFilterInput = {
   FAST_DEV?: Maybe<BooleanQueryOperatorInput>;
+  PARALLEL_SOURCING?: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SiteFunction = Node & {
@@ -2989,17 +2992,13 @@ type SitePageConnectionSumArgs = {
 };
 
 type SitePageContext = {
-  id?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
-  tag?: Maybe<Scalars['String']>;
 };
 
 type SitePageContextFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
   limit?: Maybe<IntQueryOperatorInput>;
   skip?: Maybe<IntQueryOperatorInput>;
-  tag?: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePageEdge = {
@@ -3050,10 +3049,8 @@ enum SitePageFieldsEnum {
   ChildrenParentParentId = 'children___parent___parent___id',
   Component = 'component',
   ComponentChunkName = 'componentChunkName',
-  ContextId = 'context___id',
   ContextLimit = 'context___limit',
   ContextSkip = 'context___skip',
-  ContextTag = 'context___tag',
   Id = 'id',
   InternalComponentName = 'internalComponentName',
   InternalContent = 'internal___content',
@@ -3133,7 +3130,6 @@ enum SitePageFieldsEnum {
   PluginCreatorInternalType = 'pluginCreator___internal___type',
   PluginCreatorName = 'pluginCreator___name',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
-  PluginCreatorPackageJsonAuthor = 'pluginCreator___packageJson___author',
   PluginCreatorPackageJsonDependencies = 'pluginCreator___packageJson___dependencies',
   PluginCreatorPackageJsonDependenciesName = 'pluginCreator___packageJson___dependencies___name',
   PluginCreatorPackageJsonDependenciesVersion = 'pluginCreator___packageJson___dependencies___version',
@@ -3165,27 +3161,35 @@ enum SitePageFieldsEnum {
   PluginCreatorParentParentId = 'pluginCreator___parent___parent___id',
   PluginCreatorPluginFilepath = 'pluginCreator___pluginFilepath',
   PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
-  PluginCreatorPluginOptionsAnonymize = 'pluginCreator___pluginOptions___anonymize',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
   PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
+  PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
+  PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
   PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
-  PluginCreatorPluginOptionsEnableWebVitalsTracking = 'pluginCreator___pluginOptions___enableWebVitalsTracking',
+  PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
   PluginCreatorPluginOptionsExtensions = 'pluginCreator___pluginOptions___extensions',
   PluginCreatorPluginOptionsFailOnError = 'pluginCreator___pluginOptions___failOnError',
-  PluginCreatorPluginOptionsGatsbyRemarkPlugins = 'pluginCreator___pluginOptions___gatsbyRemarkPlugins',
-  PluginCreatorPluginOptionsGatsbyRemarkPluginsResolve = 'pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve',
-  PluginCreatorPluginOptionsHead = 'pluginCreator___pluginOptions___head',
+  PluginCreatorPluginOptionsFonts = 'pluginCreator___pluginOptions___fonts',
+  PluginCreatorPluginOptionsFontsFamily = 'pluginCreator___pluginOptions___fonts___family',
+  PluginCreatorPluginOptionsFontsWeights = 'pluginCreator___pluginOptions___fonts___weights',
+  PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
+  PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
   PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
+  PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
   PluginCreatorPluginOptionsLessBabel = 'pluginCreator___pluginOptions___lessBabel',
   PluginCreatorPluginOptionsMediaTypes = 'pluginCreator___pluginOptions___mediaTypes',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
-  PluginCreatorPluginOptionsPageTransitionDelay = 'pluginCreator___pluginOptions___pageTransitionDelay',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
-  PluginCreatorPluginOptionsRespectDnt = 'pluginCreator___pluginOptions___respectDNT',
   PluginCreatorPluginOptionsRoot = 'pluginCreator___pluginOptions___root',
+  PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
+  PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
   PluginCreatorPluginOptionsStripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
-  PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
+  PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
+  PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
+  PluginCreatorPluginOptionsTrackingIds = 'pluginCreator___pluginOptions___trackingIds',
   PluginCreatorResolve = 'pluginCreator___resolve',
   PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
   PluginCreatorVersion = 'pluginCreator___version',
@@ -3356,7 +3360,6 @@ enum SitePluginFieldsEnum {
   InternalType = 'internal___type',
   Name = 'name',
   NodeApIs = 'nodeAPIs',
-  PackageJsonAuthor = 'packageJson___author',
   PackageJsonDependencies = 'packageJson___dependencies',
   PackageJsonDependenciesName = 'packageJson___dependencies___name',
   PackageJsonDependenciesVersion = 'packageJson___dependencies___version',
@@ -3412,28 +3415,35 @@ enum SitePluginFieldsEnum {
   ParentParentParentId = 'parent___parent___parent___id',
   PluginFilepath = 'pluginFilepath',
   PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
-  PluginOptionsAnonymize = 'pluginOptions___anonymize',
+  PluginOptionsBackgroundColor = 'pluginOptions___background_color',
   PluginOptionsBase64Width = 'pluginOptions___base64Width',
+  PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
+  PluginOptionsCacheBustingMode = 'pluginOptions___cache_busting_mode',
+  PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
   PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
-  PluginOptionsEnableWebVitalsTracking = 'pluginOptions___enableWebVitalsTracking',
+  PluginOptionsDisplay = 'pluginOptions___display',
   PluginOptionsExtensions = 'pluginOptions___extensions',
   PluginOptionsFailOnError = 'pluginOptions___failOnError',
-  PluginOptionsGatsbyRemarkPlugins = 'pluginOptions___gatsbyRemarkPlugins',
-  PluginOptionsGatsbyRemarkPluginsOptionsMaxWidth = 'pluginOptions___gatsbyRemarkPlugins___options___maxWidth',
-  PluginOptionsGatsbyRemarkPluginsResolve = 'pluginOptions___gatsbyRemarkPlugins___resolve',
-  PluginOptionsHead = 'pluginOptions___head',
+  PluginOptionsFonts = 'pluginOptions___fonts',
+  PluginOptionsFontsFamily = 'pluginOptions___fonts___family',
+  PluginOptionsFontsWeights = 'pluginOptions___fonts___weights',
+  PluginOptionsIcon = 'pluginOptions___icon',
+  PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsIsTsx = 'pluginOptions___isTSX',
   PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
+  PluginOptionsLegacy = 'pluginOptions___legacy',
   PluginOptionsLessBabel = 'pluginOptions___lessBabel',
   PluginOptionsMediaTypes = 'pluginOptions___mediaTypes',
   PluginOptionsName = 'pluginOptions___name',
-  PluginOptionsPageTransitionDelay = 'pluginOptions___pageTransitionDelay',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
-  PluginOptionsRespectDnt = 'pluginOptions___respectDNT',
   PluginOptionsRoot = 'pluginOptions___root',
+  PluginOptionsShortName = 'pluginOptions___short_name',
+  PluginOptionsStartUrl = 'pluginOptions___start_url',
   PluginOptionsStripMetadata = 'pluginOptions___stripMetadata',
-  PluginOptionsTrackingId = 'pluginOptions___trackingId',
+  PluginOptionsThemeColor = 'pluginOptions___theme_color',
+  PluginOptionsThemeColorInHead = 'pluginOptions___theme_color_in_head',
+  PluginOptionsTrackingIds = 'pluginOptions___trackingIds',
   Resolve = 'resolve',
   SsrApIs = 'ssrAPIs',
   Version = 'version',
@@ -3492,7 +3502,6 @@ type SitePluginGroupConnectionSumArgs = {
 };
 
 type SitePluginPackageJson = {
-  author?: Maybe<Scalars['String']>;
   dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
   description?: Maybe<Scalars['String']>;
   devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
@@ -3533,7 +3542,6 @@ type SitePluginPackageJsonDevDependenciesFilterListInput = {
 };
 
 type SitePluginPackageJsonFilterInput = {
-  author?: Maybe<StringQueryOperatorInput>;
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   description?: Maybe<StringQueryOperatorInput>;
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
@@ -3561,74 +3569,78 @@ type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 type SitePluginPluginOptions = {
   allExtensions?: Maybe<Scalars['Boolean']>;
-  anonymize?: Maybe<Scalars['Boolean']>;
+  background_color?: Maybe<Scalars['String']>;
   base64Width?: Maybe<Scalars['Int']>;
+  cacheDigest?: Maybe<Scalars['String']>;
+  cache_busting_mode?: Maybe<Scalars['String']>;
+  crossOrigin?: Maybe<Scalars['String']>;
   defaultQuality?: Maybe<Scalars['Int']>;
-  enableWebVitalsTracking?: Maybe<Scalars['Boolean']>;
+  display?: Maybe<Scalars['String']>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   failOnError?: Maybe<Scalars['Boolean']>;
-  gatsbyRemarkPlugins?: Maybe<
-    Array<Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>>
-  >;
-  head?: Maybe<Scalars['Boolean']>;
+  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
+  icon?: Maybe<Scalars['String']>;
+  include_favicon?: Maybe<Scalars['Boolean']>;
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
+  legacy?: Maybe<Scalars['Boolean']>;
   lessBabel?: Maybe<Scalars['Boolean']>;
   mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   name?: Maybe<Scalars['String']>;
-  pageTransitionDelay?: Maybe<Scalars['Int']>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
-  respectDNT?: Maybe<Scalars['Boolean']>;
   root?: Maybe<Scalars['String']>;
+  short_name?: Maybe<Scalars['String']>;
+  start_url?: Maybe<Scalars['String']>;
   stripMetadata?: Maybe<Scalars['Boolean']>;
-  trackingId?: Maybe<Scalars['String']>;
+  theme_color?: Maybe<Scalars['String']>;
+  theme_color_in_head?: Maybe<Scalars['Boolean']>;
+  trackingIds?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 type SitePluginPluginOptionsFilterInput = {
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
-  anonymize?: Maybe<BooleanQueryOperatorInput>;
+  background_color?: Maybe<StringQueryOperatorInput>;
   base64Width?: Maybe<IntQueryOperatorInput>;
+  cacheDigest?: Maybe<StringQueryOperatorInput>;
+  cache_busting_mode?: Maybe<StringQueryOperatorInput>;
+  crossOrigin?: Maybe<StringQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
-  enableWebVitalsTracking?: Maybe<BooleanQueryOperatorInput>;
+  display?: Maybe<StringQueryOperatorInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
-  gatsbyRemarkPlugins?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput>;
-  head?: Maybe<BooleanQueryOperatorInput>;
+  fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
+  icon?: Maybe<StringQueryOperatorInput>;
+  include_favicon?: Maybe<BooleanQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
+  legacy?: Maybe<BooleanQueryOperatorInput>;
   lessBabel?: Maybe<BooleanQueryOperatorInput>;
   mediaTypes?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
-  pageTransitionDelay?: Maybe<IntQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
-  respectDNT?: Maybe<BooleanQueryOperatorInput>;
   root?: Maybe<StringQueryOperatorInput>;
+  short_name?: Maybe<StringQueryOperatorInput>;
+  start_url?: Maybe<StringQueryOperatorInput>;
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
-  trackingId?: Maybe<StringQueryOperatorInput>;
+  theme_color?: Maybe<StringQueryOperatorInput>;
+  theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
+  trackingIds?: Maybe<StringQueryOperatorInput>;
 };
 
-type SitePluginPluginOptionsGatsbyRemarkPlugins = {
-  options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptions>;
-  resolve?: Maybe<Scalars['String']>;
+type SitePluginPluginOptionsFonts = {
+  family?: Maybe<Scalars['String']>;
+  weights?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-type SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput = {
-  options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput>;
-  resolve?: Maybe<StringQueryOperatorInput>;
+type SitePluginPluginOptionsFontsFilterInput = {
+  family?: Maybe<StringQueryOperatorInput>;
+  weights?: Maybe<StringQueryOperatorInput>;
 };
 
-type SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput>;
-};
-
-type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
-  maxWidth?: Maybe<Scalars['Int']>;
-};
-
-type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
-  maxWidth?: Maybe<IntQueryOperatorInput>;
+type SitePluginPluginOptionsFontsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
 };
 
 type SitePluginSortInput = {
@@ -3641,8 +3653,8 @@ type SiteSiteMetadata = {
   commentIssueRepo?: Maybe<Scalars['String']>;
   defaultImage?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFilterInput = {
@@ -3650,8 +3662,8 @@ type SiteSiteMetadataFilterInput = {
   commentIssueRepo?: Maybe<StringQueryOperatorInput>;
   defaultImage?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
 };
 
 type SiteSortInput = {
@@ -3705,7 +3717,7 @@ type SeoQuery = {
         siteMetadata?:
           | {
               title?: string | null | undefined;
-              url?: string | null | undefined;
+              siteUrl?: string | null | undefined;
               defaultImage?: string | null | undefined;
             }
           | null
