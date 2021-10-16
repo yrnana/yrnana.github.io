@@ -1,6 +1,6 @@
 ---
 title: 'Markdown Test'
-date: '2021-09-21T00:56:46+09:00'
+date: '2021-01-01T00:00:00+09:00'
 excerpt: '마크다운 테스트 샘플 코드'
 tags: [Markdown]
 preview: '../assets/sample.jpg'

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { sortBy } from 'lodash-es';
 import NoData from '~/components/common/NoData';
 import Tag from './Tag';
 
@@ -8,14 +9,18 @@ export interface TagListProps {
 
 const TagList: React.VFC<TagListProps> = ({ tags }) => {
   const { m, σ } = useMemo(() => getMeanAndDeviation(tags), [tags]);
+  const sortedTags = useMemo(
+    () => sortBy(tags, (tag) => tag.fieldValue?.toLowerCase()),
+    [tags],
+  );
 
-  if (tags.length === 0) {
+  if (sortedTags.length === 0) {
     return <NoData />;
   }
 
   return (
     <div className="flex flex-col space-y-4 items-start">
-      {tags.map((tag) => (
+      {sortedTags.map((tag) => (
         <Tag
           key={tag.fieldValue}
           name={tag.fieldValue!}

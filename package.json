@@ -26,7 +26,8 @@
     "generate": "graphql-codegen",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "eslint './src/**/*.{ts,tsx}'",
-    "type-check": "tsc -p tsconfig.json"
+    "type-check": "tsc -p tsconfig.json",
+    "create-post": "./scripts/create-post.sh"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
