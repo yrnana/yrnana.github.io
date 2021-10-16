@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-archive-tsx",
     "path": "/archive",
-    "result": {"data":{"allMdx":{"group":[{"year":"2021","posts":[{"slug":"2021-10-13-oembed","frontmatter":{"title":"Oembed Support","date":"Oct 13"}},{"slug":"2021-10-11-katex-support","frontmatter":{"title":"Katex Support","date":"Oct 11"}},{"slug":"2021-10-02-hello-world","frontmatter":{"title":"Hello World","date":"Oct 02"}},{"slug":"2021-09-21-markdown-test","frontmatter":{"title":"Markdown Test","date":"Sep 20"}}]}]}},"pageContext":{}},
+    "result": {"data":{"allMdx":{"group":[{"year":"2021","posts":[{"slug":"2021-09-21-markdown-test","frontmatter":{"title":"Markdown Test","date":"Sep 20"}}]}]}},"pageContext":{}},
     "staticQueryHashes": ["1957264973","3849020454"]}
