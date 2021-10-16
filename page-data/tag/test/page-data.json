@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/test",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-08-15-testing-library","excerpt":"요점은 사용자 관점에서 테스트를 작성하자는 것이다.","frontmatter":{"title":"testing-library 사용팁","date":"2021-08-15T12:29:37+09:00","excerpt":"요점은 사용자 관점에서 테스트를 작성하자는 것이다.","tags":["test","Testing Library"]}},{"slug":"2021-02-08-imported-constant-mock","excerpt":"함수를 mock 하는 법은 많은데 의외로 import 된 상수를 mock 하는 방법을 찾기 어려웠다.\n (아니면 그냥 내가 검색을 못하는 걸 수도...) 예를 들면 아래와 같은 코드에서  modeToText  함수를 테스트 하는 경우  isProduction 를 mo…","frontmatter":{"title":"imported constant를 mock 하는 법","date":"2021-02-08T01:43:13+09:00","excerpt":null,"tags":["Jest","test"]}}]}},"pageContext":{"tag":"test"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

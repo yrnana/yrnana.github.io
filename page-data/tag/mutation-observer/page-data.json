@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/mutation-observer",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-03-14-mutation-observer","excerpt":"MutationObserver 는 DOM 변경 감시를 제공한다. DOM을 감시하다가 child 노드들이나 attributes, data 등이 변경되면 콜백을 실행한다.\n예를 들면  prefers-color-scheme  미디어쿼리가  안 먹는 브라우저  에서 다크모드…","frontmatter":{"title":"Mutation Observer","date":"2021-03-14T01:15:29+09:00","excerpt":null,"tags":["Mutation Observer","Web API"]}}]}},"pageContext":{"tag":"Mutation Observer"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/context-api",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-08-21-context-api-redux","excerpt":"context api는 글로벌 상태관리 라이브러리를 대체할 수 없고, 여전히 많은 리액트 개발자들이 redux, mobx 등을 사용하고 있다.","frontmatter":{"title":"Context API가 존재하지만 여전히 사람들이 redux와 전역 상태관리 라이브러리를 쓰는 이유","date":"2021-08-21T16:31:55+09:00","excerpt":"context api는 글로벌 상태관리 라이브러리를 대체할 수 없고, 여전히 많은 리액트 개발자들이 redux, mobx 등을 사용하고 있다.","tags":["Jotai","React","Recoil","context API","Redux"]}}]}},"pageContext":{"tag":"context API"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

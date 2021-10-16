@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/redux-saga",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-08-29-redux-saga","excerpt":"redux-saga 의 단점 생소한 generator 함수 ES6의 generator & yield는 비동기처리를 위한 함수인데 솔직히 프론트엔드 직무가 떡상한 시점에서 이미 더 간단하게 사용할 수 있는 ES7 async / await 가 등장했기 때문에 다소 생소한…","frontmatter":{"title":"redux-saga를 추천하지 않는 이유","date":"2021-08-29T15:29:45+09:00","excerpt":null,"tags":["React Query","Redux","Redux Saga"]}}]}},"pageContext":{"tag":"Redux Saga"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

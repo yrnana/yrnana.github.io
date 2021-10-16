@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/snowpack",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-02-11-webpack-snowpack","excerpt":"스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.","frontmatter":{"title":"Webpack 보다 더 빠른 빌드툴, Snowpack","date":"2021-02-11T04:03:33+09:00","excerpt":"스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.","tags":["esbuild","Snowpack"]}}]}},"pageContext":{"tag":"Snowpack"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

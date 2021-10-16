@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/javascript",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-03-14-void(0)","excerpt":"void 드물게 보이는  void(0) 은 뭘까 검색해보니 라고 한다. 재밌는건  void 0 (6 bytes)이  undefined (9 bytes)보다 바이트를 덜 먹기 때문에  uglifyjs 같은 minifier에서  undefined 를  void 0 으로 …","frontmatter":{"title":"void(0)","date":"2021-03-14T14:53:20+09:00","excerpt":null,"tags":["Javascript"]}}]}},"pageContext":{"tag":"Javascript"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

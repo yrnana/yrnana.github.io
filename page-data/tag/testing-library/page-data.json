@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/testing-library",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-08-15-testing-library","excerpt":"요점은 사용자 관점에서 테스트를 작성하자는 것이다.","frontmatter":{"title":"testing-library 사용팁","date":"2021-08-15T12:29:37+09:00","excerpt":"요점은 사용자 관점에서 테스트를 작성하자는 것이다.","tags":["test","Testing Library"]}}]}},"pageContext":{"tag":"Testing Library"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/screen-capture-api",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-03-14-screen-capture-api","excerpt":"Screen Capture API 를 통해 화면 또는 화면의 일부를 선택하고 미디어 스트림으로 캡쳐할 수 있다. 화면을 캡쳐하는 API이므로 디바이스의 input을 캡쳐하는  WebRTC API 와 구분이 필요하다. Screen Capture API 사용법 getDi…","frontmatter":{"title":"Screen Capture API","date":"2021-03-14T02:52:32+09:00","excerpt":null,"tags":["Screen Capture API","Web API"]}}]}},"pageContext":{"tag":"Screen Capture API"}},
+    "staticQueryHashes": ["1957264973","5457840"]}

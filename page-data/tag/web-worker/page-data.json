@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
+    "path": "/tag/web-worker",
+    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-03-09-web-worker-service-worker","excerpt":"브라우저는 자바스크립트를 실행하기 위해서  싱글 스레드 를 사용하므로 거대한 자바스크립트 코드를 돌리면 메인 스레드가 block 되고 사용자 경험이 악화될 것이다. 앱에서 다중 스레딩 모델을 사용하는 것 처럼, 웹에서는  Worker 를 사용해서 백그라운드 스레드에서…","frontmatter":{"title":"Web Worker와 Service Worker","date":"2021-03-09T23:15:32+09:00","excerpt":null,"tags":["Service Worker","Web Worker"]}}]}},"pageContext":{"tag":"Web Worker"}},
+    "staticQueryHashes": ["1957264973","5457840"]}
