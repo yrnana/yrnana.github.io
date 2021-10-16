@@ -17,6 +17,7 @@ module.exports = {
     },
     `gatsby-plugin-tsconfig-paths`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -75,5 +76,6 @@ module.exports = {
   ],
   flags: {
     FAST_DEV: true,
+    PARALLEL_SOURCING: true,
   },
 };

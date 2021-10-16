@@ -3,6 +3,7 @@ title: 'Markdown Test'
 date: '2021-09-21T00:56:46+09:00'
 excerpt: '마크다운 테스트 샘플 코드'
 tags: [Markdown]
+preview: '../assets/sample.jpg'
 published: true
 ---
 
@@ -140,3 +141,41 @@ console.log('코드블록');
 ```md
 [link text](https://yurinadev.github.io)
 ```
+
+# 9. Embed Support
+
+```md
+https://www.youtube.com/watch?v=XJsQY2NeQi8
+```
+
+https://www.youtube.com/watch?v=XJsQY2NeQi8
+
+```md
+https://youtu.be/PEiJNyen45c
+```
+
+https://youtu.be/PEiJNyen45c
+
+```md
+https://codesandbox.io/s/floral-framework-z1xlj
+```
+
+https://codesandbox.io/s/floral-framework-z1xlj
+
+```md
+https://twitter.com/kentcdodds/status/1445103851783082002
+```
+
+https://twitter.com/kentcdodds/status/1445103851783082002
+
+```md
+https://codepen.io/team/codepen/pen/PNaGbb
+```
+
+https://codepen.io/team/codepen/pen/PNaGbb
+
+```md
+https://testing-playground.com/gist/fb336c386145b235372a0f57d5c58205/6d13e4ee508301c8b42f9d2cc8584e70bb05fb4a
+```
+
+https://testing-playground.com/gist/fb336c386145b235372a0f57d5c58205/6d13e4ee508301c8b42f9d2cc8584e70bb05fb4a

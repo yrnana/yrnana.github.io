@@ -42,6 +42,7 @@
     "gatsby-plugin-react-helmet": "^4.14.0",
     "gatsby-plugin-sharp": "^3.14.1",
     "gatsby-plugin-tsconfig-paths": "^1.0.3",
+    "gatsby-plugin-twitter": "^3.14.0",
     "gatsby-plugin-typescript": "^3.14.0",
     "gatsby-remark-embedder": "^5.0.0",
     "gatsby-remark-images": "^5.11.0",
