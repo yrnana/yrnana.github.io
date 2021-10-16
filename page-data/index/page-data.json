@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-post-list-template-tsx",
     "path": "/",
-    "result": {"data":{"allMdx":{"nodes":[{"slug":"2021-09-21-markdown-test","excerpt":"마크다운 테스트 샘플 코드","frontmatter":{"title":"Markdown Test","date":"Sep 20, 2021","excerpt":"마크다운 테스트 샘플 코드","tags":["Markdown"]}}],"pageInfo":{"currentPage":1,"hasNextPage":false,"hasPreviousPage":false,"itemCount":1,"pageCount":1,"perPage":10,"totalCount":1}}},"pageContext":{"limit":10,"skip":0}},
+    "result": {"data":{"allMdx":{"nodes":[],"pageInfo":{"currentPage":1,"hasNextPage":false,"hasPreviousPage":false,"itemCount":0,"pageCount":0,"perPage":10,"totalCount":0}}},"pageContext":{"limit":10,"skip":0}},
     "staticQueryHashes": ["1957264973","3849020454"]}

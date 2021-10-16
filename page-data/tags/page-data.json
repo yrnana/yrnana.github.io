@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-tags-tsx",
     "path": "/tags",
-    "result": {"data":{"allMdx":{"group":[{"fieldValue":"Markdown","totalCount":1}]}},"pageContext":{}},
+    "result": {"data":{"allMdx":{"group":[]}},"pageContext":{}},
     "staticQueryHashes": ["1957264973","3849020454"]}

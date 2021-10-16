@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-archive-tsx",
     "path": "/archive",
-    "result": {"data":{"allMdx":{"group":[{"year":"2021","posts":[{"slug":"2021-09-21-markdown-test","frontmatter":{"title":"Markdown Test","date":"Sep 20"}}]}]}},"pageContext":{}},
+    "result": {"data":{"allMdx":{"group":[]}},"pageContext":{}},
     "staticQueryHashes": ["1957264973","3849020454"]}
