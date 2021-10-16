@@ -3,7 +3,7 @@ module.exports = {
     author: 'nana',
     title: 'nana.log',
     url: 'https://yrnana.github.io',
-    defaultImage: '/static/nana.log.png',
+    defaultImage: '/nana.log.png',
     commentIssueRepo: 'yrnana/yrnana.github.io-comment',
   },
   plugins: [
