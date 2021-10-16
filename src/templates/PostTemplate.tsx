@@ -4,9 +4,18 @@ import Seo from '~/components/common/Seo';
 import Layout from '~/components/layout/Layout';
 import Comments from '~/components/post/Comments';
 import Post from '~/components/post/Post';
+import PostNav, { PostNavProps } from '~/components/post/PostNav';
 
-const PostTemplate: React.VFC<PageProps<PostQuery>> = ({ data }) => {
+interface PostPageContext extends PostNavProps {
+  id: string;
+}
+
+const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
+  data,
+  pageContext,
+}) => {
   const post = data.mdx!;
+  const { previous, next } = pageContext;
 
   return (
     <Layout>
@@ -19,6 +28,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery>> = ({ data }) => {
         isBlogTitleDisabled
       />
       <Post {...post} />
+      <PostNav previous={previous} next={next} />
       <Comments />
     </Layout>
   );

@@ -26,6 +26,8 @@ body {
 
 /* 마크다운 설정 */
 .markdown {
+  min-height: 200px;
+
   & > *:first-child {
     @apply mt-0 !important;
   }

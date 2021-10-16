@@ -7,6 +7,12 @@ const templatePath = path.resolve(__dirname, 'src/templates');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
+      fragment PreviousOrNext on Mdx {
+        slug
+        frontmatter {
+          title
+        }
+      }
       query CreatePages {
         posts: allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
@@ -15,9 +21,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             frontmatter: { published: { eq: true } }
           }
         ) {
-          nodes {
-            id
-            slug
+          edges {
+            node {
+              id
+              slug
+            }
+            next {
+              ...PreviousOrNext
+            }
+            previous {
+              ...PreviousOrNext
+            }
           }
         }
         tags: allMdx(
@@ -42,7 +56,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = result?.data?.posts.nodes;
+  const posts = result.data.posts.edges;
   if (!posts) {
     return;
   }
@@ -72,12 +86,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // 2. create `post` page
   const postTemplate = path.resolve(templatePath, 'PostTemplate.tsx');
-  posts?.forEach((post) => {
+  posts.forEach((post) => {
     actions.createPage({
-      path: `/post/${post.slug}`,
+      path: `/post/${post.node.slug}`,
       component: postTemplate,
       context: {
-        id: post.id,
+        id: post.node.id,
+        next: post.previous,
+        previous: post.next,
       },
     });
   });
@@ -87,8 +103,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     templatePath,
     'PostListByTagTemplate.tsx',
   );
-  const tags = result.data?.tags.group;
-  tags?.forEach((tag) => {
+  const tags = result.data.tags.group;
+  tags.forEach((tag) => {
     const tagValue = tag.fieldValue;
     actions.createPage({
       path: `/tag/${kebabCase(tagValue)}`,
