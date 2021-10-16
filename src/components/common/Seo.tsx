@@ -48,10 +48,14 @@ const Seo: React.VFC<SeoProps> = ({
 
   return (
     <Helmet>
-      <title>{metaTitle}</title>
       <html lang="ko" />
       <meta charSet="utf-8" />
       {noindex && <meta name="robots" content="noindex" />}
+      <title>{metaTitle}</title>
+      <meta
+        name="google-site-verification"
+        content="H7DNse5ObBh-m99zO6U0iw-K6iC00p7BJxRBuWp-nyc"
+      />
       {description && <meta name="description" content={description} />}
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
