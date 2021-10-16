@@ -84,6 +84,7 @@ module.exports = {
         icon: 'static/favicon.png', // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-offline`,
   ],
   flags: {
     FAST_DEV: true,
