@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 type Maybe<T> = T | null;
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
@@ -2267,6 +2265,8 @@ type QuerySiteArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   internal?: Maybe<InternalFilterInput>;
   parent?: Maybe<NodeFilterInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
   port?: Maybe<IntQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
 };
@@ -2333,6 +2333,8 @@ type Site = Node & {
   id: Scalars['ID'];
   internal: Internal;
   parent?: Maybe<Node>;
+  pathPrefix?: Maybe<Scalars['String']>;
+  polyfill?: Maybe<Scalars['Boolean']>;
   port?: Maybe<Scalars['Int']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
 };
@@ -2669,6 +2671,8 @@ enum SiteFieldsEnum {
   ParentParentInternalType = 'parent___parent___internal___type',
   ParentParentParentChildren = 'parent___parent___parent___children',
   ParentParentParentId = 'parent___parent___parent___id',
+  PathPrefix = 'pathPrefix',
+  Polyfill = 'polyfill',
   Port = 'port',
   SiteMetadataAuthor = 'siteMetadata___author',
   SiteMetadataCommentIssueRepo = 'siteMetadata___commentIssueRepo',
@@ -2686,6 +2690,8 @@ type SiteFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   internal?: Maybe<InternalFilterInput>;
   parent?: Maybe<NodeFilterInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
   port?: Maybe<IntQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
 };
@@ -2992,13 +2998,17 @@ type SitePageConnectionSumArgs = {
 };
 
 type SitePageContext = {
+  id?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
+  tag?: Maybe<Scalars['String']>;
 };
 
 type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
   limit?: Maybe<IntQueryOperatorInput>;
   skip?: Maybe<IntQueryOperatorInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePageEdge = {
@@ -3049,8 +3059,10 @@ enum SitePageFieldsEnum {
   ChildrenParentParentId = 'children___parent___parent___id',
   Component = 'component',
   ComponentChunkName = 'componentChunkName',
+  ContextId = 'context___id',
   ContextLimit = 'context___limit',
   ContextSkip = 'context___skip',
+  ContextTag = 'context___tag',
   Id = 'id',
   InternalComponentName = 'internalComponentName',
   InternalContent = 'internal___content',
@@ -3165,9 +3177,11 @@ enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  PluginCreatorPluginOptionsCreateLinkInHead = 'pluginCreator___pluginOptions___createLinkInHead',
   PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
   PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
   PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
+  PluginCreatorPluginOptionsEntryLimit = 'pluginCreator___pluginOptions___entryLimit',
   PluginCreatorPluginOptionsExtensions = 'pluginCreator___pluginOptions___extensions',
   PluginCreatorPluginOptionsFailOnError = 'pluginCreator___pluginOptions___failOnError',
   PluginCreatorPluginOptionsFonts = 'pluginCreator___pluginOptions___fonts',
@@ -3181,8 +3195,10 @@ enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsLessBabel = 'pluginCreator___pluginOptions___lessBabel',
   PluginCreatorPluginOptionsMediaTypes = 'pluginCreator___pluginOptions___mediaTypes',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
+  PluginCreatorPluginOptionsOutput = 'pluginCreator___pluginOptions___output',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  PluginCreatorPluginOptionsQuery = 'pluginCreator___pluginOptions___query',
   PluginCreatorPluginOptionsRoot = 'pluginCreator___pluginOptions___root',
   PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
@@ -3419,9 +3435,11 @@ enum SitePluginFieldsEnum {
   PluginOptionsBase64Width = 'pluginOptions___base64Width',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
   PluginOptionsCacheBustingMode = 'pluginOptions___cache_busting_mode',
+  PluginOptionsCreateLinkInHead = 'pluginOptions___createLinkInHead',
   PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
   PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
   PluginOptionsDisplay = 'pluginOptions___display',
+  PluginOptionsEntryLimit = 'pluginOptions___entryLimit',
   PluginOptionsExtensions = 'pluginOptions___extensions',
   PluginOptionsFailOnError = 'pluginOptions___failOnError',
   PluginOptionsFonts = 'pluginOptions___fonts',
@@ -3435,8 +3453,10 @@ enum SitePluginFieldsEnum {
   PluginOptionsLessBabel = 'pluginOptions___lessBabel',
   PluginOptionsMediaTypes = 'pluginOptions___mediaTypes',
   PluginOptionsName = 'pluginOptions___name',
+  PluginOptionsOutput = 'pluginOptions___output',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
+  PluginOptionsQuery = 'pluginOptions___query',
   PluginOptionsRoot = 'pluginOptions___root',
   PluginOptionsShortName = 'pluginOptions___short_name',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
@@ -3573,9 +3593,11 @@ type SitePluginPluginOptions = {
   base64Width?: Maybe<Scalars['Int']>;
   cacheDigest?: Maybe<Scalars['String']>;
   cache_busting_mode?: Maybe<Scalars['String']>;
+  createLinkInHead?: Maybe<Scalars['Boolean']>;
   crossOrigin?: Maybe<Scalars['String']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   display?: Maybe<Scalars['String']>;
+  entryLimit?: Maybe<Scalars['Int']>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   failOnError?: Maybe<Scalars['Boolean']>;
   fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
@@ -3587,8 +3609,10 @@ type SitePluginPluginOptions = {
   lessBabel?: Maybe<Scalars['Boolean']>;
   mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   name?: Maybe<Scalars['String']>;
+  output?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  query?: Maybe<Scalars['String']>;
   root?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
@@ -3604,9 +3628,11 @@ type SitePluginPluginOptionsFilterInput = {
   base64Width?: Maybe<IntQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   cache_busting_mode?: Maybe<StringQueryOperatorInput>;
+  createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
   crossOrigin?: Maybe<StringQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   display?: Maybe<StringQueryOperatorInput>;
+  entryLimit?: Maybe<IntQueryOperatorInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
@@ -3618,8 +3644,10 @@ type SitePluginPluginOptionsFilterInput = {
   lessBabel?: Maybe<BooleanQueryOperatorInput>;
   mediaTypes?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
+  output?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  query?: Maybe<StringQueryOperatorInput>;
   root?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;

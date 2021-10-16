@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { graphql, Link } from 'gatsby';
 
 const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
@@ -15,7 +16,7 @@ const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
               to={`/post/${post.slug}`}
             >
               <span className="flex-shrink-0 w-16 text-purple-500">
-                {post.frontmatter?.date}
+                {format(new Date(post.frontmatter?.date), 'MMM dd')}
               </span>
               <span className="break-all">{post.frontmatter?.title}</span>
             </Link>
@@ -35,7 +36,7 @@ export const archiveListItemFragment = graphql`
       slug
       frontmatter {
         title
-        date(formatString: "MMM DD")
+        date
       }
     }
   }

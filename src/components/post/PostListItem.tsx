@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { graphql, Link } from 'gatsby';
 import Tag from '~/components/tag/Tag';
 
@@ -11,7 +12,9 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
       <Link to={`/post/${slug!}`} className="hover:text-purple-500">
         <h2 className="text-xl font-medium">{frontmatter?.title}</h2>
       </Link>
-      <div className="text-gray-500 mt-2">{frontmatter?.date}</div>
+      <div className="text-gray-500 mt-2">
+        {format(new Date(frontmatter?.date), 'PP')}
+      </div>
       {excerpt && <div className="mt-2">{frontmatter?.excerpt || excerpt}</div>}
       {frontmatter?.tags && (
         <div className="flex flex-row flex-wrap space-x-3 mt-3">
@@ -32,7 +35,7 @@ export const postListItemFragment = graphql`
     excerpt(pruneLength: 150, truncate: true)
     frontmatter {
       title
-      date(formatString: "MMM DD, YYYY")
+      date
       excerpt
       tags
     }

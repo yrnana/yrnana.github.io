@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -17,7 +18,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
           />
         )}
         <h1 className="text-3xl font-semibold">{title}</h1>
-        <div className="text-gray-500 mt-4">{date}</div>
+        <div className="text-gray-500 mt-4">{format(new Date(date), 'PP')}</div>
         {tags && (
           <div className="flex flex-row flex-wrap justify-center space-x-3 mt-4">
             {tags.map((tag) => (
@@ -40,7 +41,7 @@ export const postItemFragment = graphql`
     excerpt(pruneLength: 150, truncate: true)
     frontmatter {
       title
-      date(formatString: "MMM DD, YYYY")
+      date
       excerpt
       tags
       preview {
