@@ -115,7 +115,7 @@ body {
   }
 
   iframe {
-    @apply mb-4;
+    @apply mb-4 max-w-full;
   }
 }
 
