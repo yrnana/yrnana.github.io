@@ -98,7 +98,7 @@ module.exports = {
         short_name: 'nana.log',
         start_url: '/',
         background_color: '#ffffff',
-        theme_color: '#8b5cf6',
+        theme_color: '#ffffff',
         display: 'minimal-ui',
         icon: 'static/favicon.png', // This path is relative to the root of the site.
       },
