@@ -52,10 +52,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-cache-
 
-      - name: Install and Build 🔧
-        run: |
-          npm ci
-          npm run build
+      - name: Install
+        run: npm ci
+
+      - name: Build 🔧
+        run: npm run build
 
       - name: Add .nojekyll
         run: touch public/.nojekyll
