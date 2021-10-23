@@ -1,17 +1,3 @@
-const {
-  shouldTransform,
-  getYouTubeIFrameSrc,
-} = require('gatsby-remark-embedder/dist/transformers/YouTube');
-
-const youtubeTransformer = {
-  name: 'YouTube',
-  shouldTransform,
-  getHTML: (url) => {
-    const iframeSrc = getYouTubeIFrameSrc(url);
-    return `<iframe width="640" height="360" src="${iframeSrc}" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>`;
-  },
-};
-
 module.exports = {
   siteMetadata: {
     author: 'nana',
@@ -40,12 +26,7 @@ module.exports = {
         remarkPlugins: [require('remark-breaks')],
         rehypePlugins: [require('rehype-highlight')],
         gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-embedder`,
-            options: {
-              customTransformers: [youtubeTransformer],
-            },
-          },
+          `gatsby-remark-embed`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -94,8 +75,4 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
   ],
-  flags: {
-    FAST_DEV: true,
-    PARALLEL_SOURCING: true,
-  },
 };
