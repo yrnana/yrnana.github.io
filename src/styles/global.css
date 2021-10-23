@@ -76,7 +76,7 @@ body {
   pre,
   ol,
   ul {
-    @apply mb-4 text-base;
+    @apply mb-4 text-base break-all;
   }
 
   blockquote {
