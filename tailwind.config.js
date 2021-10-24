@@ -52,6 +52,10 @@ module.exports = {
       maxWidth: {
         '2/5': '40%',
       },
+      lineHeight: {
+        relaxed: '1.75',
+        inherit: 'inherit',
+      },
     },
   },
   variants: {
