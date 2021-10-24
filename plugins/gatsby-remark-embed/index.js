@@ -90,7 +90,28 @@ const twitter = {
   },
 };
 
-const transformers = [youtube, codesandbox, twitter];
+const testingLibrary = {
+  shouldTransform: (url) => {
+    return /testing-playground\.com/.test(url);
+  },
+  getHTML: async (url) => {
+    const { pathname } = new URL(url);
+    const path =
+      pathname === '/' ? '/embed' : pathname.replace('/gist/', '/embed/');
+    return `<iframe 
+      src="https://testing-playground.com${path}?panes=preview,result" 
+      height="450" 
+      width="100%" 
+      scrolling="no" 
+      frameBorder="0" 
+      allowTransparency="true" 
+      title="Testing Playground" 
+      style="overflow: hidden; display: block; width: 100%"
+    ></iframe>`.trim();
+  },
+};
+
+const transformers = [youtube, codesandbox, twitter, testingLibrary];
 
 module.exports = async ({ markdownAST, cache }) => {
   const asyncTransforms = [];
