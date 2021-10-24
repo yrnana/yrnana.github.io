@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Tag from '~/components/tag/Tag';
 
 const PostListItem: React.VFC<PostListItemFragment> = ({
@@ -15,7 +16,13 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
       <div className="text-gray-500 mt-2">
         {format(new Date(frontmatter?.date), 'PP')}
       </div>
-      {excerpt && <div className="mt-2">{frontmatter?.excerpt || excerpt}</div>}
+      <div className="mt-2 excerpt-markdown">
+        {frontmatter?.excerpt ? (
+          <MDXRenderer>{frontmatter?.excerpt}</MDXRenderer>
+        ) : (
+          excerpt
+        )}
+      </div>
       {frontmatter?.tags && (
         <div className="flex flex-row flex-wrap space-x-3 mt-3">
           {frontmatter.tags.map((tag) => (
