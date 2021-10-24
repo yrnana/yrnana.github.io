@@ -7,7 +7,7 @@ html {
 @tailwind utilities;
 
 body {
-  @apply subpixel-antialiased;
+  @apply subpixel-antialiased leading-relaxed;
 }
 
 /* selection 설정 */
@@ -41,7 +41,7 @@ body {
   h4,
   h5,
   h6 {
-    @apply mt-6 mb-4 font-semibold;
+    @apply mt-8 mb-4 font-semibold;
     & > code {
       @apply bg-gray-100 text-purple-500 px-1;
     }
@@ -76,7 +76,7 @@ body {
   pre,
   ol,
   ul {
-    @apply mb-4 text-base break-all;
+    @apply mb-4 break-all;
   }
 
   blockquote {
@@ -116,13 +116,20 @@ body {
     }
   }
 
+  iframe {
+    @apply mb-4 max-w-full;
+  }
+
   :not(pre, h1, h2, h3, h4, h5, h6) > code {
     @apply text-purple-500 bg-gray-100 text-sm px-1 py-0.5 mx-0.5;
     /* @apply border-2 border-purple-500 text-purple-500 rounded-md text-sm px-1 mx-0.5; */
   }
+}
 
-  iframe {
-    @apply mb-4 max-w-full;
+/* PostListItem의 excerpt code render */
+.excerpt-markdown {
+  :not(pre, h1, h2, h3, h4, h5, h6) > code {
+    @apply text-purple-500 bg-gray-100 text-sm px-1 py-0.5 mx-0.5;
   }
 }
 
