@@ -16,14 +16,15 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
 }) => {
   const post = data.mdx!;
   const { previous, next } = pageContext;
+  const { title, excerpt, preview, tags } = post.frontmatter!;
 
   return (
     <Layout>
       <Seo
-        title={post.frontmatter?.title}
-        description={post.frontmatter?.excerpt || post.excerpt}
-        image={getSrc(post.frontmatter?.preview as ImageDataLike)}
-        keywords={post.frontmatter?.tags?.join(',')}
+        title={title}
+        description={excerpt?.rawBody || post.excerpt}
+        image={getSrc(preview as ImageDataLike)}
+        keywords={tags?.join(',')}
         type="article"
         isBlogTitleDisabled
       />
