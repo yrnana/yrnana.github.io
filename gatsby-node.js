@@ -152,46 +152,58 @@ exports.onCreateBabelConfig = ({ actions }) => {
 
 /** @type {import('gatsby').GatsbyNode['createSchemaCustomization']} */
 exports.createSchemaCustomization = ({
-  actions: { createTypes, createFieldExtension },
+  actions,
+  schema,
   createContentDigest,
 }) => {
-  createFieldExtension({
-    name: 'mdx',
-    extend() {
-      return {
-        type: 'String',
-        resolve(source, args, context, info) {
-          // Grab field
-          const value = source[info.fieldName];
-          if (typeof value === 'undefined') {
-            return null;
-          }
-          // Isolate MDX
-          const mdxType = info.schema.getType('Mdx');
-          // Grab just the body contents of what MDX generates
-          const { resolve } = mdxType.getFields().body;
-          return resolve(
-            {
-              rawBody: value,
-              internal: {
-                contentDigest: createContentDigest(value), // Used for caching
+  const { createTypes } = actions;
+  const typeDefs = [
+    `type Mdx implements Node @infer {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter @infer {
+      title: String!
+      date: Date!
+      excerpt: ExcerptJson
+      tags: [String]
+      preview: File
+      published: Boolean!
+    }
+    type ExcerptJson @dontInfer {
+      rawBody: String
+      body: String
+    }`,
+    schema.buildObjectType({
+      name: 'Frontmatter',
+      fields: {
+        excerpt: {
+          type: 'ExcerptJson',
+          resolve: (source, args, context, info) => {
+            const value = source.excerpt;
+            if (typeof value === 'undefined') {
+              return null;
+            }
+            const mdxType = info.schema.getType('Mdx');
+            const { resolve } = mdxType.getFields().body;
+            const rendered = resolve(
+              {
+                rawBody: value,
+                internal: {
+                  contentDigest: createContentDigest(value), // Used for caching
+                },
               },
-            },
-            args,
-            context,
-            info,
-          );
+              args,
+              context,
+              info,
+            );
+            return {
+              rawBody: value,
+              body: rendered,
+            };
+          },
         },
-      };
-    },
-  });
-
-  createTypes(`
-    type Mdx implements Node {
-      frontmatter: MdxFrontmatter
-    }
-    type MdxFrontmatter {
-      excerpt: String @mdx
-    }
-  `);
+      },
+    }),
+  ];
+  createTypes(typeDefs);
 };

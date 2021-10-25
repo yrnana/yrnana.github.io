@@ -86,7 +86,11 @@ const twitter = {
         link_color: '#8b5cf6',
       },
     });
-    return data.html;
+    return data.html
+      .replace(/\?ref_src=twsrc.*?fw/g, '')
+      .replace(/\n/g, '<br />')
+      .replace(/<br>/g, '<br />')
+      .trim();
   },
 };
 

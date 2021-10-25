@@ -17,8 +17,8 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
         {format(new Date(frontmatter?.date), 'PP')}
       </div>
       <div className="mt-2 excerpt-markdown">
-        {frontmatter?.excerpt ? (
-          <MDXRenderer>{frontmatter?.excerpt}</MDXRenderer>
+        {frontmatter?.excerpt?.body ? (
+          <MDXRenderer>{frontmatter.excerpt.body}</MDXRenderer>
         ) : (
           excerpt
         )}
@@ -43,8 +43,11 @@ export const postListItemFragment = graphql`
     frontmatter {
       title
       date
-      excerpt
       tags
+      excerpt {
+        body
+        rawBody
+      }
     }
   }
 `;

@@ -139,7 +139,7 @@ function InputWrapper({ children }) {
 
 상위 컴포넌트가 변경되어도 리렌더링이 되지 않는 `children props`의 특성을 활용할 수 있을 것 같다. `React.createElement`의 세번째 인자로 넘기는 값이고, 이 역시 얕은비교를 통해 리렌더링 여부를 결정하기 때문이다.
 
-<!-- https://twitter.com/cherthedev/status/1141706784178167810 -->
+https://twitter.com/cherthedev/status/1141706784178167810
 
 > 리렌더링을 막기 위해 메모를 하거나 얕은 비교를 하는 것 보다, `state`의 위치를 확인하고 그냥 `state`를 내리는게 최고의 방법일 수도 있다!
 

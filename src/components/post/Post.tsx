@@ -13,7 +13,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
         {preview && (
           <GatsbyImage
             image={getImage(preview?.childImageSharp?.gatsbyImageData)!}
-            alt={title!}
+            alt={title}
             className="mb-10"
           />
         )}
@@ -42,8 +42,11 @@ export const postItemFragment = graphql`
     frontmatter {
       title
       date
-      excerpt
       tags
+      excerpt {
+        body
+        rawBody
+      }
       preview {
         childImageSharp {
           gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
