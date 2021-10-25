@@ -166,7 +166,6 @@ exports.createSchemaCustomization = ({
       date: Date!
       excerpt: ExcerptJson
       tags: [String]
-      preview: File
       published: Boolean!
     }
     type ExcerptJson @dontInfer {

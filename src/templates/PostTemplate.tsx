@@ -23,7 +23,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
       <Seo
         title={title}
         description={excerpt?.rawBody || post.excerpt}
-        image={getSrc(preview as ImageDataLike)}
+        image={preview ? getSrc(preview as ImageDataLike) : undefined}
         keywords={tags?.join(',')}
         type="article"
         isBlogTitleDisabled
