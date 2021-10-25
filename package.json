@@ -72,6 +72,7 @@
     "@types/react-dom": "^17.0.10",
     "@types/react-helmet": "^6.1.4",
     "autoprefixer": "^10.3.7",
+    "babel-eslint": "^10.1.0",
     "eslint-config-react-app": "^6.0.0",
     "husky": "^7.0.4",
     "postcss": "^8.3.11",
