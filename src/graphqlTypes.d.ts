@@ -1098,7 +1098,7 @@ type Frontmatter = {
   excerpt?: Maybe<ExcerptJson>;
   preview?: Maybe<File>;
   published: Scalars['Boolean'];
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  tags?: Maybe<Array<Scalars['String']>>;
   title: Scalars['String'];
 };
 
@@ -3526,7 +3526,7 @@ type PostItemFragment = {
     | {
         title: string;
         date: any;
-        tags?: Array<string | null | undefined> | null | undefined;
+        tags?: Array<string> | null | undefined;
         excerpt?:
           | {
               body?: string | null | undefined;
@@ -3550,7 +3550,7 @@ type PostListItemFragment = {
     | {
         title: string;
         date: any;
-        tags?: Array<string | null | undefined> | null | undefined;
+        tags?: Array<string> | null | undefined;
         excerpt?:
           | {
               body?: string | null | undefined;

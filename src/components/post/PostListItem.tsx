@@ -26,7 +26,7 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
       {frontmatter?.tags && (
         <div className="flex flex-row flex-wrap space-x-3 mt-3">
           {frontmatter.tags.map((tag) => (
-            <Tag key={tag} name={tag!} color="purple" />
+            <Tag key={tag} name={tag} color="purple" />
           ))}
         </div>
       )}

@@ -22,7 +22,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
         {tags && (
           <div className="flex flex-row flex-wrap justify-center space-x-3 mt-4">
             {tags.map((tag) => (
-              <Tag key={tag} name={tag!} color="purple" />
+              <Tag key={tag} name={tag} color="purple" />
             ))}
           </div>
         )}
