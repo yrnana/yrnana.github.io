@@ -116,17 +116,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-/** @type {import('gatsby').GatsbyNode['onCreateNode']} */
-exports.onCreateNode = ({ node, actions }) => {
-  if (node.internal.type === 'Mdx' && node.frontmatter) {
-    actions.createNodeField({
-      node,
-      name: 'year',
-      value: new Date(node.frontmatter.date).getFullYear(),
-    });
-  }
-};
-
 /** @type {import('gatsby').GatsbyNode['onCreatePage']} */
 exports.onCreatePage = ({ page, actions }) => {
   // remove trailing slash
@@ -151,58 +140,68 @@ exports.onCreateBabelConfig = ({ actions }) => {
 };
 
 /** @type {import('gatsby').GatsbyNode['createSchemaCustomization']} */
-exports.createSchemaCustomization = ({
-  actions,
-  schema,
-  createContentDigest,
-}) => {
+exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
-  const typeDefs = [
-    `type Mdx implements Node @infer {
+
+  const typeDefs = `
+    type Mdx implements Node {
+      slug: String!
       frontmatter: Frontmatter
     }
-    type Frontmatter @infer {
+    type Frontmatter {
       title: String!
-      date: Date!
+      date: Date! @dateformat
       excerpt: ExcerptJson
-      tags: [String]
+      tags: [String!]
+      preview: File @fileByRelativePath
       published: Boolean!
+      year: Int!
     }
     type ExcerptJson @dontInfer {
       rawBody: String
       body: String
-    }`,
-    schema.buildObjectType({
-      name: 'Frontmatter',
-      fields: {
-        excerpt: {
-          type: 'ExcerptJson',
-          resolve: (source, args, context, info) => {
-            const value = source.excerpt;
-            if (typeof value === 'undefined') {
-              return null;
-            }
-            const mdxType = info.schema.getType('Mdx');
-            const { resolve } = mdxType.getFields().body;
-            const rendered = resolve(
-              {
-                rawBody: value,
-                internal: {
-                  contentDigest: createContentDigest(value), // Used for caching
-                },
-              },
-              args,
-              context,
-              info,
-            );
-            return {
+    }
+  `;
+
+  createTypes(typeDefs);
+};
+
+/** @type {import('gatsby').GatsbyNode['createResolvers']} */
+exports.createResolvers = ({ createResolvers, createContentDigest }) => {
+  createResolvers({
+    Frontmatter: {
+      excerpt: {
+        type: `ExcerptJson`,
+        resolve(source, args, context, info) {
+          const value = source.excerpt;
+          if (typeof value === 'undefined') {
+            return null;
+          }
+          const mdxType = info.schema.getType('Mdx');
+          const { resolve } = mdxType.getFields().body;
+          const rendered = resolve(
+            {
               rawBody: value,
-              body: rendered,
-            };
-          },
+              internal: {
+                contentDigest: createContentDigest(value), // Used for caching
+              },
+            },
+            args,
+            context,
+            info,
+          );
+          return {
+            rawBody: value,
+            body: rendered,
+          };
         },
       },
-    }),
-  ];
-  createTypes(typeDefs);
+      year: {
+        type: `Int!`,
+        resolve(source) {
+          return new Date(source.date).getFullYear();
+        },
+      },
+    },
+  });
 };

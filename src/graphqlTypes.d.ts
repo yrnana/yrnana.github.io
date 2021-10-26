@@ -634,7 +634,6 @@ enum FileFieldsEnum {
   ChildMdxChildrenParentChildren = 'childMdx___children___parent___children',
   ChildMdxChildrenParentId = 'childMdx___children___parent___id',
   ChildMdxExcerpt = 'childMdx___excerpt',
-  ChildMdxFieldsYear = 'childMdx___fields___year',
   ChildMdxFileAbsolutePath = 'childMdx___fileAbsolutePath',
   ChildMdxFrontmatterDate = 'childMdx___frontmatter___date',
   ChildMdxFrontmatterExcerptBody = 'childMdx___frontmatter___excerpt___body',
@@ -680,6 +679,7 @@ enum FileFieldsEnum {
   ChildMdxFrontmatterPublished = 'childMdx___frontmatter___published',
   ChildMdxFrontmatterTags = 'childMdx___frontmatter___tags',
   ChildMdxFrontmatterTitle = 'childMdx___frontmatter___title',
+  ChildMdxFrontmatterYear = 'childMdx___frontmatter___year',
   ChildMdxHeadings = 'childMdx___headings',
   ChildMdxHeadingsDepth = 'childMdx___headings___depth',
   ChildMdxHeadingsValue = 'childMdx___headings___value',
@@ -805,7 +805,6 @@ enum FileFieldsEnum {
   ChildrenMdxChildrenParentChildren = 'childrenMdx___children___parent___children',
   ChildrenMdxChildrenParentId = 'childrenMdx___children___parent___id',
   ChildrenMdxExcerpt = 'childrenMdx___excerpt',
-  ChildrenMdxFieldsYear = 'childrenMdx___fields___year',
   ChildrenMdxFileAbsolutePath = 'childrenMdx___fileAbsolutePath',
   ChildrenMdxFrontmatterDate = 'childrenMdx___frontmatter___date',
   ChildrenMdxFrontmatterExcerptBody = 'childrenMdx___frontmatter___excerpt___body',
@@ -851,6 +850,7 @@ enum FileFieldsEnum {
   ChildrenMdxFrontmatterPublished = 'childrenMdx___frontmatter___published',
   ChildrenMdxFrontmatterTags = 'childrenMdx___frontmatter___tags',
   ChildrenMdxFrontmatterTitle = 'childrenMdx___frontmatter___title',
+  ChildrenMdxFrontmatterYear = 'childrenMdx___frontmatter___year',
   ChildrenMdxHeadings = 'childrenMdx___headings',
   ChildrenMdxHeadingsDepth = 'childrenMdx___headings___depth',
   ChildrenMdxHeadingsValue = 'childrenMdx___headings___value',
@@ -1100,6 +1100,14 @@ type Frontmatter = {
   published: Scalars['Boolean'];
   tags?: Maybe<Array<Scalars['String']>>;
   title: Scalars['String'];
+  year: Scalars['Int'];
+};
+
+type FrontmatterDateArgs = {
+  difference?: Maybe<Scalars['String']>;
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 type FrontmatterFilterInput = {
@@ -1109,6 +1117,7 @@ type FrontmatterFilterInput = {
   published?: Maybe<BooleanQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
+  year?: Maybe<IntQueryOperatorInput>;
 };
 
 enum GatsbyImageFormat {
@@ -1642,7 +1651,6 @@ type Mdx = Node & {
   body: Scalars['String'];
   children: Array<Node>;
   excerpt: Scalars['String'];
-  fields?: Maybe<MdxFields>;
   fileAbsolutePath: Scalars['String'];
   frontmatter?: Maybe<Frontmatter>;
   headings?: Maybe<Array<Maybe<MdxHeadingMdx>>>;
@@ -1652,7 +1660,7 @@ type Mdx = Node & {
   mdxAST?: Maybe<Scalars['JSON']>;
   parent?: Maybe<Node>;
   rawBody: Scalars['String'];
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   tableOfContents?: Maybe<Scalars['JSON']>;
   timeToRead?: Maybe<Scalars['Int']>;
   wordCount?: Maybe<MdxWordCount>;
@@ -1711,10 +1719,6 @@ type MdxEdge = {
   previous?: Maybe<Mdx>;
 };
 
-type MdxFields = {
-  year?: Maybe<Scalars['Float']>;
-};
-
 enum MdxFieldsEnum {
   Body = 'body',
   Children = 'children',
@@ -1757,7 +1761,6 @@ enum MdxFieldsEnum {
   ChildrenParentParentChildren = 'children___parent___parent___children',
   ChildrenParentParentId = 'children___parent___parent___id',
   Excerpt = 'excerpt',
-  FieldsYear = 'fields___year',
   FileAbsolutePath = 'fileAbsolutePath',
   FrontmatterDate = 'frontmatter___date',
   FrontmatterExcerptBody = 'frontmatter___excerpt___body',
@@ -1845,6 +1848,7 @@ enum MdxFieldsEnum {
   FrontmatterPublished = 'frontmatter___published',
   FrontmatterTags = 'frontmatter___tags',
   FrontmatterTitle = 'frontmatter___title',
+  FrontmatterYear = 'frontmatter___year',
   Headings = 'headings',
   HeadingsDepth = 'headings___depth',
   HeadingsValue = 'headings___value',
@@ -1906,15 +1910,10 @@ enum MdxFieldsEnum {
   WordCountWords = 'wordCount___words',
 }
 
-type MdxFieldsFilterInput = {
-  year?: Maybe<FloatQueryOperatorInput>;
-};
-
 type MdxFilterInput = {
   body?: Maybe<StringQueryOperatorInput>;
   children?: Maybe<NodeFilterListInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<MdxFieldsFilterInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<FrontmatterFilterInput>;
   headings?: Maybe<MdxHeadingMdxFilterListInput>;
@@ -2243,7 +2242,6 @@ type QueryMdxArgs = {
   body?: Maybe<StringQueryOperatorInput>;
   children?: Maybe<NodeFilterListInput>;
   excerpt?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<MdxFieldsFilterInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<FrontmatterFilterInput>;
   headings?: Maybe<MdxHeadingMdxFilterListInput>;
@@ -3445,7 +3443,7 @@ type WebPOptions = {
 };
 
 type PreviousOrNextFragment = {
-  slug?: string | null | undefined;
+  slug: string;
   frontmatter?: { title: string } | null | undefined;
 };
 
@@ -3454,7 +3452,7 @@ type CreatePagesQueryVariables = Exact<{ [key: string]: never }>;
 type CreatePagesQuery = {
   posts: {
     edges: Array<{
-      node: { id: string; slug?: string | null | undefined };
+      node: { id: string; slug: string };
       next?: PreviousOrNextFragment | null | undefined;
       previous?: PreviousOrNextFragment | null | undefined;
     }>;
@@ -3465,7 +3463,7 @@ type CreatePagesQuery = {
 type ArchiveListItemFragment = {
   year?: string | null | undefined;
   posts: Array<{
-    slug?: string | null | undefined;
+    slug: string;
     frontmatter?: { title: string; date: any } | null | undefined;
   }>;
 };
@@ -3544,7 +3542,7 @@ type PostItemFragment = {
 };
 
 type PostListItemFragment = {
-  slug?: string | null | undefined;
+  slug: string;
   excerpt: string;
   frontmatter?:
     | {

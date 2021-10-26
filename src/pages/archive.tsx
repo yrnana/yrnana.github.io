@@ -23,7 +23,7 @@ export const query = graphql`
         frontmatter: { published: { eq: true } }
       }
     ) {
-      group(field: fields___year) {
+      group(field: frontmatter___year) {
         ...ArchiveListItem
       }
     }
