@@ -1,7 +1,8 @@
 const path = require(`path`);
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { kebabCase } = require('lodash');
 
-const templatePath = path.resolve(__dirname, 'src/templates');
+const templatePath = path.resolve(process.cwd(), 'src/templates');
 
 /** @type {import('gatsby').GatsbyNode['createPages']} */
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -116,18 +117,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-/** @type {import('gatsby').GatsbyNode['onCreatePage']} */
-exports.onCreatePage = ({ page, actions }) => {
-  // remove trailing slash
-  const newPage = Object.assign({}, page, {
-    path: page.path === '/' ? page.path : page.path.replace(/\/$/, ''),
-  });
-  if (newPage.path !== page.path) {
-    actions.deletePage(page);
-    actions.createPage(newPage);
-  }
-};
-
 /** @type {import('gatsby').GatsbyNode['onCreateBabelConfig']} */
 exports.onCreateBabelConfig = ({ actions }) => {
   // support jsx transform
@@ -135,6 +124,20 @@ exports.onCreateBabelConfig = ({ actions }) => {
     name: 'babel-preset-gatsby',
     options: {
       reactRuntime: 'automatic',
+    },
+  });
+};
+
+/** @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']} */
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      plugins: [
+        new TsconfigPathsPlugin({
+          configFile: path.resolve(process.cwd(), 'tsconfig.json'),
+          extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        }),
+      ],
     },
   });
 };
