@@ -15,7 +15,7 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-tsconfig-paths`,
+    `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-twitter`,
     `gatsby-plugin-catch-links`,
