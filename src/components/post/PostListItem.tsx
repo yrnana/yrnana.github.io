@@ -10,7 +10,7 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
 }) => {
   return (
     <div>
-      <Link to={`/post/${slug!}`} className="hover:text-purple-500">
+      <Link to={`/post/${slug}`} className="hover:text-purple-500">
         <h2 className="text-xl font-medium">{frontmatter?.title}</h2>
       </Link>
       <div className="text-gray-500 mt-2">
