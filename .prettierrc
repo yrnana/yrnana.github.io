@@ -7,9 +7,10 @@
   "importOrder": [
     "^react$",
     "^react-dom$",
-    "<THIRD_PARTY_MODULES>",
+    "^(?![.~]).*(?<!.css|.scss)$",
     "^~.*(?<!.css|.scss)$",
     "^\\..*(?<!.css|.scss)$",
+    "^(?![.~]).*$",
     "^~.*",
     "^\\..*",
     ".*"
