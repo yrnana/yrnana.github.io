@@ -45,6 +45,7 @@ module.exports = {
           `gatsby-remark-katex`,
           `gatsby-remark-embed`,
           `gatsby-remark-autolink-headers`,
+          `gatsby-remark-breaks`,
         ],
       },
     },

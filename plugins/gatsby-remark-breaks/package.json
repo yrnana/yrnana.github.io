@@ -1,0 +1,12 @@
+{
+  "name": "gatsby-remark-breaks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "remark-breaks": "^2.0.2"
+  },
+  "license": "MIT"
+}

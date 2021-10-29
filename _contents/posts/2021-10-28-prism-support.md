@@ -1,7 +1,7 @@
 ---
 title: 'prism support'
 date: '2021-10-28T06:00:48+09:00'
-published: false
+published: true
 ---
 
 ## Inline `Code`
@@ -436,6 +436,14 @@ $ echo 'All
 > done!'
 All
 done!
+```
+
+```shell{promptUser: root}{promptHost: localhost}
+echo $EDITOR # comment
+```
+
+```shell{promptUser: ec2-user}{promptHost: amazon.com}
+echo $EDITOR # comment
 ```
 
 ## HTTP
