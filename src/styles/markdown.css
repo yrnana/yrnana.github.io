@@ -43,7 +43,6 @@
 
   p,
   blockquote,
-  /* pre, */
   ol,
   ul {
     @apply mb-4 break-all;
