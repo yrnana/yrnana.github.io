@@ -22,7 +22,7 @@ const Tag: React.VFC<TagProps> = ({ name, color, count }) => {
 export default Tag;
 
 export const tagItemFragment = graphql`
-  fragment TagItem on MdxGroupConnection {
+  fragment TagItem on MarkdownRemarkGroupConnection {
     fieldValue
     totalCount
   }

@@ -14,7 +14,7 @@ const PostListByTagTemplate: React.VFC<
           {pageContext.tag}
         </div>
       </h2>
-      <PostList posts={data.allMdx.nodes} />
+      <PostList posts={data.allMarkdownRemark.nodes} />
     </Layout>
   );
 };
@@ -23,7 +23,7 @@ export default PostListByTagTemplate;
 
 export const query = graphql`
   query PostsByTag($tag: String!) {
-    allMdx(
+    allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { glob: "**/_contents/posts/*" }
