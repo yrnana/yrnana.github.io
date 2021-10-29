@@ -376,6 +376,7 @@ code.language-scss {
   }
 }
 
+/* command line prompt */
 .command-line-prompt {
   @apply mr-4;
   & > span:before {
@@ -391,4 +392,10 @@ code.language-scss {
   & > span[data-prompt]:before {
     content: attr(data-prompt);
   }
+}
+
+/* auto link */
+.anchor.before {
+  height: 1em;
+  @apply pr-2 top-1 flex items-center;
 }
