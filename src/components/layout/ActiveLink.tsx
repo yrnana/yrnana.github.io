@@ -1,4 +1,4 @@
-import { Link, GatsbyLinkProps } from 'gatsby';
+import { GatsbyLinkProps, Link } from 'gatsby';
 
 const ActiveLink: React.VFC<GatsbyLinkProps<unknown>> = ({ to, children }) => {
   return (

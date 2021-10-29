@@ -1,4 +1,4 @@
-import { useRef, useEffect, useLayoutEffect, useState, memo } from 'react';
+import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
 

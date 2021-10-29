@@ -2,15 +2,14 @@
   "semi": true,
   "singleQuote": true,
   "trailingComma": "all",
-  "experimentalBabelParserPluginsList": ["jsx", "typescript"],
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true,
   "importOrder": [
     "^react$",
     "^react-dom$",
-    "^next.*",
-    "^(?![.~]).*(?<!.css|.scss)$",
+    "<THIRD_PARTY_MODULES>",
     "^~.*(?<!.css|.scss)$",
     "^\\..*(?<!.css|.scss)$",
-    "^(?![.~]).*$",
     "^~.*",
     "^\\..*",
     ".*"
