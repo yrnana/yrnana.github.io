@@ -36,16 +36,8 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply font-mono;
+  @apply font-mono bg-transparent text-left whitespace-pre	break-normal leading-normal;
   color: var(--foreground);
-  background: none;
-  font-size: 1em;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.5;
   tab-size: 4;
   hyphens: none;
 }
@@ -65,9 +57,7 @@ code[class*='language-'] ::selection {
 }
 
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
+  @apply my-2 mx-0 p-4 overflow-auto;
 }
 
 :not(pre) > code[class*='language-']:not(.language-text),
@@ -76,42 +66,29 @@ pre[class*='language-'] {
 }
 
 :not(pre, h1, h2, h3, h4, h5, h6) > code[class*='language-'] {
-  @apply text-sm px-1 py-0.5 mx-0.5 rounded;
-  white-space: normal;
+  @apply text-sm px-1 py-0.5 mx-0.5 rounded whitespace-normal;
 }
 
 /* line-highlight */
-.gatsby-highlight-code-line {
-  background-color: var(--current-line);
-  display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.25em solid;
-  border-left-color: var(--purple);
-}
 .gatsby-highlight {
   background-color: var(--background);
-  border-radius: 0.3em;
-  margin: 0.5em 0;
-  padding: 1em;
-  overflow: auto;
+  @apply mb-4 rounded-md p-4 overflow-auto;
   pre[class*='language-'] {
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    overflow: initial;
-    float: left;
-    min-width: 100%;
+    @apply bg-transparent m-0 p-0 overflow-auto float-left min-w-full;
   }
+}
+.gatsby-highlight-code-line {
+  @apply block -mr-4 -ml-4 pr-1 pl-3;
+  background-color: var(--current-line);
+  border-left: 0.25em solid;
+  border-left-color: var(--purple);
 }
 
 /* line-number */
 .gatsby-highlight pre[class*='language-'].line-numbers {
-  padding-left: 3em;
+  @apply pl-12;
   .line-numbers-rows {
-    width: 2em !important;
+    @apply w-8 !important;
   }
 }
 
@@ -400,11 +377,10 @@ code.language-scss {
 }
 
 .command-line-prompt {
+  @apply mr-4;
   & > span:before {
-    color: #999;
+    @apply text-gray-400 block pr-4;
     content: ' ';
-    display: block;
-    padding-right: 0.8em;
   }
   & > span[data-user]:before {
     content: '[' attr(data-user) '@' attr(data-host) '] $';
