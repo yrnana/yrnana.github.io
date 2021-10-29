@@ -1,4 +1,6 @@
 const path = require(`path`);
+const slugify = require('slugify');
+const { createFilePath } = require(`gatsby-source-filesystem`);
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { kebabCase } = require('lodash');
 
@@ -6,48 +8,46 @@ const templatePath = path.resolve(process.cwd(), 'src/templates');
 
 /** @type {import('gatsby').GatsbyNode['createPages']} */
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const result = await graphql(
-    `
-      fragment PreviousOrNext on Mdx {
-        slug
-        frontmatter {
-          title
-        }
+  const result = await graphql(`
+    fragment PreviousOrNext on MarkdownRemark {
+      slug
+      frontmatter {
+        title
       }
-      query CreatePages {
-        posts: allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: {
-            fileAbsolutePath: { glob: "**/_contents/posts/*" }
-            frontmatter: { published: { eq: true } }
-          }
-        ) {
-          edges {
-            node {
-              id
-              slug
-            }
-            next {
-              ...PreviousOrNext
-            }
-            previous {
-              ...PreviousOrNext
-            }
-          }
+    }
+    query CreatePages {
+      posts: allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: {
+          fileAbsolutePath: { glob: "**/_contents/posts/*" }
+          frontmatter: { published: { eq: true } }
         }
-        tags: allMdx(
-          filter: {
-            fileAbsolutePath: { glob: "**/_contents/posts/*" }
-            frontmatter: { published: { eq: true } }
+      ) {
+        edges {
+          node {
+            id
+            slug
           }
-        ) {
-          group(field: frontmatter___tags) {
-            fieldValue
+          next {
+            ...PreviousOrNext
+          }
+          previous {
+            ...PreviousOrNext
           }
         }
       }
-    `,
-  );
+      tags: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { glob: "**/_contents/posts/*" }
+          frontmatter: { published: { eq: true } }
+        }
+      ) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+    }
+  `);
 
   if (result.errors) {
     reporter.panicOnBuild(
@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const postTemplate = path.resolve(templatePath, 'PostTemplate.tsx');
   posts.forEach((post) => {
     actions.createPage({
-      path: `/post/${post.node.slug}`,
+      path: post.node.slug,
       component: postTemplate,
       context: {
         id: post.node.id,
@@ -147,56 +147,83 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   const typeDefs = `
-    type Mdx implements Node {
-      slug: String!
-      frontmatter: Frontmatter
-    }
-    type Frontmatter {
-      title: String!
-      date: Date! @dateformat
-      excerpt: ExcerptJson
-      tags: [String!]
-      preview: File @fileByRelativePath
-      published: Boolean!
-      year: Int!
-    }
-    type ExcerptJson @dontInfer {
-      rawBody: String
-      body: String
-    }
-  `;
+  type MarkdownRemark implements Node {
+    slug: String!
+    frontmatter: Frontmatter
+  }
+  type Frontmatter {
+    title: String!
+    date: Date! @dateformat
+    excerpt: String
+    excerptAst: JSON
+    tags: [String!]
+    preview: File @fileByRelativePath
+    published: Boolean!
+    year: Int!
+  }
+`;
 
   createTypes(typeDefs);
 };
 
 /** @type {import('gatsby').GatsbyNode['createResolvers']} */
-exports.createResolvers = ({ createResolvers, createContentDigest }) => {
+exports.createResolvers = ({
+  createResolvers,
+  getNode,
+  createContentDigest,
+}) => {
+  // create slug
+  createResolvers({
+    MarkdownRemark: {
+      slug: {
+        type: `String!`,
+        resolve(source) {
+          if (!source?.frontmatter?.title) {
+            return null;
+          }
+          const fileName = createFilePath({
+            node: source,
+            getNode,
+            basePath: `_contents/posts`,
+            trailingSlash: false,
+          }).substring(1);
+          const slug = slugify(fileName, {
+            lower: true,
+            locale: 'ko',
+          });
+          return `/post/${slug}`;
+        },
+      },
+    },
+  });
+
+  // create frontmatter.year & frontmatter.excerptAst
   createResolvers({
     Frontmatter: {
-      excerpt: {
-        type: `ExcerptJson`,
-        resolve(source, args, context, info) {
+      excerptAst: {
+        type: `JSON`,
+        async resolve(source, args, context, info) {
           const value = source.excerpt;
           if (typeof value === 'undefined') {
             return null;
           }
-          const mdxType = info.schema.getType('Mdx');
-          const { resolve } = mdxType.getFields().body;
-          const rendered = resolve(
+          const { resolve } = info.schema
+            .getType('MarkdownRemark')
+            .getFields().htmlAst;
+          const excerptAst = await resolve(
             {
-              rawBody: value,
+              rawMarkdownBody: value,
               internal: {
-                contentDigest: createContentDigest(value), // Used for caching
+                type: 'MarkdownRemark',
+                content: value,
+                contentDigest: createContentDigest(value),
               },
             },
             args,
             context,
             info,
           );
-          return {
-            rawBody: value,
-            body: rendered,
-          };
+          return excerptAst;
         },
       },
       year: {

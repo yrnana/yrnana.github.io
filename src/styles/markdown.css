@@ -1,0 +1,92 @@
+.markdown {
+  min-height: 200px;
+
+  & > *:first-child {
+    @apply mt-0 !important;
+  }
+  & > *:last-child {
+    @apply mb-0 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-8 mb-4 font-semibold;
+  }
+
+  h1 {
+    @apply text-3xl pb-2 border-b;
+  }
+
+  h2 {
+    @apply text-2xl pb-2 border-b;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-base;
+  }
+
+  h5 {
+    @apply text-sm;
+  }
+
+  h6 {
+    @apply text-sm text-gray-500;
+  }
+
+  p,
+  blockquote,
+  /* pre, */
+  ol,
+  ul {
+    @apply mb-4 break-all;
+  }
+
+  blockquote {
+    @apply border-l-6 p-4 border-purple-400 bg-gray-50;
+    > *:last-child {
+      @apply mb-0;
+    }
+  }
+
+  a {
+    @apply text-purple-500 hover:text-purple-300;
+  }
+
+  ol,
+  ul {
+    @apply pl-4;
+    li + li {
+      @apply mt-1;
+    }
+    ol,
+    ul {
+      @apply mt-1 mb-0;
+    }
+  }
+
+  ol {
+    @apply list-decimal;
+    ol {
+      @apply list-lower-roman;
+    }
+  }
+
+  ul {
+    @apply list-disc;
+    ul {
+      @apply list-circle;
+    }
+  }
+
+  iframe {
+    @apply mb-4 max-w-full;
+  }
+}
