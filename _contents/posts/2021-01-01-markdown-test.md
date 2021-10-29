@@ -117,6 +117,12 @@ published: false
 인라인 코드는 `이렇게`
 ```
 
+I can highlight `css↦.some-class { background-color: red }` with CSS syntax.
+
+```md
+I can highlight `css↦.some-class { background-color: red }` with CSS syntax.
+```
+
 ## Code Block
 
 ```js
@@ -166,7 +172,7 @@ https://codesandbox.io/s/floral-framework-z1xlj
 https://twitter.com/kentcdodds/status/1445103851783082002
 ```
 
-https://twitter.com/kentcdodds/status/1445103851783082002
+<!-- https://twitter.com/kentcdodds/status/1445103851783082002 -->
 
 ```md
 https://codepen.io/team/codepen/pen/PNaGbb
@@ -179,3 +185,25 @@ https://testing-playground.com/gist/fb336c386145b235372a0f57d5c58205/6d13e4ee508
 ```
 
 https://testing-playground.com/gist/fb336c386145b235372a0f57d5c58205/6d13e4ee508301c8b42f9d2cc8584e70bb05fb4a
+
+# 10. katex
+
+## inline
+
+$a^2 + b^2 = c^2$
+
+```md
+$a^2 + b^2 = c^2$
+```
+
+## block
+
+$$
+a^2 + b^2 = c^2
+$$
+
+```md
+$$
+a^2 + b^2 = c^2
+$$
+```

@@ -7,7 +7,7 @@ published: true
 ```tsx
 // Child.tsx
 
-import React, { useRef, useImperativeHandle, forwardedRef } from 'react';
+import React, { forwardedRef, useImperativeHandle, useRef } from 'react';
 
 interface ChildProps {}
 type InputRef = { focus: () => void } | null;
