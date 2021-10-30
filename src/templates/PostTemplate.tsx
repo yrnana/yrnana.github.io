@@ -17,6 +17,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
   const post = data.markdownRemark!;
   const { previous, next } = pageContext;
   const { title, excerpt, preview, tags } = post.frontmatter!;
+  const commentIssueRepo = data?.site?.siteMetadata?.commentIssueRepo;
 
   return (
     <Layout>
@@ -30,7 +31,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
       />
       <Post {...post} />
       <PostNav previous={previous} next={next} />
-      <Comments />
+      {commentIssueRepo && <Comments commentIssueRepo={commentIssueRepo} />}
     </Layout>
   );
 };
@@ -41,6 +42,11 @@ export const query = graphql`
   query Post($id: String!) {
     markdownRemark(id: { eq: $id }) {
       ...PostItem
+    }
+    site {
+      siteMetadata {
+        commentIssueRepo
+      }
     }
   }
 `;
