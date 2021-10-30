@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import cx from 'classnames';
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { LeftIcon, RightIcon } from '~/components/common/Icon';
 
 const pageItemClassName = 'w-10 py-2 text-center';
 const iconClassName = 'flex justify-center';
 
-const Pagination: React.VFC<PageInfo> = ({
+const Pagination: React.VFC<PaginationFragment> = ({
   currentPage,
   pageCount,
   hasPreviousPage,
@@ -123,3 +123,12 @@ function getPagination(
     page: p,
   }));
 }
+
+export const paginationFragment = graphql`
+  fragment Pagination on PageInfo {
+    currentPage
+    pageCount
+    hasNextPage
+    hasPreviousPage
+  }
+`;

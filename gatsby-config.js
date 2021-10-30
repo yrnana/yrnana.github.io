@@ -20,19 +20,32 @@ module.exports = {
     `gatsby-plugin-twitter`,
     `gatsby-plugin-catch-links`,
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: [`.mdx`, `.md`],
-        remarkPlugins: [require('remark-breaks')],
-        rehypePlugins: [require('rehype-highlight')],
-        gatsbyRemarkPlugins: [
-          `gatsby-remark-embed`,
+        footnotes: true,
+        gfm: true,
+        plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
             },
           },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              inlineCodeMarker: '↦',
+              aliases: {
+                sh: 'bash',
+              },
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          },
+          `gatsby-remark-katex`,
+          `gatsby-remark-embed`,
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-breaks`,
         ],
       },
     },

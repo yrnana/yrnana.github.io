@@ -1,5 +1,5 @@
-import { format } from 'date-fns';
 import { graphql, Link } from 'gatsby';
+import { formatDate } from '~/helpers/utils';
 
 const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
   year,
@@ -13,10 +13,10 @@ const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
           <div key={post.slug}>
             <Link
               className="inline-flex py-1 hover:text-purple-500"
-              to={`/post/${post.slug}`}
+              to={post.slug}
             >
               <span className="flex-shrink-0 w-16 text-purple-500">
-                {format(new Date(post.frontmatter?.date), 'MMM dd')}
+                {formatDate(post.frontmatter?.date, 'MMM dd')}
               </span>
               <span className="break-all">{post.frontmatter?.title}</span>
             </Link>
@@ -30,7 +30,7 @@ const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
 export default ArchiveListItem;
 
 export const archiveListItemFragment = graphql`
-  fragment ArchiveListItem on MdxGroupConnection {
+  fragment ArchiveListItem on MarkdownRemarkGroupConnection {
     year: fieldValue
     posts: nodes {
       slug

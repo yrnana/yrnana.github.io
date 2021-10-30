@@ -14,7 +14,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
   data,
   pageContext,
 }) => {
-  const post = data.mdx!;
+  const post = data.markdownRemark!;
   const { previous, next } = pageContext;
   const { title, excerpt, preview, tags } = post.frontmatter!;
 
@@ -22,7 +22,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
     <Layout>
       <Seo
         title={title}
-        description={excerpt?.rawBody || post.excerpt}
+        description={excerpt || post.excerpt!}
         image={preview ? getSrc(preview as ImageDataLike) : undefined}
         keywords={tags?.join(',')}
         type="article"
@@ -39,7 +39,7 @@ export default PostTemplate;
 
 export const query = graphql`
   query Post($id: String!) {
-    mdx(id: { eq: $id }) {
+    markdownRemark(id: { eq: $id }) {
       ...PostItem
     }
   }

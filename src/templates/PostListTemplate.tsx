@@ -5,7 +5,7 @@ import Pagination from '~/components/post/Pagination';
 import PostList from '~/components/post/PostList';
 
 const PostListTemplate: React.VFC<PageProps<PostsQuery>> = ({ data }) => {
-  const { nodes, pageInfo } = data.allMdx;
+  const { nodes, pageInfo } = data.allMarkdownRemark;
 
   return (
     <Layout>
@@ -20,7 +20,7 @@ export default PostListTemplate;
 
 export const query = graphql`
   query Posts($skip: Int!, $limit: Int!) {
-    allMdx(
+    allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { glob: "**/_contents/posts/*" }
@@ -33,13 +33,7 @@ export const query = graphql`
         ...PostListItem
       }
       pageInfo {
-        currentPage
-        hasNextPage
-        hasPreviousPage
-        itemCount
-        pageCount
-        perPage
-        totalCount
+        ...Pagination
       }
     }
   }

@@ -7,7 +7,7 @@ const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
   return (
     <Layout>
       <Seo title="archive" noindex />
-      <ArchiveList postGroups={data.allMdx.group} />
+      <ArchiveList postGroups={data.allMarkdownRemark.group} />
     </Layout>
   );
 };
@@ -16,7 +16,7 @@ export default ArchivePage;
 
 export const query = graphql`
   query Archive {
-    allMdx(
+    allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { glob: "**/_contents/posts/*" }

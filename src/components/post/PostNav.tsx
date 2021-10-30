@@ -20,7 +20,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
       <div className="max-w-2/5">
         {previous && (
           <Link
-            to={`/post/${previous.slug}`}
+            to={previous.slug}
             className="hover:text-purple-700 flex items-center"
           >
             <svg
@@ -47,7 +47,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
       <div className="max-w-2/5 text-right ml-auto">
         {next && (
           <Link
-            to={`/post/${next.slug}`}
+            to={next.slug}
             className="hover:text-purple-700 flex items-center"
           >
             <div>

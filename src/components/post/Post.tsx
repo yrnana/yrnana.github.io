@@ -1,10 +1,9 @@
-import { format } from 'date-fns';
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Tag from '~/components/tag/Tag';
+import { formatDate, renderAst } from '~/helpers/utils';
 
-const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
+const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
   const { title, date, preview, tags } = frontmatter!;
 
   return (
@@ -18,7 +17,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
           />
         )}
         <h1 className="text-3xl font-semibold">{title}</h1>
-        <div className="text-gray-500 mt-4">{format(new Date(date), 'PP')}</div>
+        <div className="text-gray-500 mt-4">{formatDate(date)}</div>
         {tags && (
           <div className="flex flex-row flex-wrap justify-center space-x-3 mt-4">
             {tags.map((tag) => (
@@ -27,9 +26,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
           </div>
         )}
       </header>
-      <div className="markdown">
-        <MDXRenderer>{body}</MDXRenderer>
-      </div>
+      <div className="markdown">{renderAst(htmlAst)}</div>
     </article>
   );
 };
@@ -37,22 +34,19 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, body }) => {
 export default Post;
 
 export const postItemFragment = graphql`
-  fragment PostItem on Mdx {
+  fragment PostItem on MarkdownRemark {
+    htmlAst
     excerpt(pruneLength: 150, truncate: true)
     frontmatter {
       title
       date
       tags
-      excerpt {
-        body
-        rawBody
-      }
+      excerpt
       preview {
         childImageSharp {
           gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
         }
       }
     }
-    body
   }
 `;
