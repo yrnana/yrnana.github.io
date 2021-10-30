@@ -1,15 +1,13 @@
-import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 
 // ssr support
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const Comments: React.VFC = memo(() => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     const container = containerRef.current;
     if (container) {
       // observe container node
