@@ -8,15 +8,13 @@ const Comments: React.VFC = () => {
     if (container) {
       // add utteranc comment
       const script = document.createElement('script');
-      script.src = 'https://utteranc.es/client.js';
-      script.async = true;
-      // script.setAttribute('src', 'https://utteranc.es/client.js');
+      script.setAttribute('src', 'https://utteranc.es/client.js');
       script.setAttribute('repo', 'yrnana/yrnana.github.io');
       script.setAttribute('issue-term', 'pathname');
       script.setAttribute('label', 'comment');
       script.setAttribute('theme', 'github-light');
       script.setAttribute('crossorigin', 'anonymous');
-      // script.setAttribute('async', 'true');
+      script.setAttribute('async', 'true');
       container.appendChild(script);
       return () => {
         container.innerHTML = '';
