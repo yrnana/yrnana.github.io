@@ -25,7 +25,7 @@
   }
 
   :not(pre, h1, h2, h3, h4, h5, h6) > code.language-text {
-    @apply text-purple-500 bg-gray-100;
+    @apply text-purple-500 bg-gray-100 break-all;
   }
 }
 
@@ -36,7 +36,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply font-mono bg-transparent text-left whitespace-pre	break-normal leading-normal;
+  @apply font-mono bg-transparent text-left whitespace-pre break-normal leading-normal;
   color: var(--foreground);
   tab-size: 4;
   hyphens: none;
