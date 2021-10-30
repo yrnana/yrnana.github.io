@@ -53,13 +53,13 @@ jobs:
             ${{ runner.os }}-gatsby-cache-
 
       - name: Install
-        run:
-          - cd ${{ github.workspace }}/plugins/gatsby-remark-breaks
-          - npm install
-          - cd ${{ github.workspace }}/plugins/gatsby-remark-embed
-          - npm install
-          - cd ${{ github.workspace }}
-          - npm ci
+        run: |
+          cd ${{ github.workspace }}/plugins/gatsby-remark-breaks
+          npm install
+          cd ${{ github.workspace }}/plugins/gatsby-remark-embed
+          npm install
+          cd ${{ github.workspace }}
+          npm ci
 
       - name: Build 🔧
         run: npm run build
