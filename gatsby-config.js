@@ -4,7 +4,6 @@ module.exports = {
     title: 'nana.log',
     siteUrl: 'https://yrnana.github.io',
     defaultImage: '/nana.log.png',
-    commentIssueRepo: 'yrnana/yrnana.github.io-comment',
   },
   plugins: [
     {
