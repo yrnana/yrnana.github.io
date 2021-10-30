@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const Comments: React.VFC = () => {
+const Comments: React.VFC<{ id: string }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const Comments: React.VFC = () => {
       const script = document.createElement('script');
       script.setAttribute('src', 'https://utteranc.es/client.js');
       script.setAttribute('repo', 'yrnana/yrnana.github.io');
-      script.setAttribute('issue-term', 'pathname');
+      script.setAttribute('issue-term', id);
       script.setAttribute('label', 'comment');
       script.setAttribute('theme', 'github-light');
       script.setAttribute('crossorigin', 'anonymous');
@@ -20,7 +20,7 @@ const Comments: React.VFC = () => {
         container.innerHTML = '';
       };
     }
-  }, []);
+  }, [id]);
 
   return (
     <div

@@ -15,7 +15,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
   pageContext,
 }) => {
   const post = data.markdownRemark!;
-  const { previous, next } = pageContext;
+  const { previous, next, id } = pageContext;
   const { title, excerpt, preview, tags } = post.frontmatter!;
 
   return (
@@ -30,7 +30,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
       />
       <Post {...post} />
       <PostNav previous={previous} next={next} />
-      <Comments />
+      <Comments id={id} />
     </Layout>
   );
 };
