@@ -3466,6 +3466,9 @@ type CreatePagesQuery = {
     }>;
   };
   tags: { group: Array<{ fieldValue?: string | null | undefined }> };
+  markdowns: {
+    nodes: Array<{ id: string; name: string; relativeDirectory: string }>;
+  };
 };
 
 type ArchiveListItemFragment = {
@@ -3578,6 +3581,23 @@ type ArchiveQuery = {
 type TagsQueryVariables = Exact<{ [key: string]: never }>;
 
 type TagsQuery = { allMarkdownRemark: { group: Array<TagItemFragment> } };
+
+type MarkdownQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+type MarkdownQuery = {
+  markdownRemark?:
+    | {
+        htmlAst?: any | null | undefined;
+        frontmatter?:
+          | { title: string; excerpt?: string | null | undefined }
+          | null
+          | undefined;
+      }
+    | null
+    | undefined;
+};
 
 type PostsByTagQueryVariables = Exact<{
   tag: Scalars['String'];

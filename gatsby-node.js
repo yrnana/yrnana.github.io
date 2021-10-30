@@ -46,6 +46,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           fieldValue
         }
       }
+      markdowns: allFile(
+        filter: { sourceInstanceName: { eq: "pages" }, extension: { eq: "md" } }
+      ) {
+        nodes {
+          id
+          name
+          relativeDirectory
+          childMarkdownRemark {
+            id
+          }
+        }
+      }
     }
   `);
 
@@ -57,12 +69,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
+  // 1. create `md` page (get from `pages` directory)
+  const markdownTemplate = path.resolve(templatePath, 'MarkdownTemplate.tsx');
+  const markdowns = result.data.markdowns.nodes;
+  markdowns.forEach(({ id, name, relativeDirectory, childMarkdownRemark }) => {
+    actions.createPage({
+      path: relativeDirectory ? `${relativeDirectory}/${name}` : name,
+      component: markdownTemplate,
+      context: {
+        id: childMarkdownRemark.id,
+      },
+    });
+  });
+
   const posts = result.data.posts.edges;
   if (!posts) {
     return;
   }
 
-  // 1. create `postList` page
+  // 2. create `postList` page
   const postListTemplate = path.resolve(templatePath, 'PostListTemplate.tsx');
   const perPage = 10;
   const pageCount = Math.ceil(posts.length / perPage);
@@ -85,7 +110,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  // 2. create `post` page
+  // 3. create `post` page
   const postTemplate = path.resolve(templatePath, 'PostTemplate.tsx');
   posts.forEach((post) => {
     actions.createPage({
@@ -99,7 +124,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  // 3. create `postListByTag` page
+  // 4. create `postListByTag` page
   const postListByTagTemplate = path.resolve(
     templatePath,
     'PostListByTagTemplate.tsx',

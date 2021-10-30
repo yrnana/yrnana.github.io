@@ -1,12 +1,7 @@
-import { graphql } from 'gatsby';
-import Seo from '~/components/common/Seo';
-import Template from '~/templates/MarkdownTemplate';
-export default Template;
-
-<Seo
-  title="about"
-  description="카카오페이에서 프론트엔드 개발자로 근무합니다. Javascript와 React.js 전반에 관심이 많습니다. Performance optimization 을 중요하게 생각합니다."
-/>
+---
+title: 'about'
+excerpt: '카카오페이에서 프론트엔드 개발자로 근무합니다. Javascript와 React.js 전반에 관심이 많습니다. Performance optimization 을 중요하게 생각합니다.'
+---
 
 카카오페이에서 **프론트엔드 개발자**로 근무합니다.
 `Javascript`와 `React.js` 전반에 관심이 많습니다.

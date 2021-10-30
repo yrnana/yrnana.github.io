@@ -1,7 +1,7 @@
 ---
 title: 'prism support'
 date: '2021-10-28T06:00:48+09:00'
-published: true
+published: false
 ---
 
 ## Inline `Code`
