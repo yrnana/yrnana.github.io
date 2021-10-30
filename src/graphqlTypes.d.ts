@@ -2272,8 +2272,6 @@ type QuerySiteArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   internal?: Maybe<InternalFilterInput>;
   parent?: Maybe<NodeFilterInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
   port?: Maybe<IntQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
 };
@@ -2337,8 +2335,6 @@ type Site = Node & {
   id: Scalars['ID'];
   internal: Internal;
   parent?: Maybe<Node>;
-  pathPrefix?: Maybe<Scalars['String']>;
-  polyfill?: Maybe<Scalars['Boolean']>;
   port?: Maybe<Scalars['Int']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
 };
@@ -2673,10 +2669,9 @@ enum SiteFieldsEnum {
   ParentParentInternalType = 'parent___parent___internal___type',
   ParentParentParentChildren = 'parent___parent___parent___children',
   ParentParentParentId = 'parent___parent___parent___id',
-  PathPrefix = 'pathPrefix',
-  Polyfill = 'polyfill',
   Port = 'port',
   SiteMetadataAuthor = 'siteMetadata___author',
+  SiteMetadataCommentIssueRepo = 'siteMetadata___commentIssueRepo',
   SiteMetadataDefaultImage = 'siteMetadata___defaultImage',
   SiteMetadataDescription = 'siteMetadata___description',
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
@@ -2690,8 +2685,6 @@ type SiteFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   internal?: Maybe<InternalFilterInput>;
   parent?: Maybe<NodeFilterInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
   port?: Maybe<IntQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
 };
@@ -3401,6 +3394,7 @@ type SitePluginSortInput = {
 
 type SiteSiteMetadata = {
   author?: Maybe<Scalars['String']>;
+  commentIssueRepo?: Maybe<Scalars['String']>;
   defaultImage?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
@@ -3409,6 +3403,7 @@ type SiteSiteMetadata = {
 
 type SiteSiteMetadataFilterInput = {
   author?: Maybe<StringQueryOperatorInput>;
+  commentIssueRepo?: Maybe<StringQueryOperatorInput>;
   defaultImage?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
@@ -3509,6 +3504,20 @@ type LayoutQuery = {
               title?: string | null | undefined;
               author?: string | null | undefined;
             }
+          | null
+          | undefined;
+      }
+    | null
+    | undefined;
+};
+
+type CommentsQueryVariables = Exact<{ [key: string]: never }>;
+
+type CommentsQuery = {
+  site?:
+    | {
+        siteMetadata?:
+          | { commentIssueRepo?: string | null | undefined }
           | null
           | undefined;
       }

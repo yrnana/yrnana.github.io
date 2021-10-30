@@ -1,11 +1,25 @@
-import { memo, useEffect, useRef, useLayoutEffect, useState } from 'react';
+import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import cx from 'classnames';
+import { graphql, useStaticQuery } from 'gatsby';
 
 // ssr support
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const Comments: React.VFC = memo(() => {
+  const data = useStaticQuery<CommentsQuery>(
+    graphql`
+      query Comments {
+        site {
+          siteMetadata {
+            commentIssueRepo
+          }
+        }
+      }
+    `,
+  );
+  const commentIssueRepo = data.site?.siteMetadata?.commentIssueRepo!;
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -21,6 +35,7 @@ const Comments: React.VFC = memo(() => {
       // add utteranc comment
       const script = document.createElement('script');
       script.setAttribute('src', 'https://utteranc.es/client.js');
+      script.setAttribute('repo', commentIssueRepo);
       script.setAttribute('issue-term', 'pathname');
       script.setAttribute('label', 'comment');
       script.setAttribute('theme', 'github-light');
@@ -32,7 +47,7 @@ const Comments: React.VFC = memo(() => {
         observer.disconnect();
       };
     }
-  }, []);
+  }, [commentIssueRepo]);
 
   return (
     <div
