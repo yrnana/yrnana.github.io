@@ -21,7 +21,7 @@ const Comments: React.VFC = memo(() => {
       // add utteranc comment
       const script = document.createElement('script');
       script.setAttribute('src', 'https://utteranc.es/client.js');
-      script.setAttribute('repo', 'yrnana/yrnana.github.io-comment');
+      script.setAttribute('repo', 'yrnana/yrnana.github.io');
       script.setAttribute('issue-term', 'pathname');
       script.setAttribute('label', 'comment');
       script.setAttribute('theme', 'github-light');
