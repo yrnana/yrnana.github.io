@@ -1,34 +1,25 @@
-import { memo, useEffect, useRef, useState } from 'react';
-import cx from 'classnames';
+import { useEffect, useRef } from 'react';
 
-// ssr support
-
-const Comments: React.VFC = memo(() => {
+const Comments: React.VFC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      // observe container node
-      const observer = new MutationObserver((mutations) => {
-        setIsLoaded(mutations.length > 1);
-      });
-      observer.observe(container, { childList: true });
-
       // add utteranc comment
       const script = document.createElement('script');
-      script.setAttribute('src', 'https://utteranc.es/client.js');
+      script.src = 'https://utteranc.es/client.js';
+      script.async = true;
+      // script.setAttribute('src', 'https://utteranc.es/client.js');
       script.setAttribute('repo', 'yrnana/yrnana.github.io');
       script.setAttribute('issue-term', 'pathname');
       script.setAttribute('label', 'comment');
       script.setAttribute('theme', 'github-light');
       script.setAttribute('crossorigin', 'anonymous');
-      script.setAttribute('async', 'true');
+      // script.setAttribute('async', 'true');
       container.appendChild(script);
       return () => {
-        container.querySelector('.utterances')?.remove();
-        observer.disconnect();
+        container.innerHTML = '';
       };
     }
   }, []);
@@ -38,31 +29,9 @@ const Comments: React.VFC = memo(() => {
       ref={containerRef}
       className="mt-20 relative"
       style={{ minHeight: 269 }}
-    >
-      <div
-        className={cx('animate-pulse absolute w-full box-border', {
-          hidden: isLoaded,
-        })}
-        style={{ paddingLeft: 4, paddingRight: 4 }}
-      >
-        <div
-          className="h-5 rounded bg-gray-200"
-          style={{ marginLeft: 62, marginTop: 16, marginBottom: 16 }}
-        />
-        <div className="flex w-full">
-          <div
-            className="flex-shrink-0 rounded bg-gray-200"
-            style={{ width: 44, height: 44, marginRight: 16 }}
-          />
-          <div
-            className="flex-grow rounded bg-gray-200"
-            style={{ height: 196 }}
-          />
-        </div>
-      </div>
-    </div>
+    />
   );
-});
+};
 
 Comments.displayName = 'Comments';
 
