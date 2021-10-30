@@ -2677,7 +2677,6 @@ enum SiteFieldsEnum {
   Polyfill = 'polyfill',
   Port = 'port',
   SiteMetadataAuthor = 'siteMetadata___author',
-  SiteMetadataCommentIssueRepo = 'siteMetadata___commentIssueRepo',
   SiteMetadataDefaultImage = 'siteMetadata___defaultImage',
   SiteMetadataDescription = 'siteMetadata___description',
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
@@ -3402,7 +3401,6 @@ type SitePluginSortInput = {
 
 type SiteSiteMetadata = {
   author?: Maybe<Scalars['String']>;
-  commentIssueRepo?: Maybe<Scalars['String']>;
   defaultImage?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
@@ -3411,7 +3409,6 @@ type SiteSiteMetadata = {
 
 type SiteSiteMetadataFilterInput = {
   author?: Maybe<StringQueryOperatorInput>;
-  commentIssueRepo?: Maybe<StringQueryOperatorInput>;
   defaultImage?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
@@ -3467,7 +3464,12 @@ type CreatePagesQuery = {
   };
   tags: { group: Array<{ fieldValue?: string | null | undefined }> };
   markdowns: {
-    nodes: Array<{ id: string; name: string; relativeDirectory: string }>;
+    nodes: Array<{
+      id: string;
+      name: string;
+      relativeDirectory: string;
+      childMarkdownRemark?: { id: string } | null | undefined;
+    }>;
   };
 };
 
@@ -3507,20 +3509,6 @@ type LayoutQuery = {
               title?: string | null | undefined;
               author?: string | null | undefined;
             }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
-};
-
-type CommentsQueryVariables = Exact<{ [key: string]: never }>;
-
-type CommentsQuery = {
-  site?:
-    | {
-        siteMetadata?:
-          | { commentIssueRepo?: string | null | undefined }
           | null
           | undefined;
       }
