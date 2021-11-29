@@ -10,7 +10,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          'G-CXQWBSP21V', // Google Analytics
+          'G-NT3GFVWJPV', // yrnana.dev
+          'G-CXQWBSP21V', // yrnana.github.io
         ],
       },
     },
