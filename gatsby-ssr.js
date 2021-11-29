@@ -23,10 +23,9 @@ const HeadComponents = [
     rel="stylesheet"
   />,
   <script
-    key="google_ads"
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"
-    crossOrigin="anonymous"
     async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940"
+    crossOrigin="anonymous"
   />,
 ];
 
