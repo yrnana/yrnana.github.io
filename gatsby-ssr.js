@@ -22,6 +22,12 @@ const HeadComponents = [
     href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
     rel="stylesheet"
   />,
+  <script
+    key="google_ads"
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"
+    crossOrigin="anonymous"
+    async
+  />,
 ];
 
 exports.onRenderBody = ({ setHeadComponents }) => {
