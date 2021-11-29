@@ -11,7 +11,6 @@ module.exports = {
       options: {
         trackingIds: [
           'G-NT3GFVWJPV', // yrnana.dev
-          'G-CXQWBSP21V', // yrnana.github.io
         ],
       },
     },
