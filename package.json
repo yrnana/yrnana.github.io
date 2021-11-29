@@ -2,10 +2,10 @@
   "name": "yrnana.github.io",
   "version": "0.3.0",
   "private": true,
-  "description": "yrnana.github.io",
+  "description": "yrnana.dev",
   "author": {
     "name": "nana.na",
-    "url": "https://yrnana.github.io",
+    "url": "https://yrnana.dev",
     "email": "nyryn0945@gmail.com"
   },
   "repository": {
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/yrnana/yrnana.github.io.git"
   },
   "main": "n/a",
-  "homepage": "https://yrnana.github.io",
+  "homepage": "https://yrnana.dev",
   "keywords": [
     "gatsby",
     "gh-pages"

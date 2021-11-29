@@ -1,8 +1,8 @@
-# yrnana.github.io
+# yrnana.dev
 
 ## Stack
 
-- Gatsby
+- Gatsby(v4)
 - Typescript
 - TailwindCSS
 - ESlint

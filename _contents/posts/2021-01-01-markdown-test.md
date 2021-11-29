@@ -142,10 +142,10 @@ console.log('코드블록');
 
 # 8. Link
 
-[link text](https://yurinadev.github.io)
+[link text](https://yrnana.dev)
 
 ```md
-[link text](https://yurinadev.github.io)
+[link text](https://yrnana.dev)
 ```
 
 # 9. Embed Support

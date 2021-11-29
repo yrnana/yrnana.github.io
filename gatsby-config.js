@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     author: 'nana',
     title: 'nana.log',
-    siteUrl: 'https://yrnana.github.io',
+    siteUrl: 'https://yrnana.dev',
     defaultImage: '/nana.log.png',
   },
   plugins: [
