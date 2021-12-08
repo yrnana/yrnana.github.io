@@ -396,8 +396,7 @@ code.language-scss {
 
 /* auto link */
 .anchor.after {
-  height: 1em;
-  @apply pl-2 top-1 inline-flex items-center;
+  @apply pl-2 inline-flex items-center h-4 !important;
   svg {
     @apply w-4 h-4;
   }
