@@ -6,7 +6,7 @@ import Layout from '~/components/layout/Layout';
 const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
   return (
     <Layout>
-      <Seo title="archive" noindex />
+      <Seo title="archive" />
       <ArchiveList postGroups={data.allMarkdownRemark.group} />
     </Layout>
   );

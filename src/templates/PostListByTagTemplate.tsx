@@ -8,7 +8,7 @@ const PostListByTagTemplate: React.VFC<
 > = ({ data, pageContext }) => {
   return (
     <Layout>
-      <Seo title={pageContext.tag} noindex />
+      <Seo title={pageContext.tag} />
       <h2 className="text-center mb-10">
         <div className="select-none inline-block rounded-full px-6 py-4 text-2xl leading-4 font-semibold text-indigo-500 bg-indigo-100">
           {pageContext.tag}

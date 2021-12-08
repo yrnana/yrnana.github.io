@@ -6,7 +6,7 @@ import TagList from '~/components/tag/TagList';
 const TagsPage: React.FC<PageProps<TagsQuery>> = ({ data }) => {
   return (
     <Layout>
-      <Seo title="tags" noindex />
+      <Seo title="tags" />
       <TagList tags={data.allMarkdownRemark.group} />
     </Layout>
   );
