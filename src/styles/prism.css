@@ -395,7 +395,10 @@ code.language-scss {
 }
 
 /* auto link */
-.anchor.before {
+.anchor.after {
   height: 1em;
-  @apply pr-2 top-1 flex items-center;
+  @apply pl-2 top-1 inline-flex items-center;
+  svg {
+    @apply w-4 h-4;
+  }
 }
