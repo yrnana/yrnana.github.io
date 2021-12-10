@@ -273,6 +273,9 @@ pre[class*='language-'] {
     color: var(--green);
   }
 }
+.token.constant {
+  color: var(--purple);
+}
 
 /* specific rules */
 code.language-css,
@@ -376,6 +379,17 @@ code.language-scss {
   }
 }
 
+.language-properties {
+  .token.attr-name {
+    color: var(--green);
+  }
+  .token.punctuation {
+  }
+  .token.attr-value {
+    color: var(--yellow);
+  }
+}
+
 /* command line prompt */
 .command-line-prompt {
   @apply mr-4;
@@ -396,7 +410,8 @@ code.language-scss {
 
 /* auto link */
 .anchor.after {
-  @apply pl-2 inline-flex items-center h-4 !important;
+  @apply pl-2 inline-flex !important;
+  @apply items-center h-4;
   svg {
     @apply w-4 h-4;
   }
