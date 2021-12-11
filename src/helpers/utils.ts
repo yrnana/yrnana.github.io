@@ -1,4 +1,4 @@
-import { createElement } from 'react';
+import { createElement, Fragment } from 'react';
 import { format } from 'date-fns';
 import type { Root } from 'hast';
 import rehypeReact from 'rehype-react';
@@ -16,6 +16,7 @@ const runner = unified().use(rehypeSanitize, {
 
 const compiler = unified().use(rehypeReact, {
   createElement,
+  Fragment,
 });
 
 export const renderAst = (htmlAst: Root, sanitize = false) => {

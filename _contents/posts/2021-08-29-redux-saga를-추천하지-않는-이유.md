@@ -1,6 +1,7 @@
 ---
 title: 'redux-saga를 추천하지 않는 이유'
 date: '2021-08-29T15:29:45+09:00'
+excerpt: '서버 state를 관리하기 위해 글로벌 상태 관리 라이브러리에 비동기 처리를 위한 라이브러리를 붙일 필요는 없다.'
 tags: [React Query, Redux, Redux Saga]
 published: true
 ---

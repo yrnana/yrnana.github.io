@@ -1,6 +1,7 @@
 ---
 title: 'OffsetTop을 읽으면 reflow가 발생한다?'
 date: '2021-03-25T20:38:50+09:00'
+excerpt: '`offsetTop`을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 `offsetTop`을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다.'
 tags: [Browser, reflow]
 published: true
 ---
