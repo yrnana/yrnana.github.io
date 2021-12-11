@@ -1,6 +1,7 @@
 ---
 title: 'Finite State Machine'
 date: '2021-03-14T13:29:14+09:00'
+excerpt: '`Finite State Machine(FSM)`은 유한한 개수의 상태를 가질 수 있는 automata이다.'
 tags: [FSM, Finite State Machine]
 published: true
 ---

@@ -15,7 +15,7 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
         <h2 className="text-xl font-medium">{title}</h2>
       </Link>
       <div className="text-gray-500 mt-2">{formatDate(date)}</div>
-      <div className="mt-2 markdown excerpt-markdown">
+      <div className="mt-2 excerpt-markdown">
         {renderAst(frontmatterExcerptAst || excerptAst, true)}
       </div>
       {tags && (

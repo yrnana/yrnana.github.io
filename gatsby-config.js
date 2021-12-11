@@ -31,14 +31,20 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: `gatsby-remark-vscode`,
             options: {
-              inlineCodeMarker: '↦',
-              aliases: {
-                sh: 'bash',
+              theme: `One Dark Pro`,
+              extensions: [
+                `${__dirname}/vendor/one-dark-pro.vsix`,
+                `${__dirname}/vendor/graphql.vsix`,
+                `${__dirname}/vendor/prisma.vsix`,
+                `${__dirname}/vendor/dotenv.vsix`,
+                `${__dirname}/vendor/rest-client.vsix`,
+              ],
+              injectStyles: false,
+              inlineCode: {
+                marker: '↦',
               },
-              showLineNumbers: true,
-              noInlineHighlight: false,
             },
           },
           `gatsby-remark-katex`,

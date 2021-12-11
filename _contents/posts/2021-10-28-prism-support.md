@@ -12,7 +12,7 @@ published: false
 
 ## Line Number
 
-```js{numberLines: 5}
+```js {numberLines}
 // In your gatsby-config.js
 function logBoxHeight() {
   box.style.height = '200px';
@@ -290,11 +290,7 @@ import { foo as bar } from 'file';
 
 const x = 0;
 const ts = `Only on ${x} one line`;
-```
 
-## JS Docs
-
-```jsdoc
 /**
  * Trims the given string.
  *
@@ -303,11 +299,11 @@ const ts = `Only on ${x} one line`;
  * @throws {TypeError} if the argument is not a string.
  * @example trim(" hello ")
  */
-function trim(str = "") {
-	if (typeof str != "string") {
-		throw new TypeError("str has to be a string");
-	}
-	return str.trim();
+function trim(str = '') {
+  if (typeof str != 'string') {
+    throw new TypeError('str has to be a string');
+  }
+  return str.trim();
 }
 ```
 
@@ -333,7 +329,7 @@ const App = ({ children }) => {
 
 ## Typescript
 
-```typescript
+```ts
 class MyClass {
   public static staticValue: string;
   instanceValue: string;
@@ -424,7 +420,7 @@ echo '"quoted"' | tr -d \" > text.txt
 
 ## Shell
 
-```sh-session
+```sh
 $ echo $EDITOR # comment
 vim
 $ git checkout main
@@ -438,31 +434,24 @@ All
 done!
 ```
 
-```shell{promptUser: root}{promptHost: localhost}
+```sh
 echo $EDITOR # comment
 ```
 
-```shell{promptUser: ec2-user}{promptHost: amazon.com}
+```sh
 echo $EDITOR # comment
 ```
 
 ## HTTP
 
-### Request Header
-
 ```http
-GET http://localhost:9999/foo.html HTTP/1.1
-Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-```
+POST https://example.com/comments HTTP/1.1
+content-type: application/json
 
-### Response Header
-
-```http
-HTTP/1.1 200 OK
-Server: GitHub.com
-Date: Mon, 22 Dec 2014 18:25:30 GMT
-Content-Type: text/html; charset=utf-8
+{
+    "name": "sample",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}
 ```
 
 ## GraphQL
@@ -509,4 +498,17 @@ type Sample {
   """
   name("This is a single line description" first: Int): String
 }
+```
+
+## env
+
+```env
+NEXT_PUBLIC_BASE_URL='http://localhost:3000'
+
+# prisma
+DATABASE_URL="postgres://nana:12345@localhost/mycat"
+
+# next-auth
+NEXTAUTH_URL=${NEXT_PUBLIC_BASE_URL}
+SECRET='yN41InvWbsN7GfGQMeYLIgZRjgNIFYG67eaKqK7kmoY='
 ```
