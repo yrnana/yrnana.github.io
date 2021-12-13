@@ -18,11 +18,11 @@
   }
 
   h1 {
-    @apply text-3xl pb-2 border-b;
+    @apply text-3xl pb-2 border-b border-slate-200;
   }
 
   h2 {
-    @apply text-2xl pb-2 border-b;
+    @apply text-2xl pb-2 border-b border-slate-200;
   }
 
   h3 {
@@ -38,7 +38,7 @@
   }
 
   h6 {
-    @apply text-sm text-gray-500;
+    @apply text-sm text-slate-500;
   }
 
   p,
@@ -49,14 +49,14 @@
   }
 
   blockquote {
-    @apply border-l-6 p-4 border-purple-400 bg-gray-50;
+    @apply border-l-6 p-4 border-violet-400 bg-slate-50;
     > *:last-child {
       @apply mb-0;
     }
   }
 
   a {
-    @apply text-purple-500 hover:text-purple-300;
+    @apply text-violet-500 hover:text-violet-300;
   }
 
   ol,
@@ -96,7 +96,7 @@
   h5,
   h6 {
     & > code {
-      @apply bg-gray-100 text-purple-500 px-1 mx-0.5 rounded-md;
+      @apply bg-slate-100 text-violet-500 px-1 mx-0.5 rounded-md;
     }
   }
 
@@ -105,13 +105,13 @@
   }
 
   :not(pre, h1, h2, h3, h4, h5, h6) > code:not(.one-dark-pro) {
-    @apply text-purple-500 bg-gray-100;
+    @apply text-violet-500 bg-slate-100;
   }
 }
 
 .excerpt-markdown {
   code {
-    @apply text-purple-500 bg-gray-100 break-all text-sm px-1 py-0.5 mx-0.5 rounded-md whitespace-normal;
+    @apply text-violet-500 bg-slate-100 break-all text-sm px-1 py-0.5 mx-0.5 rounded-md whitespace-normal;
   }
 }
 

@@ -19,7 +19,7 @@ const Layout: React.FC = ({ children }) => {
     <div className="container mx-auto px-4 flex flex-col min-h-screen">
       <Header title={site?.siteMetadata?.title!} />
       <main className="py-10 flex-grow">{children}</main>
-      <footer className="mb-4 sm:mb-6 text-center text-gray-700">
+      <footer className="mb-4 sm:mb-6 text-center text-slate-700">
         <span className="mr-2 text-sm sm:text-base">
           Copyright &copy; {new Date().getFullYear()}
         </span>

@@ -27,7 +27,7 @@ const Pagination: React.VFC<PaginationFragment> = ({
           <LeftIcon />
         </Link>
       ) : (
-        <div className={cx('text-gray-300', pageItemClassName, iconClassName)}>
+        <div className={cx('text-slate-300', pageItemClassName, iconClassName)}>
           <LeftIcon />
         </div>
       )}
@@ -42,7 +42,7 @@ const Pagination: React.VFC<PaginationFragment> = ({
           <RightIcon />
         </Link>
       ) : (
-        <div className={cx('text-gray-300', pageItemClassName, iconClassName)}>
+        <div className={cx('text-slate-300', pageItemClassName, iconClassName)}>
           <RightIcon />
         </div>
       )}
@@ -73,7 +73,7 @@ const PaginationItem: React.VFC<PaginationItemProps> = ({
   return (
     <div
       className={cx(pageItemClassName, 'cursor-default', {
-        'text-purple-500': isCurrentPage,
+        'text-violet-500': isCurrentPage,
       })}
     >
       {page}

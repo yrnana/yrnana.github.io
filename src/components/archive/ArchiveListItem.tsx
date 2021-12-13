@@ -12,10 +12,10 @@ const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
         {posts.map((post) => (
           <div key={post.slug}>
             <Link
-              className="inline-flex py-1 hover:text-purple-500"
+              className="inline-flex py-1 hover:text-violet-500"
               to={post.slug}
             >
-              <span className="flex-shrink-0 w-16 text-purple-500">
+              <span className="flex-shrink-0 w-16 text-violet-500">
                 {formatDate(post.frontmatter?.date, 'MMM dd')}
               </span>
               <span className="break-all">{post.frontmatter?.title}</span>

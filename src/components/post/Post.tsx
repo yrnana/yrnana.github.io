@@ -17,11 +17,11 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
           />
         )}
         <h1 className="text-3xl font-semibold">{title}</h1>
-        <div className="text-gray-500 mt-4">{formatDate(date)}</div>
+        <div className="text-slate-500 mt-4">{formatDate(date)}</div>
         {tags && (
           <div className="flex flex-row flex-wrap justify-center space-x-3 mt-4">
             {tags.map((tag) => (
-              <Tag key={tag} name={tag} color="purple" />
+              <Tag key={tag} name={tag} color="violet" />
             ))}
           </div>
         )}
