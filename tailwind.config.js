@@ -1,38 +1,24 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: {
-    content: ['./src/**/*.{js,jsx,ts,tsx}'],
-    safelist: [
-      'text-yellow-500',
-      'bg-yellow-100',
-      'hover:text-yellow-700',
-      'hover:bg-yellow-200',
-      'text-green-500',
-      'bg-green-100',
-      'hover:text-green-700',
-      'hover:bg-green-200',
-      'text-blue-500',
-      'bg-blue-100',
-      'hover:text-blue-700',
-      'hover:bg-blue-200',
-      'text-purple-500',
-      'bg-purple-100',
-      'hover:text-purple-700',
-      'hover:bg-purple-200',
-      'text-pink-500',
-      'bg-pink-100',
-      'hover:text-pink-700',
-      'hover:bg-pink-200',
-      'w-5',
-      'h-5',
-      'w-6',
-      'h-6',
-      'w-14',
-      'h-14',
-    ],
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  safelist: [
+    {
+      pattern: /bg-(yellow|green|violet|sky|rose)-100/,
+    },
+    {
+      pattern: /hover:bg-(yellow|green|violet|sky|rose)-200/,
+    },
+    {
+      pattern: /text-(yellow|green|violet|sky|rose)-500/,
+    },
+    {
+      pattern: /hover:text-(yellow|green|violet|sky|rose)-700/,
+    },
+    {
+      pattern: /(w|h)-(5|6|14)/,
+    },
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -46,8 +32,8 @@ module.exports = {
         'lower-roman': 'lower-roman',
       },
       screens: {
-        xl: null,
-        '2xl': null,
+        xl: '1024px',
+        '2xl': '1024px',
       },
       maxWidth: {
         '2/5': '40%',
@@ -57,9 +43,6 @@ module.exports = {
         inherit: 'inherit',
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

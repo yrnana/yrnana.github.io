@@ -64,11 +64,11 @@ function getColor(count: number, m: number, σ: number): string {
   if (z < -0.84) {
     return 'yellow'; // 0 ~ 20%
   } else if (z >= -0.84 && z < -0.25) {
-    return 'green'; // 20 ~ 40%
+    return 'violet'; // 20 ~ 40%
   } else if (z >= -0.25 && z < 0.25) {
-    return 'purple'; // 40 ~ 60%
+    return 'green'; // 40 ~ 60%
   } else if (z >= 0.25 && z < 0.84) {
-    return 'blue'; // 60 ~ 80%
+    return 'sky'; // 60 ~ 80%
   }
-  return 'pink'; // 80 ~ 100%
+  return 'rose'; // 80 ~ 100%
 }

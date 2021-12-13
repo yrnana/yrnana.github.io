@@ -21,11 +21,11 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
         {previous && (
           <Link
             to={previous.slug}
-            className="hover:text-purple-700 flex items-center"
+            className="hover:text-violet-700 flex items-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-400 mr-1 flex-shrink-0"
+              className="h-6 w-6 text-slate-400 mr-1 flex-shrink-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -38,7 +38,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
               />
             </svg>
             <div>
-              <div className="text-xs text-gray-500">Previous</div>
+              <div className="text-xs text-slate-500">Previous</div>
               <div>{previous.frontmatter.title}</div>
             </div>
           </Link>
@@ -48,15 +48,15 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
         {next && (
           <Link
             to={next.slug}
-            className="hover:text-purple-700 flex items-center"
+            className="hover:text-violet-700 flex items-center"
           >
             <div>
-              <div className="text-xs text-gray-500">Next</div>
+              <div className="text-xs text-slate-500">Next</div>
               <div>{next.frontmatter.title}</div>
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-400 ml-1 flex-shrink-0"
+              className="h-6 w-6 text-slate-400 ml-1 flex-shrink-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

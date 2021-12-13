@@ -7,7 +7,7 @@ const Header: React.VFC<{ title: string }> = ({ title }) => {
       <div className="mr-auto">
         <Link
           to="/"
-          className="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-purple-500"
+          className="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500"
         >
           {title}
         </Link>
