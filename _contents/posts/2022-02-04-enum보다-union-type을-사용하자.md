@@ -26,7 +26,7 @@ const fruit: Fruit = Fruit.Apple;
 console.log(fruit);
 ```
 
-이를 tsc로 트랜스파일링 후 rollup으로 번들링하면 아래와 같이 convert 된다.
+이를 tsc로 트랜스파일링 후 rollup으로 번들링하면 아래와 같이 변환된다.
 
 ```js
 var Fruit;
