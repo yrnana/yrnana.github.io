@@ -142,17 +142,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-/** @type {import('gatsby').GatsbyNode['onCreateBabelConfig']} */
-exports.onCreateBabelConfig = ({ actions }) => {
-  // support jsx transform
-  actions.setBabelPreset({
-    name: 'babel-preset-gatsby',
-    options: {
-      reactRuntime: 'automatic',
-    },
-  });
-};
-
 /** @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']} */
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({

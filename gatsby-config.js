@@ -1,4 +1,6 @@
+/** @type {import('gatsby').GatsbyConfig} */
 module.exports = {
+  jsxRuntime: 'automatic',
   trailingSlash: 'never',
   siteMetadata: {
     author: 'nana',
