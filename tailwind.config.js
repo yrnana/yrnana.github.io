@@ -7,13 +7,15 @@ module.exports = {
       pattern: /bg-(yellow|green|violet|sky|rose)-100/,
     },
     {
-      pattern: /hover:bg-(yellow|green|violet|sky|rose)-200/,
+      pattern: /bg-(yellow|green|violet|sky|rose)-200/,
+      variants: ['hover'],
     },
     {
       pattern: /text-(yellow|green|violet|sky|rose)-500/,
     },
     {
-      pattern: /hover:text-(yellow|green|violet|sky|rose)-700/,
+      pattern: /text-(yellow|green|violet|sky|rose)-700/,
+      variants: ['hover'],
     },
     {
       pattern: /(w|h)-(5|6|14)/,
