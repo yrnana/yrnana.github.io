@@ -1,4 +1,5 @@
-const React = require('react');
+import * as React from 'react';
+import type { GatsbySSR } from 'gatsby';
 
 const HeadComponents = [
   <link
@@ -30,6 +31,8 @@ const HeadComponents = [
   />,
 ];
 
-exports.onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody: GatsbySSR['onRenderBody'] = ({
+  setHeadComponents,
+}) => {
   setHeadComponents(HeadComponents);
 };
