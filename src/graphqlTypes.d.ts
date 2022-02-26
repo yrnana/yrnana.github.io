@@ -1,4 +1,5 @@
 type Maybe<T> = T | null;
+type InputMaybe<T> = Maybe<T>;
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]?: Maybe<T[SubKey]>;
@@ -20,34 +21,34 @@ type Scalars = {
 };
 
 type AvifOptions = {
-  lossless?: Maybe<Scalars['Boolean']>;
-  quality?: Maybe<Scalars['Int']>;
-  speed?: Maybe<Scalars['Int']>;
+  lossless?: InputMaybe<Scalars['Boolean']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  speed?: InputMaybe<Scalars['Int']>;
 };
 
 type BlurredOptions = {
   /** Force the output format for the low-res preview. Default is to use the same format as the input. You should rarely need to change this */
-  toFormat?: Maybe<ImageFormat>;
+  toFormat?: InputMaybe<ImageFormat>;
   /** Width of the generated low-res preview. Default is 20px */
-  width?: Maybe<Scalars['Int']>;
+  width?: InputMaybe<Scalars['Int']>;
 };
 
 type BooleanQueryOperatorInput = {
-  eq?: Maybe<Scalars['Boolean']>;
-  in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
-  ne?: Maybe<Scalars['Boolean']>;
-  nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+  eq?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
+  ne?: InputMaybe<Scalars['Boolean']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
 };
 
 type DateQueryOperatorInput = {
-  eq?: Maybe<Scalars['Date']>;
-  gt?: Maybe<Scalars['Date']>;
-  gte?: Maybe<Scalars['Date']>;
-  in?: Maybe<Array<Maybe<Scalars['Date']>>>;
-  lt?: Maybe<Scalars['Date']>;
-  lte?: Maybe<Scalars['Date']>;
-  ne?: Maybe<Scalars['Date']>;
-  nin?: Maybe<Array<Maybe<Scalars['Date']>>>;
+  eq?: InputMaybe<Scalars['Date']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
 };
 
 type Directory = Node & {
@@ -91,52 +92,52 @@ type Directory = Node & {
 };
 
 type DirectoryAccessTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryAtimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryBirthTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryChangeTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryCtimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryModifiedTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryMtimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type DirectoryConnection = {
@@ -157,8 +158,8 @@ type DirectoryConnectionDistinctArgs = {
 
 type DirectoryConnectionGroupArgs = {
   field: DirectoryFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type DirectoryConnectionMaxArgs = {
@@ -300,41 +301,41 @@ enum DirectoryFieldsEnum {
 }
 
 type DirectoryFilterInput = {
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
 };
 
 type DirectoryGroupConnection = {
@@ -357,8 +358,8 @@ type DirectoryGroupConnectionDistinctArgs = {
 
 type DirectoryGroupConnectionGroupArgs = {
   field: DirectoryFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type DirectoryGroupConnectionMaxArgs = {
@@ -374,13 +375,13 @@ type DirectoryGroupConnectionSumArgs = {
 };
 
 type DirectorySortInput = {
-  fields?: Maybe<Array<Maybe<DirectoryFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<DirectoryFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type DuotoneGradient = {
   highlight: Scalars['String'];
-  opacity?: Maybe<Scalars['Int']>;
+  opacity?: InputMaybe<Scalars['Int']>;
   shadow: Scalars['String'];
 };
 
@@ -437,52 +438,52 @@ type File = Node & {
 };
 
 type FileAccessTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileAtimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileBirthTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileChangeTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileCtimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileModifiedTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileMtimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FileConnection = {
@@ -503,8 +504,8 @@ type FileConnectionDistinctArgs = {
 
 type FileConnectionGroupArgs = {
   field: FileFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type FileConnectionMaxArgs = {
@@ -607,7 +608,155 @@ enum FileFieldsEnum {
   ChildImageSharpResizeSrc = 'childImageSharp___resize___src',
   ChildImageSharpResizeTracedSvg = 'childImageSharp___resize___tracedSVG',
   ChildImageSharpResizeWidth = 'childImageSharp___resize___width',
+  ChildMarkdownRemarkChildGrvscCodeBlockAdditionalThemes = 'childMarkdownRemark___childGrvscCodeBlock___additionalThemes',
+  ChildMarkdownRemarkChildGrvscCodeBlockAdditionalThemesConditions = 'childMarkdownRemark___childGrvscCodeBlock___additionalThemes___conditions',
+  ChildMarkdownRemarkChildGrvscCodeBlockAdditionalThemesIdentifier = 'childMarkdownRemark___childGrvscCodeBlock___additionalThemes___identifier',
+  ChildMarkdownRemarkChildGrvscCodeBlockAdditionalThemesPath = 'childMarkdownRemark___childGrvscCodeBlock___additionalThemes___path',
+  ChildMarkdownRemarkChildGrvscCodeBlockChildren = 'childMarkdownRemark___childGrvscCodeBlock___children',
+  ChildMarkdownRemarkChildGrvscCodeBlockChildrenChildren = 'childMarkdownRemark___childGrvscCodeBlock___children___children',
+  ChildMarkdownRemarkChildGrvscCodeBlockChildrenId = 'childMarkdownRemark___childGrvscCodeBlock___children___id',
+  ChildMarkdownRemarkChildGrvscCodeBlockCodeClassName = 'childMarkdownRemark___childGrvscCodeBlock___codeClassName',
+  ChildMarkdownRemarkChildGrvscCodeBlockDefaultThemeConditions = 'childMarkdownRemark___childGrvscCodeBlock___defaultTheme___conditions',
+  ChildMarkdownRemarkChildGrvscCodeBlockDefaultThemeIdentifier = 'childMarkdownRemark___childGrvscCodeBlock___defaultTheme___identifier',
+  ChildMarkdownRemarkChildGrvscCodeBlockDefaultThemePath = 'childMarkdownRemark___childGrvscCodeBlock___defaultTheme___path',
+  ChildMarkdownRemarkChildGrvscCodeBlockHtml = 'childMarkdownRemark___childGrvscCodeBlock___html',
+  ChildMarkdownRemarkChildGrvscCodeBlockId = 'childMarkdownRemark___childGrvscCodeBlock___id',
+  ChildMarkdownRemarkChildGrvscCodeBlockIndex = 'childMarkdownRemark___childGrvscCodeBlock___index',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalContent = 'childMarkdownRemark___childGrvscCodeBlock___internal___content',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalContentDigest = 'childMarkdownRemark___childGrvscCodeBlock___internal___contentDigest',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalDescription = 'childMarkdownRemark___childGrvscCodeBlock___internal___description',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalFieldOwners = 'childMarkdownRemark___childGrvscCodeBlock___internal___fieldOwners',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalIgnoreType = 'childMarkdownRemark___childGrvscCodeBlock___internal___ignoreType',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalMediaType = 'childMarkdownRemark___childGrvscCodeBlock___internal___mediaType',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalOwner = 'childMarkdownRemark___childGrvscCodeBlock___internal___owner',
+  ChildMarkdownRemarkChildGrvscCodeBlockInternalType = 'childMarkdownRemark___childGrvscCodeBlock___internal___type',
+  ChildMarkdownRemarkChildGrvscCodeBlockLanguage = 'childMarkdownRemark___childGrvscCodeBlock___language',
+  ChildMarkdownRemarkChildGrvscCodeBlockMeta = 'childMarkdownRemark___childGrvscCodeBlock___meta',
+  ChildMarkdownRemarkChildGrvscCodeBlockParentChildren = 'childMarkdownRemark___childGrvscCodeBlock___parent___children',
+  ChildMarkdownRemarkChildGrvscCodeBlockParentId = 'childMarkdownRemark___childGrvscCodeBlock___parent___id',
+  ChildMarkdownRemarkChildGrvscCodeBlockPreClassName = 'childMarkdownRemark___childGrvscCodeBlock___preClassName',
+  ChildMarkdownRemarkChildGrvscCodeBlockText = 'childMarkdownRemark___childGrvscCodeBlock___text',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLines = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesAttrs = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___attrs',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesClassName = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___className',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesData = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___data',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesDiff = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___diff',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesGutterCells = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___gutterCells',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesHtml = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___html',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesIsHighlighted = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___isHighlighted',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesLineNumber = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___lineNumber',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesText = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___text',
+  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesTokens = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___tokens',
+  ChildMarkdownRemarkChildGrvscCodeSpanAdditionalThemes = 'childMarkdownRemark___childGrvscCodeSpan___additionalThemes',
+  ChildMarkdownRemarkChildGrvscCodeSpanAdditionalThemesConditions = 'childMarkdownRemark___childGrvscCodeSpan___additionalThemes___conditions',
+  ChildMarkdownRemarkChildGrvscCodeSpanAdditionalThemesIdentifier = 'childMarkdownRemark___childGrvscCodeSpan___additionalThemes___identifier',
+  ChildMarkdownRemarkChildGrvscCodeSpanAdditionalThemesPath = 'childMarkdownRemark___childGrvscCodeSpan___additionalThemes___path',
+  ChildMarkdownRemarkChildGrvscCodeSpanChildren = 'childMarkdownRemark___childGrvscCodeSpan___children',
+  ChildMarkdownRemarkChildGrvscCodeSpanChildrenChildren = 'childMarkdownRemark___childGrvscCodeSpan___children___children',
+  ChildMarkdownRemarkChildGrvscCodeSpanChildrenId = 'childMarkdownRemark___childGrvscCodeSpan___children___id',
+  ChildMarkdownRemarkChildGrvscCodeSpanClassName = 'childMarkdownRemark___childGrvscCodeSpan___className',
+  ChildMarkdownRemarkChildGrvscCodeSpanDefaultThemeConditions = 'childMarkdownRemark___childGrvscCodeSpan___defaultTheme___conditions',
+  ChildMarkdownRemarkChildGrvscCodeSpanDefaultThemeIdentifier = 'childMarkdownRemark___childGrvscCodeSpan___defaultTheme___identifier',
+  ChildMarkdownRemarkChildGrvscCodeSpanDefaultThemePath = 'childMarkdownRemark___childGrvscCodeSpan___defaultTheme___path',
+  ChildMarkdownRemarkChildGrvscCodeSpanHtml = 'childMarkdownRemark___childGrvscCodeSpan___html',
+  ChildMarkdownRemarkChildGrvscCodeSpanId = 'childMarkdownRemark___childGrvscCodeSpan___id',
+  ChildMarkdownRemarkChildGrvscCodeSpanIndex = 'childMarkdownRemark___childGrvscCodeSpan___index',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalContent = 'childMarkdownRemark___childGrvscCodeSpan___internal___content',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalContentDigest = 'childMarkdownRemark___childGrvscCodeSpan___internal___contentDigest',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalDescription = 'childMarkdownRemark___childGrvscCodeSpan___internal___description',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalFieldOwners = 'childMarkdownRemark___childGrvscCodeSpan___internal___fieldOwners',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalIgnoreType = 'childMarkdownRemark___childGrvscCodeSpan___internal___ignoreType',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalMediaType = 'childMarkdownRemark___childGrvscCodeSpan___internal___mediaType',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalOwner = 'childMarkdownRemark___childGrvscCodeSpan___internal___owner',
+  ChildMarkdownRemarkChildGrvscCodeSpanInternalType = 'childMarkdownRemark___childGrvscCodeSpan___internal___type',
+  ChildMarkdownRemarkChildGrvscCodeSpanLanguage = 'childMarkdownRemark___childGrvscCodeSpan___language',
+  ChildMarkdownRemarkChildGrvscCodeSpanParentChildren = 'childMarkdownRemark___childGrvscCodeSpan___parent___children',
+  ChildMarkdownRemarkChildGrvscCodeSpanParentId = 'childMarkdownRemark___childGrvscCodeSpan___parent___id',
+  ChildMarkdownRemarkChildGrvscCodeSpanText = 'childMarkdownRemark___childGrvscCodeSpan___text',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokens = 'childMarkdownRemark___childGrvscCodeSpan___tokens',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensAdditionalThemeTokenData = 'childMarkdownRemark___childGrvscCodeSpan___tokens___additionalThemeTokenData',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensClassName = 'childMarkdownRemark___childGrvscCodeSpan___tokens___className',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensEndIndex = 'childMarkdownRemark___childGrvscCodeSpan___tokens___endIndex',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensHtml = 'childMarkdownRemark___childGrvscCodeSpan___tokens___html',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensScopes = 'childMarkdownRemark___childGrvscCodeSpan___tokens___scopes',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensStartIndex = 'childMarkdownRemark___childGrvscCodeSpan___tokens___startIndex',
+  ChildMarkdownRemarkChildGrvscCodeSpanTokensText = 'childMarkdownRemark___childGrvscCodeSpan___tokens___text',
   ChildMarkdownRemarkChildren = 'childMarkdownRemark___children',
+  ChildMarkdownRemarkChildrenGrvscCodeBlock = 'childMarkdownRemark___childrenGrvscCodeBlock',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemes = 'childMarkdownRemark___childrenGrvscCodeBlock___additionalThemes',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemesConditions = 'childMarkdownRemark___childrenGrvscCodeBlock___additionalThemes___conditions',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemesIdentifier = 'childMarkdownRemark___childrenGrvscCodeBlock___additionalThemes___identifier',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemesPath = 'childMarkdownRemark___childrenGrvscCodeBlock___additionalThemes___path',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockChildren = 'childMarkdownRemark___childrenGrvscCodeBlock___children',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockChildrenChildren = 'childMarkdownRemark___childrenGrvscCodeBlock___children___children',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockChildrenId = 'childMarkdownRemark___childrenGrvscCodeBlock___children___id',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockCodeClassName = 'childMarkdownRemark___childrenGrvscCodeBlock___codeClassName',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockDefaultThemeConditions = 'childMarkdownRemark___childrenGrvscCodeBlock___defaultTheme___conditions',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockDefaultThemeIdentifier = 'childMarkdownRemark___childrenGrvscCodeBlock___defaultTheme___identifier',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockDefaultThemePath = 'childMarkdownRemark___childrenGrvscCodeBlock___defaultTheme___path',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockHtml = 'childMarkdownRemark___childrenGrvscCodeBlock___html',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockId = 'childMarkdownRemark___childrenGrvscCodeBlock___id',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockIndex = 'childMarkdownRemark___childrenGrvscCodeBlock___index',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalContent = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___content',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalContentDigest = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___contentDigest',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalDescription = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___description',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalFieldOwners = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___fieldOwners',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalIgnoreType = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___ignoreType',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalMediaType = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___mediaType',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalOwner = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___owner',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockInternalType = 'childMarkdownRemark___childrenGrvscCodeBlock___internal___type',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockLanguage = 'childMarkdownRemark___childrenGrvscCodeBlock___language',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockMeta = 'childMarkdownRemark___childrenGrvscCodeBlock___meta',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockParentChildren = 'childMarkdownRemark___childrenGrvscCodeBlock___parent___children',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockParentId = 'childMarkdownRemark___childrenGrvscCodeBlock___parent___id',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockPreClassName = 'childMarkdownRemark___childrenGrvscCodeBlock___preClassName',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockText = 'childMarkdownRemark___childrenGrvscCodeBlock___text',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLines = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesAttrs = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___attrs',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesClassName = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___className',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesData = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___data',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesDiff = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___diff',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesGutterCells = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___gutterCells',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesHtml = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___html',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesIsHighlighted = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___isHighlighted',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesLineNumber = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___lineNumber',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesText = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___text',
+  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesTokens = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___tokens',
+  ChildMarkdownRemarkChildrenGrvscCodeSpan = 'childMarkdownRemark___childrenGrvscCodeSpan',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemes = 'childMarkdownRemark___childrenGrvscCodeSpan___additionalThemes',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemesConditions = 'childMarkdownRemark___childrenGrvscCodeSpan___additionalThemes___conditions',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemesIdentifier = 'childMarkdownRemark___childrenGrvscCodeSpan___additionalThemes___identifier',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemesPath = 'childMarkdownRemark___childrenGrvscCodeSpan___additionalThemes___path',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanChildren = 'childMarkdownRemark___childrenGrvscCodeSpan___children',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanChildrenChildren = 'childMarkdownRemark___childrenGrvscCodeSpan___children___children',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanChildrenId = 'childMarkdownRemark___childrenGrvscCodeSpan___children___id',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanClassName = 'childMarkdownRemark___childrenGrvscCodeSpan___className',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanDefaultThemeConditions = 'childMarkdownRemark___childrenGrvscCodeSpan___defaultTheme___conditions',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanDefaultThemeIdentifier = 'childMarkdownRemark___childrenGrvscCodeSpan___defaultTheme___identifier',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanDefaultThemePath = 'childMarkdownRemark___childrenGrvscCodeSpan___defaultTheme___path',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanHtml = 'childMarkdownRemark___childrenGrvscCodeSpan___html',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanId = 'childMarkdownRemark___childrenGrvscCodeSpan___id',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanIndex = 'childMarkdownRemark___childrenGrvscCodeSpan___index',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalContent = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___content',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalContentDigest = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___contentDigest',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalDescription = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___description',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalFieldOwners = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___fieldOwners',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalIgnoreType = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___ignoreType',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalMediaType = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___mediaType',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalOwner = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___owner',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanInternalType = 'childMarkdownRemark___childrenGrvscCodeSpan___internal___type',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanLanguage = 'childMarkdownRemark___childrenGrvscCodeSpan___language',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanParentChildren = 'childMarkdownRemark___childrenGrvscCodeSpan___parent___children',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanParentId = 'childMarkdownRemark___childrenGrvscCodeSpan___parent___id',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanText = 'childMarkdownRemark___childrenGrvscCodeSpan___text',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokens = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensAdditionalThemeTokenData = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___additionalThemeTokenData',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensClassName = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___className',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensEndIndex = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___endIndex',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensHtml = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___html',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensScopes = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___scopes',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensStartIndex = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___startIndex',
+  ChildMarkdownRemarkChildrenGrvscCodeSpanTokensText = 'childMarkdownRemark___childrenGrvscCodeSpan___tokens___text',
   ChildMarkdownRemarkChildrenChildren = 'childMarkdownRemark___children___children',
   ChildMarkdownRemarkChildrenChildrenChildren = 'childMarkdownRemark___children___children___children',
   ChildMarkdownRemarkChildrenChildrenId = 'childMarkdownRemark___children___children___id',
@@ -779,7 +928,155 @@ enum FileFieldsEnum {
   ChildrenImageSharpResizeTracedSvg = 'childrenImageSharp___resize___tracedSVG',
   ChildrenImageSharpResizeWidth = 'childrenImageSharp___resize___width',
   ChildrenMarkdownRemark = 'childrenMarkdownRemark',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockAdditionalThemes = 'childrenMarkdownRemark___childGrvscCodeBlock___additionalThemes',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockAdditionalThemesConditions = 'childrenMarkdownRemark___childGrvscCodeBlock___additionalThemes___conditions',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockAdditionalThemesIdentifier = 'childrenMarkdownRemark___childGrvscCodeBlock___additionalThemes___identifier',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockAdditionalThemesPath = 'childrenMarkdownRemark___childGrvscCodeBlock___additionalThemes___path',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockChildren = 'childrenMarkdownRemark___childGrvscCodeBlock___children',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockChildrenChildren = 'childrenMarkdownRemark___childGrvscCodeBlock___children___children',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockChildrenId = 'childrenMarkdownRemark___childGrvscCodeBlock___children___id',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockCodeClassName = 'childrenMarkdownRemark___childGrvscCodeBlock___codeClassName',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockDefaultThemeConditions = 'childrenMarkdownRemark___childGrvscCodeBlock___defaultTheme___conditions',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockDefaultThemeIdentifier = 'childrenMarkdownRemark___childGrvscCodeBlock___defaultTheme___identifier',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockDefaultThemePath = 'childrenMarkdownRemark___childGrvscCodeBlock___defaultTheme___path',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockHtml = 'childrenMarkdownRemark___childGrvscCodeBlock___html',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockId = 'childrenMarkdownRemark___childGrvscCodeBlock___id',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockIndex = 'childrenMarkdownRemark___childGrvscCodeBlock___index',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalContent = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___content',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalContentDigest = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___contentDigest',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalDescription = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___description',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalFieldOwners = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___fieldOwners',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalIgnoreType = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___ignoreType',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalMediaType = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___mediaType',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalOwner = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___owner',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockInternalType = 'childrenMarkdownRemark___childGrvscCodeBlock___internal___type',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockLanguage = 'childrenMarkdownRemark___childGrvscCodeBlock___language',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockMeta = 'childrenMarkdownRemark___childGrvscCodeBlock___meta',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockParentChildren = 'childrenMarkdownRemark___childGrvscCodeBlock___parent___children',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockParentId = 'childrenMarkdownRemark___childGrvscCodeBlock___parent___id',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockPreClassName = 'childrenMarkdownRemark___childGrvscCodeBlock___preClassName',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockText = 'childrenMarkdownRemark___childGrvscCodeBlock___text',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLines = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesAttrs = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___attrs',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesClassName = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___className',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesData = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___data',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesDiff = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___diff',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesGutterCells = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___gutterCells',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesHtml = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___html',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesIsHighlighted = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___isHighlighted',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesLineNumber = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___lineNumber',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesText = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___text',
+  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesTokens = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___tokens',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanAdditionalThemes = 'childrenMarkdownRemark___childGrvscCodeSpan___additionalThemes',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanAdditionalThemesConditions = 'childrenMarkdownRemark___childGrvscCodeSpan___additionalThemes___conditions',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanAdditionalThemesIdentifier = 'childrenMarkdownRemark___childGrvscCodeSpan___additionalThemes___identifier',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanAdditionalThemesPath = 'childrenMarkdownRemark___childGrvscCodeSpan___additionalThemes___path',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanChildren = 'childrenMarkdownRemark___childGrvscCodeSpan___children',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanChildrenChildren = 'childrenMarkdownRemark___childGrvscCodeSpan___children___children',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanChildrenId = 'childrenMarkdownRemark___childGrvscCodeSpan___children___id',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanClassName = 'childrenMarkdownRemark___childGrvscCodeSpan___className',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanDefaultThemeConditions = 'childrenMarkdownRemark___childGrvscCodeSpan___defaultTheme___conditions',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanDefaultThemeIdentifier = 'childrenMarkdownRemark___childGrvscCodeSpan___defaultTheme___identifier',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanDefaultThemePath = 'childrenMarkdownRemark___childGrvscCodeSpan___defaultTheme___path',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanHtml = 'childrenMarkdownRemark___childGrvscCodeSpan___html',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanId = 'childrenMarkdownRemark___childGrvscCodeSpan___id',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanIndex = 'childrenMarkdownRemark___childGrvscCodeSpan___index',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalContent = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___content',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalContentDigest = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___contentDigest',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalDescription = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___description',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalFieldOwners = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___fieldOwners',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalIgnoreType = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___ignoreType',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalMediaType = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___mediaType',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalOwner = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___owner',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanInternalType = 'childrenMarkdownRemark___childGrvscCodeSpan___internal___type',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanLanguage = 'childrenMarkdownRemark___childGrvscCodeSpan___language',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanParentChildren = 'childrenMarkdownRemark___childGrvscCodeSpan___parent___children',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanParentId = 'childrenMarkdownRemark___childGrvscCodeSpan___parent___id',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanText = 'childrenMarkdownRemark___childGrvscCodeSpan___text',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokens = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensAdditionalThemeTokenData = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___additionalThemeTokenData',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensClassName = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___className',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensEndIndex = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___endIndex',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensHtml = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___html',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensScopes = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___scopes',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensStartIndex = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___startIndex',
+  ChildrenMarkdownRemarkChildGrvscCodeSpanTokensText = 'childrenMarkdownRemark___childGrvscCodeSpan___tokens___text',
   ChildrenMarkdownRemarkChildren = 'childrenMarkdownRemark___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlock = 'childrenMarkdownRemark___childrenGrvscCodeBlock',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemes = 'childrenMarkdownRemark___childrenGrvscCodeBlock___additionalThemes',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemesConditions = 'childrenMarkdownRemark___childrenGrvscCodeBlock___additionalThemes___conditions',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemesIdentifier = 'childrenMarkdownRemark___childrenGrvscCodeBlock___additionalThemes___identifier',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockAdditionalThemesPath = 'childrenMarkdownRemark___childrenGrvscCodeBlock___additionalThemes___path',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockChildren = 'childrenMarkdownRemark___childrenGrvscCodeBlock___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockChildrenChildren = 'childrenMarkdownRemark___childrenGrvscCodeBlock___children___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockChildrenId = 'childrenMarkdownRemark___childrenGrvscCodeBlock___children___id',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockCodeClassName = 'childrenMarkdownRemark___childrenGrvscCodeBlock___codeClassName',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockDefaultThemeConditions = 'childrenMarkdownRemark___childrenGrvscCodeBlock___defaultTheme___conditions',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockDefaultThemeIdentifier = 'childrenMarkdownRemark___childrenGrvscCodeBlock___defaultTheme___identifier',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockDefaultThemePath = 'childrenMarkdownRemark___childrenGrvscCodeBlock___defaultTheme___path',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockHtml = 'childrenMarkdownRemark___childrenGrvscCodeBlock___html',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockId = 'childrenMarkdownRemark___childrenGrvscCodeBlock___id',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockIndex = 'childrenMarkdownRemark___childrenGrvscCodeBlock___index',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalContent = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___content',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalContentDigest = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___contentDigest',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalDescription = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___description',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalFieldOwners = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___fieldOwners',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalIgnoreType = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___ignoreType',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalMediaType = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___mediaType',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalOwner = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___owner',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockInternalType = 'childrenMarkdownRemark___childrenGrvscCodeBlock___internal___type',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockLanguage = 'childrenMarkdownRemark___childrenGrvscCodeBlock___language',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockMeta = 'childrenMarkdownRemark___childrenGrvscCodeBlock___meta',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockParentChildren = 'childrenMarkdownRemark___childrenGrvscCodeBlock___parent___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockParentId = 'childrenMarkdownRemark___childrenGrvscCodeBlock___parent___id',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockPreClassName = 'childrenMarkdownRemark___childrenGrvscCodeBlock___preClassName',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockText = 'childrenMarkdownRemark___childrenGrvscCodeBlock___text',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLines = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesAttrs = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___attrs',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesClassName = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___className',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesData = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___data',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesDiff = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___diff',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesGutterCells = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___gutterCells',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesHtml = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___html',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesIsHighlighted = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___isHighlighted',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesLineNumber = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___lineNumber',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesText = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___text',
+  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesTokens = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___tokens',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpan = 'childrenMarkdownRemark___childrenGrvscCodeSpan',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemes = 'childrenMarkdownRemark___childrenGrvscCodeSpan___additionalThemes',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemesConditions = 'childrenMarkdownRemark___childrenGrvscCodeSpan___additionalThemes___conditions',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemesIdentifier = 'childrenMarkdownRemark___childrenGrvscCodeSpan___additionalThemes___identifier',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanAdditionalThemesPath = 'childrenMarkdownRemark___childrenGrvscCodeSpan___additionalThemes___path',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanChildren = 'childrenMarkdownRemark___childrenGrvscCodeSpan___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanChildrenChildren = 'childrenMarkdownRemark___childrenGrvscCodeSpan___children___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanChildrenId = 'childrenMarkdownRemark___childrenGrvscCodeSpan___children___id',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanClassName = 'childrenMarkdownRemark___childrenGrvscCodeSpan___className',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanDefaultThemeConditions = 'childrenMarkdownRemark___childrenGrvscCodeSpan___defaultTheme___conditions',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanDefaultThemeIdentifier = 'childrenMarkdownRemark___childrenGrvscCodeSpan___defaultTheme___identifier',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanDefaultThemePath = 'childrenMarkdownRemark___childrenGrvscCodeSpan___defaultTheme___path',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanHtml = 'childrenMarkdownRemark___childrenGrvscCodeSpan___html',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanId = 'childrenMarkdownRemark___childrenGrvscCodeSpan___id',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanIndex = 'childrenMarkdownRemark___childrenGrvscCodeSpan___index',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalContent = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___content',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalContentDigest = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___contentDigest',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalDescription = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___description',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalFieldOwners = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___fieldOwners',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalIgnoreType = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___ignoreType',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalMediaType = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___mediaType',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalOwner = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___owner',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanInternalType = 'childrenMarkdownRemark___childrenGrvscCodeSpan___internal___type',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanLanguage = 'childrenMarkdownRemark___childrenGrvscCodeSpan___language',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanParentChildren = 'childrenMarkdownRemark___childrenGrvscCodeSpan___parent___children',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanParentId = 'childrenMarkdownRemark___childrenGrvscCodeSpan___parent___id',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanText = 'childrenMarkdownRemark___childrenGrvscCodeSpan___text',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokens = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensAdditionalThemeTokenData = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___additionalThemeTokenData',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensClassName = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___className',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensEndIndex = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___endIndex',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensHtml = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___html',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensScopes = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___scopes',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensStartIndex = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___startIndex',
+  ChildrenMarkdownRemarkChildrenGrvscCodeSpanTokensText = 'childrenMarkdownRemark___childrenGrvscCodeSpan___tokens___text',
   ChildrenMarkdownRemarkChildrenChildren = 'childrenMarkdownRemark___children___children',
   ChildrenMarkdownRemarkChildrenChildrenChildren = 'childrenMarkdownRemark___children___children___children',
   ChildrenMarkdownRemarkChildrenChildrenId = 'childrenMarkdownRemark___children___children___id',
@@ -989,48 +1286,48 @@ enum FileFieldsEnum {
 }
 
 type FileFilterInput = {
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  childImageSharp?: Maybe<ImageSharpFilterInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
-  childrenMarkdownRemark?: Maybe<MarkdownRemarkFilterListInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  publicURL?: Maybe<StringQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  blksize?: InputMaybe<IntQueryOperatorInput>;
+  blocks?: InputMaybe<IntQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  childImageSharp?: InputMaybe<ImageSharpFilterInput>;
+  childMarkdownRemark?: InputMaybe<MarkdownRemarkFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
+  childrenMarkdownRemark?: InputMaybe<MarkdownRemarkFilterListInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  publicURL?: InputMaybe<StringQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
 };
 
 type FileGroupConnection = {
@@ -1053,8 +1350,8 @@ type FileGroupConnectionDistinctArgs = {
 
 type FileGroupConnectionGroupArgs = {
   field: FileFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type FileGroupConnectionMaxArgs = {
@@ -1070,19 +1367,19 @@ type FileGroupConnectionSumArgs = {
 };
 
 type FileSortInput = {
-  fields?: Maybe<Array<Maybe<FileFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<FileFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type FloatQueryOperatorInput = {
-  eq?: Maybe<Scalars['Float']>;
-  gt?: Maybe<Scalars['Float']>;
-  gte?: Maybe<Scalars['Float']>;
-  in?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  lt?: Maybe<Scalars['Float']>;
-  lte?: Maybe<Scalars['Float']>;
-  ne?: Maybe<Scalars['Float']>;
-  nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  eq?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  ne?: InputMaybe<Scalars['Float']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
 };
 
 type Frontmatter = {
@@ -1097,21 +1394,864 @@ type Frontmatter = {
 };
 
 type FrontmatterDateArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type FrontmatterFilterInput = {
-  date?: Maybe<DateQueryOperatorInput>;
-  excerpt?: Maybe<StringQueryOperatorInput>;
-  excerptAst?: Maybe<JsonQueryOperatorInput>;
-  preview?: Maybe<FileFilterInput>;
-  published?: Maybe<BooleanQueryOperatorInput>;
-  tags?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  year?: Maybe<IntQueryOperatorInput>;
+  date?: InputMaybe<DateQueryOperatorInput>;
+  excerpt?: InputMaybe<StringQueryOperatorInput>;
+  excerptAst?: InputMaybe<JsonQueryOperatorInput>;
+  preview?: InputMaybe<FileFilterInput>;
+  published?: InputMaybe<BooleanQueryOperatorInput>;
+  tags?: InputMaybe<StringQueryOperatorInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
+  year?: InputMaybe<IntQueryOperatorInput>;
+};
+
+type GrvscCodeBlock = Node & {
+  additionalThemes: Array<GrvscTheme>;
+  children: Array<Node>;
+  codeClassName: Scalars['String'];
+  defaultTheme: GrvscTheme;
+  html: Scalars['String'];
+  id: Scalars['ID'];
+  index: Scalars['Int'];
+  internal: Internal;
+  language?: Maybe<Scalars['String']>;
+  meta?: Maybe<Scalars['JSON']>;
+  parent?: Maybe<Node>;
+  preClassName: Scalars['String'];
+  text: Scalars['String'];
+  tokenizedLines?: Maybe<Array<GrvscTokenizedLine>>;
+};
+
+type GrvscCodeBlockConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GrvscCodeBlockEdge>;
+  group: Array<GrvscCodeBlockGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  nodes: Array<GrvscCodeBlock>;
+  pageInfo: PageInfo;
+  sum?: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+type GrvscCodeBlockConnectionDistinctArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockConnectionGroupArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+type GrvscCodeBlockConnectionMaxArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockConnectionMinArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockConnectionSumArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockEdge = {
+  next?: Maybe<GrvscCodeBlock>;
+  node: GrvscCodeBlock;
+  previous?: Maybe<GrvscCodeBlock>;
+};
+
+enum GrvscCodeBlockFieldsEnum {
+  AdditionalThemes = 'additionalThemes',
+  AdditionalThemesConditions = 'additionalThemes___conditions',
+  AdditionalThemesConditionsCondition = 'additionalThemes___conditions___condition',
+  AdditionalThemesConditionsValue = 'additionalThemes___conditions___value',
+  AdditionalThemesIdentifier = 'additionalThemes___identifier',
+  AdditionalThemesPath = 'additionalThemes___path',
+  Children = 'children',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenId = 'children___id',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  CodeClassName = 'codeClassName',
+  DefaultThemeConditions = 'defaultTheme___conditions',
+  DefaultThemeConditionsCondition = 'defaultTheme___conditions___condition',
+  DefaultThemeConditionsValue = 'defaultTheme___conditions___value',
+  DefaultThemeIdentifier = 'defaultTheme___identifier',
+  DefaultThemePath = 'defaultTheme___path',
+  Html = 'html',
+  Id = 'id',
+  Index = 'index',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  Language = 'language',
+  Meta = 'meta',
+  ParentChildren = 'parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentId = 'parent___id',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentParentId = 'parent___parent___parent___id',
+  PreClassName = 'preClassName',
+  Text = 'text',
+  TokenizedLines = 'tokenizedLines',
+  TokenizedLinesAttrs = 'tokenizedLines___attrs',
+  TokenizedLinesClassName = 'tokenizedLines___className',
+  TokenizedLinesData = 'tokenizedLines___data',
+  TokenizedLinesDiff = 'tokenizedLines___diff',
+  TokenizedLinesGutterCells = 'tokenizedLines___gutterCells',
+  TokenizedLinesGutterCellsClassName = 'tokenizedLines___gutterCells___className',
+  TokenizedLinesGutterCellsText = 'tokenizedLines___gutterCells___text',
+  TokenizedLinesHtml = 'tokenizedLines___html',
+  TokenizedLinesIsHighlighted = 'tokenizedLines___isHighlighted',
+  TokenizedLinesLineNumber = 'tokenizedLines___lineNumber',
+  TokenizedLinesText = 'tokenizedLines___text',
+  TokenizedLinesTokens = 'tokenizedLines___tokens',
+  TokenizedLinesTokensAdditionalThemeTokenData = 'tokenizedLines___tokens___additionalThemeTokenData',
+  TokenizedLinesTokensAdditionalThemeTokenDataBold = 'tokenizedLines___tokens___additionalThemeTokenData___bold',
+  TokenizedLinesTokensAdditionalThemeTokenDataClassName = 'tokenizedLines___tokens___additionalThemeTokenData___className',
+  TokenizedLinesTokensAdditionalThemeTokenDataColor = 'tokenizedLines___tokens___additionalThemeTokenData___color',
+  TokenizedLinesTokensAdditionalThemeTokenDataItalic = 'tokenizedLines___tokens___additionalThemeTokenData___italic',
+  TokenizedLinesTokensAdditionalThemeTokenDataMeta = 'tokenizedLines___tokens___additionalThemeTokenData___meta',
+  TokenizedLinesTokensAdditionalThemeTokenDataThemeIdentifier = 'tokenizedLines___tokens___additionalThemeTokenData___themeIdentifier',
+  TokenizedLinesTokensAdditionalThemeTokenDataUnderline = 'tokenizedLines___tokens___additionalThemeTokenData___underline',
+  TokenizedLinesTokensClassName = 'tokenizedLines___tokens___className',
+  TokenizedLinesTokensDefaultThemeTokenDataBold = 'tokenizedLines___tokens___defaultThemeTokenData___bold',
+  TokenizedLinesTokensDefaultThemeTokenDataClassName = 'tokenizedLines___tokens___defaultThemeTokenData___className',
+  TokenizedLinesTokensDefaultThemeTokenDataColor = 'tokenizedLines___tokens___defaultThemeTokenData___color',
+  TokenizedLinesTokensDefaultThemeTokenDataItalic = 'tokenizedLines___tokens___defaultThemeTokenData___italic',
+  TokenizedLinesTokensDefaultThemeTokenDataMeta = 'tokenizedLines___tokens___defaultThemeTokenData___meta',
+  TokenizedLinesTokensDefaultThemeTokenDataThemeIdentifier = 'tokenizedLines___tokens___defaultThemeTokenData___themeIdentifier',
+  TokenizedLinesTokensDefaultThemeTokenDataUnderline = 'tokenizedLines___tokens___defaultThemeTokenData___underline',
+  TokenizedLinesTokensEndIndex = 'tokenizedLines___tokens___endIndex',
+  TokenizedLinesTokensHtml = 'tokenizedLines___tokens___html',
+  TokenizedLinesTokensScopes = 'tokenizedLines___tokens___scopes',
+  TokenizedLinesTokensStartIndex = 'tokenizedLines___tokens___startIndex',
+  TokenizedLinesTokensText = 'tokenizedLines___tokens___text',
+}
+
+type GrvscCodeBlockFilterInput = {
+  additionalThemes?: InputMaybe<GrvscThemeFilterListInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  codeClassName?: InputMaybe<StringQueryOperatorInput>;
+  defaultTheme?: InputMaybe<GrvscThemeFilterInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  index?: InputMaybe<IntQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  language?: InputMaybe<StringQueryOperatorInput>;
+  meta?: InputMaybe<JsonQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  preClassName?: InputMaybe<StringQueryOperatorInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+  tokenizedLines?: InputMaybe<GrvscTokenizedLineFilterListInput>;
+};
+
+type GrvscCodeBlockFilterListInput = {
+  elemMatch?: InputMaybe<GrvscCodeBlockFilterInput>;
+};
+
+type GrvscCodeBlockGroupConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GrvscCodeBlockEdge>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+  group: Array<GrvscCodeBlockGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  nodes: Array<GrvscCodeBlock>;
+  pageInfo: PageInfo;
+  sum?: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+type GrvscCodeBlockGroupConnectionDistinctArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockGroupConnectionGroupArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+type GrvscCodeBlockGroupConnectionMaxArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockGroupConnectionMinArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockGroupConnectionSumArgs = {
+  field: GrvscCodeBlockFieldsEnum;
+};
+
+type GrvscCodeBlockSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<GrvscCodeBlockFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+type GrvscCodeSpan = Node & {
+  additionalThemes: Array<GrvscTheme>;
+  children: Array<Node>;
+  className?: Maybe<Scalars['String']>;
+  defaultTheme: GrvscTheme;
+  html: Scalars['String'];
+  id: Scalars['ID'];
+  index: Scalars['Int'];
+  internal: Internal;
+  language?: Maybe<Scalars['String']>;
+  parent?: Maybe<Node>;
+  text: Scalars['String'];
+  tokens: Array<GrvscToken>;
+};
+
+type GrvscCodeSpanConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GrvscCodeSpanEdge>;
+  group: Array<GrvscCodeSpanGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  nodes: Array<GrvscCodeSpan>;
+  pageInfo: PageInfo;
+  sum?: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+type GrvscCodeSpanConnectionDistinctArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanConnectionGroupArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+type GrvscCodeSpanConnectionMaxArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanConnectionMinArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanConnectionSumArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanEdge = {
+  next?: Maybe<GrvscCodeSpan>;
+  node: GrvscCodeSpan;
+  previous?: Maybe<GrvscCodeSpan>;
+};
+
+enum GrvscCodeSpanFieldsEnum {
+  AdditionalThemes = 'additionalThemes',
+  AdditionalThemesConditions = 'additionalThemes___conditions',
+  AdditionalThemesConditionsCondition = 'additionalThemes___conditions___condition',
+  AdditionalThemesConditionsValue = 'additionalThemes___conditions___value',
+  AdditionalThemesIdentifier = 'additionalThemes___identifier',
+  AdditionalThemesPath = 'additionalThemes___path',
+  Children = 'children',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenId = 'children___id',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ClassName = 'className',
+  DefaultThemeConditions = 'defaultTheme___conditions',
+  DefaultThemeConditionsCondition = 'defaultTheme___conditions___condition',
+  DefaultThemeConditionsValue = 'defaultTheme___conditions___value',
+  DefaultThemeIdentifier = 'defaultTheme___identifier',
+  DefaultThemePath = 'defaultTheme___path',
+  Html = 'html',
+  Id = 'id',
+  Index = 'index',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  Language = 'language',
+  ParentChildren = 'parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentId = 'parent___id',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentParentId = 'parent___parent___parent___id',
+  Text = 'text',
+  Tokens = 'tokens',
+  TokensAdditionalThemeTokenData = 'tokens___additionalThemeTokenData',
+  TokensAdditionalThemeTokenDataBold = 'tokens___additionalThemeTokenData___bold',
+  TokensAdditionalThemeTokenDataClassName = 'tokens___additionalThemeTokenData___className',
+  TokensAdditionalThemeTokenDataColor = 'tokens___additionalThemeTokenData___color',
+  TokensAdditionalThemeTokenDataItalic = 'tokens___additionalThemeTokenData___italic',
+  TokensAdditionalThemeTokenDataMeta = 'tokens___additionalThemeTokenData___meta',
+  TokensAdditionalThemeTokenDataThemeIdentifier = 'tokens___additionalThemeTokenData___themeIdentifier',
+  TokensAdditionalThemeTokenDataUnderline = 'tokens___additionalThemeTokenData___underline',
+  TokensClassName = 'tokens___className',
+  TokensDefaultThemeTokenDataBold = 'tokens___defaultThemeTokenData___bold',
+  TokensDefaultThemeTokenDataClassName = 'tokens___defaultThemeTokenData___className',
+  TokensDefaultThemeTokenDataColor = 'tokens___defaultThemeTokenData___color',
+  TokensDefaultThemeTokenDataItalic = 'tokens___defaultThemeTokenData___italic',
+  TokensDefaultThemeTokenDataMeta = 'tokens___defaultThemeTokenData___meta',
+  TokensDefaultThemeTokenDataThemeIdentifier = 'tokens___defaultThemeTokenData___themeIdentifier',
+  TokensDefaultThemeTokenDataUnderline = 'tokens___defaultThemeTokenData___underline',
+  TokensEndIndex = 'tokens___endIndex',
+  TokensHtml = 'tokens___html',
+  TokensScopes = 'tokens___scopes',
+  TokensStartIndex = 'tokens___startIndex',
+  TokensText = 'tokens___text',
+}
+
+type GrvscCodeSpanFilterInput = {
+  additionalThemes?: InputMaybe<GrvscThemeFilterListInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  className?: InputMaybe<StringQueryOperatorInput>;
+  defaultTheme?: InputMaybe<GrvscThemeFilterInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  index?: InputMaybe<IntQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  language?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+  tokens?: InputMaybe<GrvscTokenFilterListInput>;
+};
+
+type GrvscCodeSpanFilterListInput = {
+  elemMatch?: InputMaybe<GrvscCodeSpanFilterInput>;
+};
+
+type GrvscCodeSpanGroupConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GrvscCodeSpanEdge>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+  group: Array<GrvscCodeSpanGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  nodes: Array<GrvscCodeSpan>;
+  pageInfo: PageInfo;
+  sum?: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+type GrvscCodeSpanGroupConnectionDistinctArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanGroupConnectionGroupArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+type GrvscCodeSpanGroupConnectionMaxArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanGroupConnectionMinArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanGroupConnectionSumArgs = {
+  field: GrvscCodeSpanFieldsEnum;
+};
+
+type GrvscCodeSpanSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<GrvscCodeSpanFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+enum GrvscDiff {
+  Add = 'ADD',
+  Del = 'DEL',
+}
+
+type GrvscDiffQueryOperatorInput = {
+  eq?: InputMaybe<GrvscDiff>;
+  in?: InputMaybe<Array<InputMaybe<GrvscDiff>>>;
+  ne?: InputMaybe<GrvscDiff>;
+  nin?: InputMaybe<Array<InputMaybe<GrvscDiff>>>;
+};
+
+type GrvscGutterCell = {
+  className?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+};
+
+type GrvscGutterCellFilterInput = {
+  className?: InputMaybe<StringQueryOperatorInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GrvscGutterCellFilterListInput = {
+  elemMatch?: InputMaybe<GrvscGutterCellFilterInput>;
+};
+
+type GrvscStylesheet = Node & {
+  children: Array<Node>;
+  css: Scalars['String'];
+  id: Scalars['ID'];
+  internal: Internal;
+  parent?: Maybe<Node>;
+};
+
+type GrvscStylesheetConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GrvscStylesheetEdge>;
+  group: Array<GrvscStylesheetGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  nodes: Array<GrvscStylesheet>;
+  pageInfo: PageInfo;
+  sum?: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+type GrvscStylesheetConnectionDistinctArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetConnectionGroupArgs = {
+  field: GrvscStylesheetFieldsEnum;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+type GrvscStylesheetConnectionMaxArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetConnectionMinArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetConnectionSumArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetEdge = {
+  next?: Maybe<GrvscStylesheet>;
+  node: GrvscStylesheet;
+  previous?: Maybe<GrvscStylesheet>;
+};
+
+enum GrvscStylesheetFieldsEnum {
+  Children = 'children',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenId = 'children___id',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  Css = 'css',
+  Id = 'id',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentId = 'parent___id',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentParentId = 'parent___parent___parent___id',
+}
+
+type GrvscStylesheetFilterInput = {
+  children?: InputMaybe<NodeFilterListInput>;
+  css?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+};
+
+type GrvscStylesheetGroupConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GrvscStylesheetEdge>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+  group: Array<GrvscStylesheetGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  nodes: Array<GrvscStylesheet>;
+  pageInfo: PageInfo;
+  sum?: Maybe<Scalars['Float']>;
+  totalCount: Scalars['Int'];
+};
+
+type GrvscStylesheetGroupConnectionDistinctArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetGroupConnectionGroupArgs = {
+  field: GrvscStylesheetFieldsEnum;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+type GrvscStylesheetGroupConnectionMaxArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetGroupConnectionMinArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetGroupConnectionSumArgs = {
+  field: GrvscStylesheetFieldsEnum;
+};
+
+type GrvscStylesheetSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<GrvscStylesheetFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+type GrvscTheme = {
+  conditions: Array<GrvscThemeCondition>;
+  identifier: Scalars['String'];
+  path: Scalars['String'];
+};
+
+type GrvscThemeArgument = {
+  conditions: Array<Scalars['String']>;
+  identifier: Scalars['String'];
+};
+
+type GrvscThemeCondition = {
+  condition: GrvscThemeConditionKind;
+  value?: Maybe<Scalars['String']>;
+};
+
+type GrvscThemeConditionFilterInput = {
+  condition?: InputMaybe<GrvscThemeConditionKindQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GrvscThemeConditionFilterListInput = {
+  elemMatch?: InputMaybe<GrvscThemeConditionFilterInput>;
+};
+
+enum GrvscThemeConditionKind {
+  Default = 'default',
+  MatchMedia = 'matchMedia',
+  ParentSelector = 'parentSelector',
+}
+
+type GrvscThemeConditionKindQueryOperatorInput = {
+  eq?: InputMaybe<GrvscThemeConditionKind>;
+  in?: InputMaybe<Array<InputMaybe<GrvscThemeConditionKind>>>;
+  ne?: InputMaybe<GrvscThemeConditionKind>;
+  nin?: InputMaybe<Array<InputMaybe<GrvscThemeConditionKind>>>;
+};
+
+type GrvscThemeFilterInput = {
+  conditions?: InputMaybe<GrvscThemeConditionFilterListInput>;
+  identifier?: InputMaybe<StringQueryOperatorInput>;
+  path?: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GrvscThemeFilterListInput = {
+  elemMatch?: InputMaybe<GrvscThemeFilterInput>;
+};
+
+type GrvscThemeTokenData = {
+  bold: Scalars['Boolean'];
+  className: Scalars['String'];
+  color: Scalars['String'];
+  italic: Scalars['Boolean'];
+  meta: Scalars['Int'];
+  themeIdentifier: Scalars['String'];
+  underline: Scalars['Boolean'];
+};
+
+type GrvscThemeTokenDataFilterInput = {
+  bold?: InputMaybe<BooleanQueryOperatorInput>;
+  className?: InputMaybe<StringQueryOperatorInput>;
+  color?: InputMaybe<StringQueryOperatorInput>;
+  italic?: InputMaybe<BooleanQueryOperatorInput>;
+  meta?: InputMaybe<IntQueryOperatorInput>;
+  themeIdentifier?: InputMaybe<StringQueryOperatorInput>;
+  underline?: InputMaybe<BooleanQueryOperatorInput>;
+};
+
+type GrvscThemeTokenDataFilterListInput = {
+  elemMatch?: InputMaybe<GrvscThemeTokenDataFilterInput>;
+};
+
+type GrvscToken = {
+  additionalThemeTokenData: Array<GrvscThemeTokenData>;
+  className: Scalars['String'];
+  defaultThemeTokenData: GrvscThemeTokenData;
+  endIndex: Scalars['Int'];
+  html: Scalars['String'];
+  scopes: Array<Scalars['String']>;
+  startIndex: Scalars['Int'];
+  text: Scalars['String'];
+};
+
+type GrvscTokenFilterInput = {
+  additionalThemeTokenData?: InputMaybe<GrvscThemeTokenDataFilterListInput>;
+  className?: InputMaybe<StringQueryOperatorInput>;
+  defaultThemeTokenData?: InputMaybe<GrvscThemeTokenDataFilterInput>;
+  endIndex?: InputMaybe<IntQueryOperatorInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  scopes?: InputMaybe<StringQueryOperatorInput>;
+  startIndex?: InputMaybe<IntQueryOperatorInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GrvscTokenFilterListInput = {
+  elemMatch?: InputMaybe<GrvscTokenFilterInput>;
+};
+
+type GrvscTokenizedLine = {
+  attrs: Scalars['JSON'];
+  className: Scalars['String'];
+  data: Scalars['JSON'];
+  diff?: Maybe<GrvscDiff>;
+  gutterCells?: Maybe<Array<Maybe<GrvscGutterCell>>>;
+  html: Scalars['String'];
+  isHighlighted?: Maybe<Scalars['Boolean']>;
+  lineNumber?: Maybe<Scalars['Int']>;
+  text: Scalars['String'];
+  tokens: Array<GrvscToken>;
+};
+
+type GrvscTokenizedLineFilterInput = {
+  attrs?: InputMaybe<JsonQueryOperatorInput>;
+  className?: InputMaybe<StringQueryOperatorInput>;
+  data?: InputMaybe<JsonQueryOperatorInput>;
+  diff?: InputMaybe<GrvscDiffQueryOperatorInput>;
+  gutterCells?: InputMaybe<GrvscGutterCellFilterListInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  isHighlighted?: InputMaybe<BooleanQueryOperatorInput>;
+  lineNumber?: InputMaybe<IntQueryOperatorInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+  tokens?: InputMaybe<GrvscTokenFilterListInput>;
+};
+
+type GrvscTokenizedLineFilterListInput = {
+  elemMatch?: InputMaybe<GrvscTokenizedLineFilterInput>;
 };
 
 enum GatsbyImageFormat {
@@ -1193,92 +2333,92 @@ type ImageSharp = Node & {
 };
 
 type ImageSharpFixedArgs = {
-  background?: Maybe<Scalars['String']>;
-  base64Width?: Maybe<Scalars['Int']>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  duotone?: Maybe<DuotoneGradient>;
-  fit?: Maybe<ImageFit>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  height?: Maybe<Scalars['Int']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  quality?: Maybe<Scalars['Int']>;
-  rotate?: Maybe<Scalars['Int']>;
-  toFormat?: Maybe<ImageFormat>;
-  toFormatBase64?: Maybe<ImageFormat>;
-  traceSVG?: Maybe<Potrace>;
-  trim?: Maybe<Scalars['Float']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
+  background?: InputMaybe<Scalars['String']>;
+  base64Width?: InputMaybe<Scalars['Int']>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  fit?: InputMaybe<ImageFit>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  height?: InputMaybe<Scalars['Int']>;
+  jpegProgressive?: InputMaybe<Scalars['Boolean']>;
+  jpegQuality?: InputMaybe<Scalars['Int']>;
+  pngCompressionSpeed?: InputMaybe<Scalars['Int']>;
+  pngQuality?: InputMaybe<Scalars['Int']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  toFormat?: InputMaybe<ImageFormat>;
+  toFormatBase64?: InputMaybe<ImageFormat>;
+  traceSVG?: InputMaybe<Potrace>;
+  trim?: InputMaybe<Scalars['Float']>;
+  webpQuality?: InputMaybe<Scalars['Int']>;
+  width?: InputMaybe<Scalars['Int']>;
 };
 
 type ImageSharpFluidArgs = {
-  background?: Maybe<Scalars['String']>;
-  base64Width?: Maybe<Scalars['Int']>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  duotone?: Maybe<DuotoneGradient>;
-  fit?: Maybe<ImageFit>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  maxHeight?: Maybe<Scalars['Int']>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  quality?: Maybe<Scalars['Int']>;
-  rotate?: Maybe<Scalars['Int']>;
-  sizes?: Maybe<Scalars['String']>;
-  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  toFormat?: Maybe<ImageFormat>;
-  toFormatBase64?: Maybe<ImageFormat>;
-  traceSVG?: Maybe<Potrace>;
-  trim?: Maybe<Scalars['Float']>;
-  webpQuality?: Maybe<Scalars['Int']>;
+  background?: InputMaybe<Scalars['String']>;
+  base64Width?: InputMaybe<Scalars['Int']>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  fit?: InputMaybe<ImageFit>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  jpegProgressive?: InputMaybe<Scalars['Boolean']>;
+  jpegQuality?: InputMaybe<Scalars['Int']>;
+  maxHeight?: InputMaybe<Scalars['Int']>;
+  maxWidth?: InputMaybe<Scalars['Int']>;
+  pngCompressionSpeed?: InputMaybe<Scalars['Int']>;
+  pngQuality?: InputMaybe<Scalars['Int']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  sizes?: InputMaybe<Scalars['String']>;
+  srcSetBreakpoints?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  toFormat?: InputMaybe<ImageFormat>;
+  toFormatBase64?: InputMaybe<ImageFormat>;
+  traceSVG?: InputMaybe<Potrace>;
+  trim?: InputMaybe<Scalars['Float']>;
+  webpQuality?: InputMaybe<Scalars['Int']>;
 };
 
 type ImageSharpGatsbyImageDataArgs = {
-  aspectRatio?: Maybe<Scalars['Float']>;
-  avifOptions?: Maybe<AvifOptions>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  blurredOptions?: Maybe<BlurredOptions>;
-  breakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  formats?: Maybe<Array<Maybe<ImageFormat>>>;
-  height?: Maybe<Scalars['Int']>;
-  jpgOptions?: Maybe<JpgOptions>;
-  layout?: Maybe<ImageLayout>;
-  outputPixelDensities?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  placeholder?: Maybe<ImagePlaceholder>;
-  pngOptions?: Maybe<PngOptions>;
-  quality?: Maybe<Scalars['Int']>;
-  sizes?: Maybe<Scalars['String']>;
-  tracedSVGOptions?: Maybe<Potrace>;
-  transformOptions?: Maybe<TransformOptions>;
-  webpOptions?: Maybe<WebPOptions>;
-  width?: Maybe<Scalars['Int']>;
+  aspectRatio?: InputMaybe<Scalars['Float']>;
+  avifOptions?: InputMaybe<AvifOptions>;
+  backgroundColor?: InputMaybe<Scalars['String']>;
+  blurredOptions?: InputMaybe<BlurredOptions>;
+  breakpoints?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  formats?: InputMaybe<Array<InputMaybe<ImageFormat>>>;
+  height?: InputMaybe<Scalars['Int']>;
+  jpgOptions?: InputMaybe<JpgOptions>;
+  layout?: InputMaybe<ImageLayout>;
+  outputPixelDensities?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  placeholder?: InputMaybe<ImagePlaceholder>;
+  pngOptions?: InputMaybe<PngOptions>;
+  quality?: InputMaybe<Scalars['Int']>;
+  sizes?: InputMaybe<Scalars['String']>;
+  tracedSVGOptions?: InputMaybe<Potrace>;
+  transformOptions?: InputMaybe<TransformOptions>;
+  webpOptions?: InputMaybe<WebPOptions>;
+  width?: InputMaybe<Scalars['Int']>;
 };
 
 type ImageSharpResizeArgs = {
-  background?: Maybe<Scalars['String']>;
-  base64?: Maybe<Scalars['Boolean']>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  duotone?: Maybe<DuotoneGradient>;
-  fit?: Maybe<ImageFit>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  height?: Maybe<Scalars['Int']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngCompressionLevel?: Maybe<Scalars['Int']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  quality?: Maybe<Scalars['Int']>;
-  rotate?: Maybe<Scalars['Int']>;
-  toFormat?: Maybe<ImageFormat>;
-  traceSVG?: Maybe<Potrace>;
-  trim?: Maybe<Scalars['Float']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
+  background?: InputMaybe<Scalars['String']>;
+  base64?: InputMaybe<Scalars['Boolean']>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  fit?: InputMaybe<ImageFit>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  height?: InputMaybe<Scalars['Int']>;
+  jpegProgressive?: InputMaybe<Scalars['Boolean']>;
+  jpegQuality?: InputMaybe<Scalars['Int']>;
+  pngCompressionLevel?: InputMaybe<Scalars['Int']>;
+  pngCompressionSpeed?: InputMaybe<Scalars['Int']>;
+  pngQuality?: InputMaybe<Scalars['Int']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  toFormat?: InputMaybe<ImageFormat>;
+  traceSVG?: InputMaybe<Potrace>;
+  trim?: InputMaybe<Scalars['Float']>;
+  webpQuality?: InputMaybe<Scalars['Int']>;
+  width?: InputMaybe<Scalars['Int']>;
 };
 
 type ImageSharpConnection = {
@@ -1299,8 +2439,8 @@ type ImageSharpConnectionDistinctArgs = {
 
 type ImageSharpConnectionGroupArgs = {
   field: ImageSharpFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type ImageSharpConnectionMaxArgs = {
@@ -1443,19 +2583,19 @@ enum ImageSharpFieldsEnum {
 }
 
 type ImageSharpFilterInput = {
-  children?: Maybe<NodeFilterListInput>;
-  fixed?: Maybe<ImageSharpFixedFilterInput>;
-  fluid?: Maybe<ImageSharpFluidFilterInput>;
-  gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  original?: Maybe<ImageSharpOriginalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  resize?: Maybe<ImageSharpResizeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  fixed?: InputMaybe<ImageSharpFixedFilterInput>;
+  fluid?: InputMaybe<ImageSharpFluidFilterInput>;
+  gatsbyImageData?: InputMaybe<JsonQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  original?: InputMaybe<ImageSharpOriginalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  resize?: InputMaybe<ImageSharpResizeFilterInput>;
 };
 
 type ImageSharpFilterListInput = {
-  elemMatch?: Maybe<ImageSharpFilterInput>;
+  elemMatch?: InputMaybe<ImageSharpFilterInput>;
 };
 
 type ImageSharpFixed = {
@@ -1472,16 +2612,16 @@ type ImageSharpFixed = {
 };
 
 type ImageSharpFixedFilterInput = {
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  base64?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<FloatQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  srcSetWebp?: Maybe<StringQueryOperatorInput>;
-  srcWebp?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<FloatQueryOperatorInput>;
+  aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
+  base64?: InputMaybe<StringQueryOperatorInput>;
+  height?: InputMaybe<FloatQueryOperatorInput>;
+  originalName?: InputMaybe<StringQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+  srcSet?: InputMaybe<StringQueryOperatorInput>;
+  srcSetWebp?: InputMaybe<StringQueryOperatorInput>;
+  srcWebp?: InputMaybe<StringQueryOperatorInput>;
+  tracedSVG?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<FloatQueryOperatorInput>;
 };
 
 type ImageSharpFluid = {
@@ -1500,18 +2640,18 @@ type ImageSharpFluid = {
 };
 
 type ImageSharpFluidFilterInput = {
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  base64?: Maybe<StringQueryOperatorInput>;
-  originalImg?: Maybe<StringQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-  presentationHeight?: Maybe<IntQueryOperatorInput>;
-  presentationWidth?: Maybe<IntQueryOperatorInput>;
-  sizes?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  srcSetWebp?: Maybe<StringQueryOperatorInput>;
-  srcWebp?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
+  aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
+  base64?: InputMaybe<StringQueryOperatorInput>;
+  originalImg?: InputMaybe<StringQueryOperatorInput>;
+  originalName?: InputMaybe<StringQueryOperatorInput>;
+  presentationHeight?: InputMaybe<IntQueryOperatorInput>;
+  presentationWidth?: InputMaybe<IntQueryOperatorInput>;
+  sizes?: InputMaybe<StringQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+  srcSet?: InputMaybe<StringQueryOperatorInput>;
+  srcSetWebp?: InputMaybe<StringQueryOperatorInput>;
+  srcWebp?: InputMaybe<StringQueryOperatorInput>;
+  tracedSVG?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type ImageSharpGroupConnection = {
@@ -1534,8 +2674,8 @@ type ImageSharpGroupConnectionDistinctArgs = {
 
 type ImageSharpGroupConnectionGroupArgs = {
   field: ImageSharpFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type ImageSharpGroupConnectionMaxArgs = {
@@ -1557,9 +2697,9 @@ type ImageSharpOriginal = {
 };
 
 type ImageSharpOriginalFilterInput = {
-  height?: Maybe<FloatQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<FloatQueryOperatorInput>;
+  height?: InputMaybe<FloatQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<FloatQueryOperatorInput>;
 };
 
 type ImageSharpResize = {
@@ -1572,28 +2712,28 @@ type ImageSharpResize = {
 };
 
 type ImageSharpResizeFilterInput = {
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<IntQueryOperatorInput>;
+  aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  originalName?: InputMaybe<StringQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+  tracedSVG?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
 };
 
 type ImageSharpSortInput = {
-  fields?: Maybe<Array<Maybe<ImageSharpFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<ImageSharpFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type IntQueryOperatorInput = {
-  eq?: Maybe<Scalars['Int']>;
-  gt?: Maybe<Scalars['Int']>;
-  gte?: Maybe<Scalars['Int']>;
-  in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  lt?: Maybe<Scalars['Int']>;
-  lte?: Maybe<Scalars['Int']>;
-  ne?: Maybe<Scalars['Int']>;
-  nin?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  eq?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  ne?: InputMaybe<Scalars['Int']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
 };
 
 type Internal = {
@@ -1608,28 +2748,28 @@ type Internal = {
 };
 
 type InternalFilterInput = {
-  content?: Maybe<StringQueryOperatorInput>;
-  contentDigest?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  fieldOwners?: Maybe<StringQueryOperatorInput>;
-  ignoreType?: Maybe<BooleanQueryOperatorInput>;
-  mediaType?: Maybe<StringQueryOperatorInput>;
-  owner?: Maybe<StringQueryOperatorInput>;
-  type?: Maybe<StringQueryOperatorInput>;
+  content?: InputMaybe<StringQueryOperatorInput>;
+  contentDigest?: InputMaybe<StringQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
+  fieldOwners?: InputMaybe<StringQueryOperatorInput>;
+  ignoreType?: InputMaybe<BooleanQueryOperatorInput>;
+  mediaType?: InputMaybe<StringQueryOperatorInput>;
+  owner?: InputMaybe<StringQueryOperatorInput>;
+  type?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type JpgOptions = {
-  progressive?: Maybe<Scalars['Boolean']>;
-  quality?: Maybe<Scalars['Int']>;
+  progressive?: InputMaybe<Scalars['Boolean']>;
+  quality?: InputMaybe<Scalars['Int']>;
 };
 
 type JsonQueryOperatorInput = {
-  eq?: Maybe<Scalars['JSON']>;
-  glob?: Maybe<Scalars['JSON']>;
-  in?: Maybe<Array<Maybe<Scalars['JSON']>>>;
-  ne?: Maybe<Scalars['JSON']>;
-  nin?: Maybe<Array<Maybe<Scalars['JSON']>>>;
-  regex?: Maybe<Scalars['JSON']>;
+  eq?: InputMaybe<Scalars['JSON']>;
+  glob?: InputMaybe<Scalars['JSON']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
+  ne?: InputMaybe<Scalars['JSON']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
+  regex?: InputMaybe<Scalars['JSON']>;
 };
 
 enum MarkdownExcerptFormats {
@@ -1645,13 +2785,13 @@ type MarkdownHeading = {
 };
 
 type MarkdownHeadingFilterInput = {
-  depth?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
+  depth?: InputMaybe<IntQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  value?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type MarkdownHeadingFilterListInput = {
-  elemMatch?: Maybe<MarkdownHeadingFilterInput>;
+  elemMatch?: InputMaybe<MarkdownHeadingFilterInput>;
 };
 
 enum MarkdownHeadingLevels {
@@ -1664,11 +2804,21 @@ enum MarkdownHeadingLevels {
 }
 
 type MarkdownRemark = Node & {
+  /** Returns the first child node of type GRVSCCodeBlock or null if there are no children of given type on this node */
+  childGrvscCodeBlock?: Maybe<GrvscCodeBlock>;
+  /** Returns the first child node of type GRVSCCodeSpan or null if there are no children of given type on this node */
+  childGrvscCodeSpan?: Maybe<GrvscCodeSpan>;
   children: Array<Node>;
+  /** Returns all children nodes filtered by type GRVSCCodeBlock */
+  childrenGrvscCodeBlock?: Maybe<Array<Maybe<GrvscCodeBlock>>>;
+  /** Returns all children nodes filtered by type GRVSCCodeSpan */
+  childrenGrvscCodeSpan?: Maybe<Array<Maybe<GrvscCodeSpan>>>;
   excerpt?: Maybe<Scalars['String']>;
   excerptAst?: Maybe<Scalars['JSON']>;
   fileAbsolutePath?: Maybe<Scalars['String']>;
   frontmatter?: Maybe<Frontmatter>;
+  grvscCodeBlocks?: Maybe<Array<Maybe<GrvscCodeBlock>>>;
+  grvscCodeSpans?: Maybe<Array<Maybe<GrvscCodeSpan>>>;
   headings?: Maybe<Array<Maybe<MarkdownHeading>>>;
   html?: Maybe<Scalars['String']>;
   htmlAst?: Maybe<Scalars['JSON']>;
@@ -1683,25 +2833,25 @@ type MarkdownRemark = Node & {
 };
 
 type MarkdownRemarkExcerptArgs = {
-  format?: Maybe<MarkdownExcerptFormats>;
-  pruneLength?: Maybe<Scalars['Int']>;
-  truncate?: Maybe<Scalars['Boolean']>;
+  format?: InputMaybe<MarkdownExcerptFormats>;
+  pruneLength?: InputMaybe<Scalars['Int']>;
+  truncate?: InputMaybe<Scalars['Boolean']>;
 };
 
 type MarkdownRemarkExcerptAstArgs = {
-  pruneLength?: Maybe<Scalars['Int']>;
-  truncate?: Maybe<Scalars['Boolean']>;
+  pruneLength?: InputMaybe<Scalars['Int']>;
+  truncate?: InputMaybe<Scalars['Boolean']>;
 };
 
 type MarkdownRemarkHeadingsArgs = {
-  depth?: Maybe<MarkdownHeadingLevels>;
+  depth?: InputMaybe<MarkdownHeadingLevels>;
 };
 
 type MarkdownRemarkTableOfContentsArgs = {
-  absolute?: Maybe<Scalars['Boolean']>;
-  heading?: Maybe<Scalars['String']>;
-  maxDepth?: Maybe<Scalars['Int']>;
-  pathToSlugField?: Maybe<Scalars['String']>;
+  absolute?: InputMaybe<Scalars['Boolean']>;
+  heading?: InputMaybe<Scalars['String']>;
+  maxDepth?: InputMaybe<Scalars['Int']>;
+  pathToSlugField?: InputMaybe<Scalars['String']>;
 };
 
 type MarkdownRemarkConnection = {
@@ -1722,8 +2872,8 @@ type MarkdownRemarkConnectionDistinctArgs = {
 
 type MarkdownRemarkConnectionGroupArgs = {
   field: MarkdownRemarkFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type MarkdownRemarkConnectionMaxArgs = {
@@ -1745,7 +2895,313 @@ type MarkdownRemarkEdge = {
 };
 
 enum MarkdownRemarkFieldsEnum {
+  ChildGrvscCodeBlockAdditionalThemes = 'childGrvscCodeBlock___additionalThemes',
+  ChildGrvscCodeBlockAdditionalThemesConditions = 'childGrvscCodeBlock___additionalThemes___conditions',
+  ChildGrvscCodeBlockAdditionalThemesConditionsCondition = 'childGrvscCodeBlock___additionalThemes___conditions___condition',
+  ChildGrvscCodeBlockAdditionalThemesConditionsValue = 'childGrvscCodeBlock___additionalThemes___conditions___value',
+  ChildGrvscCodeBlockAdditionalThemesIdentifier = 'childGrvscCodeBlock___additionalThemes___identifier',
+  ChildGrvscCodeBlockAdditionalThemesPath = 'childGrvscCodeBlock___additionalThemes___path',
+  ChildGrvscCodeBlockChildren = 'childGrvscCodeBlock___children',
+  ChildGrvscCodeBlockChildrenChildren = 'childGrvscCodeBlock___children___children',
+  ChildGrvscCodeBlockChildrenChildrenChildren = 'childGrvscCodeBlock___children___children___children',
+  ChildGrvscCodeBlockChildrenChildrenId = 'childGrvscCodeBlock___children___children___id',
+  ChildGrvscCodeBlockChildrenId = 'childGrvscCodeBlock___children___id',
+  ChildGrvscCodeBlockChildrenInternalContent = 'childGrvscCodeBlock___children___internal___content',
+  ChildGrvscCodeBlockChildrenInternalContentDigest = 'childGrvscCodeBlock___children___internal___contentDigest',
+  ChildGrvscCodeBlockChildrenInternalDescription = 'childGrvscCodeBlock___children___internal___description',
+  ChildGrvscCodeBlockChildrenInternalFieldOwners = 'childGrvscCodeBlock___children___internal___fieldOwners',
+  ChildGrvscCodeBlockChildrenInternalIgnoreType = 'childGrvscCodeBlock___children___internal___ignoreType',
+  ChildGrvscCodeBlockChildrenInternalMediaType = 'childGrvscCodeBlock___children___internal___mediaType',
+  ChildGrvscCodeBlockChildrenInternalOwner = 'childGrvscCodeBlock___children___internal___owner',
+  ChildGrvscCodeBlockChildrenInternalType = 'childGrvscCodeBlock___children___internal___type',
+  ChildGrvscCodeBlockChildrenParentChildren = 'childGrvscCodeBlock___children___parent___children',
+  ChildGrvscCodeBlockChildrenParentId = 'childGrvscCodeBlock___children___parent___id',
+  ChildGrvscCodeBlockCodeClassName = 'childGrvscCodeBlock___codeClassName',
+  ChildGrvscCodeBlockDefaultThemeConditions = 'childGrvscCodeBlock___defaultTheme___conditions',
+  ChildGrvscCodeBlockDefaultThemeConditionsCondition = 'childGrvscCodeBlock___defaultTheme___conditions___condition',
+  ChildGrvscCodeBlockDefaultThemeConditionsValue = 'childGrvscCodeBlock___defaultTheme___conditions___value',
+  ChildGrvscCodeBlockDefaultThemeIdentifier = 'childGrvscCodeBlock___defaultTheme___identifier',
+  ChildGrvscCodeBlockDefaultThemePath = 'childGrvscCodeBlock___defaultTheme___path',
+  ChildGrvscCodeBlockHtml = 'childGrvscCodeBlock___html',
+  ChildGrvscCodeBlockId = 'childGrvscCodeBlock___id',
+  ChildGrvscCodeBlockIndex = 'childGrvscCodeBlock___index',
+  ChildGrvscCodeBlockInternalContent = 'childGrvscCodeBlock___internal___content',
+  ChildGrvscCodeBlockInternalContentDigest = 'childGrvscCodeBlock___internal___contentDigest',
+  ChildGrvscCodeBlockInternalDescription = 'childGrvscCodeBlock___internal___description',
+  ChildGrvscCodeBlockInternalFieldOwners = 'childGrvscCodeBlock___internal___fieldOwners',
+  ChildGrvscCodeBlockInternalIgnoreType = 'childGrvscCodeBlock___internal___ignoreType',
+  ChildGrvscCodeBlockInternalMediaType = 'childGrvscCodeBlock___internal___mediaType',
+  ChildGrvscCodeBlockInternalOwner = 'childGrvscCodeBlock___internal___owner',
+  ChildGrvscCodeBlockInternalType = 'childGrvscCodeBlock___internal___type',
+  ChildGrvscCodeBlockLanguage = 'childGrvscCodeBlock___language',
+  ChildGrvscCodeBlockMeta = 'childGrvscCodeBlock___meta',
+  ChildGrvscCodeBlockParentChildren = 'childGrvscCodeBlock___parent___children',
+  ChildGrvscCodeBlockParentChildrenChildren = 'childGrvscCodeBlock___parent___children___children',
+  ChildGrvscCodeBlockParentChildrenId = 'childGrvscCodeBlock___parent___children___id',
+  ChildGrvscCodeBlockParentId = 'childGrvscCodeBlock___parent___id',
+  ChildGrvscCodeBlockParentInternalContent = 'childGrvscCodeBlock___parent___internal___content',
+  ChildGrvscCodeBlockParentInternalContentDigest = 'childGrvscCodeBlock___parent___internal___contentDigest',
+  ChildGrvscCodeBlockParentInternalDescription = 'childGrvscCodeBlock___parent___internal___description',
+  ChildGrvscCodeBlockParentInternalFieldOwners = 'childGrvscCodeBlock___parent___internal___fieldOwners',
+  ChildGrvscCodeBlockParentInternalIgnoreType = 'childGrvscCodeBlock___parent___internal___ignoreType',
+  ChildGrvscCodeBlockParentInternalMediaType = 'childGrvscCodeBlock___parent___internal___mediaType',
+  ChildGrvscCodeBlockParentInternalOwner = 'childGrvscCodeBlock___parent___internal___owner',
+  ChildGrvscCodeBlockParentInternalType = 'childGrvscCodeBlock___parent___internal___type',
+  ChildGrvscCodeBlockParentParentChildren = 'childGrvscCodeBlock___parent___parent___children',
+  ChildGrvscCodeBlockParentParentId = 'childGrvscCodeBlock___parent___parent___id',
+  ChildGrvscCodeBlockPreClassName = 'childGrvscCodeBlock___preClassName',
+  ChildGrvscCodeBlockText = 'childGrvscCodeBlock___text',
+  ChildGrvscCodeBlockTokenizedLines = 'childGrvscCodeBlock___tokenizedLines',
+  ChildGrvscCodeBlockTokenizedLinesAttrs = 'childGrvscCodeBlock___tokenizedLines___attrs',
+  ChildGrvscCodeBlockTokenizedLinesClassName = 'childGrvscCodeBlock___tokenizedLines___className',
+  ChildGrvscCodeBlockTokenizedLinesData = 'childGrvscCodeBlock___tokenizedLines___data',
+  ChildGrvscCodeBlockTokenizedLinesDiff = 'childGrvscCodeBlock___tokenizedLines___diff',
+  ChildGrvscCodeBlockTokenizedLinesGutterCells = 'childGrvscCodeBlock___tokenizedLines___gutterCells',
+  ChildGrvscCodeBlockTokenizedLinesGutterCellsClassName = 'childGrvscCodeBlock___tokenizedLines___gutterCells___className',
+  ChildGrvscCodeBlockTokenizedLinesGutterCellsText = 'childGrvscCodeBlock___tokenizedLines___gutterCells___text',
+  ChildGrvscCodeBlockTokenizedLinesHtml = 'childGrvscCodeBlock___tokenizedLines___html',
+  ChildGrvscCodeBlockTokenizedLinesIsHighlighted = 'childGrvscCodeBlock___tokenizedLines___isHighlighted',
+  ChildGrvscCodeBlockTokenizedLinesLineNumber = 'childGrvscCodeBlock___tokenizedLines___lineNumber',
+  ChildGrvscCodeBlockTokenizedLinesText = 'childGrvscCodeBlock___tokenizedLines___text',
+  ChildGrvscCodeBlockTokenizedLinesTokens = 'childGrvscCodeBlock___tokenizedLines___tokens',
+  ChildGrvscCodeBlockTokenizedLinesTokensAdditionalThemeTokenData = 'childGrvscCodeBlock___tokenizedLines___tokens___additionalThemeTokenData',
+  ChildGrvscCodeBlockTokenizedLinesTokensClassName = 'childGrvscCodeBlock___tokenizedLines___tokens___className',
+  ChildGrvscCodeBlockTokenizedLinesTokensEndIndex = 'childGrvscCodeBlock___tokenizedLines___tokens___endIndex',
+  ChildGrvscCodeBlockTokenizedLinesTokensHtml = 'childGrvscCodeBlock___tokenizedLines___tokens___html',
+  ChildGrvscCodeBlockTokenizedLinesTokensScopes = 'childGrvscCodeBlock___tokenizedLines___tokens___scopes',
+  ChildGrvscCodeBlockTokenizedLinesTokensStartIndex = 'childGrvscCodeBlock___tokenizedLines___tokens___startIndex',
+  ChildGrvscCodeBlockTokenizedLinesTokensText = 'childGrvscCodeBlock___tokenizedLines___tokens___text',
+  ChildGrvscCodeSpanAdditionalThemes = 'childGrvscCodeSpan___additionalThemes',
+  ChildGrvscCodeSpanAdditionalThemesConditions = 'childGrvscCodeSpan___additionalThemes___conditions',
+  ChildGrvscCodeSpanAdditionalThemesConditionsCondition = 'childGrvscCodeSpan___additionalThemes___conditions___condition',
+  ChildGrvscCodeSpanAdditionalThemesConditionsValue = 'childGrvscCodeSpan___additionalThemes___conditions___value',
+  ChildGrvscCodeSpanAdditionalThemesIdentifier = 'childGrvscCodeSpan___additionalThemes___identifier',
+  ChildGrvscCodeSpanAdditionalThemesPath = 'childGrvscCodeSpan___additionalThemes___path',
+  ChildGrvscCodeSpanChildren = 'childGrvscCodeSpan___children',
+  ChildGrvscCodeSpanChildrenChildren = 'childGrvscCodeSpan___children___children',
+  ChildGrvscCodeSpanChildrenChildrenChildren = 'childGrvscCodeSpan___children___children___children',
+  ChildGrvscCodeSpanChildrenChildrenId = 'childGrvscCodeSpan___children___children___id',
+  ChildGrvscCodeSpanChildrenId = 'childGrvscCodeSpan___children___id',
+  ChildGrvscCodeSpanChildrenInternalContent = 'childGrvscCodeSpan___children___internal___content',
+  ChildGrvscCodeSpanChildrenInternalContentDigest = 'childGrvscCodeSpan___children___internal___contentDigest',
+  ChildGrvscCodeSpanChildrenInternalDescription = 'childGrvscCodeSpan___children___internal___description',
+  ChildGrvscCodeSpanChildrenInternalFieldOwners = 'childGrvscCodeSpan___children___internal___fieldOwners',
+  ChildGrvscCodeSpanChildrenInternalIgnoreType = 'childGrvscCodeSpan___children___internal___ignoreType',
+  ChildGrvscCodeSpanChildrenInternalMediaType = 'childGrvscCodeSpan___children___internal___mediaType',
+  ChildGrvscCodeSpanChildrenInternalOwner = 'childGrvscCodeSpan___children___internal___owner',
+  ChildGrvscCodeSpanChildrenInternalType = 'childGrvscCodeSpan___children___internal___type',
+  ChildGrvscCodeSpanChildrenParentChildren = 'childGrvscCodeSpan___children___parent___children',
+  ChildGrvscCodeSpanChildrenParentId = 'childGrvscCodeSpan___children___parent___id',
+  ChildGrvscCodeSpanClassName = 'childGrvscCodeSpan___className',
+  ChildGrvscCodeSpanDefaultThemeConditions = 'childGrvscCodeSpan___defaultTheme___conditions',
+  ChildGrvscCodeSpanDefaultThemeConditionsCondition = 'childGrvscCodeSpan___defaultTheme___conditions___condition',
+  ChildGrvscCodeSpanDefaultThemeConditionsValue = 'childGrvscCodeSpan___defaultTheme___conditions___value',
+  ChildGrvscCodeSpanDefaultThemeIdentifier = 'childGrvscCodeSpan___defaultTheme___identifier',
+  ChildGrvscCodeSpanDefaultThemePath = 'childGrvscCodeSpan___defaultTheme___path',
+  ChildGrvscCodeSpanHtml = 'childGrvscCodeSpan___html',
+  ChildGrvscCodeSpanId = 'childGrvscCodeSpan___id',
+  ChildGrvscCodeSpanIndex = 'childGrvscCodeSpan___index',
+  ChildGrvscCodeSpanInternalContent = 'childGrvscCodeSpan___internal___content',
+  ChildGrvscCodeSpanInternalContentDigest = 'childGrvscCodeSpan___internal___contentDigest',
+  ChildGrvscCodeSpanInternalDescription = 'childGrvscCodeSpan___internal___description',
+  ChildGrvscCodeSpanInternalFieldOwners = 'childGrvscCodeSpan___internal___fieldOwners',
+  ChildGrvscCodeSpanInternalIgnoreType = 'childGrvscCodeSpan___internal___ignoreType',
+  ChildGrvscCodeSpanInternalMediaType = 'childGrvscCodeSpan___internal___mediaType',
+  ChildGrvscCodeSpanInternalOwner = 'childGrvscCodeSpan___internal___owner',
+  ChildGrvscCodeSpanInternalType = 'childGrvscCodeSpan___internal___type',
+  ChildGrvscCodeSpanLanguage = 'childGrvscCodeSpan___language',
+  ChildGrvscCodeSpanParentChildren = 'childGrvscCodeSpan___parent___children',
+  ChildGrvscCodeSpanParentChildrenChildren = 'childGrvscCodeSpan___parent___children___children',
+  ChildGrvscCodeSpanParentChildrenId = 'childGrvscCodeSpan___parent___children___id',
+  ChildGrvscCodeSpanParentId = 'childGrvscCodeSpan___parent___id',
+  ChildGrvscCodeSpanParentInternalContent = 'childGrvscCodeSpan___parent___internal___content',
+  ChildGrvscCodeSpanParentInternalContentDigest = 'childGrvscCodeSpan___parent___internal___contentDigest',
+  ChildGrvscCodeSpanParentInternalDescription = 'childGrvscCodeSpan___parent___internal___description',
+  ChildGrvscCodeSpanParentInternalFieldOwners = 'childGrvscCodeSpan___parent___internal___fieldOwners',
+  ChildGrvscCodeSpanParentInternalIgnoreType = 'childGrvscCodeSpan___parent___internal___ignoreType',
+  ChildGrvscCodeSpanParentInternalMediaType = 'childGrvscCodeSpan___parent___internal___mediaType',
+  ChildGrvscCodeSpanParentInternalOwner = 'childGrvscCodeSpan___parent___internal___owner',
+  ChildGrvscCodeSpanParentInternalType = 'childGrvscCodeSpan___parent___internal___type',
+  ChildGrvscCodeSpanParentParentChildren = 'childGrvscCodeSpan___parent___parent___children',
+  ChildGrvscCodeSpanParentParentId = 'childGrvscCodeSpan___parent___parent___id',
+  ChildGrvscCodeSpanText = 'childGrvscCodeSpan___text',
+  ChildGrvscCodeSpanTokens = 'childGrvscCodeSpan___tokens',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenData = 'childGrvscCodeSpan___tokens___additionalThemeTokenData',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataBold = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___bold',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataClassName = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___className',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataColor = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___color',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataItalic = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___italic',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataMeta = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___meta',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataThemeIdentifier = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___themeIdentifier',
+  ChildGrvscCodeSpanTokensAdditionalThemeTokenDataUnderline = 'childGrvscCodeSpan___tokens___additionalThemeTokenData___underline',
+  ChildGrvscCodeSpanTokensClassName = 'childGrvscCodeSpan___tokens___className',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataBold = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___bold',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataClassName = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___className',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataColor = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___color',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataItalic = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___italic',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataMeta = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___meta',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataThemeIdentifier = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___themeIdentifier',
+  ChildGrvscCodeSpanTokensDefaultThemeTokenDataUnderline = 'childGrvscCodeSpan___tokens___defaultThemeTokenData___underline',
+  ChildGrvscCodeSpanTokensEndIndex = 'childGrvscCodeSpan___tokens___endIndex',
+  ChildGrvscCodeSpanTokensHtml = 'childGrvscCodeSpan___tokens___html',
+  ChildGrvscCodeSpanTokensScopes = 'childGrvscCodeSpan___tokens___scopes',
+  ChildGrvscCodeSpanTokensStartIndex = 'childGrvscCodeSpan___tokens___startIndex',
+  ChildGrvscCodeSpanTokensText = 'childGrvscCodeSpan___tokens___text',
   Children = 'children',
+  ChildrenGrvscCodeBlock = 'childrenGrvscCodeBlock',
+  ChildrenGrvscCodeBlockAdditionalThemes = 'childrenGrvscCodeBlock___additionalThemes',
+  ChildrenGrvscCodeBlockAdditionalThemesConditions = 'childrenGrvscCodeBlock___additionalThemes___conditions',
+  ChildrenGrvscCodeBlockAdditionalThemesConditionsCondition = 'childrenGrvscCodeBlock___additionalThemes___conditions___condition',
+  ChildrenGrvscCodeBlockAdditionalThemesConditionsValue = 'childrenGrvscCodeBlock___additionalThemes___conditions___value',
+  ChildrenGrvscCodeBlockAdditionalThemesIdentifier = 'childrenGrvscCodeBlock___additionalThemes___identifier',
+  ChildrenGrvscCodeBlockAdditionalThemesPath = 'childrenGrvscCodeBlock___additionalThemes___path',
+  ChildrenGrvscCodeBlockChildren = 'childrenGrvscCodeBlock___children',
+  ChildrenGrvscCodeBlockChildrenChildren = 'childrenGrvscCodeBlock___children___children',
+  ChildrenGrvscCodeBlockChildrenChildrenChildren = 'childrenGrvscCodeBlock___children___children___children',
+  ChildrenGrvscCodeBlockChildrenChildrenId = 'childrenGrvscCodeBlock___children___children___id',
+  ChildrenGrvscCodeBlockChildrenId = 'childrenGrvscCodeBlock___children___id',
+  ChildrenGrvscCodeBlockChildrenInternalContent = 'childrenGrvscCodeBlock___children___internal___content',
+  ChildrenGrvscCodeBlockChildrenInternalContentDigest = 'childrenGrvscCodeBlock___children___internal___contentDigest',
+  ChildrenGrvscCodeBlockChildrenInternalDescription = 'childrenGrvscCodeBlock___children___internal___description',
+  ChildrenGrvscCodeBlockChildrenInternalFieldOwners = 'childrenGrvscCodeBlock___children___internal___fieldOwners',
+  ChildrenGrvscCodeBlockChildrenInternalIgnoreType = 'childrenGrvscCodeBlock___children___internal___ignoreType',
+  ChildrenGrvscCodeBlockChildrenInternalMediaType = 'childrenGrvscCodeBlock___children___internal___mediaType',
+  ChildrenGrvscCodeBlockChildrenInternalOwner = 'childrenGrvscCodeBlock___children___internal___owner',
+  ChildrenGrvscCodeBlockChildrenInternalType = 'childrenGrvscCodeBlock___children___internal___type',
+  ChildrenGrvscCodeBlockChildrenParentChildren = 'childrenGrvscCodeBlock___children___parent___children',
+  ChildrenGrvscCodeBlockChildrenParentId = 'childrenGrvscCodeBlock___children___parent___id',
+  ChildrenGrvscCodeBlockCodeClassName = 'childrenGrvscCodeBlock___codeClassName',
+  ChildrenGrvscCodeBlockDefaultThemeConditions = 'childrenGrvscCodeBlock___defaultTheme___conditions',
+  ChildrenGrvscCodeBlockDefaultThemeConditionsCondition = 'childrenGrvscCodeBlock___defaultTheme___conditions___condition',
+  ChildrenGrvscCodeBlockDefaultThemeConditionsValue = 'childrenGrvscCodeBlock___defaultTheme___conditions___value',
+  ChildrenGrvscCodeBlockDefaultThemeIdentifier = 'childrenGrvscCodeBlock___defaultTheme___identifier',
+  ChildrenGrvscCodeBlockDefaultThemePath = 'childrenGrvscCodeBlock___defaultTheme___path',
+  ChildrenGrvscCodeBlockHtml = 'childrenGrvscCodeBlock___html',
+  ChildrenGrvscCodeBlockId = 'childrenGrvscCodeBlock___id',
+  ChildrenGrvscCodeBlockIndex = 'childrenGrvscCodeBlock___index',
+  ChildrenGrvscCodeBlockInternalContent = 'childrenGrvscCodeBlock___internal___content',
+  ChildrenGrvscCodeBlockInternalContentDigest = 'childrenGrvscCodeBlock___internal___contentDigest',
+  ChildrenGrvscCodeBlockInternalDescription = 'childrenGrvscCodeBlock___internal___description',
+  ChildrenGrvscCodeBlockInternalFieldOwners = 'childrenGrvscCodeBlock___internal___fieldOwners',
+  ChildrenGrvscCodeBlockInternalIgnoreType = 'childrenGrvscCodeBlock___internal___ignoreType',
+  ChildrenGrvscCodeBlockInternalMediaType = 'childrenGrvscCodeBlock___internal___mediaType',
+  ChildrenGrvscCodeBlockInternalOwner = 'childrenGrvscCodeBlock___internal___owner',
+  ChildrenGrvscCodeBlockInternalType = 'childrenGrvscCodeBlock___internal___type',
+  ChildrenGrvscCodeBlockLanguage = 'childrenGrvscCodeBlock___language',
+  ChildrenGrvscCodeBlockMeta = 'childrenGrvscCodeBlock___meta',
+  ChildrenGrvscCodeBlockParentChildren = 'childrenGrvscCodeBlock___parent___children',
+  ChildrenGrvscCodeBlockParentChildrenChildren = 'childrenGrvscCodeBlock___parent___children___children',
+  ChildrenGrvscCodeBlockParentChildrenId = 'childrenGrvscCodeBlock___parent___children___id',
+  ChildrenGrvscCodeBlockParentId = 'childrenGrvscCodeBlock___parent___id',
+  ChildrenGrvscCodeBlockParentInternalContent = 'childrenGrvscCodeBlock___parent___internal___content',
+  ChildrenGrvscCodeBlockParentInternalContentDigest = 'childrenGrvscCodeBlock___parent___internal___contentDigest',
+  ChildrenGrvscCodeBlockParentInternalDescription = 'childrenGrvscCodeBlock___parent___internal___description',
+  ChildrenGrvscCodeBlockParentInternalFieldOwners = 'childrenGrvscCodeBlock___parent___internal___fieldOwners',
+  ChildrenGrvscCodeBlockParentInternalIgnoreType = 'childrenGrvscCodeBlock___parent___internal___ignoreType',
+  ChildrenGrvscCodeBlockParentInternalMediaType = 'childrenGrvscCodeBlock___parent___internal___mediaType',
+  ChildrenGrvscCodeBlockParentInternalOwner = 'childrenGrvscCodeBlock___parent___internal___owner',
+  ChildrenGrvscCodeBlockParentInternalType = 'childrenGrvscCodeBlock___parent___internal___type',
+  ChildrenGrvscCodeBlockParentParentChildren = 'childrenGrvscCodeBlock___parent___parent___children',
+  ChildrenGrvscCodeBlockParentParentId = 'childrenGrvscCodeBlock___parent___parent___id',
+  ChildrenGrvscCodeBlockPreClassName = 'childrenGrvscCodeBlock___preClassName',
+  ChildrenGrvscCodeBlockText = 'childrenGrvscCodeBlock___text',
+  ChildrenGrvscCodeBlockTokenizedLines = 'childrenGrvscCodeBlock___tokenizedLines',
+  ChildrenGrvscCodeBlockTokenizedLinesAttrs = 'childrenGrvscCodeBlock___tokenizedLines___attrs',
+  ChildrenGrvscCodeBlockTokenizedLinesClassName = 'childrenGrvscCodeBlock___tokenizedLines___className',
+  ChildrenGrvscCodeBlockTokenizedLinesData = 'childrenGrvscCodeBlock___tokenizedLines___data',
+  ChildrenGrvscCodeBlockTokenizedLinesDiff = 'childrenGrvscCodeBlock___tokenizedLines___diff',
+  ChildrenGrvscCodeBlockTokenizedLinesGutterCells = 'childrenGrvscCodeBlock___tokenizedLines___gutterCells',
+  ChildrenGrvscCodeBlockTokenizedLinesGutterCellsClassName = 'childrenGrvscCodeBlock___tokenizedLines___gutterCells___className',
+  ChildrenGrvscCodeBlockTokenizedLinesGutterCellsText = 'childrenGrvscCodeBlock___tokenizedLines___gutterCells___text',
+  ChildrenGrvscCodeBlockTokenizedLinesHtml = 'childrenGrvscCodeBlock___tokenizedLines___html',
+  ChildrenGrvscCodeBlockTokenizedLinesIsHighlighted = 'childrenGrvscCodeBlock___tokenizedLines___isHighlighted',
+  ChildrenGrvscCodeBlockTokenizedLinesLineNumber = 'childrenGrvscCodeBlock___tokenizedLines___lineNumber',
+  ChildrenGrvscCodeBlockTokenizedLinesText = 'childrenGrvscCodeBlock___tokenizedLines___text',
+  ChildrenGrvscCodeBlockTokenizedLinesTokens = 'childrenGrvscCodeBlock___tokenizedLines___tokens',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensAdditionalThemeTokenData = 'childrenGrvscCodeBlock___tokenizedLines___tokens___additionalThemeTokenData',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensClassName = 'childrenGrvscCodeBlock___tokenizedLines___tokens___className',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensEndIndex = 'childrenGrvscCodeBlock___tokenizedLines___tokens___endIndex',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensHtml = 'childrenGrvscCodeBlock___tokenizedLines___tokens___html',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensScopes = 'childrenGrvscCodeBlock___tokenizedLines___tokens___scopes',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensStartIndex = 'childrenGrvscCodeBlock___tokenizedLines___tokens___startIndex',
+  ChildrenGrvscCodeBlockTokenizedLinesTokensText = 'childrenGrvscCodeBlock___tokenizedLines___tokens___text',
+  ChildrenGrvscCodeSpan = 'childrenGrvscCodeSpan',
+  ChildrenGrvscCodeSpanAdditionalThemes = 'childrenGrvscCodeSpan___additionalThemes',
+  ChildrenGrvscCodeSpanAdditionalThemesConditions = 'childrenGrvscCodeSpan___additionalThemes___conditions',
+  ChildrenGrvscCodeSpanAdditionalThemesConditionsCondition = 'childrenGrvscCodeSpan___additionalThemes___conditions___condition',
+  ChildrenGrvscCodeSpanAdditionalThemesConditionsValue = 'childrenGrvscCodeSpan___additionalThemes___conditions___value',
+  ChildrenGrvscCodeSpanAdditionalThemesIdentifier = 'childrenGrvscCodeSpan___additionalThemes___identifier',
+  ChildrenGrvscCodeSpanAdditionalThemesPath = 'childrenGrvscCodeSpan___additionalThemes___path',
+  ChildrenGrvscCodeSpanChildren = 'childrenGrvscCodeSpan___children',
+  ChildrenGrvscCodeSpanChildrenChildren = 'childrenGrvscCodeSpan___children___children',
+  ChildrenGrvscCodeSpanChildrenChildrenChildren = 'childrenGrvscCodeSpan___children___children___children',
+  ChildrenGrvscCodeSpanChildrenChildrenId = 'childrenGrvscCodeSpan___children___children___id',
+  ChildrenGrvscCodeSpanChildrenId = 'childrenGrvscCodeSpan___children___id',
+  ChildrenGrvscCodeSpanChildrenInternalContent = 'childrenGrvscCodeSpan___children___internal___content',
+  ChildrenGrvscCodeSpanChildrenInternalContentDigest = 'childrenGrvscCodeSpan___children___internal___contentDigest',
+  ChildrenGrvscCodeSpanChildrenInternalDescription = 'childrenGrvscCodeSpan___children___internal___description',
+  ChildrenGrvscCodeSpanChildrenInternalFieldOwners = 'childrenGrvscCodeSpan___children___internal___fieldOwners',
+  ChildrenGrvscCodeSpanChildrenInternalIgnoreType = 'childrenGrvscCodeSpan___children___internal___ignoreType',
+  ChildrenGrvscCodeSpanChildrenInternalMediaType = 'childrenGrvscCodeSpan___children___internal___mediaType',
+  ChildrenGrvscCodeSpanChildrenInternalOwner = 'childrenGrvscCodeSpan___children___internal___owner',
+  ChildrenGrvscCodeSpanChildrenInternalType = 'childrenGrvscCodeSpan___children___internal___type',
+  ChildrenGrvscCodeSpanChildrenParentChildren = 'childrenGrvscCodeSpan___children___parent___children',
+  ChildrenGrvscCodeSpanChildrenParentId = 'childrenGrvscCodeSpan___children___parent___id',
+  ChildrenGrvscCodeSpanClassName = 'childrenGrvscCodeSpan___className',
+  ChildrenGrvscCodeSpanDefaultThemeConditions = 'childrenGrvscCodeSpan___defaultTheme___conditions',
+  ChildrenGrvscCodeSpanDefaultThemeConditionsCondition = 'childrenGrvscCodeSpan___defaultTheme___conditions___condition',
+  ChildrenGrvscCodeSpanDefaultThemeConditionsValue = 'childrenGrvscCodeSpan___defaultTheme___conditions___value',
+  ChildrenGrvscCodeSpanDefaultThemeIdentifier = 'childrenGrvscCodeSpan___defaultTheme___identifier',
+  ChildrenGrvscCodeSpanDefaultThemePath = 'childrenGrvscCodeSpan___defaultTheme___path',
+  ChildrenGrvscCodeSpanHtml = 'childrenGrvscCodeSpan___html',
+  ChildrenGrvscCodeSpanId = 'childrenGrvscCodeSpan___id',
+  ChildrenGrvscCodeSpanIndex = 'childrenGrvscCodeSpan___index',
+  ChildrenGrvscCodeSpanInternalContent = 'childrenGrvscCodeSpan___internal___content',
+  ChildrenGrvscCodeSpanInternalContentDigest = 'childrenGrvscCodeSpan___internal___contentDigest',
+  ChildrenGrvscCodeSpanInternalDescription = 'childrenGrvscCodeSpan___internal___description',
+  ChildrenGrvscCodeSpanInternalFieldOwners = 'childrenGrvscCodeSpan___internal___fieldOwners',
+  ChildrenGrvscCodeSpanInternalIgnoreType = 'childrenGrvscCodeSpan___internal___ignoreType',
+  ChildrenGrvscCodeSpanInternalMediaType = 'childrenGrvscCodeSpan___internal___mediaType',
+  ChildrenGrvscCodeSpanInternalOwner = 'childrenGrvscCodeSpan___internal___owner',
+  ChildrenGrvscCodeSpanInternalType = 'childrenGrvscCodeSpan___internal___type',
+  ChildrenGrvscCodeSpanLanguage = 'childrenGrvscCodeSpan___language',
+  ChildrenGrvscCodeSpanParentChildren = 'childrenGrvscCodeSpan___parent___children',
+  ChildrenGrvscCodeSpanParentChildrenChildren = 'childrenGrvscCodeSpan___parent___children___children',
+  ChildrenGrvscCodeSpanParentChildrenId = 'childrenGrvscCodeSpan___parent___children___id',
+  ChildrenGrvscCodeSpanParentId = 'childrenGrvscCodeSpan___parent___id',
+  ChildrenGrvscCodeSpanParentInternalContent = 'childrenGrvscCodeSpan___parent___internal___content',
+  ChildrenGrvscCodeSpanParentInternalContentDigest = 'childrenGrvscCodeSpan___parent___internal___contentDigest',
+  ChildrenGrvscCodeSpanParentInternalDescription = 'childrenGrvscCodeSpan___parent___internal___description',
+  ChildrenGrvscCodeSpanParentInternalFieldOwners = 'childrenGrvscCodeSpan___parent___internal___fieldOwners',
+  ChildrenGrvscCodeSpanParentInternalIgnoreType = 'childrenGrvscCodeSpan___parent___internal___ignoreType',
+  ChildrenGrvscCodeSpanParentInternalMediaType = 'childrenGrvscCodeSpan___parent___internal___mediaType',
+  ChildrenGrvscCodeSpanParentInternalOwner = 'childrenGrvscCodeSpan___parent___internal___owner',
+  ChildrenGrvscCodeSpanParentInternalType = 'childrenGrvscCodeSpan___parent___internal___type',
+  ChildrenGrvscCodeSpanParentParentChildren = 'childrenGrvscCodeSpan___parent___parent___children',
+  ChildrenGrvscCodeSpanParentParentId = 'childrenGrvscCodeSpan___parent___parent___id',
+  ChildrenGrvscCodeSpanText = 'childrenGrvscCodeSpan___text',
+  ChildrenGrvscCodeSpanTokens = 'childrenGrvscCodeSpan___tokens',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenData = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataBold = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___bold',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataClassName = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___className',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataColor = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___color',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataItalic = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___italic',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataMeta = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___meta',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataThemeIdentifier = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___themeIdentifier',
+  ChildrenGrvscCodeSpanTokensAdditionalThemeTokenDataUnderline = 'childrenGrvscCodeSpan___tokens___additionalThemeTokenData___underline',
+  ChildrenGrvscCodeSpanTokensClassName = 'childrenGrvscCodeSpan___tokens___className',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataBold = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___bold',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataClassName = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___className',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataColor = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___color',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataItalic = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___italic',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataMeta = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___meta',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataThemeIdentifier = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___themeIdentifier',
+  ChildrenGrvscCodeSpanTokensDefaultThemeTokenDataUnderline = 'childrenGrvscCodeSpan___tokens___defaultThemeTokenData___underline',
+  ChildrenGrvscCodeSpanTokensEndIndex = 'childrenGrvscCodeSpan___tokens___endIndex',
+  ChildrenGrvscCodeSpanTokensHtml = 'childrenGrvscCodeSpan___tokens___html',
+  ChildrenGrvscCodeSpanTokensScopes = 'childrenGrvscCodeSpan___tokens___scopes',
+  ChildrenGrvscCodeSpanTokensStartIndex = 'childrenGrvscCodeSpan___tokens___startIndex',
+  ChildrenGrvscCodeSpanTokensText = 'childrenGrvscCodeSpan___tokens___text',
   ChildrenChildren = 'children___children',
   ChildrenChildrenChildren = 'children___children___children',
   ChildrenChildrenChildrenChildren = 'children___children___children___children',
@@ -1805,6 +3261,8 @@ enum MarkdownRemarkFieldsEnum {
   FrontmatterPreviewChildImageSharpGatsbyImageData = 'frontmatter___preview___childImageSharp___gatsbyImageData',
   FrontmatterPreviewChildImageSharpId = 'frontmatter___preview___childImageSharp___id',
   FrontmatterPreviewChildMarkdownRemarkChildren = 'frontmatter___preview___childMarkdownRemark___children',
+  FrontmatterPreviewChildMarkdownRemarkChildrenGrvscCodeBlock = 'frontmatter___preview___childMarkdownRemark___childrenGrvscCodeBlock',
+  FrontmatterPreviewChildMarkdownRemarkChildrenGrvscCodeSpan = 'frontmatter___preview___childMarkdownRemark___childrenGrvscCodeSpan',
   FrontmatterPreviewChildMarkdownRemarkExcerpt = 'frontmatter___preview___childMarkdownRemark___excerpt',
   FrontmatterPreviewChildMarkdownRemarkExcerptAst = 'frontmatter___preview___childMarkdownRemark___excerptAst',
   FrontmatterPreviewChildMarkdownRemarkFileAbsolutePath = 'frontmatter___preview___childMarkdownRemark___fileAbsolutePath',
@@ -1823,6 +3281,8 @@ enum MarkdownRemarkFieldsEnum {
   FrontmatterPreviewChildrenImageSharpId = 'frontmatter___preview___childrenImageSharp___id',
   FrontmatterPreviewChildrenMarkdownRemark = 'frontmatter___preview___childrenMarkdownRemark',
   FrontmatterPreviewChildrenMarkdownRemarkChildren = 'frontmatter___preview___childrenMarkdownRemark___children',
+  FrontmatterPreviewChildrenMarkdownRemarkChildrenGrvscCodeBlock = 'frontmatter___preview___childrenMarkdownRemark___childrenGrvscCodeBlock',
+  FrontmatterPreviewChildrenMarkdownRemarkChildrenGrvscCodeSpan = 'frontmatter___preview___childrenMarkdownRemark___childrenGrvscCodeSpan',
   FrontmatterPreviewChildrenMarkdownRemarkExcerpt = 'frontmatter___preview___childrenMarkdownRemark___excerpt',
   FrontmatterPreviewChildrenMarkdownRemarkExcerptAst = 'frontmatter___preview___childrenMarkdownRemark___excerptAst',
   FrontmatterPreviewChildrenMarkdownRemarkFileAbsolutePath = 'frontmatter___preview___childrenMarkdownRemark___fileAbsolutePath',
@@ -1937,26 +3397,30 @@ enum MarkdownRemarkFieldsEnum {
 }
 
 type MarkdownRemarkFilterInput = {
-  children?: Maybe<NodeFilterListInput>;
-  excerpt?: Maybe<StringQueryOperatorInput>;
-  excerptAst?: Maybe<JsonQueryOperatorInput>;
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
-  frontmatter?: Maybe<FrontmatterFilterInput>;
-  headings?: Maybe<MarkdownHeadingFilterListInput>;
-  html?: Maybe<StringQueryOperatorInput>;
-  htmlAst?: Maybe<JsonQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  tableOfContents?: Maybe<StringQueryOperatorInput>;
-  timeToRead?: Maybe<IntQueryOperatorInput>;
-  wordCount?: Maybe<MarkdownWordCountFilterInput>;
+  childGrvscCodeBlock?: InputMaybe<GrvscCodeBlockFilterInput>;
+  childGrvscCodeSpan?: InputMaybe<GrvscCodeSpanFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  childrenGrvscCodeBlock?: InputMaybe<GrvscCodeBlockFilterListInput>;
+  childrenGrvscCodeSpan?: InputMaybe<GrvscCodeSpanFilterListInput>;
+  excerpt?: InputMaybe<StringQueryOperatorInput>;
+  excerptAst?: InputMaybe<JsonQueryOperatorInput>;
+  fileAbsolutePath?: InputMaybe<StringQueryOperatorInput>;
+  frontmatter?: InputMaybe<FrontmatterFilterInput>;
+  headings?: InputMaybe<MarkdownHeadingFilterListInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  htmlAst?: InputMaybe<JsonQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  rawMarkdownBody?: InputMaybe<StringQueryOperatorInput>;
+  slug?: InputMaybe<StringQueryOperatorInput>;
+  tableOfContents?: InputMaybe<StringQueryOperatorInput>;
+  timeToRead?: InputMaybe<IntQueryOperatorInput>;
+  wordCount?: InputMaybe<MarkdownWordCountFilterInput>;
 };
 
 type MarkdownRemarkFilterListInput = {
-  elemMatch?: Maybe<MarkdownRemarkFilterInput>;
+  elemMatch?: InputMaybe<MarkdownRemarkFilterInput>;
 };
 
 type MarkdownRemarkGroupConnection = {
@@ -1979,8 +3443,8 @@ type MarkdownRemarkGroupConnectionDistinctArgs = {
 
 type MarkdownRemarkGroupConnectionGroupArgs = {
   field: MarkdownRemarkFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type MarkdownRemarkGroupConnectionMaxArgs = {
@@ -1996,8 +3460,8 @@ type MarkdownRemarkGroupConnectionSumArgs = {
 };
 
 type MarkdownRemarkSortInput = {
-  fields?: Maybe<Array<Maybe<MarkdownRemarkFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<MarkdownRemarkFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type MarkdownWordCount = {
@@ -2007,9 +3471,9 @@ type MarkdownWordCount = {
 };
 
 type MarkdownWordCountFilterInput = {
-  paragraphs?: Maybe<IntQueryOperatorInput>;
-  sentences?: Maybe<IntQueryOperatorInput>;
-  words?: Maybe<IntQueryOperatorInput>;
+  paragraphs?: InputMaybe<IntQueryOperatorInput>;
+  sentences?: InputMaybe<IntQueryOperatorInput>;
+  words?: InputMaybe<IntQueryOperatorInput>;
 };
 
 /** Node Interface */
@@ -2021,19 +3485,19 @@ type Node = {
 };
 
 type NodeFilterInput = {
-  children?: Maybe<NodeFilterListInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
 };
 
 type NodeFilterListInput = {
-  elemMatch?: Maybe<NodeFilterInput>;
+  elemMatch?: InputMaybe<NodeFilterInput>;
 };
 
 type PngOptions = {
-  compressionSpeed?: Maybe<Scalars['Int']>;
-  quality?: Maybe<Scalars['Int']>;
+  compressionSpeed?: InputMaybe<Scalars['Int']>;
+  quality?: InputMaybe<Scalars['Int']>;
 };
 
 type PageInfo = {
@@ -2047,15 +3511,15 @@ type PageInfo = {
 };
 
 type Potrace = {
-  alphaMax?: Maybe<Scalars['Float']>;
-  background?: Maybe<Scalars['String']>;
-  blackOnWhite?: Maybe<Scalars['Boolean']>;
-  color?: Maybe<Scalars['String']>;
-  optCurve?: Maybe<Scalars['Boolean']>;
-  optTolerance?: Maybe<Scalars['Float']>;
-  threshold?: Maybe<Scalars['Int']>;
-  turdSize?: Maybe<Scalars['Float']>;
-  turnPolicy?: Maybe<PotraceTurnPolicy>;
+  alphaMax?: InputMaybe<Scalars['Float']>;
+  background?: InputMaybe<Scalars['String']>;
+  blackOnWhite?: InputMaybe<Scalars['Boolean']>;
+  color?: InputMaybe<Scalars['String']>;
+  optCurve?: InputMaybe<Scalars['Boolean']>;
+  optTolerance?: InputMaybe<Scalars['Float']>;
+  threshold?: InputMaybe<Scalars['Int']>;
+  turdSize?: InputMaybe<Scalars['Float']>;
+  turnPolicy?: InputMaybe<PotraceTurnPolicy>;
 };
 
 enum PotraceTurnPolicy {
@@ -2070,6 +3534,9 @@ enum PotraceTurnPolicy {
 type Query = {
   allDirectory: DirectoryConnection;
   allFile: FileConnection;
+  allGrvscCodeBlock: GrvscCodeBlockConnection;
+  allGrvscCodeSpan: GrvscCodeSpanConnection;
+  allGrvscStylesheet: GrvscStylesheetConnection;
   allImageSharp: ImageSharpConnection;
   allMarkdownRemark: MarkdownRemarkConnection;
   allSite: SiteConnection;
@@ -2079,6 +3546,10 @@ type Query = {
   allSitePlugin: SitePluginConnection;
   directory?: Maybe<Directory>;
   file?: Maybe<File>;
+  grvscCodeBlock?: Maybe<GrvscCodeBlock>;
+  grvscCodeSpan?: Maybe<GrvscCodeSpan>;
+  grvscHighlight?: Maybe<GrvscCodeBlock>;
+  grvscStylesheet?: Maybe<GrvscStylesheet>;
   imageSharp?: Maybe<ImageSharp>;
   markdownRemark?: Maybe<MarkdownRemark>;
   site?: Maybe<Site>;
@@ -2089,243 +3560,318 @@ type Query = {
 };
 
 type QueryAllDirectoryArgs = {
-  filter?: Maybe<DirectoryFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<DirectorySortInput>;
+  filter?: InputMaybe<DirectoryFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<DirectorySortInput>;
 };
 
 type QueryAllFileArgs = {
-  filter?: Maybe<FileFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<FileSortInput>;
+  filter?: InputMaybe<FileFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<FileSortInput>;
+};
+
+type QueryAllGrvscCodeBlockArgs = {
+  filter?: InputMaybe<GrvscCodeBlockFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<GrvscCodeBlockSortInput>;
+};
+
+type QueryAllGrvscCodeSpanArgs = {
+  filter?: InputMaybe<GrvscCodeSpanFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<GrvscCodeSpanSortInput>;
+};
+
+type QueryAllGrvscStylesheetArgs = {
+  filter?: InputMaybe<GrvscStylesheetFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<GrvscStylesheetSortInput>;
 };
 
 type QueryAllImageSharpArgs = {
-  filter?: Maybe<ImageSharpFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<ImageSharpSortInput>;
+  filter?: InputMaybe<ImageSharpFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<ImageSharpSortInput>;
 };
 
 type QueryAllMarkdownRemarkArgs = {
-  filter?: Maybe<MarkdownRemarkFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<MarkdownRemarkSortInput>;
+  filter?: InputMaybe<MarkdownRemarkFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<MarkdownRemarkSortInput>;
 };
 
 type QueryAllSiteArgs = {
-  filter?: Maybe<SiteFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<SiteSortInput>;
+  filter?: InputMaybe<SiteFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SiteSortInput>;
 };
 
 type QueryAllSiteBuildMetadataArgs = {
-  filter?: Maybe<SiteBuildMetadataFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<SiteBuildMetadataSortInput>;
+  filter?: InputMaybe<SiteBuildMetadataFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SiteBuildMetadataSortInput>;
 };
 
 type QueryAllSiteFunctionArgs = {
-  filter?: Maybe<SiteFunctionFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<SiteFunctionSortInput>;
+  filter?: InputMaybe<SiteFunctionFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SiteFunctionSortInput>;
 };
 
 type QueryAllSitePageArgs = {
-  filter?: Maybe<SitePageFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<SitePageSortInput>;
+  filter?: InputMaybe<SitePageFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SitePageSortInput>;
 };
 
 type QueryAllSitePluginArgs = {
-  filter?: Maybe<SitePluginFilterInput>;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
-  sort?: Maybe<SitePluginSortInput>;
+  filter?: InputMaybe<SitePluginFilterInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<SitePluginSortInput>;
 };
 
 type QueryDirectoryArgs = {
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
 };
 
 type QueryFileArgs = {
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  childImageSharp?: Maybe<ImageSharpFilterInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
-  childrenMarkdownRemark?: Maybe<MarkdownRemarkFilterListInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  publicURL?: Maybe<StringQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  blksize?: InputMaybe<IntQueryOperatorInput>;
+  blocks?: InputMaybe<IntQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  childImageSharp?: InputMaybe<ImageSharpFilterInput>;
+  childMarkdownRemark?: InputMaybe<MarkdownRemarkFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
+  childrenMarkdownRemark?: InputMaybe<MarkdownRemarkFilterListInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  publicURL?: InputMaybe<StringQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+};
+
+type QueryGrvscCodeBlockArgs = {
+  additionalThemes?: InputMaybe<GrvscThemeFilterListInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  codeClassName?: InputMaybe<StringQueryOperatorInput>;
+  defaultTheme?: InputMaybe<GrvscThemeFilterInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  index?: InputMaybe<IntQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  language?: InputMaybe<StringQueryOperatorInput>;
+  meta?: InputMaybe<JsonQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  preClassName?: InputMaybe<StringQueryOperatorInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+  tokenizedLines?: InputMaybe<GrvscTokenizedLineFilterListInput>;
+};
+
+type QueryGrvscCodeSpanArgs = {
+  additionalThemes?: InputMaybe<GrvscThemeFilterListInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  className?: InputMaybe<StringQueryOperatorInput>;
+  defaultTheme?: InputMaybe<GrvscThemeFilterInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  index?: InputMaybe<IntQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  language?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+  tokens?: InputMaybe<GrvscTokenFilterListInput>;
+};
+
+type QueryGrvscHighlightArgs = {
+  additionalThemes?: InputMaybe<Array<GrvscThemeArgument>>;
+  defaultTheme?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<Scalars['String']>;
+  meta?: InputMaybe<Scalars['String']>;
+  source: Scalars['String'];
+};
+
+type QueryGrvscStylesheetArgs = {
+  additionalThemes?: InputMaybe<Array<GrvscThemeArgument>>;
+  defaultTheme?: InputMaybe<Scalars['String']>;
+  injectStyles?: InputMaybe<Scalars['Boolean']>;
 };
 
 type QueryImageSharpArgs = {
-  children?: Maybe<NodeFilterListInput>;
-  fixed?: Maybe<ImageSharpFixedFilterInput>;
-  fluid?: Maybe<ImageSharpFluidFilterInput>;
-  gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  original?: Maybe<ImageSharpOriginalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  resize?: Maybe<ImageSharpResizeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  fixed?: InputMaybe<ImageSharpFixedFilterInput>;
+  fluid?: InputMaybe<ImageSharpFluidFilterInput>;
+  gatsbyImageData?: InputMaybe<JsonQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  original?: InputMaybe<ImageSharpOriginalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  resize?: InputMaybe<ImageSharpResizeFilterInput>;
 };
 
 type QueryMarkdownRemarkArgs = {
-  children?: Maybe<NodeFilterListInput>;
-  excerpt?: Maybe<StringQueryOperatorInput>;
-  excerptAst?: Maybe<JsonQueryOperatorInput>;
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
-  frontmatter?: Maybe<FrontmatterFilterInput>;
-  headings?: Maybe<MarkdownHeadingFilterListInput>;
-  html?: Maybe<StringQueryOperatorInput>;
-  htmlAst?: Maybe<JsonQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  rawMarkdownBody?: Maybe<StringQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  tableOfContents?: Maybe<StringQueryOperatorInput>;
-  timeToRead?: Maybe<IntQueryOperatorInput>;
-  wordCount?: Maybe<MarkdownWordCountFilterInput>;
+  childGrvscCodeBlock?: InputMaybe<GrvscCodeBlockFilterInput>;
+  childGrvscCodeSpan?: InputMaybe<GrvscCodeSpanFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  childrenGrvscCodeBlock?: InputMaybe<GrvscCodeBlockFilterListInput>;
+  childrenGrvscCodeSpan?: InputMaybe<GrvscCodeSpanFilterListInput>;
+  excerpt?: InputMaybe<StringQueryOperatorInput>;
+  excerptAst?: InputMaybe<JsonQueryOperatorInput>;
+  fileAbsolutePath?: InputMaybe<StringQueryOperatorInput>;
+  frontmatter?: InputMaybe<FrontmatterFilterInput>;
+  headings?: InputMaybe<MarkdownHeadingFilterListInput>;
+  html?: InputMaybe<StringQueryOperatorInput>;
+  htmlAst?: InputMaybe<JsonQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  rawMarkdownBody?: InputMaybe<StringQueryOperatorInput>;
+  slug?: InputMaybe<StringQueryOperatorInput>;
+  tableOfContents?: InputMaybe<StringQueryOperatorInput>;
+  timeToRead?: InputMaybe<IntQueryOperatorInput>;
+  wordCount?: InputMaybe<MarkdownWordCountFilterInput>;
 };
 
 type QuerySiteArgs = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  host?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  pathPrefix?: InputMaybe<StringQueryOperatorInput>;
+  polyfill?: InputMaybe<BooleanQueryOperatorInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  trailingSlash?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type QuerySiteBuildMetadataArgs = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
 };
 
 type QuerySiteFunctionArgs = {
-  absoluteCompiledFilePath?: Maybe<StringQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  functionRoute?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  matchPath?: Maybe<StringQueryOperatorInput>;
-  originalAbsoluteFilePath?: Maybe<StringQueryOperatorInput>;
-  originalRelativeFilePath?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  pluginName?: Maybe<StringQueryOperatorInput>;
-  relativeCompiledFilePath?: Maybe<StringQueryOperatorInput>;
+  absoluteCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  functionRoute?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  originalAbsoluteFilePath?: InputMaybe<StringQueryOperatorInput>;
+  originalRelativeFilePath?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  pluginName?: InputMaybe<StringQueryOperatorInput>;
+  relativeCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type QuerySitePageArgs = {
-  children?: Maybe<NodeFilterListInput>;
-  component?: Maybe<StringQueryOperatorInput>;
-  componentChunkName?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  internalComponentName?: Maybe<StringQueryOperatorInput>;
-  matchPath?: Maybe<StringQueryOperatorInput>;
-  pageContext?: Maybe<JsonQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  path?: Maybe<StringQueryOperatorInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  component?: InputMaybe<StringQueryOperatorInput>;
+  componentChunkName?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  internalComponentName?: InputMaybe<StringQueryOperatorInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  pageContext?: InputMaybe<JsonQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  path?: InputMaybe<StringQueryOperatorInput>;
+  pluginCreator?: InputMaybe<SitePluginFilterInput>;
 };
 
 type QuerySitePluginArgs = {
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  packageJson?: Maybe<JsonQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<JsonQueryOperatorInput>;
-  resolve?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
+  browserAPIs?: InputMaybe<StringQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  nodeAPIs?: InputMaybe<StringQueryOperatorInput>;
+  packageJson?: InputMaybe<JsonQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  pluginFilepath?: InputMaybe<StringQueryOperatorInput>;
+  pluginOptions?: InputMaybe<JsonQueryOperatorInput>;
+  resolve?: InputMaybe<StringQueryOperatorInput>;
+  ssrAPIs?: InputMaybe<StringQueryOperatorInput>;
+  version?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type Site = Node & {
@@ -2334,16 +3880,20 @@ type Site = Node & {
   host?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   internal: Internal;
+  jsxRuntime?: Maybe<Scalars['String']>;
   parent?: Maybe<Node>;
+  pathPrefix?: Maybe<Scalars['String']>;
+  polyfill?: Maybe<Scalars['Boolean']>;
   port?: Maybe<Scalars['Int']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  trailingSlash?: Maybe<Scalars['String']>;
 };
 
 type SiteBuildTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type SiteBuildMetadata = Node & {
@@ -2355,10 +3905,10 @@ type SiteBuildMetadata = Node & {
 };
 
 type SiteBuildMetadataBuildTimeArgs = {
-  difference?: Maybe<Scalars['String']>;
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  locale?: Maybe<Scalars['String']>;
+  difference?: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 type SiteBuildMetadataConnection = {
@@ -2379,8 +3929,8 @@ type SiteBuildMetadataConnectionDistinctArgs = {
 
 type SiteBuildMetadataConnectionGroupArgs = {
   field: SiteBuildMetadataFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SiteBuildMetadataConnectionMaxArgs = {
@@ -2492,11 +4042,11 @@ enum SiteBuildMetadataFieldsEnum {
 }
 
 type SiteBuildMetadataFilterInput = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  parent?: InputMaybe<NodeFilterInput>;
 };
 
 type SiteBuildMetadataGroupConnection = {
@@ -2519,8 +4069,8 @@ type SiteBuildMetadataGroupConnectionDistinctArgs = {
 
 type SiteBuildMetadataGroupConnectionGroupArgs = {
   field: SiteBuildMetadataFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SiteBuildMetadataGroupConnectionMaxArgs = {
@@ -2536,8 +4086,8 @@ type SiteBuildMetadataGroupConnectionSumArgs = {
 };
 
 type SiteBuildMetadataSortInput = {
-  fields?: Maybe<Array<Maybe<SiteBuildMetadataFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<SiteBuildMetadataFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type SiteConnection = {
@@ -2558,8 +4108,8 @@ type SiteConnectionDistinctArgs = {
 
 type SiteConnectionGroupArgs = {
   field: SiteFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SiteConnectionMaxArgs = {
@@ -2631,6 +4181,7 @@ enum SiteFieldsEnum {
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
+  JsxRuntime = 'jsxRuntime',
   ParentChildren = 'parent___children',
   ParentChildrenChildren = 'parent___children___children',
   ParentChildrenChildrenChildren = 'parent___children___children___children',
@@ -2669,23 +4220,30 @@ enum SiteFieldsEnum {
   ParentParentInternalType = 'parent___parent___internal___type',
   ParentParentParentChildren = 'parent___parent___parent___children',
   ParentParentParentId = 'parent___parent___parent___id',
+  PathPrefix = 'pathPrefix',
+  Polyfill = 'polyfill',
   Port = 'port',
   SiteMetadataAuthor = 'siteMetadata___author',
   SiteMetadataDefaultImage = 'siteMetadata___defaultImage',
   SiteMetadataDescription = 'siteMetadata___description',
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataTitle = 'siteMetadata___title',
+  TrailingSlash = 'trailingSlash',
 }
 
 type SiteFilterInput = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  host?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  parent?: Maybe<NodeFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  pathPrefix?: InputMaybe<StringQueryOperatorInput>;
+  polyfill?: InputMaybe<BooleanQueryOperatorInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  trailingSlash?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteFunction = Node & {
@@ -2720,8 +4278,8 @@ type SiteFunctionConnectionDistinctArgs = {
 
 type SiteFunctionConnectionGroupArgs = {
   field: SiteFunctionFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SiteFunctionConnectionMaxArgs = {
@@ -2839,17 +4397,17 @@ enum SiteFunctionFieldsEnum {
 }
 
 type SiteFunctionFilterInput = {
-  absoluteCompiledFilePath?: Maybe<StringQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  functionRoute?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  matchPath?: Maybe<StringQueryOperatorInput>;
-  originalAbsoluteFilePath?: Maybe<StringQueryOperatorInput>;
-  originalRelativeFilePath?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  pluginName?: Maybe<StringQueryOperatorInput>;
-  relativeCompiledFilePath?: Maybe<StringQueryOperatorInput>;
+  absoluteCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  functionRoute?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  originalAbsoluteFilePath?: InputMaybe<StringQueryOperatorInput>;
+  originalRelativeFilePath?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  pluginName?: InputMaybe<StringQueryOperatorInput>;
+  relativeCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteFunctionGroupConnection = {
@@ -2872,8 +4430,8 @@ type SiteFunctionGroupConnectionDistinctArgs = {
 
 type SiteFunctionGroupConnectionGroupArgs = {
   field: SiteFunctionFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SiteFunctionGroupConnectionMaxArgs = {
@@ -2889,8 +4447,8 @@ type SiteFunctionGroupConnectionSumArgs = {
 };
 
 type SiteFunctionSortInput = {
-  fields?: Maybe<Array<Maybe<SiteFunctionFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<SiteFunctionFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type SiteGroupConnection = {
@@ -2913,8 +4471,8 @@ type SiteGroupConnectionDistinctArgs = {
 
 type SiteGroupConnectionGroupArgs = {
   field: SiteFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SiteGroupConnectionMaxArgs = {
@@ -2961,8 +4519,8 @@ type SitePageConnectionDistinctArgs = {
 
 type SitePageConnectionGroupArgs = {
   field: SitePageFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SitePageConnectionMaxArgs = {
@@ -3126,17 +4684,17 @@ enum SitePageFieldsEnum {
 }
 
 type SitePageFilterInput = {
-  children?: Maybe<NodeFilterListInput>;
-  component?: Maybe<StringQueryOperatorInput>;
-  componentChunkName?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  internalComponentName?: Maybe<StringQueryOperatorInput>;
-  matchPath?: Maybe<StringQueryOperatorInput>;
-  pageContext?: Maybe<JsonQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  path?: Maybe<StringQueryOperatorInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  component?: InputMaybe<StringQueryOperatorInput>;
+  componentChunkName?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  internalComponentName?: InputMaybe<StringQueryOperatorInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  pageContext?: InputMaybe<JsonQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  path?: InputMaybe<StringQueryOperatorInput>;
+  pluginCreator?: InputMaybe<SitePluginFilterInput>;
 };
 
 type SitePageGroupConnection = {
@@ -3159,8 +4717,8 @@ type SitePageGroupConnectionDistinctArgs = {
 
 type SitePageGroupConnectionGroupArgs = {
   field: SitePageFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SitePageGroupConnectionMaxArgs = {
@@ -3176,8 +4734,8 @@ type SitePageGroupConnectionSumArgs = {
 };
 
 type SitePageSortInput = {
-  fields?: Maybe<Array<Maybe<SitePageFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<SitePageFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type SitePlugin = Node & {
@@ -3214,8 +4772,8 @@ type SitePluginConnectionDistinctArgs = {
 
 type SitePluginConnectionGroupArgs = {
   field: SitePluginFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SitePluginConnectionMaxArgs = {
@@ -3335,19 +4893,19 @@ enum SitePluginFieldsEnum {
 }
 
 type SitePluginFilterInput = {
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
-  children?: Maybe<NodeFilterListInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  internal?: Maybe<InternalFilterInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  packageJson?: Maybe<JsonQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<JsonQueryOperatorInput>;
-  resolve?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
+  browserAPIs?: InputMaybe<StringQueryOperatorInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  nodeAPIs?: InputMaybe<StringQueryOperatorInput>;
+  packageJson?: InputMaybe<JsonQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  pluginFilepath?: InputMaybe<StringQueryOperatorInput>;
+  pluginOptions?: InputMaybe<JsonQueryOperatorInput>;
+  resolve?: InputMaybe<StringQueryOperatorInput>;
+  ssrAPIs?: InputMaybe<StringQueryOperatorInput>;
+  version?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SitePluginGroupConnection = {
@@ -3370,8 +4928,8 @@ type SitePluginGroupConnectionDistinctArgs = {
 
 type SitePluginGroupConnectionGroupArgs = {
   field: SitePluginFieldsEnum;
-  limit?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 type SitePluginGroupConnectionMaxArgs = {
@@ -3387,8 +4945,8 @@ type SitePluginGroupConnectionSumArgs = {
 };
 
 type SitePluginSortInput = {
-  fields?: Maybe<Array<Maybe<SitePluginFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<SitePluginFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 type SiteSiteMetadata = {
@@ -3400,16 +4958,16 @@ type SiteSiteMetadata = {
 };
 
 type SiteSiteMetadataFilterInput = {
-  author?: Maybe<StringQueryOperatorInput>;
-  defaultImage?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  siteUrl?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
+  author?: InputMaybe<StringQueryOperatorInput>;
+  defaultImage?: InputMaybe<StringQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
+  siteUrl?: InputMaybe<StringQueryOperatorInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSortInput = {
-  fields?: Maybe<Array<Maybe<SiteFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<SiteFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 enum SortOrderEnum {
@@ -3418,30 +4976,30 @@ enum SortOrderEnum {
 }
 
 type StringQueryOperatorInput = {
-  eq?: Maybe<Scalars['String']>;
-  glob?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ne?: Maybe<Scalars['String']>;
-  nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  regex?: Maybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars['String']>;
+  glob?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ne?: InputMaybe<Scalars['String']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  regex?: InputMaybe<Scalars['String']>;
 };
 
 type TransformOptions = {
-  cropFocus?: Maybe<ImageCropFocus>;
-  duotone?: Maybe<DuotoneGradient>;
-  fit?: Maybe<ImageFit>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  rotate?: Maybe<Scalars['Int']>;
-  trim?: Maybe<Scalars['Float']>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  fit?: InputMaybe<ImageFit>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  trim?: InputMaybe<Scalars['Float']>;
 };
 
 type WebPOptions = {
-  quality?: Maybe<Scalars['Int']>;
+  quality?: InputMaybe<Scalars['Int']>;
 };
 
 type PreviousOrNextFragment = {
   slug: string;
-  frontmatter?: { title: string } | null | undefined;
+  frontmatter?: { title: string } | null;
 };
 
 type CreatePagesQueryVariables = Exact<{ [key: string]: never }>;
@@ -3450,62 +5008,47 @@ type CreatePagesQuery = {
   posts: {
     edges: Array<{
       node: { id: string; slug: string };
-      next?: PreviousOrNextFragment | null | undefined;
-      previous?: PreviousOrNextFragment | null | undefined;
+      next?: PreviousOrNextFragment | null;
+      previous?: PreviousOrNextFragment | null;
     }>;
   };
-  tags: { group: Array<{ fieldValue?: string | null | undefined }> };
+  tags: { group: Array<{ fieldValue?: string | null }> };
   markdowns: {
     nodes: Array<{
       id: string;
       name: string;
       relativeDirectory: string;
-      childMarkdownRemark?: { id: string } | null | undefined;
+      childMarkdownRemark?: { id: string } | null;
     }>;
   };
 };
 
 type ArchiveListItemFragment = {
-  year?: string | null | undefined;
+  year?: string | null;
   posts: Array<{
     slug: string;
-    frontmatter?: { title: string; date: any } | null | undefined;
+    frontmatter?: { title: string; date: any } | null;
   }>;
 };
 
 type SeoQueryVariables = Exact<{ [key: string]: never }>;
 
 type SeoQuery = {
-  site?:
-    | {
-        siteMetadata?:
-          | {
-              title?: string | null | undefined;
-              siteUrl?: string | null | undefined;
-              defaultImage?: string | null | undefined;
-            }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  site?: {
+    siteMetadata?: {
+      title?: string | null;
+      siteUrl?: string | null;
+      defaultImage?: string | null;
+    } | null;
+  } | null;
 };
 
 type LayoutQueryVariables = Exact<{ [key: string]: never }>;
 
 type LayoutQuery = {
-  site?:
-    | {
-        siteMetadata?:
-          | {
-              title?: string | null | undefined;
-              author?: string | null | undefined;
-            }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  site?: {
+    siteMetadata?: { title?: string | null; author?: string | null } | null;
+  } | null;
 };
 
 type PaginationFragment = {
@@ -3516,41 +5059,29 @@ type PaginationFragment = {
 };
 
 type PostItemFragment = {
-  htmlAst?: any | null | undefined;
-  excerpt?: string | null | undefined;
-  frontmatter?:
-    | {
-        title: string;
-        date: any;
-        tags?: Array<string> | null | undefined;
-        excerpt?: string | null | undefined;
-        preview?:
-          | { childImageSharp?: { gatsbyImageData: any } | null | undefined }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  htmlAst?: any | null;
+  excerpt?: string | null;
+  frontmatter?: {
+    title: string;
+    date: any;
+    tags?: Array<string> | null;
+    excerpt?: string | null;
+    preview?: { childImageSharp?: { gatsbyImageData: any } | null } | null;
+  } | null;
 };
 
 type PostListItemFragment = {
   slug: string;
-  excerptAst?: any | null | undefined;
-  frontmatter?:
-    | {
-        title: string;
-        date: any;
-        tags?: Array<string> | null | undefined;
-        excerptAst?: any | null | undefined;
-      }
-    | null
-    | undefined;
+  excerpt?: string | null;
+  frontmatter?: {
+    title: string;
+    date: any;
+    tags?: Array<string> | null;
+    excerptAst?: any | null;
+  } | null;
 };
 
-type TagItemFragment = {
-  fieldValue?: string | null | undefined;
-  totalCount: number;
-};
+type TagItemFragment = { fieldValue?: string | null; totalCount: number };
 
 type ArchiveQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -3567,16 +5098,10 @@ type MarkdownQueryVariables = Exact<{
 }>;
 
 type MarkdownQuery = {
-  markdownRemark?:
-    | {
-        htmlAst?: any | null | undefined;
-        frontmatter?:
-          | { title: string; excerpt?: string | null | undefined }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  markdownRemark?: {
+    htmlAst?: any | null;
+    frontmatter?: { title: string; excerpt?: string | null } | null;
+  } | null;
 };
 
 type PostsByTagQueryVariables = Exact<{
@@ -3603,4 +5128,4 @@ type PostQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
-type PostQuery = { markdownRemark?: PostItemFragment | null | undefined };
+type PostQuery = { markdownRemark?: PostItemFragment | null };

@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import Tag from '~/components/tag/Tag';
 import { formatDate, renderAst } from '~/helpers/utils';
 
@@ -11,7 +11,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
       <header className="text-center mt-10 mb-20">
         {preview && (
           <GatsbyImage
-            image={getImage(preview?.childImageSharp?.gatsbyImageData)!}
+            image={getImage(preview as ImageDataLike)!}
             alt={title}
             className="mb-10"
           />
