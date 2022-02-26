@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "d3": "^7.3.0",
+    "d3-cloud": "^1.2.5",
     "date-fns": "^2.27.0",
     "gatsby": "^4.0.2",
     "gatsby-plugin-catch-links": "^4.0.0",
@@ -68,6 +70,8 @@
     "@graphql-codegen/typescript": "^2.4.1",
     "@graphql-codegen/typescript-operations": "^2.2.1",
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
+    "@types/d3": "^7.1.0",
+    "@types/d3-cloud": "^1.2.5",
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^16.11.12",
     "@types/react": "^17.0.37",

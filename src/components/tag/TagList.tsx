@@ -1,4 +1,7 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+import cloud from 'd3-cloud';
+import { scaleLog } from 'd3-scale';
+import { select } from 'd3-selection';
 import { sortBy } from 'lodash-es';
 import NoData from '~/components/common/NoData';
 import Tag from './Tag';
@@ -14,21 +17,75 @@ const TagList: React.VFC<TagListProps> = ({ tags }) => {
     [tags],
   );
 
+  const cloudRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fontSize = scaleLog()
+      .domain(tags.map((tag) => tag.totalCount))
+      .range([20, 60]);
+
+    const layout = cloud()
+      .size([800, 500])
+      .words(
+        tags.map((tag) => ({
+          text: tag.fieldValue!,
+          size: tag.totalCount,
+        })),
+      )
+      .rotate(0)
+      .font('Impact')
+      .fontSize((d) => fontSize(d.size!))
+      .on('end', (words) => {
+        console.log(words);
+
+        const container = select(cloudRef.current!);
+        container.selectAll('svg').remove();
+        container
+          .append('svg')
+          .attr('width', layout.size()[0])
+          .attr('height', layout.size()[1])
+          .append('g')
+          .attr(
+            'transform',
+            'translate(' +
+              layout.size()[0] / 2 +
+              ',' +
+              layout.size()[1] / 2 +
+              ')',
+          )
+          .selectAll('text')
+          .data(words)
+          .enter()
+          .append('text')
+          .style('font-family', (d) => d.font!)
+          .style('font-size', (d) => d.size + 'px')
+          .attr('text-anchor', 'middle')
+          .attr('transform', (d) => {
+            return `translate(${[d.x, d.y]}) rotate(${d.rotate})`;
+          })
+          .text((d) => d.text!);
+      });
+    layout.start();
+  }, [m, tags, σ]);
+
   if (sortedTags.length === 0) {
     return <NoData />;
   }
 
   return (
-    <div className="flex flex-col space-y-4 items-start">
-      {sortedTags.map((tag) => (
-        <Tag
-          key={tag.fieldValue}
-          name={tag.fieldValue!}
-          count={tag.totalCount}
-          color={getColor(tag.totalCount, m, σ)}
-        />
-      ))}
-    </div>
+    <>
+      <div ref={cloudRef} />
+      <div className="flex flex-col space-y-4 items-start">
+        {sortedTags.map((tag) => (
+          <Tag
+            key={tag.fieldValue}
+            name={tag.fieldValue!}
+            count={tag.totalCount}
+            color={getColor(tag.totalCount, m, σ)}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
