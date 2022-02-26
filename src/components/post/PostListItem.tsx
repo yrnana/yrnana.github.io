@@ -4,10 +4,10 @@ import { formatDate, renderAst } from '~/helpers/utils';
 
 const PostListItem: React.VFC<PostListItemFragment> = ({
   slug,
-  excerptAst,
+  excerpt,
   frontmatter,
 }) => {
-  const { date, title, tags, excerptAst: frontmatterExcerptAst } = frontmatter!;
+  const { date, title, tags, excerptAst: frontmatterExcerpt } = frontmatter!;
 
   return (
     <div>
@@ -16,7 +16,7 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
       </Link>
       <div className="text-slate-500 mt-2">{formatDate(date)}</div>
       <div className="mt-2 excerpt-markdown">
-        {renderAst(frontmatterExcerptAst || excerptAst, true)}
+        {frontmatterExcerpt ? renderAst(frontmatterExcerpt) : excerpt}
       </div>
       {tags && (
         <div className="flex flex-row flex-wrap space-x-3 mt-3">
@@ -34,7 +34,7 @@ export default PostListItem;
 export const postListItemFragment = graphql`
   fragment PostListItem on MarkdownRemark {
     slug
-    excerptAst(pruneLength: 150, truncate: true)
+    excerpt(pruneLength: 150, truncate: true)
     frontmatter {
       title
       date
