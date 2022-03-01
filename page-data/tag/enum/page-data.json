@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
     "path": "/tag/enum",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2022-02-04-enum-union-type","excerpt":"union type을 사용하는게 좋은 이유 enum을 쓰는 경우 이를 tsc로 트랜스파일링 후 rollup으로 번들링하면 아래와 같이 변환된다. union type을 쓰는 경우 이를 트랜스파일링 및 번들링 하면 아래와 같다. union type을 쓰는 경우 장점 js…","frontmatter":{"title":"enum 보다 union type을 사용하자","date":"2022-02-04T22:25:00+09:00","tags":["typescript","enum","union type"],"excerptAst":null}}]}},"pageContext":{"tag":"enum"}},
+    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2022-02-04-enum-union-type","excerpt":"union type을 사용하는게 좋은 이유 enum을 쓰는 경우 이를 tsc로 트랜스파일링 후 rollup으로 번들링하면 아래와 같이 변환된다. union type을 쓰는 경우 이를 트랜스파일링 및 번들링 하면 아래와 같다. union type을 쓰는 경우 장점 js…","frontmatter":{"title":"enum 보다 union type을 사용하자","date":"2022-02-04T22:25:00+09:00","tags":["TypeScript","enum","union type"],"excerptAst":null}}]}},"pageContext":{"tag":"enum"}},
     "staticQueryHashes": ["1957264973","5457840"]}
