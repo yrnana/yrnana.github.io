@@ -3,7 +3,7 @@
 ## Stack
 
 - Gatsby(v4)
-- Typescript
+- TypeScript
 - TailwindCSS
 - ESlint
 - Prettier

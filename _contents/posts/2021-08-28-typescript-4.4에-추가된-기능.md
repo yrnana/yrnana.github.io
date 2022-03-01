@@ -1,8 +1,8 @@
 ---
-title: 'Typescript 4.4에 추가된 기능'
+title: 'TypeScript 4.4에 추가된 기능'
 date: '2021-08-28T14:31:28+09:00'
 excerpt: '정말 좋은 기능들이 추가되어서 정리해본다.'
-tags: [Typescript]
+tags: [TypeScript]
 preview: '../assets/raycast-untitled.png'
 published: true
 ---

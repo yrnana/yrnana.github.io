@@ -1,8 +1,8 @@
 ---
-title: 'Typescript 4.6에 추가된 기능'
+title: 'TypeScript 4.6에 추가된 기능'
 date: '2022-03-02T00:34:11+09:00'
 excerpt: '타입스크립트 4.6은 더욱더 강화된 제어 흐름 분석을 제공한다.'
-tags: [Typescript]
+tags: [TypeScript]
 published: true
 ---
 

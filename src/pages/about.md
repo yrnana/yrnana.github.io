@@ -14,7 +14,7 @@ excerpt: 'Javascript와 React.js 전반에 관심이 많은 프론트엔드 개�
 
 ## Skills
 
-Javascript(ES6+), Typescript, React.js, Vue.js, HTML, CSS, Node.js, Python, Java
+JavaScript(ES6+), TypeScript, React.js, Vue.js, HTML, CSS, Node.js, Python, Java
 
 ## Career
 

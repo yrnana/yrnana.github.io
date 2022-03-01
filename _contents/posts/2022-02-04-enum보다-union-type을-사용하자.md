@@ -1,7 +1,7 @@
 ---
 title: 'enum 보다 union type을 사용하자'
 date: '2022-02-04T22:25:00+09:00'
-tags: [typescript, enum, union type]
+tags: [TypeScript, enum, union type]
 published: true
 ---
 

@@ -327,7 +327,7 @@ const App = ({ children }) => {
 };
 ```
 
-## Typescript
+## TypeScript
 
 ```ts
 class MyClass {
