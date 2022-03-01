@@ -9,9 +9,7 @@ const compiler = unified().use(rehypeReact, {
   Fragment,
 });
 
-export const renderAst = (htmlAst: Root, sanitize = false) => {
-  return compiler.stringify(htmlAst);
-};
+export const renderAst = (htmlAst: Root) => compiler.stringify(htmlAst);
 
 export const formatDate = (date: string, formatString = 'PP') =>
   format(new Date(date), formatString);
