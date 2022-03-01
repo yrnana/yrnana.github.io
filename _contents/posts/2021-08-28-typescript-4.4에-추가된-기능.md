@@ -9,7 +9,7 @@ published: true
 
 정말 좋은 기능들이 추가되어서 정리해본다.
 
-## alias 된 조건문과 판별문 흐름 분석을 컨트롤
+## alias 된 조건문과 판별문의 제어 흐름 분석
 
 ```ts
 function foo(arg: unknown) {
