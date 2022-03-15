@@ -18,10 +18,7 @@ export const query = graphql`
   query Archive {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: { glob: "**/_contents/posts/*" }
-        frontmatter: { published: { eq: true } }
-      }
+      filter: { fileAbsolutePath: { glob: "**/_contents/posts/**/*" } }
     ) {
       group(field: frontmatter___year) {
         ...ArchiveListItem

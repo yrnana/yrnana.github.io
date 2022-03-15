@@ -10,7 +10,7 @@ date2=$(date +%FT%T+09:00)
 # create markdown file
 message2="$(tr [A-Z] [a-z] <<<"$title")"
 slug=$date1"-"${message2// /-}
-markdown="./_contents/posts/$slug.md"
+markdown="./_contents/posts/private/$slug.md"
 touch $markdown
 
 # insert data to markdown
@@ -23,7 +23,6 @@ fi
 if [ "$tags" != "" ]; then
   echo "tags: [$tags]" >>$markdown
 fi
-echo "published: false" >>$markdown
 echo "---" >>$markdown
 
 # exit

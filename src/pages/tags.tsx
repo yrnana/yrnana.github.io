@@ -17,10 +17,7 @@ export default TagsPage;
 export const query = graphql`
   query Tags {
     allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { glob: "**/_contents/posts/*" }
-        frontmatter: { published: { eq: true } }
-      }
+      filter: { fileAbsolutePath: { glob: "**/_contents/posts/**/*" } }
     ) {
       group(field: frontmatter___tags) {
         ...TagItem

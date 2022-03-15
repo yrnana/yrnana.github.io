@@ -26,8 +26,8 @@ export const query = graphql`
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        fileAbsolutePath: { glob: "**/_contents/posts/*" }
-        frontmatter: { published: { eq: true }, tags: { in: [$tag] } }
+        fileAbsolutePath: { glob: "**/_contents/posts/**/*" }
+        frontmatter: { tags: { in: [$tag] } }
       }
     ) {
       nodes {

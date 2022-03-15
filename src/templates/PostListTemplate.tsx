@@ -22,10 +22,7 @@ export const query = graphql`
   query Posts($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: { glob: "**/_contents/posts/*" }
-        frontmatter: { published: { eq: true } }
-      }
+      filter: { fileAbsolutePath: { glob: "**/_contents/posts/**/*" } }
       limit: $limit
       skip: $skip
     ) {

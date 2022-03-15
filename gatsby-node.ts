@@ -22,10 +22,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     query CreatePages {
       posts: allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        filter: {
-          fileAbsolutePath: { glob: "**/_contents/posts/*" }
-          frontmatter: { published: { eq: true } }
-        }
+        filter: { fileAbsolutePath: { glob: "**/_contents/posts/**/*" } }
       ) {
         edges {
           node {
@@ -41,10 +38,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
         }
       }
       tags: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { glob: "**/_contents/posts/*" }
-          frontmatter: { published: { eq: true } }
-        }
+        filter: { fileAbsolutePath: { glob: "**/_contents/posts/**/*" } }
       ) {
         group(field: frontmatter___tags) {
           fieldValue
@@ -177,7 +171,6 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     excerptAst: JSON
     tags: [String!]
     preview: File @fileByRelativePath
-    published: Boolean!
     year: Int!
   }
 `;

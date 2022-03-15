@@ -3,8 +3,7 @@ title: 'Markdown Test'
 date: '2021-01-01T00:00:00+09:00'
 excerpt: '마크다운 테스트 샘플 코드'
 tags: [Markdown]
-preview: '../assets/sample.jpg'
-published: false
+preview: '../../assets/sample.jpg'
 ---
 
 # 1. Headings
@@ -133,11 +132,11 @@ console.log('코드블록');
 # 7. Image
 
 ![Minion](https://octodex.github.com/images/minion.png)
-![Sample](../assets/sample.jpg)
+![Sample](../../assets/sample.jpg)
 
 ```md
 ![Minion](https://octodex.github.com/images/minion.png)
-![Sample](../assets/sample.jpg)
+![Sample](../../assets/sample.jpg)
 ```
 
 # 8. Link
