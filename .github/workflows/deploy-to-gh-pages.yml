@@ -15,26 +15,26 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16
 
-      - name: Cache npm
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-yarn-
 
       - name: Cache ./public
         uses: actions/cache@v2
@@ -55,14 +55,14 @@ jobs:
       - name: Install
         run: |
           cd ${{ github.workspace }}/plugins/gatsby-remark-breaks
-          npm install
+          yarn install
           cd ${{ github.workspace }}/plugins/gatsby-remark-embed
-          npm install
+          yarn install
           cd ${{ github.workspace }}
-          npm ci
+          yarn
 
       - name: Build 🔧
-        run: npm run build
+        run: yarn build
 
       - name: Add .nojekyll
         run: touch public/.nojekyll
