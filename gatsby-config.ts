@@ -1,5 +1,7 @@
-/** @type {import('gatsby').GatsbyConfig} */
-module.exports = {
+import type { GatsbyConfig } from 'gatsby';
+import path from 'path';
+
+const config: GatsbyConfig = {
   jsxRuntime: 'automatic',
   trailingSlash: 'never',
   siteMetadata: {
@@ -37,11 +39,11 @@ module.exports = {
             options: {
               theme: `One Dark Pro`,
               extensions: [
-                `${__dirname}/vendor/one-dark-pro.vsix`,
-                `${__dirname}/vendor/graphql.vsix`,
-                `${__dirname}/vendor/prisma.vsix`,
-                `${__dirname}/vendor/dotenv.vsix`,
-                `${__dirname}/vendor/rest-client.vsix`,
+                path.resolve(`vendor/one-dark-pro.vsix`),
+                path.resolve(`vendor/graphql.vsix`),
+                path.resolve(`vendor/prisma.vsix`),
+                path.resolve(`vendor/dotenv.vsix`),
+                path.resolve(`vendor/rest-client.vsix`),
               ],
               injectStyles: false,
               inlineCode: {
@@ -66,21 +68,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: 'pages',
-        path: `${__dirname}/src/pages`,
+        path: path.resolve(`src/pages`),
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: 'posts',
-        path: `${__dirname}/_contents/posts`,
+        path: path.resolve(`_contents/posts`),
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'assets',
-        path: `${__dirname}/_contents/assets`,
+        path: path.resolve(`_contents/assets`),
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -102,3 +104,5 @@ module.exports = {
     `gatsby-plugin-sitemap`,
   ],
 };
+
+export default config;
