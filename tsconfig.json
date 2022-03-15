@@ -17,10 +17,5 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/graphqlTypes.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "gatsby-node.ts"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "gatsby-*.ts"]
 }

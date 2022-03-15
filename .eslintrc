@@ -5,7 +5,7 @@
   "extends": ["react-app"],
   "overrides": [
     {
-      "files": ["src/graphqlTypes.d.ts"],
+      "files": ["src/@types/graphqlTypes.d.ts"],
       "rules": {
         "@typescript-eslint/no-unused-vars": "off"
       }

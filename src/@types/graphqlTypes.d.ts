@@ -645,7 +645,6 @@ enum FileFieldsEnum {
   ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesHtml = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___html',
   ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesIsHighlighted = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___isHighlighted',
   ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesLineNumber = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___lineNumber',
-  ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesSetContainerClassName = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___setContainerClassName',
   ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesText = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___text',
   ChildMarkdownRemarkChildGrvscCodeBlockTokenizedLinesTokens = 'childMarkdownRemark___childGrvscCodeBlock___tokenizedLines___tokens',
   ChildMarkdownRemarkChildGrvscCodeSpanAdditionalThemes = 'childMarkdownRemark___childGrvscCodeSpan___additionalThemes',
@@ -721,7 +720,6 @@ enum FileFieldsEnum {
   ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesHtml = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___html',
   ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesIsHighlighted = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___isHighlighted',
   ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesLineNumber = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___lineNumber',
-  ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesSetContainerClassName = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___setContainerClassName',
   ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesText = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___text',
   ChildMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesTokens = 'childMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___tokens',
   ChildMarkdownRemarkChildrenGrvscCodeSpan = 'childMarkdownRemark___childrenGrvscCodeSpan',
@@ -966,7 +964,6 @@ enum FileFieldsEnum {
   ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesHtml = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___html',
   ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesIsHighlighted = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___isHighlighted',
   ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesLineNumber = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___lineNumber',
-  ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesSetContainerClassName = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___setContainerClassName',
   ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesText = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___text',
   ChildrenMarkdownRemarkChildGrvscCodeBlockTokenizedLinesTokens = 'childrenMarkdownRemark___childGrvscCodeBlock___tokenizedLines___tokens',
   ChildrenMarkdownRemarkChildGrvscCodeSpanAdditionalThemes = 'childrenMarkdownRemark___childGrvscCodeSpan___additionalThemes',
@@ -1042,7 +1039,6 @@ enum FileFieldsEnum {
   ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesHtml = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___html',
   ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesIsHighlighted = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___isHighlighted',
   ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesLineNumber = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___lineNumber',
-  ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesSetContainerClassName = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___setContainerClassName',
   ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesText = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___text',
   ChildrenMarkdownRemarkChildrenGrvscCodeBlockTokenizedLinesTokens = 'childrenMarkdownRemark___childrenGrvscCodeBlock___tokenizedLines___tokens',
   ChildrenMarkdownRemarkChildrenGrvscCodeSpan = 'childrenMarkdownRemark___childrenGrvscCodeSpan',
@@ -1584,7 +1580,6 @@ enum GrvscCodeBlockFieldsEnum {
   TokenizedLinesHtml = 'tokenizedLines___html',
   TokenizedLinesIsHighlighted = 'tokenizedLines___isHighlighted',
   TokenizedLinesLineNumber = 'tokenizedLines___lineNumber',
-  TokenizedLinesSetContainerClassName = 'tokenizedLines___setContainerClassName',
   TokenizedLinesText = 'tokenizedLines___text',
   TokenizedLinesTokens = 'tokenizedLines___tokens',
   TokenizedLinesTokensAdditionalThemeTokenData = 'tokenizedLines___tokens___additionalThemeTokenData',
@@ -2234,7 +2229,6 @@ type GrvscTokenizedLine = {
   html: Scalars['String'];
   isHighlighted?: Maybe<Scalars['Boolean']>;
   lineNumber?: Maybe<Scalars['Int']>;
-  setContainerClassName?: Maybe<Scalars['String']>;
   text: Scalars['String'];
   tokens: Array<GrvscToken>;
 };
@@ -2248,7 +2242,6 @@ type GrvscTokenizedLineFilterInput = {
   html?: InputMaybe<StringQueryOperatorInput>;
   isHighlighted?: InputMaybe<BooleanQueryOperatorInput>;
   lineNumber?: InputMaybe<IntQueryOperatorInput>;
-  setContainerClassName?: InputMaybe<StringQueryOperatorInput>;
   text?: InputMaybe<StringQueryOperatorInput>;
   tokens?: InputMaybe<GrvscTokenFilterListInput>;
 };
@@ -2965,7 +2958,6 @@ enum MarkdownRemarkFieldsEnum {
   ChildGrvscCodeBlockTokenizedLinesHtml = 'childGrvscCodeBlock___tokenizedLines___html',
   ChildGrvscCodeBlockTokenizedLinesIsHighlighted = 'childGrvscCodeBlock___tokenizedLines___isHighlighted',
   ChildGrvscCodeBlockTokenizedLinesLineNumber = 'childGrvscCodeBlock___tokenizedLines___lineNumber',
-  ChildGrvscCodeBlockTokenizedLinesSetContainerClassName = 'childGrvscCodeBlock___tokenizedLines___setContainerClassName',
   ChildGrvscCodeBlockTokenizedLinesText = 'childGrvscCodeBlock___tokenizedLines___text',
   ChildGrvscCodeBlockTokenizedLinesTokens = 'childGrvscCodeBlock___tokenizedLines___tokens',
   ChildGrvscCodeBlockTokenizedLinesTokensAdditionalThemeTokenData = 'childGrvscCodeBlock___tokenizedLines___tokens___additionalThemeTokenData',
@@ -3120,7 +3112,6 @@ enum MarkdownRemarkFieldsEnum {
   ChildrenGrvscCodeBlockTokenizedLinesHtml = 'childrenGrvscCodeBlock___tokenizedLines___html',
   ChildrenGrvscCodeBlockTokenizedLinesIsHighlighted = 'childrenGrvscCodeBlock___tokenizedLines___isHighlighted',
   ChildrenGrvscCodeBlockTokenizedLinesLineNumber = 'childrenGrvscCodeBlock___tokenizedLines___lineNumber',
-  ChildrenGrvscCodeBlockTokenizedLinesSetContainerClassName = 'childrenGrvscCodeBlock___tokenizedLines___setContainerClassName',
   ChildrenGrvscCodeBlockTokenizedLinesText = 'childrenGrvscCodeBlock___tokenizedLines___text',
   ChildrenGrvscCodeBlockTokenizedLinesTokens = 'childrenGrvscCodeBlock___tokenizedLines___tokens',
   ChildrenGrvscCodeBlockTokenizedLinesTokensAdditionalThemeTokenData = 'childrenGrvscCodeBlock___tokenizedLines___tokens___additionalThemeTokenData',
