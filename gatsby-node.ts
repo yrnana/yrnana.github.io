@@ -1,14 +1,18 @@
-const path = require(`path`);
-const slugify = require('slugify');
-const { createFilePath } = require(`gatsby-source-filesystem`);
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const { kebabCase } = require('lodash');
+import type { GatsbyNode } from 'gatsby';
+import { createFilePath } from 'gatsby-source-filesystem';
+import { kebabCase } from 'lodash';
+import path from 'path';
+import slugify from 'slugify';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 const templatePath = path.resolve(process.cwd(), 'src/templates');
 
-/** @type {import('gatsby').GatsbyNode['createPages']} */
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const result = await graphql(`
+export const createPages: GatsbyNode['createPages'] = async ({
+  graphql,
+  actions,
+  reporter,
+}) => {
+  const result = await graphql<CreatePagesQuery>(`
     fragment PreviousOrNext on MarkdownRemark {
       slug
       frontmatter {
@@ -71,18 +75,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // 1. create `md` page (get from `pages` directory)
   const markdownTemplate = path.resolve(templatePath, 'MarkdownTemplate.tsx');
-  const markdowns = result.data.markdowns.nodes;
-  markdowns.forEach(({ id, name, relativeDirectory, childMarkdownRemark }) => {
+  const markdowns = result.data?.markdowns.nodes;
+  markdowns?.forEach(({ id, name, relativeDirectory, childMarkdownRemark }) => {
     actions.createPage({
       path: relativeDirectory ? `${relativeDirectory}/${name}` : name,
       component: markdownTemplate,
       context: {
-        id: childMarkdownRemark.id,
+        id: childMarkdownRemark?.id,
       },
     });
   });
 
-  const posts = result.data.posts.edges;
+  const posts = result.data?.posts.edges;
   if (!posts) {
     return;
   }
@@ -129,9 +133,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     templatePath,
     'PostListByTagTemplate.tsx',
   );
-  const tags = result.data.tags.group;
-  tags.forEach((tag) => {
-    const tagValue = tag.fieldValue;
+  const tags = result.data?.tags.group;
+  tags?.forEach((tag) => {
+    const tagValue = tag.fieldValue!;
     actions.createPage({
       path: `/tag/${kebabCase(tagValue)}`,
       component: postListByTagTemplate,
@@ -142,8 +146,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-/** @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']} */
-exports.onCreateWebpackConfig = ({ actions }) => {
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
+  actions,
+}) => {
   actions.setWebpackConfig({
     resolve: {
       plugins: [
@@ -156,11 +161,11 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-/** @type {import('gatsby').GatsbyNode['createSchemaCustomization']} */
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  ({ actions }) => {
+    const { createTypes } = actions;
 
-  const typeDefs = `
+    const typeDefs = `
   type MarkdownRemark implements Node {
     slug: String!
     frontmatter: Frontmatter
@@ -177,11 +182,10 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
 `;
 
-  createTypes(typeDefs);
-};
+    createTypes(typeDefs);
+  };
 
-/** @type {import('gatsby').GatsbyNode['createResolvers']} */
-exports.createResolvers = ({
+export const createResolvers: GatsbyNode['createResolvers'] = ({
   createResolvers,
   getNode,
   createContentDigest,
@@ -191,12 +195,12 @@ exports.createResolvers = ({
     MarkdownRemark: {
       slug: {
         type: `String!`,
-        resolve(source) {
+        resolve(source: MarkdownRemark) {
           if (!source?.frontmatter?.title) {
             return null;
           }
           const fileName = createFilePath({
-            node: source,
+            node: source as any,
             getNode,
             basePath: `_contents/posts`,
             trailingSlash: false,
@@ -216,7 +220,7 @@ exports.createResolvers = ({
     Frontmatter: {
       excerptAst: {
         type: `JSON`,
-        async resolve(source, args, context, info) {
+        async resolve(source: Frontmatter, args: any, context: any, info: any) {
           const value = source.excerpt;
           if (typeof value === 'undefined') {
             return null;
@@ -230,7 +234,7 @@ exports.createResolvers = ({
               internal: {
                 type: 'MarkdownRemark',
                 content: value,
-                contentDigest: createContentDigest(value),
+                contentDigest: createContentDigest(value!),
               },
             },
             args,
@@ -242,7 +246,7 @@ exports.createResolvers = ({
       },
       year: {
         type: `Int!`,
-        resolve(source) {
+        resolve(source: Frontmatter) {
           return new Date(source.date).getFullYear();
         },
       },
