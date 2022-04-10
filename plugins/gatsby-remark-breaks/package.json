@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "remark-breaks": "^2.0.2"
+    "remark-breaks": "2.0.2"
   },
   "license": "MIT"
 }
