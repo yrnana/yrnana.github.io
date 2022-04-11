@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
+import cx from 'classnames';
 
 type GoogleAdsenseProps = {
   slot: string;
   client?: string;
   format?: string;
+  className?: string;
 };
 
 const GoogleAdsense = ({
   slot,
   client = 'ca-pub-4675264961434940',
   format = 'auto',
+  className,
 }: GoogleAdsenseProps) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -19,7 +22,7 @@ const GoogleAdsense = ({
 
   return (
     <ins
-      className="adsbygoogle"
+      className={cx('adsbygoogle', className)}
       style={{ display: 'block' }}
       data-ad-client={client}
       data-ad-slot={slot}

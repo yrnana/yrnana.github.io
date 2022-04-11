@@ -15,8 +15,8 @@ const PostListByTagTemplate: React.VFC<
           {pageContext.tag}
         </div>
       </h2>
+      <GoogleAdsense slot="8006423859" className="mb-10" />
       <PostList posts={data.allMarkdownRemark.nodes} />
-      <GoogleAdsense slot="8006423859" />
     </Layout>
   );
 };

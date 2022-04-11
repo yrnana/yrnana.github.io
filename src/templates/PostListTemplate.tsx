@@ -11,8 +11,8 @@ const PostListTemplate: React.VFC<PageProps<PostsQuery>> = ({ data }) => {
   return (
     <Layout>
       <Seo />
+      <GoogleAdsense slot="8006423859" className="mb-10" />
       <PostList posts={nodes} />
-      <GoogleAdsense slot="8006423859" />
       <Pagination {...pageInfo} />
     </Layout>
   );
