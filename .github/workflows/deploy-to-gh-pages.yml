@@ -55,11 +55,11 @@ jobs:
       - name: Install
         run: |
           cd ${{ github.workspace }}/plugins/gatsby-remark-breaks
-          yarn install
+          yarn ci
           cd ${{ github.workspace }}/plugins/gatsby-remark-embed
-          yarn install
+          yarn ci
           cd ${{ github.workspace }}
-          yarn
+          yarn ci
 
       - name: Build 🔧
         run: yarn build
