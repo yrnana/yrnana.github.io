@@ -11,6 +11,14 @@ const PostListTemplate: React.VFC<PageProps<PostsQuery>> = ({ data }) => {
     <Layout>
       <Seo />
       <PostList posts={nodes} />
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client="ca-pub-4675264961434940"
+        data-ad-slot="8006423859"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
       <Pagination {...pageInfo} />
     </Layout>
   );
