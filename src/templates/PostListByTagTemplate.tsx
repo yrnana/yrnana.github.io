@@ -1,5 +1,5 @@
 import { graphql, PageProps } from 'gatsby';
-import GoogleAd from '~/components/common/GoogleAd';
+import GoogleAdsense from '~/components/common/GoogleAdsense';
 import Seo from '~/components/common/Seo';
 import Layout from '~/components/layout/Layout';
 import PostList from '~/components/post/PostList';
@@ -16,7 +16,7 @@ const PostListByTagTemplate: React.VFC<
         </div>
       </h2>
       <PostList posts={data.allMarkdownRemark.nodes} />
-      <GoogleAd slot="8006423859" />
+      <GoogleAdsense slot="8006423859" />
     </Layout>
   );
 };

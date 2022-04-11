@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
-type GoogleAdProps = {
+type GoogleAdsenseProps = {
   slot: string;
   client?: string;
   format?: string;
 };
 
-const GoogleAd = ({
+const GoogleAdsense = ({
   slot,
   client = 'ca-pub-4675264961434940',
   format = 'auto',
-}: GoogleAdProps) => {
+}: GoogleAdsenseProps) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       (window.adsbygoogle || []).push({});
@@ -29,4 +29,4 @@ const GoogleAd = ({
   );
 };
 
-export default GoogleAd;
+export default GoogleAdsense;

@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby';
 import { getSrc, ImageDataLike } from 'gatsby-plugin-image';
-import GoogleAd from '~/components/common/GoogleAd';
+import GoogleAdsense from '~/components/common/GoogleAdsense';
 import Seo from '~/components/common/Seo';
 import Layout from '~/components/layout/Layout';
 import Comments from '~/components/post/Comments';
@@ -30,7 +30,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
         isBlogTitleDisabled
       />
       <Post {...post} />
-      <GoogleAd slot="4448901342" />
+      <GoogleAdsense slot="4448901342" />
       <PostNav previous={previous} next={next} />
       <Comments id={id} />
     </Layout>
