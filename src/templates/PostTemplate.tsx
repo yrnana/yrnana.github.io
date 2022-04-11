@@ -29,6 +29,14 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
         isBlogTitleDisabled
       />
       <Post {...post} />
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client="ca-pub-4675264961434940"
+        data-ad-slot="4448901342"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
       <PostNav previous={previous} next={next} />
       <Comments id={id} />
     </Layout>
