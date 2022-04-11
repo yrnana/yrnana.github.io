@@ -26,7 +26,8 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "type-check": "tsc -p tsconfig.json",
-    "create-post": "./scripts/create-post.sh"
+    "create-post": "node ./scripts/create-post.mjs",
+    "update-post": "node ./scripts/update-post.mjs"
   },
   "dependencies": {
     "classnames": "^2.3.1",
