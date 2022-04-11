@@ -1,8 +1,8 @@
 import { graphql, Link } from 'gatsby';
-import Tag from '~/components/tag/Tag';
+import { Tag } from '~/components/tag';
 import { formatDate, renderAst } from '~/helpers/utils';
 
-const PostListItem: React.VFC<PostListItemFragment> = ({
+export const PostListItem: React.VFC<PostListItemFragment> = ({
   slug,
   excerpt,
   frontmatter,
@@ -28,8 +28,6 @@ const PostListItem: React.VFC<PostListItemFragment> = ({
     </div>
   );
 };
-
-export default PostListItem;
 
 export const postListItemFragment = graphql`
   fragment PostListItem on MarkdownRemark {

@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { orderBy } from 'lodash-es';
-import NoData from '~/components/common/NoData';
-import ArchiveListItem from './ArchiveListItem';
+import { NoData } from '~/components/common';
+import { ArchiveListItem } from './ArchiveListItem';
 
 export interface ArchiveListProps {
   postGroups: ArchiveListItemFragment[];
 }
 
-const ArchiveList: React.VFC<ArchiveListProps> = ({ postGroups }) => {
+export const ArchiveList: React.VFC<ArchiveListProps> = ({ postGroups }) => {
   const groups = useMemo(() => {
     return orderBy(postGroups, ['year'], ['desc']);
   }, [postGroups]);
@@ -24,5 +24,3 @@ const ArchiveList: React.VFC<ArchiveListProps> = ({ postGroups }) => {
     </div>
   );
 };
-
-export default ArchiveList;

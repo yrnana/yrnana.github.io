@@ -1,9 +1,9 @@
 import { graphql, PageProps } from 'gatsby';
-import ArchiveList from '~/components/archive/ArchiveList';
-import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
+import { ArchiveList } from '~/components/archive';
+import { Seo } from '~/components/common';
+import { Layout } from '~/components/layout';
 
-const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
+export const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
   return (
     <Layout>
       <Seo title="archive" />
@@ -11,8 +11,6 @@ const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
     </Layout>
   );
 };
-
-export default ArchivePage;
 
 export const query = graphql`
   query Archive {

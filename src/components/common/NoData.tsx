@@ -1,6 +1,6 @@
-import { ExclamationCircle } from '~/components/common/Icon';
+import { ExclamationCircle } from '~/components/common';
 
-const NoData: React.VFC = () => {
+export const NoData: React.VFC = () => {
   return (
     <div className="text-center py-20">
       <div className="flex items-center justify-center text-slate-300">
@@ -10,5 +10,3 @@ const NoData: React.VFC = () => {
     </div>
   );
 };
-
-export default NoData;

@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import Header from './Header';
+import { Header } from './Header';
 
-const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   const { site } = useStaticQuery<LayoutQuery>(
     graphql`
       query Layout {
@@ -28,5 +28,3 @@ const Layout: React.FC = ({ children }) => {
     </div>
   );
 };
-
-export default Layout;

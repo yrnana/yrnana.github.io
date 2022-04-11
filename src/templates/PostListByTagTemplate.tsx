@@ -1,8 +1,7 @@
 import { graphql, PageProps } from 'gatsby';
-import GoogleAdsense from '~/components/common/GoogleAdsense';
-import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import PostList from '~/components/post/PostList';
+import { GoogleAdsense, Seo } from '~/components/common';
+import { Layout } from '~/components/layout';
+import { PostList } from '~/components/post';
 
 const PostListByTagTemplate: React.VFC<
   PageProps<PostsByTagQuery, PostsByTagQueryVariables>

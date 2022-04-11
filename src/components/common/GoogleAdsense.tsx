@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import cx from 'classnames';
 
-type GoogleAdsenseProps = {
+export type GoogleAdsenseProps = {
   slot: string;
   client?: string;
   format?: string;
   className?: string;
 };
 
-const GoogleAdsense = ({
+export const GoogleAdsense = ({
   slot,
   client = 'ca-pub-4675264961434940',
   format = 'auto',
@@ -31,5 +31,3 @@ const GoogleAdsense = ({
     />
   );
 };
-
-export default GoogleAdsense;

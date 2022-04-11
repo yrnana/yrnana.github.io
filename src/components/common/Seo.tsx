@@ -12,7 +12,7 @@ export interface SeoProps {
   isBlogTitleDisabled?: boolean;
 }
 
-const Seo: React.VFC<SeoProps> = ({
+export const Seo: React.VFC<SeoProps> = ({
   title,
   description,
   image,
@@ -72,5 +72,3 @@ const Seo: React.VFC<SeoProps> = ({
     </Helmet>
   );
 };
-
-export default Seo;

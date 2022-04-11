@@ -1,6 +1,5 @@
-import { ExclamationCircle } from '~/components/common/Icon';
-import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
+import { ExclamationCircle, Seo } from '~/components/common';
+import { Layout } from '~/components/layout';
 
 const NotFoundPage = () => {
   return (

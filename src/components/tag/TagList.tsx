@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { sortBy } from 'lodash-es';
-import NoData from '~/components/common/NoData';
-import Tag from './Tag';
+import { NoData } from '~/components/common';
+import { Tag } from './Tag';
 
 export interface TagListProps {
   tags: TagItemFragment[];
 }
 
-const TagList: React.VFC<TagListProps> = ({ tags }) => {
+export const TagList: React.VFC<TagListProps> = ({ tags }) => {
   const { m, σ } = useMemo(() => getMeanAndDeviation(tags), [tags]);
   const sortedTags = useMemo(
     () => sortBy(tags, (tag) => tag.fieldValue?.toLowerCase()),
@@ -31,8 +31,6 @@ const TagList: React.VFC<TagListProps> = ({ tags }) => {
     </div>
   );
 };
-
-export default TagList;
 
 /**
  * 태그목록으로부터 평균과 표준편차를 계산

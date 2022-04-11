@@ -1,7 +1,7 @@
 import { graphql, PageProps } from 'gatsby';
-import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import TagList from '~/components/tag/TagList';
+import { Seo } from '~/components/common';
+import { Layout } from '~/components/layout';
+import { TagList } from '~/components/tag';
 
 const TagsPage: React.FC<PageProps<TagsQuery>> = ({ data }) => {
   return (

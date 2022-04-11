@@ -12,7 +12,7 @@ export interface PostNavProps {
   next: PostEdgeFragment; // 다음글
 }
 
-const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
+export const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
   if (!previous && !next) return null;
 
   return (
@@ -74,5 +74,3 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
     </div>
   );
 };
-
-export default PostNav;

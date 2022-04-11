@@ -1,6 +1,9 @@
 import { GatsbyLinkProps, Link } from 'gatsby';
 
-const ActiveLink: React.VFC<GatsbyLinkProps<unknown>> = ({ to, children }) => {
+export const ActiveLink: React.VFC<GatsbyLinkProps<unknown>> = ({
+  to,
+  children,
+}) => {
   return (
     <Link
       to={to}
@@ -11,5 +14,3 @@ const ActiveLink: React.VFC<GatsbyLinkProps<unknown>> = ({ to, children }) => {
     </Link>
   );
 };
-
-export default ActiveLink;

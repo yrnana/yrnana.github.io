@@ -7,7 +7,7 @@ export interface TagProps {
   count?: number;
 }
 
-const Tag: React.VFC<TagProps> = ({ name, color, count }) => {
+export const Tag: React.VFC<TagProps> = ({ name, color, count }) => {
   return (
     <Link
       to={`/tag/${kebabCase(name)}`}
@@ -18,8 +18,6 @@ const Tag: React.VFC<TagProps> = ({ name, color, count }) => {
     </Link>
   );
 };
-
-export default Tag;
 
 export const tagItemFragment = graphql`
   fragment TagItem on MarkdownRemarkGroupConnection {

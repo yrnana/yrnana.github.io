@@ -1,6 +1,6 @@
 import { graphql, PageProps } from 'gatsby';
-import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
+import { Seo } from '~/components/common';
+import { Layout } from '~/components/layout';
 import { renderAst } from '~/helpers/utils';
 
 const MarkdownTemplate: React.FC<PageProps<MarkdownQuery>> = ({ data }) => {

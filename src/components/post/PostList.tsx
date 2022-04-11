@@ -1,11 +1,11 @@
-import NoData from '~/components/common/NoData';
-import PostListItem from './PostListItem';
+import { NoData } from '~/components/common';
+import { PostListItem } from './PostListItem';
 
 export interface PostListProps {
   posts: PostListItemFragment[];
 }
 
-const PostList: React.VFC<PostListProps> = ({ posts }) => {
+export const PostList: React.VFC<PostListProps> = ({ posts }) => {
   if (posts.length === 0) {
     return <NoData />;
   }
@@ -18,5 +18,3 @@ const PostList: React.VFC<PostListProps> = ({ posts }) => {
     </div>
   );
 };
-
-export default PostList;

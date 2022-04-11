@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const Comments: React.VFC<{ id: string }> = ({ id }) => {
+export const Comments: React.VFC<{ id: string }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,5 +32,3 @@ const Comments: React.VFC<{ id: string }> = ({ id }) => {
 };
 
 Comments.displayName = 'Comments';
-
-export default Comments;

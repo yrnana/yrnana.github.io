@@ -1,11 +1,8 @@
 import { graphql, PageProps } from 'gatsby';
 import { getSrc, ImageDataLike } from 'gatsby-plugin-image';
-import GoogleAdsense from '~/components/common/GoogleAdsense';
-import Seo from '~/components/common/Seo';
-import Layout from '~/components/layout/Layout';
-import Comments from '~/components/post/Comments';
-import Post from '~/components/post/Post';
-import PostNav, { PostNavProps } from '~/components/post/PostNav';
+import { GoogleAdsense, Seo } from '~/components/common';
+import { Layout } from '~/components/layout';
+import { Comments, Post, PostNav, PostNavProps } from '~/components/post';
 
 interface PostPageContext extends PostNavProps {
   id: string;

@@ -1,9 +1,9 @@
 import { graphql } from 'gatsby';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
-import Tag from '~/components/tag/Tag';
+import { Tag } from '~/components/tag';
 import { formatDate, renderAst } from '~/helpers/utils';
 
-const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
+export const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
   const { title, date, preview, tags } = frontmatter!;
 
   return (
@@ -30,8 +30,6 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
     </article>
   );
 };
-
-export default Post;
 
 export const postItemFragment = graphql`
   fragment PostItem on MarkdownRemark {

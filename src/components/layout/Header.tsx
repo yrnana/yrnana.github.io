@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
-import ActiveLink from './ActiveLink';
+import { ActiveLink } from './ActiveLink';
 
-const Header: React.VFC<{ title: string }> = ({ title }) => {
+export const Header: React.VFC<{ title: string }> = ({ title }) => {
   return (
     <header className="mt-4 sm:mt-6 flex flex-row items-center">
       <div className="mr-auto">
@@ -20,5 +20,3 @@ const Header: React.VFC<{ title: string }> = ({ title }) => {
     </header>
   );
 };
-
-export default Header;

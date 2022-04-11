@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby';
 import { formatDate } from '~/helpers/utils';
 
-const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
+export const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
   year,
   posts,
 }) => {
@@ -26,8 +26,6 @@ const ArchiveListItem: React.VFC<ArchiveListItemFragment> = ({
     </div>
   );
 };
-
-export default ArchiveListItem;
 
 export const archiveListItemFragment = graphql`
   fragment ArchiveListItem on MarkdownRemarkGroupConnection {
