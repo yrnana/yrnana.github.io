@@ -1,5 +1,6 @@
 import { graphql, PageProps } from 'gatsby';
 import { getSrc, ImageDataLike } from 'gatsby-plugin-image';
+import GoogleAd from '~/components/common/GoogleAd';
 import Seo from '~/components/common/Seo';
 import Layout from '~/components/layout/Layout';
 import Comments from '~/components/post/Comments';
@@ -29,14 +30,7 @@ const PostTemplate: React.VFC<PageProps<PostQuery, PostPageContext>> = ({
         isBlogTitleDisabled
       />
       <Post {...post} />
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-4675264961434940"
-        data-ad-slot="4448901342"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <GoogleAd slot="4448901342" />
       <PostNav previous={previous} next={next} />
       <Comments id={id} />
     </Layout>

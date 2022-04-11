@@ -1,4 +1,5 @@
 import { graphql, PageProps } from 'gatsby';
+import GoogleAd from '~/components/common/GoogleAd';
 import Seo from '~/components/common/Seo';
 import Layout from '~/components/layout/Layout';
 import Pagination from '~/components/post/Pagination';
@@ -11,14 +12,7 @@ const PostListTemplate: React.VFC<PageProps<PostsQuery>> = ({ data }) => {
     <Layout>
       <Seo />
       <PostList posts={nodes} />
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-4675264961434940"
-        data-ad-slot="8006423859"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <GoogleAd slot="8006423859" />
       <Pagination {...pageInfo} />
     </Layout>
   );
