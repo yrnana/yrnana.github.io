@@ -16,7 +16,7 @@ const PostNav: React.VFC<PostNavProps> = ({ previous, next }) => {
   if (!previous && !next) return null;
 
   return (
-    <div className="flex mt-20 -mb-10">
+    <div className="flex mt-10 -mb-10">
       <div className="max-w-2/5">
         {previous && (
           <Link

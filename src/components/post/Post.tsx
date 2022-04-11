@@ -7,7 +7,7 @@ const Post: React.VFC<PostItemFragment> = ({ frontmatter, htmlAst }) => {
   const { title, date, preview, tags } = frontmatter!;
 
   return (
-    <article>
+    <article className="mb-20">
       <header className="text-center mt-10 mb-20">
         {preview && (
           <GatsbyImage
