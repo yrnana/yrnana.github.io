@@ -62,9 +62,7 @@ jobs:
           yarn install
 
       - name: Build 🔧
-        run: |
-          yarn clean
-          yarn build
+        run: yarn build
 
       - name: Add .nojekyll
         run: touch public/.nojekyll
