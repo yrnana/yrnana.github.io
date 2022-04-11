@@ -55,14 +55,16 @@ jobs:
       - name: Install
         run: |
           cd ${{ github.workspace }}/plugins/gatsby-remark-breaks
-          yarn ci
+          yarn install
           cd ${{ github.workspace }}/plugins/gatsby-remark-embed
-          yarn ci
+          yarn install
           cd ${{ github.workspace }}
-          yarn ci
+          yarn install
 
       - name: Build 🔧
-        run: yarn build
+        run: |
+          yarn clean
+          yarn build
 
       - name: Add .nojekyll
         run: touch public/.nojekyll
