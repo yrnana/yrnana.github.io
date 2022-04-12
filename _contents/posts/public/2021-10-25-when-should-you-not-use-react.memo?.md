@@ -157,7 +157,7 @@ const Memoized = React.memo(({ children }) => <div>{children}</div>);
 
 `PureComponent`나 `React.memo`를 통한 최적화는 분명 간단하지만 만능은 아니며, 불필요한 리렌더링이 자주 일어난다면 코드 구조 자체를 고민해볼 필요가 있다. 물론 렌더링이 거의 일어나지 않는 화면이라면 시간낭비일수도 있다. 리렌더링에 대해서는 `<div />`를 한 뎁스 더 그리는게 시간이 더 걸리니 `React.memo`를 쓸지 말지 고민할 시간에 불필요한 div를 줄이라는 분석도 존재한다. 맨날 적는 얘기지만 Performance Optimization에 정답은 없고, 여러가지 케이스 중 최적의 결과를 도출하는 것이 개발자의 역할이 아닌가 싶다.
 
-## Reference
+## 참고
 
 - https://stackoverflow.com/questions/53074551/when-should-you-not-use-react-memo
 - https://github.com/facebook/react/issues/14463

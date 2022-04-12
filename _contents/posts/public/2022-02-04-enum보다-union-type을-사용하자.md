@@ -133,7 +133,7 @@ eval('console.log(new Animal().isDangerous())');
 import { TitleComponent, type TitleComponentProps } from "./TitleComponent.js";
 ```
 
-## References
+## 참고
 
 - https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/
 - https://newbedev.com/understanding-esmoduleinterop-in-tsconfig-file

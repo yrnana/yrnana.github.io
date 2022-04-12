@@ -7,7 +7,7 @@ tags: [ESLint, Prettier]
 
 ## Prettier와 eslint
 
-`Prettier`는 **formatter**고 `eslint`는 **linter**이다. 두 개의 차이점과 사용법을 알아야 더 스마트하게 사용할 수 있다. 개취지만 포맷팅 안 된 코드 상종 안 한다. (SI 다닐때 정말 힘들었...)
+`Prettier`는 **formatter**고 `eslint`는 **linter**이다. 두 개의 차이점과 사용법을 알아야 더 스마트하게 사용할 수 있다.
 
 > 결론부터 말하자면 **오류를 잡으려면 린터, 스타일을 교정하려면 포맷터**를 사용하자.
 
@@ -41,11 +41,15 @@ https://twitter.com/kentcdodds/status/913760103118991361
 ```sh
 # CRA를 사용하는 경우 eslint는 이미 설치되어있으므로 prettier만 설치해도 된다
 npm i -D eslint prettier
+
+# yarn 사용자라면
+yarn add -D eslint prettier
 ```
 
 - vscode setting에서 prettier를 기본 포맷터로 지정한다.
 
 ```json
+// .vscode/settings.json
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -54,7 +58,7 @@ npm i -D eslint prettier
 
 - `.prettierrc`에 prettier 설정을 작성한다.
 - `.eslintrc`에 eslint 설정을 작성한다.
-- (옵션) prettier 설정과 충돌하는 eslint 설정을 사용하는 경우
+- (옵션) prettier 설정과 충돌하는 eslint 설정을 사용하는 경우 (e.g. `eslint-config-airbnb`)
   - `eslint-config-prettier`를 설치하고 `.eslintrc`에 추가한다.
 
 ```sh
@@ -62,7 +66,10 @@ npm i -D eslint-config-prettier
 ```
 
 ```json
+// .eslintrc
 {
+  // eslint-config-airbnb의 설정을 추가하고, 
+  // eslint-config-prettier에서 prettier와 충돌되는 스타일 옵션을 꺼버린다
   "extends": ["airbnb", "prettier"]
 }
 ```

@@ -31,6 +31,6 @@ lodash는 꽤 용량이 큰 라이브러리라, 무심코 트리셰이킹이 되
 import { debounce, throttle } from 'lodash-es';
 ```
 
-## Reference
+## 참고
 
 - https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking

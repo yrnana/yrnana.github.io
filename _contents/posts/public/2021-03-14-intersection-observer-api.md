@@ -40,6 +40,10 @@ observer.observe(targetElement);
 아쉽지만 생각보다 많은 브라우저에서 지원을 안 한다.
 공식 [polyfill](https://www.npmjs.com/package/intersection-observer)이 존재하므로 포함시켜주는것이 좋다.
 
+## 여담
+
+[react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer)라는 훌륭한 래퍼 라이브러리가 있는데, 사용성이 뛰어나다.
+
 ## 참고
 
 - https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API

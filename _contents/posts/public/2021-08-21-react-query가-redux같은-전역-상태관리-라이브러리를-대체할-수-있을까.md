@@ -16,3 +16,7 @@ tags: [React Query, Redux]
 물론 이러한 서버 데이터와 관계없이 전역적으로 다뤄야 하는 데이터들이 있다. 예를 들면 `theme: 'light' | 'dark'`를 저장하고 있는 전역 데이터는 클라이언트에서만 다루는 데이터다. 이러한 데이터는 `react-query`에 임의로 저장하고 다루는 것이 아니라 컨텍스트나 전역 상태관리 라이브러리를 사용해서 핸들링 해야 한다.
 
 현재 가장 추천하는 조합은 `react-query` + `recoil` 이다. context api가 가지고 있는 여러가지 이슈가 있기 때문에 전역 상태관리 라이브러리 하나는 사용을 해야 개발이 편한데, 성능 이슈 없이 간단하게 사용할 수 있기 때문에 `recoil`을 추천한다.
+
+## 참고
+
+- https://react-query.tanstack.com/guides/does-this-replace-client-state
