@@ -1,7 +1,7 @@
-const path = require('path');
+import type { GatsbyConfig } from 'gatsby';
+import path from 'path';
 
-/** @type {import("gatsby").GatsbyConfig} */
-module.exports = {
+const config: GatsbyConfig = {
   jsxRuntime: 'automatic',
   trailingSlash: 'never',
   siteMetadata: {
@@ -107,3 +107,5 @@ module.exports = {
     `gatsby-plugin-sitemap`,
   ],
 };
+
+export default config;

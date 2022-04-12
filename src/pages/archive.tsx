@@ -3,7 +3,7 @@ import { ArchiveList } from '~/components/archive';
 import { Seo } from '~/components/common';
 import { Layout } from '~/components/layout';
 
-export const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
+const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
   return (
     <Layout>
       <Seo title="archive" />
@@ -11,6 +11,8 @@ export const ArchivePage: React.FC<PageProps<ArchiveQuery>> = ({ data }) => {
     </Layout>
   );
 };
+
+export default ArchivePage;
 
 export const query = graphql`
   query Archive {

@@ -70,7 +70,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   // 1. create `md` page (get from `pages` directory)
   const markdownTemplate = path.resolve(templatePath, 'MarkdownTemplate.tsx');
   const markdowns = result.data?.markdowns.nodes;
-  markdowns?.forEach(({ id, name, relativeDirectory, childMarkdownRemark }) => {
+  markdowns?.forEach(({ name, relativeDirectory, childMarkdownRemark }) => {
     actions.createPage({
       path: relativeDirectory ? `${relativeDirectory}/${name}` : name,
       component: markdownTemplate,
