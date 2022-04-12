@@ -36,21 +36,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # - name: Cache ./public
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ${{ github.workspace }}/public
-      #     key: ${{ runner.os }}-gatsby-public-${{ github.sha }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-gatsby-public-
+      - name: Cache ./public
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/public
+          key: ${{ runner.os }}-gatsby-public-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-public-
 
-      # - name: Cache ./.cache
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ${{ github.workspace }}/.cache
-      #     key: ${{ runner.os }}-gatsby-cache-${{ github.sha }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-gatsby-cache-
+      - name: Cache ./.cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.cache
+          key: ${{ runner.os }}-gatsby-cache-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-cache-
 
       - name: Install
         run: |

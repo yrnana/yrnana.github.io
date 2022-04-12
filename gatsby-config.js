@@ -1,7 +1,7 @@
-import type { GatsbyConfig } from 'gatsby';
-import path from 'path';
+const path = require('path');
 
-const config: GatsbyConfig = {
+/** @type {import("gatsby").GatsbyConfig} */
+const config = {
   jsxRuntime: 'automatic',
   trailingSlash: 'never',
   siteMetadata: {
