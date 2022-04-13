@@ -2,7 +2,7 @@
 title: 'Q. When should you NOT use React.memo?'
 date: '2021-10-25T07:30:46+09:00'
 excerpt: '당연하지만 얕은비교연산 `===`가 어지간하면 리렌더링보다는 비용이 적게 들긴 한다. 그렇다면 왜 리액트는 `React.memo`나 `React.PureComponent`를 기본형으로 갖지 않을까?'
-tags: [React, Optimization, memo]
+tags: [React, Optimization, React.memo]
 ---
 
 ## 얕은 비교와 리액트 성능 최적화
