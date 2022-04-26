@@ -5,7 +5,7 @@ excerpt: 'React Query를 사용할때 알아두면 좋은 나노 팁'
 tags: [React Query]
 ---
 
-React Query 를 1년간 사용하면서 요즘 새삼스럽게 내가 잘 모르고 사용했구나 한 적이 종종 있어서, 복기를 해보고자 한다.
+React Query 를 1년간 사용하면서 요즘들어 내가 잘 모르고 사용했구나 생각한 적이 종종 있어서, 복기를 해보고자 한다.
 
 ## useQuery의 onSuccess, onError 등은 선언한 인스턴스의 수만큼 실행된다
 
