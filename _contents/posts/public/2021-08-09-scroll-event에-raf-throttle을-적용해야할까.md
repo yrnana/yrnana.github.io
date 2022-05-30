@@ -66,7 +66,7 @@ function logBoxHeight() {
 
 이러한 현상을 피하기 위해서는 읽는 것은 마지막 프레임의 값으로 하도록 하고, 스타일은 나중에 적용하도록 실행 순서에 유의해야 한다.
 
-`window.requestAnimationFrame(callback)`은 브라우저에게 수행하기를 원하는 애니메이션을 알리고 다음 리페인트가 진행되기 전에 `callback`을 실행해서 해당 애니메이션을 업데이트 하도록 한다. 즉, 기하학적 값이나 스크롤 stuff를 읽는 작업을 현재 프레임에서 실행하고, `requestAnimationFrame`의 콜백으로 쓰기 / 수정 로직을 넘기면 다음 프레임에서 함께 실행하도록 예약이 가능하다. 이로써 단일 렌더링 프레임 내에서 여러 업데이트를 수행할 위험을 방지할 수 있다. 이를 쓰로틀링과 함께 적용하면 아래와 같다.
+`window.requestAnimationFrame(callback)`은 브라우저에게 수행하기를 원하는 애니메이션을 알리고 다음 리페인트가 진행되기 전에 `callback`을 실행해서 해당 애니메이션을 업데이트 하도록 한다. 즉, 기하학적 값이나 스크롤 stuff를 읽는 작업을 현재 프레임에서 실행하고, `requestAnimationFrame`의 콜백으로 쓰기 / 수정 로직을 넘기면 다음 프레임에서 함께 실행하도록 예약이 가능하다. 이로써 단일 렌더링 프레임 내에서 여러 업데이트를 수행할 위험을 방지할 수 있다. 이를 간단한 쓰로틀링과 함께 적용하면 아래와 같다.
 
 ```ts
 let lastScrollY = 0;
@@ -84,7 +84,30 @@ const listener = () => {
       ticking = false;
     });
     ticking = true;
+  } else {
+    // 만약 쓰로틀링에서 걸러진다면 이 로그가 출력된다.
+    console.log('ticking: true');
   }
+};
+
+window.addEventListener('scroll', listener);
+```
+
+다만 앞서 언급했듯이 scroll event 자체가 raf 쓰로틀링이 적용된 상태이므로 `ticking: true`는 절대 콘솔에 나타나지 않는다. 따라서 위 코드는 최종적으로 아래와 같이 정리할 수 있다.
+
+```ts
+let lastScrollY = 0;
+
+const changeBoxWidth = (y: number) => {
+  box.style.width = y + 100 + 'px';
+};
+
+const listener = () => {
+  lastScrollY = window.scrollY; // 현재 프레임의 scrollY 값을 읽는다.
+  // 다음 리페인트가 진행되기 전에 changeBoxWidth(lastScrollY)가 호출되도록 예약한다.
+  window.requestAnimationFrame(() => {
+    changeBoxWidth(lastScrollY);
+  });
 };
 
 window.addEventListener('scroll', listener);
