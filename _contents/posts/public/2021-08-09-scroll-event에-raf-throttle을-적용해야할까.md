@@ -119,7 +119,7 @@ window.addEventListener('scroll', listener);
 
 https://codesandbox.io/s/throttle-test-3sdgv
 
-### 참고
+## 참고
 
 - https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
 - https://www.html5rocks.com/en/tutorials/speed/scrolling/
