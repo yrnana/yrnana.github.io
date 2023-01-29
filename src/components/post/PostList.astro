@@ -24,7 +24,7 @@ const { page } = Astro.props;
         <div class="mt-2 excerpt-markdown">{post.data.excerpt}</div>
         <div class="flex flex-row flex-wrap space-x-3 mt-3">
           {post.data.tags.map((tag) => (
-            <Tag color="violet" value={tag} />
+            <Tag value={tag} />
           ))}
         </div>
       </div>

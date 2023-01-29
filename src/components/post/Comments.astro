@@ -1,0 +1,19 @@
+---
+type Props = {
+  id: string;
+};
+
+const { id } = Astro.props;
+---
+
+<div class="mt-20 relative" style={{ minHeight: 269 }}>
+  <script
+    src="https://utteranc.es/client.js"
+    repo="yrnana/yrnana.github.io"
+    issue-term={id}
+    label="comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async
+  ></script>
+</div>

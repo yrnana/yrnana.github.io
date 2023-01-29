@@ -12,6 +12,8 @@ const { frontmatter } = Astro.props;
     description={frontmatter.excerpt || ''}
   />
   <Fragment slot="main">
-    <slot />
+    <div class="markdown">
+      <slot />
+    </div>
   </Fragment>
 </Layout>

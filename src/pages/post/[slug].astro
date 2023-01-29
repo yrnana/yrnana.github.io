@@ -5,19 +5,28 @@ import PageMeta from '~/components/common/PageMeta.astro';
 import Layout from '~/components/layout/Layout.astro';
 import Comments from '~/components/post/Comments.astro';
 import PostComponent from '~/components/post/Post.astro';
+import PostNav from '~/components/post/PostNav.astro';
 
 // /post/[slug]
 export async function getStaticPaths() {
   const posts = await getPosts();
-  return posts.map((post) => ({
+  return posts.map((post, i) => ({
     params: { slug: post.slug },
-    props: post,
+    props: {
+      post,
+      prev: posts[i - 1],
+      next: posts[i + 1],
+    },
   }));
 }
 
-type Props = Post;
+type Props = {
+  post: Post;
+  prev?: Post;
+  next?: Post;
+};
 
-const post = Astro.props;
+const { post, prev, next } = Astro.props;
 const { tags, title, excerpt, preview } = post.data;
 ---
 
@@ -33,6 +42,7 @@ const { tags, title, excerpt, preview } = post.data;
   />
   <Fragment slot="main">
     <PostComponent {...post} />
-    <Comments />
+    {(prev || next) && <PostNav prev={prev} next={next} />}
+    <Comments id={post.slug} />
   </Fragment>
 </Layout>

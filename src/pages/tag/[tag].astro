@@ -38,7 +38,7 @@ const { tag, page } = Astro.props;
 ---
 
 <Layout>
-  <PageMeta slot="meta" />
+  <PageMeta slot="meta" title={tag} />
   <Fragment slot="main">
     <h2 class="text-center mb-10">
       <div
