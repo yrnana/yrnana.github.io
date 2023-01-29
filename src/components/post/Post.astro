@@ -15,7 +15,13 @@ const { Content } = await post.render();
 
 <article class="mb-20">
   <header class="text-center mt-10 mb-20">
-    {preview && <DynamicPicture post={post} />}
+    {
+      preview && (
+        <div class="mb-10">
+          <DynamicPicture post={post} />
+        </div>
+      )
+    }
     <h1 class="text-3xl font-semibold">{title}</h1>
     <div class="text-slate-500 mt-4">{formatDate(date)}</div>
     {
