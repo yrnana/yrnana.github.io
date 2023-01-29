@@ -1,25 +1,13 @@
-import type { getPicture } from '@astrojs/image';
 import type { CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'post'>;
 
-export type PostWithText = Post & {
-  plainText: string;
-};
-
-export type GetPictureResult = Awaited<
-  Promise<PromiseLike<ReturnType<typeof getPicture>>>
->;
-
-export type PaginationItem = {
-  page: string | number;
-  isPage: boolean;
-  isCurrentPage: boolean;
-};
+export type TagColor = 'yellow' | 'green' | 'violet' | 'sky' | 'rose';
 
 export type Tag = {
   value: string;
   count: number;
+  color?: TagColor;
 };
 
 export type ImportImage = {

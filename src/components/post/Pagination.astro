@@ -1,0 +1,116 @@
+---
+import type { Page } from 'astro';
+
+import type { Post } from '~/types';
+import { ArrowLeftSvg, ArrowRightSvg } from '~/assets';
+
+const pageItemClassName = 'w-10 py-2 text-center';
+const iconClassName = 'flex justify-center';
+
+type PageItem = {
+  page: string | number;
+  isPage: boolean;
+  isCurrentPage: boolean;
+};
+
+type Props = {
+  page: Page<Post>;
+};
+
+const {
+  page: { currentPage, lastPage, url },
+} = Astro.props;
+
+/**
+ * 페이징 목록을 반환하는 함수
+ *
+ * @param currentPage 현재 페이지
+ * @param pageCount 총 페이지
+ * @returns
+ */
+function getPaging(currentPage: number, pageCount: number): PageItem[] {
+  if (pageCount <= 7) {
+    return Array.from({ length: pageCount }, (_, n) => ({
+      isPage: true,
+      isCurrentPage: n + 1 === currentPage,
+      page: n + 1,
+    }));
+  }
+
+  let pages: (number | string)[];
+  if (currentPage <= 4) {
+    pages = [1, 2, 3, 4, 5, '…', pageCount];
+  } else if (currentPage >= pageCount - 3) {
+    pages = [
+      1,
+      '…',
+      pageCount - 4,
+      pageCount - 3,
+      pageCount - 2,
+      pageCount - 1,
+      pageCount,
+    ];
+  } else {
+    pages = [
+      1,
+      '…',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      '…',
+      pageCount,
+    ];
+  }
+  return pages.map((p) => ({
+    isPage: typeof p === 'number',
+    isCurrentPage: p === currentPage,
+    page: p,
+  }));
+}
+
+const pages = getPaging(currentPage, lastPage);
+---
+
+<div class="flex flex-row flex-nowrap items-center justify-center mt-8">
+  {
+    url.prev ? (
+      <a href={url.prev} class:list={[pageItemClassName, iconClassName]}>
+        <Fragment set:html={ArrowLeftSvg} />
+      </a>
+    ) : (
+      <div class:list={['text-slate-300', pageItemClassName, iconClassName]}>
+        <Fragment set:html={ArrowLeftSvg} />
+      </div>
+    )
+  }
+  {
+    pages.map(({ page, isPage, isCurrentPage }) =>
+      isPage && !isCurrentPage ? (
+        <a href={`/page/${page}`} class={pageItemClassName}>
+          {page}
+        </a>
+      ) : (
+        <div
+          class:list={[
+            pageItemClassName,
+            'cursor-default',
+            { 'text-violet-500': isCurrentPage },
+          ]}
+        >
+          {page}
+        </div>
+      ),
+    )
+  }
+  {
+    url.next ? (
+      <a href={url.next} class:list={[pageItemClassName, iconClassName]}>
+        <Fragment set:html={ArrowRightSvg} />
+      </a>
+    ) : (
+      <div class:list={['text-slate-300', pageItemClassName, iconClassName]}>
+        <Fragment set:html={ArrowRightSvg} />
+      </div>
+    )
+  }
+</div>

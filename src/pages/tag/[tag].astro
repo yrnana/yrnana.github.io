@@ -1,0 +1,52 @@
+---
+import type { Page } from 'astro';
+
+import { kebabCase } from 'lodash-es';
+
+import type { Post } from '~/types';
+import { getPosts, getTags } from '~/helpers/utils';
+import PageMeta from '~/components/common/PageMeta.astro';
+import Layout from '~/components/layout/Layout.astro';
+import PostList from '~/components/post/PostList.astro';
+
+// /tag/[tag]
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const tags = await getTags(posts);
+  return tags.map(({ value }) => {
+    const filtered = posts.filter((post) => post.data.tags.includes(value));
+    return {
+      params: { tag: kebabCase(value) },
+      props: {
+        tag: value,
+        page: {
+          data: filtered,
+          total: filtered.length,
+          url: undefined,
+        },
+      },
+    };
+  });
+}
+
+type Props = {
+  tag: string;
+  page: Page<Post>;
+};
+
+const { tag, page } = Astro.props;
+---
+
+<Layout>
+  <PageMeta slot="meta" />
+  <Fragment slot="main">
+    <h2 class="text-center mb-10">
+      <div
+        class="select-none inline-block rounded-full px-6 py-4 text-2xl leading-4 font-semibold text-indigo-500 bg-indigo-100"
+      >
+        {tag}
+      </div>
+    </h2>
+    <PostList page={page} />
+  </Fragment>
+</Layout>

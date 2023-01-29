@@ -5,9 +5,10 @@ import { pageSize } from '~/helpers/config';
 import { getPosts } from '~/helpers/utils';
 import PageMeta from '~/components/common/PageMeta.astro';
 import Layout from '~/components/layout/Layout.astro';
+import Pagination from '~/components/post/Pagination.astro';
 import PostList from '~/components/post/PostList.astro';
 
-// /page/1
+// /page/[page]
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getPosts();
   return paginate(posts, { pageSize });
@@ -20,5 +21,6 @@ const { page } = Astro.props;
   <PageMeta slot="meta" />
   <Fragment slot="main">
     <PostList page={page} />
+    <Pagination page={page} />
   </Fragment>
 </Layout>

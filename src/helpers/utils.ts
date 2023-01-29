@@ -1,6 +1,11 @@
 import { getCollection } from 'astro:content';
 
-import type { ImportImage, PaginationItem, Post, Tag } from '~/types';
+import { format } from 'date-fns';
+
+import type { ImportImage, Post, Tag } from '~/types';
+
+export const formatDate = (date: Date, formatString = 'PP') =>
+  format(date, formatString);
 
 /**
  * 글을 date 역순으로 정렬
@@ -9,7 +14,16 @@ export const orderByDateDesc = (a: Post, b: Post) =>
   b.data.date.valueOf() - a.data.date.valueOf();
 
 export const getPosts = async () =>
-  (await getCollection('post')).sort(orderByDateDesc) as Post[];
+  (
+    await getCollection(
+      'post',
+      // @ts-ignore
+      ({ data }) => {
+        if (import.meta.env.DEV) return true;
+        return data.draft !== true;
+      },
+    )
+  ).sort(orderByDateDesc) as Post[];
 
 /**
  * 글에서 모든 태그를 가져옴
@@ -33,58 +47,11 @@ export const getTags: (posts?: Post[]) => Promise<Tag[]> = async (posts) => {
     .sort((a, b) => b.count - a.count);
 };
 
-/**
- * 페이징 목록을 반환하는 함수
- *
- * @param currentPage 현재 페이지
- * @param pageCount 총 페이지
- * @returns
- */
-export function getPagination(
-  currentPage: number,
-  pageCount: number,
-): PaginationItem[] {
-  if (pageCount <= 7) {
-    return Array.from({ length: pageCount }, (_, n) => ({
-      isPage: true,
-      isCurrentPage: n + 1 === currentPage,
-      page: n + 1,
-    }));
-  }
-
-  let pages: (number | string)[];
-  if (currentPage <= 4) {
-    pages = [1, 2, 3, 4, 5, '…', pageCount];
-  } else if (currentPage >= pageCount - 3) {
-    pages = [
-      1,
-      '…',
-      pageCount - 4,
-      pageCount - 3,
-      pageCount - 2,
-      pageCount - 1,
-      pageCount,
-    ];
-  } else {
-    pages = [
-      1,
-      '…',
-      currentPage - 1,
-      currentPage,
-      currentPage + 1,
-      '…',
-      pageCount,
-    ];
-  }
-  return pages.map((p) => ({
-    isPage: typeof p === 'number',
-    isCurrentPage: p === currentPage,
-    page: p,
-  }));
-}
-
 // workspace의 모든 이미지 목록
-const images = import.meta.glob<boolean, string, ImportImage>('~/assets/**.*');
+const images = import.meta.glob<boolean, string, ImportImage>([
+  '~/assets/**.*',
+  '!~/assets/**.{ts,svg}',
+]);
 
 /**
  * 이미지를 반환하는 함수
