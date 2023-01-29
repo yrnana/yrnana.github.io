@@ -1,21 +1,13 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react-jsx",
-    "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "useUnknownInCatchVariables": false,
-    "noEmit": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "paths": {
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "gatsby-*.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"]
 }

@@ -1,0 +1,13 @@
+{
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/dist": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ]
+}

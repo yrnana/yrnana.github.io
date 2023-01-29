@@ -1,0 +1,31 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "astro",
+    "astrojs",
+    "commitlint",
+    "cssnano",
+    "danna",
+    "figchildren",
+    "fontsource",
+    "jetbrains",
+    "kakaopay",
+    "kakaotalk",
+    "lgup",
+    "libc",
+    "mdast",
+    "mdup",
+    "mdxjs",
+    "micromark",
+    "mydata",
+    "nanostores",
+    "noto",
+    "playsinline",
+    "Rehype",
+    "shiki",
+    "techlog",
+    "tsconfigs",
+    "unist"
+  ]
+}

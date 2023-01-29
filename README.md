@@ -2,7 +2,7 @@
 
 ## Stack
 
-- Gatsby(v4)
+- Astro
 - TypeScript
 - TailwindCSS
 - ESlint
@@ -13,8 +13,7 @@
 ### 설치 및 개발환경 실행
 
 ```sh
-npm install
-npm run start
+yarn install --immutable --immutable-cache
 ```
 
 ## Route
