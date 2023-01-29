@@ -4,9 +4,6 @@
 
 interface ImportMetaEnv {
   readonly GA_ID: string;
-  readonly PUBLIC_KAKAO_APP_KEY: string;
-  readonly PUBLIC_FACEBOOK_APP_ID: string;
-  readonly PUBLIC_PHASE: 'local' | 'internal' | 'external';
   readonly SITE: string;
 }
 

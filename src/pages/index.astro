@@ -1,0 +1,35 @@
+---
+import type { Page } from 'astro';
+
+import type { Post } from '~/types';
+import { pageSize } from '~/helpers/config';
+import { getPosts } from '~/helpers/utils';
+import PageMeta from '~/components/common/PageMeta.astro';
+import Layout from '~/components/layout/Layout.astro';
+import PostList from '~/components/post/PostList.astro';
+
+// same with /page/1
+const posts = await getPosts();
+
+const page: Page<Post> = {
+  data: posts.slice(0, pageSize),
+  start: 0,
+  end: pageSize - 1,
+  total: posts.length,
+  currentPage: 1,
+  size: pageSize,
+  lastPage: Math.ceil(posts.length / pageSize),
+  url: {
+    current: '/',
+    prev: undefined,
+    next: '/page/2',
+  },
+};
+---
+
+<Layout>
+  <PageMeta slot="meta" />
+  <Fragment slot="main">
+    <PostList page={page} />
+  </Fragment>
+</Layout>

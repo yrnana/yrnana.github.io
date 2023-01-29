@@ -1,0 +1,21 @@
+---
+import '~/styles/global.css';
+
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+---
+
+<html lang="ko">
+  <head>
+    <slot name="meta" />
+  </head>
+  <body>
+    <div class="container">
+      <Header />
+      <main>
+        <slot name="main" />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

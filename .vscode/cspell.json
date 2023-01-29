@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "adsbygoogle",
     "astro",
     "astrojs",
     "commitlint",
@@ -19,6 +20,7 @@
     "mdxjs",
     "micromark",
     "mydata",
+    "nana",
     "nanostores",
     "noto",
     "playsinline",

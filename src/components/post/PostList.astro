@@ -1,0 +1,12 @@
+---
+import type { Page } from 'astro';
+
+import type { Post } from '~/types';
+
+type Props = {
+  page: Page<Post>;
+  keyword?: string;
+};
+
+const { page, keyword } = Astro.props;
+---

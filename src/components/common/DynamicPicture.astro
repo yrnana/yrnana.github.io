@@ -1,0 +1,24 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+import type { ImportImage, Post } from '~/types';
+import { getPostImage } from '~/helpers/utils';
+
+type Props = {
+  post: Post;
+};
+
+const { post } = Astro.props;
+
+const images = import.meta.glob<boolean, string, ImportImage>(
+  '../../content/post/**/thumb.*',
+);
+---
+
+<Picture
+  src={getPostImage(post, images)}
+  alt={post.data.title}
+  formats={['png', 'webp']}
+  widths={[480, 790]}
+  sizes="(max-width: 790px) 100vw, 790px"
+/>
