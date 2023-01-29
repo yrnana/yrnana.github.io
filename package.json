@@ -36,6 +36,8 @@
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^3.0.0",
     "@nanostores/react": "^0.4.1",
+    "@remark-embedder/core": "^3.0.1",
+    "@remark-embedder/transformer-oembed": "^3.0.0",
     "astro": "^2.0.2",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",

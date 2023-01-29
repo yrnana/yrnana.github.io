@@ -7,6 +7,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
+import remarkEmbedder from '@remark-embedder/core';
+import oembedTransformer from '@remark-embedder/transformer-oembed';
 import { h } from 'hastscript';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -40,6 +42,13 @@ export default defineConfig({
       remarkBreaks,
       remarkUnwrapImages, // paragraph unwrap
       remarkMdxImages, // figure + caption, @astrojs/image 대응
+      [
+        // @ts-ignore
+        remarkEmbedder,
+        {
+          transformers: [oembedTransformer],
+        },
+      ],
     ],
     rehypePlugins: [
       rehypeHeadingIds,
