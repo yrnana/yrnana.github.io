@@ -16,7 +16,7 @@ tags: [lodash]
 import { debounce, throttle } from 'lodash';
 ```
 
-![lodash](../../assets/lodash.png)
+![lodash](~/assets/lodash.png)
 
 lodash는 꽤 용량이 큰 라이브러리라, 무심코 트리셰이킹이 되었다고 생각하고 쓰지 않도록 주의해야 한다. 이를 해결하기 위한 방법은 아래와 같다.
 

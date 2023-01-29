@@ -36,7 +36,7 @@ observer.observe(targetElement);
 
 ## 호환성
 
-![](../../assets/image-2.png)
+![](~/assets/image-2.png)
 아쉽지만 생각보다 많은 브라우저에서 지원을 안 한다.
 공식 [polyfill](https://www.npmjs.com/package/intersection-observer)이 존재하므로 포함시켜주는것이 좋다.
 

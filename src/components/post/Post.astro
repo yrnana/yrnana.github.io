@@ -1,0 +1,20 @@
+---
+import type { Post } from '~/types';
+import DynamicPicture from '~/components/common/DynamicPicture.astro';
+
+type Props = Post;
+
+const post = Astro.props;
+
+const { tags, title, preview } = post.data;
+
+const { Content } = await post.render();
+---
+
+{preview && <DynamicPicture post={post} />}
+
+<h1>{title}</h1>
+
+<article>
+  <Content />
+</article>

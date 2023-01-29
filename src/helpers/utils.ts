@@ -1,28 +1,19 @@
 import { getCollection } from 'astro:content';
 
-import path from 'node:path';
-
 import type { ImportImage, PaginationItem, Post, Tag } from '~/types';
 
-type Sources = {
-  type: string;
-  srcset: string;
-}[];
-
-export const getThumbnailSrc = (sources: Sources): string => {
-  return (
-    sources
-      .find(({ type }) => type === 'image/png')
-      ?.srcset.match(/(^\/.*png) 480w/)?.[1] ?? ''
-  );
-};
-
+/**
+ * 글을 date 역순으로 정렬
+ */
 export const orderByDateDesc = (a: Post, b: Post) =>
   b.data.date.valueOf() - a.data.date.valueOf();
 
 export const getPosts = async () =>
   (await getCollection('post')).sort(orderByDateDesc) as Post[];
 
+/**
+ * 글에서 모든 태그를 가져옴
+ */
 export const getTags: (posts?: Post[]) => Promise<Tag[]> = async (posts) => {
   const tags = (posts || (await getPosts())).reduce<string[]>((prev, curr) => {
     prev.push(...curr.data.tags);
@@ -92,16 +83,30 @@ export function getPagination(
   }));
 }
 
-export function getPostImage(
-  post: Post,
-  images: Record<string, () => Promise<ImportImage>>,
-) {
-  const imagePath = path.join(path.dirname(post.id), post.data.preview);
-  const loader = Object.entries(images).find(([filePath]) =>
-    filePath.endsWith(imagePath),
+// workspace의 모든 이미지 목록
+const images = import.meta.glob<boolean, string, ImportImage>('~/assets/**.*');
+
+/**
+ * 이미지를 반환하는 함수
+ * @param imagePath relative image path
+ * @returns astro image component에 주입할 이미지 로더 함수
+ */
+export function getPostImage(imagePath: string) {
+  const imageAbsolutePath = imagePath.replace(/^~/, '/src');
+  const loader = Object.entries(images).find(
+    ([filePath]) => filePath === imageAbsolutePath,
   )?.[1];
   if (!loader) {
     throw new Error('no image: ' + imagePath);
   }
   return loader();
 }
+
+type Sources = {
+  type: string;
+  srcset: string;
+}[];
+
+export const getImageSrc = (sources: Sources): string => {
+  return sources.find(({ type }) => type === 'image/png')?.srcset ?? '';
+};

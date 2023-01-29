@@ -1,4 +1,5 @@
 import image from '@astrojs/image';
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
@@ -8,7 +9,6 @@ import { defineConfig } from 'astro/config';
 
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
-import rehypeSlug from 'rehype-slug';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 import { remarkMdxImages } from './plugins/remark-mdx-images';
@@ -38,9 +38,8 @@ export default defineConfig({
       remarkUnwrapImages, // paragraph unwrap
       remarkMdxImages, // figure + caption, @astrojs/image 대응
     ],
-
     rehypePlugins: [
-      rehypeSlug,
+      rehypeHeadingIds,
       [
         rehypeExternalLinks,
         {

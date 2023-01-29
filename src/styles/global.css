@@ -1,0 +1,20 @@
+html {
+  font-size: 18px;
+}
+
+body {
+  @apply subpixel-antialiased leading-relaxed;
+}
+
+/* selection 설정 */
+::-moz-selection {
+  @apply bg-violet-500 text-white;
+}
+::selection {
+  @apply bg-violet-500 text-white;
+}
+
+/* 댓글 관련 설정 */
+.utterances {
+  @apply max-w-none !important;
+}

@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}'],
   safelist: [
     {
       pattern: /bg-(yellow|green|violet|sky|rose)-100/,

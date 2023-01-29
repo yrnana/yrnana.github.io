@@ -101,7 +101,8 @@
             "args": "none",
             "ignoreRestSiblings": true
           }
-        ]
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off"
       },
       "globals": {
         "Astro": "readonly",

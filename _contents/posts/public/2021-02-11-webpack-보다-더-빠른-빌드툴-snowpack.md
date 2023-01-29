@@ -3,7 +3,7 @@ title: 'Webpack 보다 더 빠른 빌드툴, Snowpack'
 date: '2021-02-11T04:03:33+09:00'
 excerpt: '스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.'
 tags: [esbuild, Snowpack]
-preview: '../../assets/1_p8BBVAqCByV9kA24Vxo6Pg.png'
+preview: '~/assets/1_p8BBVAqCByV9kA24Vxo6Pg.png'
 ---
 
 > 🚨 **Update**  
@@ -16,7 +16,7 @@ preview: '../../assets/1_p8BBVAqCByV9kA24Vxo6Pg.png'
 
 ## Unbundled Development
 
-![](../../assets/image-12.png)
+![](~/assets/image-12.png)
 예를들면 현재 빌드툴로 가장 많이 사용되는 `webpack` 같은 경우, 파일 하나가 변경될 경우 연관된 모든 파일을 다시 빌드하고 다시 번들링 해야 한다. 그래서 시간 복잡도를 `O(n)` 으로 가져가야 한다.
 스노우팩은 개발중에 모든 파일들을 단일 파일로 빌드하고 `esm` 방식으로 import 한다. 만약 어떤 파일이 변경되면 그 파일만 새로 빌드된다. 즉 `O(1)` 빌드 시스템인 셈이다.
 
@@ -31,7 +31,7 @@ Create React App 처럼 [Create Snowpack App](https://github.com/snowpackjs/snow
 
 ## esbuild
 
-![](../../assets/image-13.png)
+![](~/assets/image-13.png)
 `esbuild`는 go로 쓰여진 자바스크립트 번들러로 자체 벤치마크상에서 `webpack`보다 100배 이상의 성능을 낸다고 내걸고 있다. 스노우팩은 내부적으로 `esbuild`를 단일파일빌더로 사용하고 있는데, 스노우팩 V3부터는 `esbuild` 기반 내장 빌드 최적화 파이프라인을 지원한다. 여기서 최적화 파이프라인이라는 것은 production을 위한 최종 빌드 과정에서 bundle, minify, code splitting, treeshake, targetting, preload 등을 하는 것이다. 이렇게 스노우팩은 `esbuild`를 활용해서 자바스크립트라는 언어의 성능상 한계를 극복하려고 한다. 다만, 아직 esbuild 자체가 [not yet production-ready](https://esbuild.github.io/faq/#production-readiness) 이다보니 스노우팩도 큰 규모의 프로젝트에서는 [웹팩 플러그인](https://www.npmjs.com/package/@snowpack/plugin-webpack) 사용을 권장하고 있다.
 
 ## 정리

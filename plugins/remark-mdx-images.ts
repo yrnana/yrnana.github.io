@@ -15,7 +15,7 @@ export function remarkMdxImages(): Transformer<Root> {
         return;
       }
 
-      if (!/\.(png|jpg|jpeg|webp)$/.test(node.url)) {
+      if (!/\.(png|jpg|jpeg|webp)$/.test(node.url) || /^http/.test(node.url)) {
         return;
       }
 

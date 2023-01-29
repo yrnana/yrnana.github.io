@@ -10,9 +10,9 @@ import Header from './Header.astro';
     <slot name="meta" />
   </head>
   <body>
-    <div class="container">
+    <div class="container mx-auto px-4 flex flex-col min-h-screen">
       <Header />
-      <main>
+      <main class="py-10 flex-grow">
         <slot name="main" />
       </main>
       <Footer />

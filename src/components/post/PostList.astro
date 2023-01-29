@@ -10,3 +10,20 @@ type Props = {
 
 const { page, keyword } = Astro.props;
 ---
+
+<div class="flex flex-col space-y-12">
+  {
+    page.data.map((post) => (
+      <div>
+        <a href={`/post/${post.slug}`} class="hover:text-violet-500">
+          <h2 class="text-xl font-medium">{post.data.title}</h2>
+        </a>
+        <div class="text-slate-500 mt-2">{post.data.date}</div>
+        <div class="mt-2 excerpt-markdown">{post.data.excerpt || ''}</div>
+        <div class="flex flex-row flex-wrap space-x-3 mt-3">
+          {post.data.tags.join(',')}
+        </div>
+      </div>
+    ))
+  }
+</div>

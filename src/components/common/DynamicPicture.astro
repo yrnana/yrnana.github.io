@@ -1,7 +1,7 @@
 ---
 import { Picture } from '@astrojs/image/components';
 
-import type { ImportImage, Post } from '~/types';
+import type { Post } from '~/types';
 import { getPostImage } from '~/helpers/utils';
 
 type Props = {
@@ -9,14 +9,10 @@ type Props = {
 };
 
 const { post } = Astro.props;
-
-const images = import.meta.glob<boolean, string, ImportImage>(
-  '../../content/post/**/thumb.*',
-);
 ---
 
 <Picture
-  src={getPostImage(post, images)}
+  src={getPostImage(post.data.preview!)}
   alt={post.data.title}
   formats={['png', 'webp']}
   widths={[480, 790]}

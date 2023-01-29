@@ -1,0 +1,38 @@
+---
+import type { Post } from '~/types';
+import { getPosts } from '~/helpers/utils';
+import PageMeta from '~/components/common/PageMeta.astro';
+import Layout from '~/components/layout/Layout.astro';
+import Comments from '~/components/post/Comments.astro';
+import PostComponent from '~/components/post/Post.astro';
+
+// /post/[slug]
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = Post;
+
+const post = Astro.props;
+const { tags, title, excerpt, preview } = post.data;
+---
+
+<Layout post={post}>
+  <PageMeta
+    slot="meta"
+    type="article"
+    title={title}
+    isTitlePrepend
+    description={excerpt}
+    keywords={tags.join(',')}
+    image={preview}
+  />
+  <Fragment slot="main">
+    <PostComponent {...post} />
+    <Comments />
+  </Fragment>
+</Layout>

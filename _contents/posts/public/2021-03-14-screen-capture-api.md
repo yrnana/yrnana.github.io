@@ -66,7 +66,7 @@ snapshotButton.addEventListener('click', takeSnapshot);
 
 ## 호환성
 
-![](../../assets/image-15.png)
+![](~/assets/image-15.png)
 사실상 모바일은 지원하지 않는다...
 크롬 익스텐션이나 일렉트론에서 활용하면 좋을 것 같다.
 

@@ -1,5 +1,8 @@
 ---
+import { getPicture } from '@astrojs/image';
+
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/helpers/config';
+import { getImageSrc, getPostImage } from '~/helpers/utils';
 
 export type Props = {
   type?: 'article' | 'website';
@@ -7,6 +10,7 @@ export type Props = {
   isTitlePrepend?: boolean;
   description?: string;
   keywords?: string;
+  image?: string;
 };
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -16,9 +20,20 @@ const {
   title,
   isTitlePrepend,
   description = SITE_DESCRIPTION,
-  keywords = ['카카오페이', '기술블로그', '카카오페이 기술블로그'].join(','),
+  keywords = ['nana.log', '기술블로그', 'frontend'].join(','),
+  image = '~/assets/nana.log.png',
 } = Astro.props;
 
+// 썸네일 계산
+const { sources } = await getPicture({
+  src: getPostImage(image),
+  alt: 'nana.log',
+  widths: [480],
+  formats: ['png'],
+});
+const imageUrl = new URL(getImageSrc(sources), Astro.url).href;
+
+// 타이틀 계산
 const metaTitle = title
   ? isTitlePrepend
     ? `${title} | ${SITE_TITLE}`
@@ -49,18 +64,18 @@ const metaTitle = title
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={metaTitle} />
 <meta property="og:description" content={description} />
-<!-- <meta property="og:image" content={new URL(thumbSrc, Astro.url).href} /> -->
+<meta property="og:image" content={imageUrl} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={metaTitle} />
 <meta property="twitter:description" content={description} />
-<!-- <meta property="twitter:image" content={new URL(thumbSrc, Astro.url).href} /> -->
+<meta property="twitter:image" content={imageUrl} />
 
 <!-- Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"

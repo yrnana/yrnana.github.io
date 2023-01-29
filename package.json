@@ -45,7 +45,6 @@
     "react-dom": "^18.2.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-external-links": "^2.0.1",
-    "rehype-slug": "^5.1.0",
     "remark-unwrap-images": "^3.0.1",
     "sharp": "^0.31.3"
   },

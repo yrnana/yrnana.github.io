@@ -40,7 +40,7 @@ Gatsby는 개발자가 각종 세팅을 쉽게 적용할 수 있도록 여러가
 
 블로그이니만큼 가장 공을 들인 부분이 마크다운 프로세싱인데, 사실 Gatsby에서 기본적인 처리는 다 해주기 때문에 부가적인 처리만 해주면 된다. 다만 초기에 Next.js로 개발할 때는 직접 파싱하고 뿌려야 했기 때문에 나름대로 학습을 했다. 마크다운을 처리할때는 보통 `unified`라는 `syntax tree`로 텍스트를 처리하는 인터페이스를 활용한다. 비단 마크다운만 처리하는 용도는 아니고, markdown, natural language, html 을 지원하고 포맷간 변환을 지원한다.
 
-![unified](../../assets/unified.png)
+![unified](~/assets/unified.png)
 
 input을 parser를 통해 syntax tree로 파싱하고 이 tree를 transformer를 통해 가공한 뒤 compiler로 output을 만들 수 있다. 즉, 마크다운 파일이 input이라면 이를 `mdast(markdown syntax tree)`로 만들고 여기에 어떠한 처리 (e.g. autolink) 를 한 뒤 html string으로 변환하는 것이다. 아니면 mdast를 `hast(html syntax tree)`로 바꾸고 가공 후 html으로 변환해도 된다.
 
