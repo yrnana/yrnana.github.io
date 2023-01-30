@@ -1,6 +1,7 @@
 ---
 import type { Post } from '~/types';
 import { getPosts } from '~/helpers/utils';
+import GoogleAdsense from '~/components/common/GoogleAdsense.astro';
 import PageMeta from '~/components/common/PageMeta.astro';
 import Layout from '~/components/layout/Layout.astro';
 import Comments from '~/components/post/Comments.astro';
@@ -30,7 +31,7 @@ const { post, prev, next } = Astro.props;
 const { tags, title, excerpt, preview } = post.data;
 ---
 
-<Layout post={post}>
+<Layout>
   <PageMeta
     slot="meta"
     type="article"
@@ -42,7 +43,12 @@ const { tags, title, excerpt, preview } = post.data;
   />
   <Fragment slot="main">
     <PostComponent {...post} />
+    <GoogleAdsense slot="4448901342" />
     {(prev || next) && <PostNav prev={prev} next={next} />}
     <Comments id={post.slug} />
+  </Fragment>
+  <Fragment slot="script">
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"
+    ></script>
   </Fragment>
 </Layout>

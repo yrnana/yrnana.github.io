@@ -23,7 +23,7 @@ const ordered = orderBy(Object.entries(groups), [0], 'desc');
                 <div>
                   <a
                     class="inline-flex py-1 hover:text-violet-500"
-                    href={post.slug}
+                    href={`/post/${post.slug}`}
                   >
                     <span class="flex-shrink-0 w-16 text-violet-500">
                       {formatDate(post.data.date, 'MMM dd')}

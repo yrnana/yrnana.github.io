@@ -4,6 +4,7 @@ import type { Page } from 'astro';
 import type { Post } from '~/types';
 import { pageSize } from '~/helpers/config';
 import { getPosts } from '~/helpers/utils';
+import GoogleAdsense from '~/components/common/GoogleAdsense.astro';
 import PageMeta from '~/components/common/PageMeta.astro';
 import Layout from '~/components/layout/Layout.astro';
 import Pagination from '~/components/post/Pagination.astro';
@@ -31,6 +32,7 @@ const page: Page<Post> = {
 <Layout>
   <PageMeta slot="meta" />
   <Fragment slot="main">
+    <GoogleAdsense slot="8006423859" isListAd />
     <PostList page={page} />
     <Pagination page={page} />
   </Fragment>

@@ -29,9 +29,6 @@ yarn install --immutable --immutable-cache
 ## TODO
 
 - [ ] sitemap
-- [ ] GoogleAdsense
-- [ ] styles
 - [ ] 인라인 태그
-- [ ] 트위터 등등 embed
 - [ ] manifest
 - [ ] excerpt 뽑아내기

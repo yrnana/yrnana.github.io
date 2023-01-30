@@ -5,6 +5,7 @@ import { kebabCase } from 'lodash-es';
 
 import type { Post } from '~/types';
 import { getPosts, getTags } from '~/helpers/utils';
+import GoogleAdsense from '~/components/common/GoogleAdsense.astro';
 import PageMeta from '~/components/common/PageMeta.astro';
 import Layout from '~/components/layout/Layout.astro';
 import PostList from '~/components/post/PostList.astro';
@@ -47,6 +48,7 @@ const { tag, page } = Astro.props;
         {tag}
       </div>
     </h2>
+    <GoogleAdsense slot="8006423859" isListAd />
     <PostList page={page} />
   </Fragment>
 </Layout>
