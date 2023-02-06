@@ -37,7 +37,7 @@ const { tags, title, excerpt, preview } = post.data;
     type="article"
     title={title}
     isTitlePrepend
-    description={excerpt}
+    description={excerpt.replace(/[`*]/g, '')}
     keywords={tags.join(',')}
     image={preview}
   />
