@@ -75,5 +75,6 @@ type Sources = {
 }[];
 
 export const getImageSrc = (sources: Sources): string => {
-  return sources.find(({ type }) => type === 'image/png')?.srcset ?? '';
+  const image = sources.find(({ type }) => type === 'image/png')?.srcset ?? '';
+  return image.replace(/ 480w$/, '');
 };
