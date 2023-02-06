@@ -5,6 +5,7 @@
     "adsbygoogle",
     "astro",
     "astrojs",
+    "changefreq",
     "commitlint",
     "cssnano",
     "danna",

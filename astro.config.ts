@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment */
 import image from '@astrojs/image';
 import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
@@ -96,9 +97,14 @@ export default defineConfig({
     react(),
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
+      cacheDir: './.cache/image',
     }),
     prefetch(),
-    sitemap(),
+    sitemap({
+      changefreq: 'weekly' as any,
+      priority: 0.7,
+      filter: (page) => !page.includes('/page/'),
+    }),
     tailwind(),
   ],
 });

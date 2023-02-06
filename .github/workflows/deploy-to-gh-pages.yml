@@ -22,53 +22,20 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache yarn
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Cache ./public
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/public
-          key: ${{ runner.os }}-gatsby-public-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-public-
-
-      - name: Cache ./.cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/.cache
-          key: ${{ runner.os }}-gatsby-cache-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-cache-
+          node-version: 18
 
       - name: Install
         run: |
-          cd ${{ github.workspace }}/plugins/gatsby-remark-breaks
-          yarn install
-          cd ${{ github.workspace }}/plugins/gatsby-remark-embed
-          yarn install
-          cd ${{ github.workspace }}
-          yarn install
+          yarn install --immutable --immutable-cache
 
       - name: Build 🔧
         run: yarn build
 
       - name: Add .nojekyll
-        run: touch public/.nojekyll
+        run: touch dist/.nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: public
+          folder: dist
