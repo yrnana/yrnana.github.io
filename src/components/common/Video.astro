@@ -1,0 +1,13 @@
+---
+type Props = {
+  src: string;
+  webm?: string;
+};
+
+const { src, webm } = Astro.props;
+---
+
+<video preload="auto" autoplay muted loop playsinline>
+  {webm && <source src={src} type="video/webm" />}
+  <source src={src} type="video/mp4" />
+</video>

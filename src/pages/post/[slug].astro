@@ -1,0 +1,54 @@
+---
+import type { Post } from '~/types';
+import { getPosts } from '~/helpers/utils';
+import GoogleAdsense from '~/components/common/GoogleAdsense.astro';
+import PageMeta from '~/components/common/PageMeta.astro';
+import Layout from '~/components/layout/Layout.astro';
+import Comments from '~/components/post/Comments.astro';
+import PostComponent from '~/components/post/Post.astro';
+import PostNav from '~/components/post/PostNav.astro';
+
+// /post/[slug]
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+      prev: posts[i - 1],
+      next: posts[i + 1],
+    },
+  }));
+}
+
+type Props = {
+  post: Post;
+  prev?: Post;
+  next?: Post;
+};
+
+const { post, prev, next } = Astro.props;
+const { tags, title, excerpt, preview } = post.data;
+---
+
+<Layout>
+  <PageMeta
+    slot="meta"
+    type="article"
+    title={title}
+    isTitlePrepend
+    description={excerpt.replace(/[`*]/g, '')}
+    keywords={tags.join(',')}
+    image={preview}
+  />
+  <Fragment slot="main">
+    <PostComponent {...post} />
+    <GoogleAdsense slot="4448901342" />
+    {(prev || next) && <PostNav prev={prev} next={next} />}
+    <Comments id={post.slug} />
+  </Fragment>
+  <Fragment slot="script">
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"
+    ></script>
+  </Fragment>
+</Layout>

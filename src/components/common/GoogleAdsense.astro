@@ -1,0 +1,28 @@
+---
+type Props = {
+  slot: string;
+  format?: string;
+  isListAd?: boolean;
+};
+
+const { slot, isListAd = false, format = 'auto' } = Astro.props;
+---
+
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940"
+  crossorigin="anonymous"
+></script>
+<!-- List -->
+<ins
+  class:list={['adsbygoogle', { 'mb-10': isListAd }]}
+  style="display:block"
+  data-ad-client="ca-pub-4675264961434940"
+  data-ad-slot={slot}
+  data-ad-format={format}
+  data-full-width-responsive="true"></ins>
+
+<script is:inline>
+  // eslint-disable-next-line no-undef
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>

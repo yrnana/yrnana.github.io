@@ -1,0 +1,44 @@
+---
+const pathname = Astro.url.pathname;
+
+const navs = [
+  {
+    href: '/about',
+    label: 'About',
+  },
+  {
+    href: '/archive',
+    label: 'Archive',
+  },
+  {
+    href: '/tags',
+    label: 'Tags',
+  },
+];
+---
+
+<header class="mt-4 sm:mt-6 flex flex-row items-center">
+  <div class="mr-auto">
+    <a
+      href="/"
+      class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500"
+    >
+      nana.log
+    </a>
+  </div>
+  <nav class="flex flex-row items-center space-x-4">
+    {
+      navs.map((nav) => (
+        <a
+          href={nav.href}
+          class:list={[
+            'text-sm sm:text-base hover:text-violet-500',
+            { 'text-violet-500': nav.href === pathname },
+          ]}
+        >
+          {nav.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>

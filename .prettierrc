@@ -1,21 +1,13 @@
 {
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "auto",
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "requirePragma": false,
   "semi": true,
   "singleQuote": true,
+  "tabWidth": 2,
   "trailingComma": "all",
-  "importOrderSortSpecifiers": true,
-  "importOrderCaseInsensitive": true,
-  "importOrder": [
-    "^react$",
-    "^react-dom$",
-    "^(?![.~]).*(?<!\\.css|\\.scss|\\.png|\\.svg)$",
-    "^~.*(?<!\\.css|\\.scss|\\.png|\\.svg)$",
-    "^\\..*(?<!\\.css|\\.scss|\\.png|\\.svg)$",
-    "^(?![.~]).*(?:\\.css|\\.scss)$",
-    "^~.*(?:\\.css|\\.scss)$",
-    "^\\..*(?:\\.css|\\.scss)$",
-    "^(?![.~]).*",
-    "^~.*",
-    "^\\..*",
-    ".*"
-  ]
+  "useTabs": false
 }

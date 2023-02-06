@@ -1,0 +1,20 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+import type { Post } from '~/types';
+import { getPostImage } from '~/helpers/utils';
+
+type Props = {
+  post: Post;
+};
+
+const { post } = Astro.props;
+---
+
+<Picture
+  src={getPostImage(post.data.preview!)}
+  alt={post.data.title}
+  formats={['png', 'webp']}
+  widths={[480, 790]}
+  sizes="(max-width: 790px) 100vw, 790px"
+/>

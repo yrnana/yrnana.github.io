@@ -1,0 +1,40 @@
+---
+import type { Post } from '~/types';
+import { BigArrowLeftSvg, BigArrowRightSvg } from '~/assets';
+
+type Props = {
+  prev?: Post;
+  next?: Post;
+};
+
+const { prev, next } = Astro.props;
+---
+
+<div class="flex mt-10 -mb-10">
+  <div class="max-w-2/5">
+    {
+      prev && (
+        <a href={prev.slug} class="hover:text-violet-700 flex items-center">
+          <Fragment set:html={BigArrowLeftSvg} />
+          <div>
+            <div class="text-xs text-slate-500">Previous</div>
+            <div>{prev.data.title}</div>
+          </div>
+        </a>
+      )
+    }
+  </div>
+  <div class="max-w-2/5 text-right ml-auto">
+    {
+      next && (
+        <a href={next.slug} class="hover:text-violet-700 flex items-center">
+          <div>
+            <div class="text-xs text-slate-500">Next</div>
+            <div>{next.data.title}</div>
+          </div>
+          <Fragment set:html={BigArrowRightSvg} />
+        </a>
+      )
+    }
+  </div>
+</div>

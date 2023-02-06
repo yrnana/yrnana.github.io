@@ -41,6 +41,7 @@
     @apply text-sm text-slate-500;
   }
 
+  figure,
   p,
   blockquote,
   ol,
@@ -107,6 +108,10 @@
   :not(pre, h1, h2, h3, h4, h5, h6) > code:not(.one-dark-pro) {
     @apply text-violet-500 bg-slate-100;
   }
+
+  figure figcaption {
+    @apply text-center mt-1 text-sm text-gray-500;
+  }
 }
 
 .excerpt-markdown {
@@ -115,31 +120,36 @@
   }
 }
 
-/* grvsc setting */
-.grvsc-container {
-  @apply mb-4;
-}
+/* code setting */
+.astro-code {
+  @apply mb-4 rounded-lg overflow-auto relative py-4;
+  -webkit-overflow-scrolling: touch;
+  font-feature-settings: normal;
+  line-height: 1.4;
 
-.grvsc-code {
-  @apply min-w-full;
-}
+  code {
+    @apply min-w-full;
+  }
 
-.grvsc-gutter-pad {
-  @apply pl-0;
-}
-
-.grvsc-gutter + .grvsc-source {
-  @apply pl-4;
-  padding-left: calc(
-    var(--grvsc-padding-left, var(--grvsc-padding-h, 1.5rem)) * 2 / 3
-  );
+  span.line {
+    @apply px-6;
+  }
 }
 
 /* auto link */
-.anchor.after {
+a.autolink {
   @apply pl-2 inline-flex !important;
   @apply items-center h-4;
   svg {
-    @apply w-4 h-4;
+    @apply w-4 h-4 invisible;
+  }
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:hover a.autolink svg {
+    @apply visible;
   }
 }

@@ -1,0 +1,45 @@
+---
+import type { Page } from 'astro';
+
+import rehypeStringify from 'rehype-stringify';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
+
+import type { Post } from '~/types';
+import { formatDate } from '~/helpers/utils';
+import Tag from '~/components/tag/Tag.astro';
+
+type Props = {
+  page: Page<Post>;
+};
+
+const { page } = Astro.props;
+
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeStringify);
+---
+
+<!-- 글목록 -->
+<div class="flex flex-col space-y-12">
+  {
+    page.data.map((post) => (
+      <div>
+        <a href={`/post/${post.slug}`} class="hover:text-violet-500">
+          <h2 class="text-xl font-medium">{post.data.title}</h2>
+        </a>
+        <div class="text-slate-500 mt-2">{formatDate(post.data.date)}</div>
+        <div class="mt-2 excerpt-markdown">
+          {processor.processSync(post.data.excerpt)}
+        </div>
+        <div class="flex flex-row flex-wrap space-x-3 mt-3">
+          {post.data.tags.map((tag) => (
+            <Tag value={tag} />
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>

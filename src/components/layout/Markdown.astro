@@ -1,0 +1,19 @@
+---
+import PageMeta from '~/components/common/PageMeta.astro';
+import Layout from '~/components/layout/Layout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout>
+  <PageMeta
+    slot="meta"
+    title={frontmatter.title}
+    description={frontmatter.excerpt || ''}
+  />
+  <Fragment slot="main">
+    <div class="markdown">
+      <slot />
+    </div>
+  </Fragment>
+</Layout>

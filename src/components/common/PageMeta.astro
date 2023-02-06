@@ -1,0 +1,89 @@
+---
+import { getPicture } from '@astrojs/image';
+
+import { SITE_DESCRIPTION, SITE_TITLE } from '~/helpers/config';
+import { getImageSrc, getPostImage } from '~/helpers/utils';
+
+export type Props = {
+  type?: 'article' | 'website';
+  title?: string;
+  isTitlePrepend?: boolean;
+  description?: string;
+  keywords?: string;
+  image?: string;
+};
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const {
+  type = 'website',
+  title,
+  isTitlePrepend,
+  description = SITE_DESCRIPTION,
+  keywords = ['nana.log', '기술블로그', 'frontend'].join(','),
+  image = '~/assets/nana.log.png',
+} = Astro.props;
+
+// 썸네일 계산
+const { sources } = await getPicture({
+  src: getPostImage(image),
+  alt: 'nana.log',
+  widths: [480],
+  formats: ['png'],
+});
+const imageUrl = new URL(getImageSrc(sources), Astro.url).href;
+
+// 타이틀 계산
+const metaTitle = title
+  ? isTitlePrepend
+    ? `${title} | ${SITE_TITLE}`
+    : `${SITE_TITLE} | ${title}`
+  : SITE_TITLE;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+<link rel="icon" href="/favicon.ico" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={metaTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={metaTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageUrl} />
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+/>
+
+<!-- Google Ads -->
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940"
+  crossOrigin="anonymous"
+></script>

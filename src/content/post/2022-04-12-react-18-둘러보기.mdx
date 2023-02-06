@@ -1,0 +1,234 @@
+---
+slug: '2022-04-12-react-18'
+title: 'React 18 둘러보기'
+excerpt: '`useTransition`와 `useDeferredValue`를 언제 써야할까? `Suspense`와 `startTransition`을 어떻게 활용해야 할까?'
+date: '2022-04-12T09:00:00+09:00'
+tags: [React, Suspense, useTransition, useDeferredValue]
+draft: false
+---
+
+지난 3월말에 아기다리고기다리던 React v18이 출시되었다. `17.0.2`에서 머물러있던 리액트가 마이너 업데이트 없이 메이저 업데이트를 진행했는데, 그동안 실험 기능으로 던져온 떡밥들을 해소하는 업데이트가 될 것 같다.
+
+## 새로운 기능
+
+### Automatic Batching
+
+[Automatic Batching](https://github.com/reactwg/react-18/discussions/21)은 리액트가 여러개의 상태 업데이트를 하나의 리렌더링으로 그룹핑 하는 것이다. 이전에는 리액트 이벤트 핸들러에서만 배칭을 지원했고, promise, setTimeout, native 이벤트 핸들러 등에서는 배칭이 되지 않았다.
+
+```js
+// Before: 배칭이 되지 않아서 상태 업데이트가 그룹핑 되지 않고 매번 리렌더링 된다
+// (두번 리렌더링 된다)
+setTimeout(() => {
+  setCount((c) => c + 1);
+  setFlag((f) => !f);
+}, 1000);
+
+// After: promise, setTimeout, native 이벤트 핸들러 등에서도 배칭이 된다.
+// (한번만 리렌더링 된다)
+setTimeout(() => {
+  setCount((c) => c + 1);
+  setFlag((f) => !f);
+}, 1000);
+```
+
+### Transitions
+
+![](~/assets/concurrent.png)
+
+> 이제 앨리스랑 전화 도중 급하게 걸려온 밥의 전화를 받고 나서 다시 앨리스와 통화할 수 있다.
+
+**Transition**은 React 16 시절부터 던져온 Concurrent Mode 떡밥을 정리하는 새로운 기능이다. (timeoutMs 등은 스펙아웃 되었으니 hooks api를 확인할 것)
+Synchronous 렌더링 중에는 한번 렌더링이 시작되면 결과물을 화면에서 보기 전까지는 아무것도 막을 수 없지만, **concurrent에서 렌더링은 중단될 수 있다.**
+
+- **긴급한 업데이트 (urgent updates)** : 입력, 클릭, 누르기 같은 다이렉트 상호작용을 반영
+- **전환 업데이트 (transition updates)** : UI의 전환
+
+타이핑, 클릭, 누르기 같은 긴급 업데이트는 빠르게 업데이트 되지 않으면 버벅거리면서 앱이 이상하다는 느낌을 줄 수 있다. 하지만 화면은 곧바로 결과값을 볼거라고 기대하지 않기 때문에 전환 업데이트는 느리게 업데이트가 되어도 괜찮다.
+
+```tsx
+import { startTransition } from 'react';
+
+// 긴급한 업데이트 : 입력하고 있는 값
+setInputValue(input);
+
+// startTransition으로 래핑된 업데이트는 긴급하지 않은 것으로 처리되고, 더 긴급한 업데이트가 들어오면 중단된다.
+startTransition(() => {
+  // 전환 업데이트: 입력값에 따른 쿼리값
+  setSearchQuery(input);
+});
+```
+
+위와 같이 `startTransition`으로 래핑된 업데이트는 전환 업데이트로 처리되며, 긴급한 업데이트가 들어오면 중단된다. 전환이 중단되면 리액트는 stale한 렌더링 작업을 버리고 마지막 업데이트만을 렌더링한다.
+
+```tsx
+// 보류중 여부를 나타내는 변수와 함께 훅으로도 사용할 수 있다.
+const [isPending, startTransition] = useTransition();
+
+// 훅을 사용할 수 없다면 startTransition() 함수를 사용할 수 있다.
+import { startTransition } from 'react';
+```
+
+아래와 같은 코드는 탭을 photos에서 comments로 바꾸면서 의도치않게 `<Spinner />`를 노출할 수 있다.
+
+```tsx
+function handleClick() {
+  setTab('comments');
+}
+
+<Suspense fallback={<Spinner />}>
+  {tab === 'photos' ? <Photos /> : <Comments />}
+</Suspense>;
+```
+
+이때 만약 `<Photos />` UI를 계속 노출하기 원한다면 tab을 바꾸는 것을 지연하면 된다. 즉, `startTransition`로 감싸는 것은 `setTab('comments')`는 급하지 않은 **전환 업데이트**라는 것을 표시하는 것이다.
+
+```tsx
+function handleClick() {
+  startTransition(() => {
+    setTab('comments');
+  });
+}
+```
+
+### Suspense
+
+```tsx
+<Suspense fallback={<PageGlimmer />}>
+  <RightColumn>
+    <ProfileHeader />
+  </RightColumn>
+  <LeftColumn>
+    <Suspense fallback={<LeftColumnGlimmer />}>
+      <Comments />
+      <Photos />
+    </Suspense>
+  </LeftColumn>
+</Suspense>
+```
+
+`Suspense`를 사용하면 로드 상태를 선언적으로 지정할 수 있다. `Suspense`는 v16에서 도입되었는데, 이전에는 `React.lazy`를 활용한 코드 스플리팅만 지원했으며 서버 렌더링은 지원하지 못했다. v18에서는 서버 렌더링에서의 지원을 추가했다고 한다.
+
+`Suspense`가 로드 상태를 나타내는 방법은 에러 바운더리가 에러 상태를 캐치하는 방법과 유사한데, 이 경우 데이터가 아직 fetch 되지 않았다거나 코드가 로드되지 않았다거나 해서 렌더링 될 준비가 되지 않았음을 나타낼 수 있다. 동작 또한 에러 바운더리와 유사하게 구성 요소 위에 가장 가까운 구성 요소가 캐치 되고 해당 `Suspense`의 `fallback` 컴포넌트로 대체된다.
+
+```tsx
+<div>
+  {showComments && (
+    <Suspense fallback={<Spinner />}>
+      <Panel>
+        <Comments />
+      </Panel>
+    </Suspense>
+  )}
+</div>
+```
+
+만약 `showComments`가 `false`에서 `true`로 변경되면서 `<Comments />`에서 데이터 fetch로 인해 정지가 걸린다고 가정하면, 내부 동작은 다음과 같다.
+
+1. `Panel`은 고려하지 않는다.
+2. `Spinner`를 DOM에 넣는다.
+3. `Comments`가 완료될때까지 기다린다.
+4. 렌더링을 시도한다.
+5. `Spinner`를 DOM에서 제거한다.
+6. `Comments`와 함께 `Panel`을 DOM에 넣는다.
+7. `Panel`의 effects를 실행한다.
+
+### Suspense와 Transition
+
+```tsx
+function handleClick() {
+  startTransition(() => {
+    setTab('comments');
+  });
+}
+
+// 최초에 <Photos />를 보여줄때는 Spinner를 보여주지만,
+// handleClick으로 탭을 변경하면 렌더링이 지연되면서 계속 <Photos />를 보여주다가
+// 데이터 로딩이 완료되면 <Comments />로 전환될 것이다.
+<Suspense fallback={<Spinner />}>
+  {tab === 'photos' ? <Photos /> : <Comments />}
+</Suspense>;
+```
+
+앞서 `Transition` 항목에서 언급한 대로 `Suspense`는 Transition API와 결합해서 사용하면 가장 잘 작동한다. 전환 업데이트가 중단되면 리액트는 이미 보이는 컨텐츠가 `Spinner`와 같은 `fallback` 컨텐츠로 대체되는 것을 방지할 수 있다. 대신 리액트는 데이터가 충분히 로드될 때까지 렌더링을 지연할 것이다.
+
+## 새로운 클라이언트 및 서버 렌더링 API
+
+### 클라이언트
+
+`ReactDOM.render`를 사용하는 대신 아래와 같이 선언해야 한다.
+
+```tsx
+import { createRoot } from 'react-dom/client';
+
+const container = document.getElementById('root');
+if (container) {
+  createRoot(container).render(<App />);
+}
+```
+
+이외에는 서버 사이드와 관련된 내용이라 생략...나는 믿을거야 nextjs 믿을거야 👀
+
+## 새로운 Hooks
+
+### useId
+
+`useId`는 client-server사이드에서 **hydration 미스매치를 피하기 위해서** unique ID를 만들어주는 훅이다. 단, list의 key를 만들어주기 위한 훅이 아니니 그렇게 사용하지 말자.
+
+### useTransition
+
+`useTransition`과 `startTransition`은 일부 상태 업데이트를 급하지 않은 업데이트로 간주한다. concurrent에서는 급한 상태 업데이트가 급하지 않은 상태 업데이트를 중단할 수 있다.
+
+### useDeferredValue
+
+`useDeferredValue`는 급하지 않은 트리를 리렌더링 하는 것을 지연하게 해준다. 지연된 렌더링은 중단될 수 있고, 사용자의 입력을 방해하지 않는다. 디바운싱 / 쓰로틀링 기법과 유사하지만 timeout을 직접 지정할 필요 없이 리액트가 다른 급한 작업이 완료 되는 즉시 실행을 시킨다는 장점이 있다.
+
+```tsx
+function Typeahead() {
+  const query = useSearchQuery('');
+
+  // useDeferredValue는 값만 지연하는 것이다.
+  const deferredQuery = useDeferredValue(query);
+
+  // 급한 update 동안 리렌더링을 방지하려면 컴포넌트는 메모해야 한다
+  // useDeferredValue에만 통용되는 패턴은 아니며 디바운싱을 사용하는 경우도 마찬가지다
+  const suggestions = useMemo(
+    () => <SearchSuggestions query={deferredQuery} />,
+    [deferredQuery],
+  );
+
+  return (
+    <>
+      <SearchInput query={query} />
+      <Suspense fallback="Loading results...">{suggestions}</Suspense>
+    </>
+  );
+}
+```
+
+### useSyncExternalStore
+
+라이브러리 개발을 위해 제공된 훅이다. (글로벌 상태관리)
+
+### useInsertionEffect
+
+라이브러리 개발을 위해 제공된 훅이다. (CSS-in-JS)
+
+## useTransition vs useDeferredValue
+
+[이 글](https://academind.com/tutorials/react-usetransition-vs-usedeferredvalue)을 읽고 나니 상태 제어가 가능할때는 `useTransition`를 사용하고 `props`에서 값에만 접근이 가능한 경우엔 `useDeferredValue`를 사용하면 좋을 것 같다.
+다만 항상 디바운싱을 사용하지 않는 것 처럼, 이 훅들도 항상 사용할 필요는 없다. 예를 들면 만개의 리스트를 렌더링 하고 사용자가 입력한 값을 받아서 필터링이 필요한 상황이라고 해보자. 이 경우, `useTransition`이나 `useDeferredValue`를 사용하는 것 보다 **가상화 리스트를 적용하는 것이 성능적으로 훨씬 우수**하다. 성능 최적화에는 다양한 방법이 있기 때문에 이번 업데이트로 옵션이 추가된 것으로 받아들이면 좋을 것 같다.
+그러나 위와 같이 [Suspense에서 fallback을 표시하지 않길 원하는 케이스](#suspense와-transition)에서는 `startTransition`을 통한 Suspense 트리거 방지가 필요하다. 아마 이런 처리는 `react-query`와 같은 데이터 fetch 라이브러리들이나 `react-router-dom`과 같은 라우터 라이브러리가 맡아서 내부적으로 처리하지 않을까 싶다.
+
+## 여담
+
+토이 프로젝트는 react v18을 설치해서 쓰고 있는데, 아직은 서드파티 라이브러리들이 미지원인 경우가 많아서 때문에 타입에서 오류가 나기도 하고 concurrent를 지원하지 않는 경우도 많다. 프로덕션 마이그레이션을 목표로 한다면 주요 라이브러리의 v18 지원 여부를 확인할 필요가 있을 것 같다.
+전반적으로 퍼포먼스 개선과 서드파티 라이브러리 지원을 위한 업데이트가 많은 듯 하고, 리액트가 라이브러리로서 출범했다면 이러한 hooks api를 제공하고 제어함으로서 어떻게보면 에코시스템이 되어가는 과정이 아닌가 싶다.
+
+## 참고
+
+- https://reactjs.org/blog/2022/03/29/react-v18.html
+- https://github.com/reactwg/react-18/discussions
+- https://github.com/reactwg/react-18/discussions/46
+- https://github.com/reactwg/react-18/discussions/100
+- https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md
+- https://academind.com/tutorials/react-usetransition-vs-usedeferredvalue

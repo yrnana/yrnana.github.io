@@ -2,10 +2,6 @@ html {
   font-size: 18px;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
   @apply subpixel-antialiased leading-relaxed;
 }

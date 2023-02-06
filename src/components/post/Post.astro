@@ -1,0 +1,40 @@
+---
+import type { Post } from '~/types';
+import { formatDate } from '~/helpers/utils';
+import DynamicPicture from '~/components/common/DynamicPicture.astro';
+import Tag from '~/components/tag/Tag.astro';
+
+type Props = Post;
+
+const post = Astro.props;
+
+const { tags, title, preview, date } = post.data;
+
+const { Content } = await post.render();
+---
+
+<article class="mb-20">
+  <header class="text-center mt-10 mb-20">
+    {
+      preview && (
+        <div class="mb-10">
+          <DynamicPicture post={post} />
+        </div>
+      )
+    }
+    <h1 class="text-3xl font-semibold">{title}</h1>
+    <div class="text-slate-500 mt-4">{formatDate(date)}</div>
+    {
+      tags && (
+        <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
+          {tags.map((tag) => (
+            <Tag value={tag} />
+          ))}
+        </div>
+      )
+    }
+  </header>
+  <div class="markdown">
+    <Content />
+  </div>
+</article>

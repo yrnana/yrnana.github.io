@@ -1,0 +1,23 @@
+---
+import '~/styles/global.css';
+import '~/styles/markdown.css';
+
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+---
+
+<html lang="ko">
+  <head>
+    <slot name="meta" />
+  </head>
+  <body>
+    <div class="container mx-auto px-4 flex flex-col min-h-screen">
+      <Header />
+      <main class="py-10 flex-grow">
+        <slot name="main" />
+      </main>
+      <Footer />
+    </div>
+    <slot name="script" />
+  </body>
+</html>

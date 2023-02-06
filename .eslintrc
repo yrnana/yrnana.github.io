@@ -1,13 +1,120 @@
 {
-  "globals": {
-    "__PATH_PREFIX__": true
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["simple-import-sort"],
+  "extends": ["eslint:recommended", "plugin:astro/recommended", "prettier"],
+  "ignorePatterns": ["types.d.ts"],
+  "env": {
+    "es2020": true
   },
-  "extends": ["react-app"],
+  "rules": {
+    "sort-imports": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^\\u0000", "^\\u0000.*\\.scss", "^\\u0000.*\\.css"],
+          ["^@astrojs", "^astro", "^react$", "^react-dom"],
+          ["^@?\\w"],
+          ["^~/types", "^~/helpers", "^~/hooks", "^~"],
+          ["^\\."],
+          ["\\.css", "\\.scss", "\\.svg", "\\.png"]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "eqeqeq": ["warn", "smart"]
+  },
   "overrides": [
     {
-      "files": ["src/@types/graphqlTypes.d.ts"],
+      // node
+      "files": ["**/*.mjs", "plugins/**/*", "*.config.*"],
+      "env": {
+        "node": true
+      }
+    },
+    {
+      // typescript
+      "files": ["**/*.ts?(x)"],
+      "settings": {
+        "import/resolver": {
+          "typescript": true
+        }
+      },
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      },
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier"
+      ],
       "rules": {
-        "@typescript-eslint/no-unused-vars": "off"
+        "@typescript-eslint/triple-slash-reference": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "args": "none",
+            "ignoreRestSiblings": true
+          }
+        ],
+        "@typescript-eslint/consistent-indexed-object-style": [
+          "warn",
+          "record"
+        ],
+        "@typescript-eslint/consistent-type-assertions": "warn",
+        "@typescript-eslint/consistent-type-exports": "error",
+        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/no-unsafe-call": "off"
+      }
+    },
+    {
+      // react tsx
+      "files": ["src/**/*.tsx"],
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+      },
+      "env": {
+        "browser": true
+      },
+      "extends": [
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended",
+        "prettier"
+      ]
+    },
+    {
+      // astro
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "varsIgnorePattern": "^Props$",
+            "args": "none",
+            "ignoreRestSiblings": true
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off"
+      },
+      "globals": {
+        "Astro": "readonly",
+        "astroHTML": "readonly"
+      }
+    },
+    {
+      "files": ["**/*.astro/*.js", "*.astro/*.js"],
+      "rules": {
+        "no-unused-vars": "warn"
       }
     }
   ]
