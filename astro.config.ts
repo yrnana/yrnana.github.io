@@ -15,6 +15,7 @@ import rehypeExternalLinks from 'rehype-external-links';
 import remarkBreaks from 'remark-breaks';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+// import { remarkExcerpt } from './plugins/remark-excerpt';
 import { remarkMdxImages } from './plugins/remark-mdx-images';
 
 // https://astro.build/config
@@ -39,6 +40,7 @@ export default defineConfig({
   markdown: {
     gfm: true,
     remarkPlugins: [
+      // remarkExcerpt,
       remarkBreaks,
       remarkUnwrapImages, // paragraph unwrap
       remarkMdxImages, // figure + caption, @astrojs/image 대응
