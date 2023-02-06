@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/context-api",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-08-21-context-api-redux","excerpt":"전역(global) 상태관리 옛날옛적 호랑이 담배피던시절(?) 리액트의 러닝커브를 올리는 주범은 redux라고 해도 과언이 아닐 정도로 리덕스는 리액트를 개발하려면 react-router-dom과 함께 필수로 배워야 하는 서드파티 라이브러리였으며 보일러 플레이트 코드…","frontmatter":{"title":"Context API가 존재하지만 여전히 사람들이 redux와 전역 상태관리 라이브러리를 쓰는 이유","date":"2021-08-21T16:31:55+09:00","tags":["Jotai","React","Recoil","context API","Redux"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"text","value":"context api는 글로벌 상태관리 라이브러리를 대체할 수 없고, 여전히 많은 리액트 개발자들이 redux, mobx 등을 사용하고 있다."}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"context API"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

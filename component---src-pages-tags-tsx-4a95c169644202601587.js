@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkyrnana_github_io=self.webpackChunkyrnana_github_io||[]).push([[190],{5714:function(a,n,r){r.r(n);var t=r(2618),s=r(7073),u=r(5173),e=r(5893);n.default=function(a){var n=a.data;return(0,e.jsxs)(s.Ar,{children:[(0,e.jsx)(t.pQ,{title:"tags"}),(0,e.jsx)(u.P,{tags:n.allMarkdownRemark.group})]})}}}]);
-//# sourceMappingURL=component---src-pages-tags-tsx-4a95c169644202601587.js.map

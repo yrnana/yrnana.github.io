@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/finite-state-machine",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-03-14-finite-state-machine","excerpt":"FSM Finite State Machine(FSM)은 유한한 개수의 상태를 가질 수 있는 automata이다. 이런 오토마타는 한 번에 오로지 하나의 상태만을 가지고, 어떠한 event에 의해 한 상태에서 다른 상태로 변경될 수 있으며 이를 Transition이라고…","frontmatter":{"title":"Finite State Machine","date":"2021-03-14T13:29:14+09:00","tags":["FSM","Finite State Machine"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"element","tagName":"code","properties":{},"children":[{"type":"text","value":"Finite State Machine(FSM)"}]},{"type":"text","value":"은 유한한 개수의 상태를 가질 수 있는 automata이다."}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"Finite State Machine"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

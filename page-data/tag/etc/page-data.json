@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/etc",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-12-08","excerpt":"블로그 옮긴 이유 velog가 편하고 좋긴 한데 코드 블록이 마음에 안들어서 옮겼다. 기술 스택 Gatsby(v4) TypeScript Tailwind CSS 나는 리액트와 타입스크립트의 노예니까 당연히 TS 기반으로 진행하려고 했다. 문제는 Next.js를 쓰느냐,…","frontmatter":{"title":"블로그 이사 후기","date":"2021-12-08T10:54:27+09:00","tags":["etc"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"text","value":"velog에서 깃헙 블로그로 이사한 이유와 개발 후기"}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"etc"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

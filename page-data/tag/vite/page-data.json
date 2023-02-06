@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/vite",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-05-26-webpack-vite","excerpt":"이런 제목을 어디서 본 것 같은데? 라고 생각한다면 정상이다. https://yrnana.dev/post/2021-02-11-webpack-snowpack Webpack 보다 더 빠른 빌드툴, Snowpack Vite는 Snowpack과 아주 유사한 컨셉의 프론트엔드…","frontmatter":{"title":"Webpack 보다 더 빠른 빌드툴, Vite","date":"2021-05-26T21:45:47+09:00","tags":["esbuild","Vite"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"text","value":"이런 제목을 어디서 본 것 같은데? 라고 생각한다면 정상이다."}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"Vite"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

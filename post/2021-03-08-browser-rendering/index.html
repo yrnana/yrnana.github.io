@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="/favicon.ico">
+<meta name="generator" content="Astro v2.0.6">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://yrnana.dev/post/2021-03-08-browser-rendering/">
+
+<!-- Primary Meta Tags -->
+<title>브라우저 렌더링에 대한 이해와 최적화 | nana.log</title>
+<meta name="title" content="브라우저 렌더링에 대한 이해와 최적화 | nana.log">
+<meta name="description" content="브라우저 아키텍처와 렌더링 엔진에 대하여">
+<meta name="keywords" content="Browser,Optimization">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yrnana.dev/post/2021-03-08-browser-rendering/">
+<meta property="og:title" content="브라우저 렌더링에 대한 이해와 최적화 | nana.log">
+<meta property="og:description" content="브라우저 아키텍처와 렌더링 엔진에 대하여">
+<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png%20480w">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-08-browser-rendering/">
+<meta property="twitter:title" content="브라우저 렌더링에 대한 이해와 최적화 | nana.log">
+<meta property="twitter:description" content="브라우저 아키텍처와 렌더링 엔진에 대하여">
+<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png%20480w">
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+<!-- Google Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script>
+  <link rel="stylesheet" href="/_astro/about.2a352e20.css" /><script type="module" src="/_astro/page.b7cc8384.js"></script></head>
+  <body>
+    <div class="container mx-auto px-4 flex flex-col min-h-screen">
+      <header class="mt-4 sm:mt-6 flex flex-row items-center">
+  <div class="mr-auto">
+    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+      nana.log
+    </a>
+  </div>
+  <nav class="flex flex-row items-center space-x-4">
+    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
+          About
+        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
+          Archive
+        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
+          Tags
+        </a>
+  </nav>
+</header>
+      <main class="py-10 flex-grow">
+        <article class="mb-20">
+  <header class="text-center mt-10 mb-20">
+    
+    <h1 class="text-3xl font-semibold">브라우저 렌더링에 대한 이해와 최적화</h1>
+    <div class="text-slate-500 mt-4">Mar 7, 2021</div>
+    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
+          <a href="/tag/browser" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
+  <span>Browser</span>
+  
+</a><a href="/tag/optimization" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
+  <span>Optimization</span>
+  
+</a>
+        </div>
+  </header>
+  <div class="markdown">
+    <h2 id="브라우저-아키텍처">브라우저 아키텍처<a class="autolink" aria-hidden="true" tabIndex="-1" href="#브라우저-아키텍처"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<p><figure><picture>
+	<source type="image/png" srcset="/_astro/image-8.f88e14b8_Z12GOI4.png 480w,/_astro/image-8.f88e14b8_Z1bKCFW.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-8.f88e14b8_Z1CGWet.webp 480w,/_astro/image-8.f88e14b8_Z19qGkY.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-8.f88e14b8_Z19qGkY.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+브라우저 엔진 : 유저 인터페이스와 렌더링 엔진 사이의 중개자로, 유저 인터페이스에서 받은 입력에 따라 렌더링 엔진을 쿼리하고 처리한다.<br/>
+렌더링 엔진 : HTML/CSS를 파싱해서 사용자가 요청한 특정 웹 페이지를 화면에 렌더링하는 역할을 한다.</p>
+<h2 id="렌더링-엔진이-하는-일">렌더링 엔진이 하는 일<a class="autolink" aria-hidden="true" tabIndex="-1" href="#렌더링-엔진이-하는-일"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+
+<figure><picture>
+	<source type="image/png" srcset="/_astro/image-9.1934b67b_Z1bz15a.png 480w,/_astro/image-9.1934b67b_ZzCNTK.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-9.1934b67b_Z13wzDA.webp 480w,/_astro/image-9.1934b67b_2rVabj.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-9.1934b67b_2rVabj.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure>
+<ul>
+<li>브라우저는 HTML 소스코드를 파싱하고 DOM tree를 만든다.</li>
+<li>브라우저가 CSS 코드를 파싱한다.</li>
+<li><strong>render tree</strong>를 생성한다. render tree는 styles를 알고 있기 때문에 <code>display: none</code> 이거나 <code>&lt;head&gt;</code> 처럼 보이지 않는 요소는 포함되지 않는다.</li>
+<li>render tree가 생성되면 브라우저는 render tree 노드들을 <strong>paint</strong> 할 수 있다.</li>
+</ul>
+<h2 id="script-stylesheet">script, stylesheet<a class="autolink" aria-hidden="true" tabIndex="-1" href="#script-stylesheet"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h3 id="스크립트">스크립트<a class="autolink" aria-hidden="true" tabIndex="-1" href="#스크립트"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<ul>
+<li>스크립트가 실행되는 동안 문서의 파싱은 중단된다.</li>
+<li><code>defer</code>로 표시하면 문서 파싱이 완료된 후 실행된다.</li>
+<li><code>async</code>로 표시하면 비동기로 실행된다.</li>
+</ul>
+<h3 id="스타일시트">스타일시트<a class="autolink" aria-hidden="true" tabIndex="-1" href="#스타일시트"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<ul>
+<li>스타일시트는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 중단하지 않는다.</li>
+</ul>
+<h2 id="repaint--reflow--composite">Repaint &amp; Reflow &amp; Composite<a class="autolink" aria-hidden="true" tabIndex="-1" href="#repaint--reflow--composite"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+
+<figure><picture>
+	<source type="image/png" srcset="/_astro/image-10.0de7f6a8_Z1g5fFL.png 480w,/_astro/image-10.0de7f6a8_GMlXF.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-10.0de7f6a8_1IM8yx.webp 480w,/_astro/image-10.0de7f6a8_1CDxi3.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-10.0de7f6a8_1CDxi3.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure>
+<ul>
+<li><strong>reflow (layout)</strong> : render tree의 일부는 revalidated / recalculated 되어야 한다.
+<ul>
+<li><code>position(위치)</code>이나 <code>geometries(기하학적 요소)</code> 재계산</li>
+<li>reflow는 <em>user-blocking operation</em>이므로 최적화를 위해 이에 대한 이해가 필요하다.</li>
+</ul>
+</li>
+<li><strong>repaint (redraw)</strong> : 노드 위치 변경 또는 스타일 변경에 의해 화면에서 업데이트 되어야 한다.
+<ul>
+<li><code>visibility</code> 변경, <code>outline</code> 변경, <code>background</code> 변경 등에 의해 발생한다.</li>
+<li>paint는 픽셀 파이프라인에서 가장 비용이 많이 드는 부분이므로 레이어 승격 또는 애니메이션 orchestration을 통해 최적화 하는 것이 좋다.</li>
+</ul>
+</li>
+<li><strong>composite</strong> : 화면에 표시하기 위해 페이지에서 paint 된 부분을 합치는 과정이다.
+<ul>
+<li><code>transform</code> 또는 <code>opacity</code> 변경에 의해 발생한다.</li>
+<li><code>will-change</code> 또는 <code>translateZ</code>를 사용해서 요소를 자체 레이어로 승격할 수 있다.
+<ul>
+<li><code>will-change</code> 속성을 사용하면 해당 레이어는 GPU에 업로드된다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<figure><picture>
+	<source type="image/png" srcset="/_astro/image-11.79d4e72c_Zbvd2g.png 480w,/_astro/image-11.79d4e72c_Z1WMccU.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-11.79d4e72c_ZwMw5f.webp 480w,/_astro/image-11.79d4e72c_mKtuH.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-11.79d4e72c_mKtuH.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure>
+<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">bodyStyle</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">document</span><span style="color:#ABB2BF">.</span><span style="color:#E5C07B">body</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">style</span><span style="color:#ABB2BF">; </span><span style="color:#7F848E">// cache</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E5C07B">bodyStyle</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">padding</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;20px&#39;</span><span style="color:#ABB2BF">; </span><span style="color:#7F848E">// reflow, repaint</span></span>
+<span class="line"><span style="color:#E5C07B">bodyStyle</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">border</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;10px solid red&#39;</span><span style="color:#ABB2BF">; </span><span style="color:#7F848E">// reflow, repaint</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E5C07B">bodyStyle</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">color</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;blue&#39;</span><span style="color:#ABB2BF">; </span><span style="color:#7F848E">// repaint only, no dimensions changed</span></span>
+<span class="line"><span style="color:#E5C07B">bstyle</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">backgroundColor</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;#cc0000&#39;</span><span style="color:#ABB2BF">; </span><span style="color:#7F848E">// repaint</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E5C07B">bodyStyle</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">fontSize</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;2em&#39;</span><span style="color:#ABB2BF">; </span><span style="color:#7F848E">// reflow, repaint</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#7F848E">// new DOM element - reflow, repaint</span></span>
+<span class="line"><span style="color:#E5C07B">document</span><span style="color:#ABB2BF">.</span><span style="color:#E5C07B">body</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">appendChild</span><span style="color:#ABB2BF">(</span><span style="color:#E5C07B">document</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">createTextNode</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;Hello!&#39;</span><span style="color:#ABB2BF">));</span></span></code></pre>
+<p><a href="https://csstriggers.com/" target="_blank" rel="nofollow">https://csstriggers.com/</a> 에서 브라우저 엔진 별로 <code>layout</code> / <code>paint</code> / <code>composite</code>를 발생시키는 css properties를 확인할 수 있다. Webkit - Safari, Blink - Chrome, Gecko - Firefox, EdgeHTML - 구Edge다.</p>
+<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<ul>
+<li><a href="https://medium.com/swlh/what-the-heck-is-repaint-and-reflow-in-the-browser-b2d0fb980c08" target="_blank" rel="nofollow">https://medium.com/swlh/what-the-heck-is-repaint-and-reflow-in-the-browser-b2d0fb980c08</a></li>
+<li><a href="https://d2.naver.com/helloworld/59361" target="_blank" rel="nofollow">https://d2.naver.com/helloworld/59361</a> (<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="nofollow">https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/</a>)</li>
+<li><a href="https://dev.to/gopal1996/understanding-reflow-and-repaint-in-the-browser-1jbg" target="_blank" rel="nofollow">https://dev.to/gopal1996/understanding-reflow-and-repaint-in-the-browser-1jbg</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count" target="_blank" rel="nofollow">https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count</a></li>
+<li><a href="https://www.sitepoint.com/10-ways-minimize-reflows-improve-performance/" target="_blank" rel="nofollow">https://www.sitepoint.com/10-ways-minimize-reflows-improve-performance/</a></li>
+</ul>
+  </div>
+</article><div class="flex mt-10 -mb-10">
+  <div class="max-w-2/5">
+    <a href="2021-03-09-web-vital" class="hover:text-violet-700 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+  viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+</svg>
+          <div>
+            <div class="text-xs text-slate-500">Previous</div>
+            <div>웹사이트 성능 메트릭</div>
+          </div>
+        </a>
+  </div>
+  <div class="max-w-2/5 text-right ml-auto">
+    <a href="2021-02-13-framer-motion-react-motion-gesture" class="hover:text-violet-700 flex items-center">
+          <div>
+            <div class="text-xs text-slate-500">Next</div>
+            <div>framer-motion : react를 위한 motion &amp; gesture 라이브러리</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+  viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+</svg>
+        </a>
+  </div>
+</div><div class="mt-20 relative" style="min-height:269">
+  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-08-browser-rendering" label="comment" theme="github-light" crossorigin="anonymous" async></script>
+</div>
+      </main>
+      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
+  <span class="mr-1 text-sm sm:text-base">
+    Copyright &copy; 2023
+  </span>
+  <span>nana</span>
+</footer>
+    </div>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body></html>

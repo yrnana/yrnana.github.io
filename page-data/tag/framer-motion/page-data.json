@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/framer-motion",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-02-13-framer-motion-react-motion-gesture","excerpt":"framer-motion는 리액트에서 애니메이션과 제스쳐를 쉽게 다룰 수 있도록 해주는 라이브러리다. animate props에 값을 세팅하면 CSS transitions를 자동생성하는 방법으로 애니메이션을 만들어주고, drag나 hover 등의 제스쳐를 지원해주기도…","frontmatter":{"title":"framer-motion : react를 위한 motion & gesture 라이브러리","date":"2021-02-13T02:14:33+09:00","tags":["React","Framer Motion"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"text","value":"framer-motion는 리액트에서 애니메이션과 제스쳐를 쉽게 다룰 수 있도록 해주는 라이브러리다."}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"Framer Motion"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

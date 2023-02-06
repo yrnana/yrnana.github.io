@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="/favicon.ico">
+<meta name="generator" content="Astro v2.0.6">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://yrnana.dev/post/2021-03-09-web-vital/">
+
+<!-- Primary Meta Tags -->
+<title>웹사이트 성능 메트릭 | nana.log</title>
+<meta name="title" content="웹사이트 성능 메트릭 | nana.log">
+<meta name="description" content="주요 메트릭에 대해 알아보자">
+<meta name="keywords" content="Performance,Optimization,Metrics">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yrnana.dev/post/2021-03-09-web-vital/">
+<meta property="og:title" content="웹사이트 성능 메트릭 | nana.log">
+<meta property="og:description" content="주요 메트릭에 대해 알아보자">
+<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png%20480w">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-09-web-vital/">
+<meta property="twitter:title" content="웹사이트 성능 메트릭 | nana.log">
+<meta property="twitter:description" content="주요 메트릭에 대해 알아보자">
+<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png%20480w">
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+<!-- Google Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script>
+  <link rel="stylesheet" href="/_astro/about.2a352e20.css" /><script type="module" src="/_astro/page.b7cc8384.js"></script></head>
+  <body>
+    <div class="container mx-auto px-4 flex flex-col min-h-screen">
+      <header class="mt-4 sm:mt-6 flex flex-row items-center">
+  <div class="mr-auto">
+    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+      nana.log
+    </a>
+  </div>
+  <nav class="flex flex-row items-center space-x-4">
+    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
+          About
+        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
+          Archive
+        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
+          Tags
+        </a>
+  </nav>
+</header>
+      <main class="py-10 flex-grow">
+        <article class="mb-20">
+  <header class="text-center mt-10 mb-20">
+    
+    <h1 class="text-3xl font-semibold">웹사이트 성능 메트릭</h1>
+    <div class="text-slate-500 mt-4">Mar 8, 2021</div>
+    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
+          <a href="/tag/performance" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
+  <span>Performance</span>
+  
+</a><a href="/tag/optimization" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
+  <span>Optimization</span>
+  
+</a><a href="/tag/metrics" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
+  <span>Metrics</span>
+  
+</a>
+        </div>
+  </header>
+  <div class="markdown">
+    <h2 id="주요-metrics지표-항목">주요 metrics(지표) 항목<a class="autolink" aria-hidden="true" tabIndex="-1" href="#주요-metrics지표-항목"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+
+<figure><picture>
+	<source type="image/png" srcset="/_astro/image-4.e1119df1_2bVczx.png 480w,/_astro/image-4.e1119df1_Z1Dh3Ws.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-4.e1119df1_2blsEz.webp 480w,/_astro/image-4.e1119df1_7bnI4.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-4.e1119df1_7bnI4.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure>
+<p>⭐️ 표시는 <strong>Web Vital</strong>에서 중점적으로 체크하는 항목이다.</p>
+<ul>
+<li><code>LCP</code> : 로딩 성능</li>
+<li><code>FID</code> : 상호 작용력</li>
+<li><code>CLS</code> : 시각적 안정성</li>
+</ul>
+<h3 id="ttfb-time-to-first-byte">TTFB (Time To First Byte)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#ttfb-time-to-first-byte"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p>페이지를 요청했을 때 서버에서 데이터의 첫 번째 바이트가 도착하는 시점을 나타낸다. <code>TTFB</code>는 주로 서버 성능과 직결된다.</p>
+<h4 id="최적화-방법">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>서버 애플리케이션 로직 최적화</li>
+<li>DB 쿼리 최적화 또는 더 빠른 DB로 마이그레이션</li>
+<li>더 많은 RAM 또는 CPU를 갖도록 서버 하드웨어 업그레이드</li>
+</ul>
+<h3 id="fcp-first-contentful-paint">FCP (First Contentful Paint)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#fcp-first-contentful-paint"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><figure><picture>
+	<source type="image/png" srcset="/_astro/image-5.e42a7bae_Z2lShH7.png 480w,/_astro/image-5.e42a7bae_ZhPEDg.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-5.e42a7bae_Z1GV1cw.webp 480w,/_astro/image-5.e42a7bae_1k0zUG.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-5.e42a7bae_1k0zUG.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+FCP는 페이지가 로드되기 시작하고 컨텐츠의 일부가 화면에 렌더링 될 때 까지의 시간을 의미한다.</p>
+<h4 id="최적화-방법-1">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법-1"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>렌더링을 block 하는 리소스 제거</li>
+<li>CSS minify</li>
+<li>사용하지 않는 CSS 제거</li>
+<li>요청할 origin에 preconnect : <code>&lt;link rel=&quot;preconnect&quot;&gt;</code></li>
+<li>서버 응답 시간 (TTFB) 줄이기</li>
+<li>여러 페이지 리다이렉트 줄이기</li>
+<li>키 요청 preload : <code>&lt;link rel=&quot;preload&quot;&gt;</code></li>
+<li>지나치게 큰 네트워크 payload를 피하기</li>
+<li>효율적인 캐시 정책으로 정적 자산 제공</li>
+<li>과도한 DOM size를 피하기</li>
+<li>중요한 요청의 depth를 최소화</li>
+<li>웹 폰트 로드 중에 텍스트가 계속 보이도록 함</li>
+<li>요청 수를 줄이고 전송 크기를 작게 하기</li>
+</ul>
+<h3 id="fmp-first-meaningful-paint">FMP (First Meaningful Paint)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#fmp-first-meaningful-paint"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p>브라우저가 페이지의 주요 컨텐츠들을 화면에 렌더링하기 시작하는 순간이다. 다만, <code>FMP</code>는 페이지 로드의 작은 차이에 지나치게 민감하기 때문에 일관성이 떨어져서 <code>LCP</code>를 측정하는 것을 권장하고 있다.</p>
+<h3 id="️-lcp-largest-contentful-paint">⭐️ LCP (Largest Contentful Paint)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#️-lcp-largest-contentful-paint"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><figure><picture>
+	<source type="image/png" srcset="/_astro/lcp_8x2.145d7b1c_211j38.png 480w,/_astro/lcp_8x2.145d7b1c_Gobf1.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/lcp_8x2.145d7b1c_1I8T0N.webp 480w,/_astro/lcp_8x2.145d7b1c_1qm5AI.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/lcp_8x2.145d7b1c_1qm5AI.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+페이지에서 가장 용량이 큰 컨텐츠가 표시되는 시점을 나타낸다. <code>FCP</code>의 경우 페이지에 스플래시 화면이 표시되거나 로딩중 아이콘이 표시되는 경우도 포함하기 때문에 사용자와 그다지 관련이 없다. <code>FMP</code>를 측정하는 것이 복잡하기 때문에 가장 용량이 큰 컨텐츠가 렌더링 되는 시기인 <code>LCP</code>를 주요 컨텐츠가 로드되는 시기로 판단하는 것을 권장하고 있다.<br/>
+<figure><picture>
+	<source type="image/png" srcset="/_astro/image-6.1ed3e5b5_Z1iQgka.png 480w,/_astro/image-6.1ed3e5b5_20s4JQ.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-6.1ed3e5b5_jSNxl.webp 480w,/_astro/image-6.1ed3e5b5_1qJCIa.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-6.1ed3e5b5_1qJCIa.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure></p>
+<h4 id="최적화-방법-2">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법-2"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>느린 서버 응답 시간 해결
+<ul>
+<li>서버 최적화</li>
+<li>가까운 CDN으로 라우팅</li>
+<li>asset 캐싱</li>
+<li>cache-first HTML 페이지 서빙</li>
+<li>서드파티 origin 리소스 preconnect</li>
+</ul>
+</li>
+<li>렌더링을 block 하는 JS 및 CSS 해결
+<ul>
+<li>CSS block 시간 단축
+<ul>
+<li>CSS minify</li>
+<li>중요하지 않은 CSS는 defer로 load</li>
+<li>중요 CSS는 inline 으로 load</li>
+</ul>
+</li>
+<li>Javascript block 시간 단축
+<ul>
+<li>JS 파일 minify 및 압축</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>느린 리소스 (img, svg, video, …) 로드 시간 해결
+<ul>
+<li>이미지 최적화 및 압축</li>
+<li>중요한 리소스 preload</li>
+<li>텍스트 파일 압축</li>
+<li>적응형 리소스 서빙
+<ul>
+<li>예: 네트워크가 느린 경우 video 대신 image 서빙</li>
+</ul>
+</li>
+<li>서비스 워커를 통한 자산 캐싱</li>
+</ul>
+</li>
+<li>클라이언트 사이드 렌더링의 경우
+<ul>
+<li>중요한 자바스크립트 최소화
+<ul>
+<li>자바스크립트 minify</li>
+<li>사용하지 않는 자바스크립트 defer로 load</li>
+<li>사용하지 않는 polyfill 최소화</li>
+</ul>
+</li>
+<li>서버사이드 렌더링 사용
+<ul>
+<li><code>TTFB</code> 증가, <code>TTI</code> 증가를 고려해야 함</li>
+</ul>
+</li>
+<li>pre-rendering 사용
+<ul>
+<li><code>TTI</code>는 증가할 수 있으나 <code>TTFB</code>는 <code>SSR</code>보다 나음</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="️-cls-cumulative-layout-shift">⭐️ CLS (Cumulative Layout Shift)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#️-cls-cumulative-layout-shift"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><figure><picture>
+	<source type="image/png" srcset="/_astro/cls_8x2.10d8f0fe_jtOtv.png 480w,/_astro/cls_8x2.10d8f0fe_Z108ijB.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/cls_8x2.10d8f0fe_Z2mFoa.webp 480w,/_astro/cls_8x2.10d8f0fe_Zk9tNf.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/cls_8x2.10d8f0fe_Zk9tNf.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+페이지가 로드되기 시작하는 시점과 lifecycle 상태가 숨김으로 변경되는 시점 사이에 발생하는 모든 예기치 않은 레이아웃 이동의 누적 점수를 측정한다. 일반적으로 리소스가 비동기적으로 로드되거나 DOM 요소가 기존 컨텐츠가 있는 페이지에 동적으로 추가될 때 발생한다.</p>
+<h4 id="최적화-방법-3">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법-3"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>이미지나 동영상 요소에 크기를 미리 지정하거나 임시 박스같은 것으로 필요한 공간을 확보</li>
+<li>사용자 interactive 응답 외에 기존 컨텐츠 위에 컨텐츠를 넣지 않기</li>
+<li>layout 변경을 트리거하는 css property보다 transform 애니메이션을 사용</li>
+</ul>
+<h3 id="tti-time-to-interactive">TTI (Time To Interactive)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#tti-time-to-interactive"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p>웹 페이지가 완전히 상호작용이 가능(interactive)하게 되는 시점을 나타낸다. 컨텐츠를 볼 수 있지만 스크롤 할 수 없거나 항목을 클릭해도 효과가 없으면 interactive 하지 않은 것이다.</p>
+<h4 id="최적화-방법-4">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법-4"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>JS minify</li>
+<li>요청할 origin에 preconnect : <code>&lt;link rel=&quot;preconnect&quot;&gt;</code></li>
+<li>키 요청 preload : <code>&lt;link rel=&quot;preload&quot;&gt;</code></li>
+<li>타사 코드의 영향 범위 감소</li>
+<li>중요한 요청의 depth를 최소화</li>
+<li>JS 실행시간 단축</li>
+<li>메인 스레드 작업 최소화</li>
+<li>요청 수를 줄이고 전송 크기를 작게 유지</li>
+</ul>
+<h3 id="️-fid-first-input-delay">⭐️ FID (First Input Delay)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#️-fid-first-input-delay"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><figure><picture>
+	<source type="image/png" srcset="/_astro/fid_8x2.ce47c44e_ZGFLCG.png 480w,/_astro/fid_8x2.ce47c44e_Z21iTqN.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/fid_8x2.ce47c44e_Z17yF8E.webp 480w,/_astro/fid_8x2.ce47c44e_Z1pltxJ.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/fid_8x2.ce47c44e_Z1pltxJ.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+사용자가 페이지와 처음 상호작용한(클릭 또는 키 입력 등) 시간부터 브라우저가 실제로 이벤트 핸들러 처리를 시작할 수 있는 시간까지의 시간을 측정한다.<br/>
+<figure><picture>
+	<source type="image/png" srcset="/_astro/krOoeuQ4TWCbt9t6v5Wf.03c0c611_ZCcm77.png 480w,/_astro/krOoeuQ4TWCbt9t6v5Wf.03c0c611_Zg9gCm.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/krOoeuQ4TWCbt9t6v5Wf.03c0c611_19nhT8.webp 480w,/_astro/krOoeuQ4TWCbt9t6v5Wf.03c0c611_2bxMnD.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/krOoeuQ4TWCbt9t6v5Wf.03c0c611_2bxMnD.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+일반적으로 입력 지연은 브라우저의 기본 스레드가 다른 작업 (예: 대용량 js 파일 파싱)을 실행 중일때 발생한다. 위와 같이 메인 스레드에서 작업중인데 user input이 발생하면 브라우저가 이에 대응하는데 <code>FID</code>만큼의 시간이 소요된다.</p>
+<h4 id="최적화-방법-5">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법-5"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>긴 Tasks 분할하기
+<ul>
+<li>메인 스레드를 50ms 이상 차단하는 긴 Task를 분할하기 (<code>TBT</code> 개선)</li>
+<li>코드 스플리팅</li>
+</ul>
+</li>
+<li>상호작용 준비를 위한 페이지 최적화
+<ul>
+<li>JS 코드 및 기능을 점진적으로 load</li>
+<li>SSR의 경우 논리를 서버측으로 이동하고 코드 스플리팅을 고려해야 함</li>
+<li>cascading data fetch를 최소화</li>
+<li>서드파티 코드 로딩시간 고려해야 함</li>
+</ul>
+</li>
+<li>web worker 사용하기
+<ul>
+<li>백그라운드 스레드에서 자바스크립트를 실행할 수 있음</li>
+</ul>
+</li>
+<li>JS 실행시간 단축
+<ul>
+<li>사용하지 않는 자바스크립트 defer로 load
+<ul>
+<li>특별한 이유가 없는 한 서드파티 스크립트는 defer 또는 async로 로드되어야 함</li>
+</ul>
+</li>
+<li>사용하지 않는 polyfill 최소화
+<ul>
+<li>module / nomodule 패턴을 활용하여 개별 번들 제공</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tbt-total-blocking-time">TBT (Total Blocking Time)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#tbt-total-blocking-time"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><figure><picture>
+	<source type="image/png" srcset="/_astro/tbt-blocking-time.f9b66eab_1fQ3Jq.png 480w,/_astro/tbt-blocking-time.f9b66eab_PKIEP.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/tbt-blocking-time.f9b66eab_Z1ogidj.webp 480w,/_astro/tbt-blocking-time.f9b66eab_16BUTc.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/tbt-blocking-time.f9b66eab_16BUTc.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure><br/>
+<code>TBT</code>는 주 스레드가 input 응답을 막을 정도로 오래 차단 되었을때 <code>FCP</code>와 <code>TTI</code> 사이의 총 시간을 나타낸다. 긴 작업의 차단 시간은 50ms를 초과하는 시간으로 계산한다. 즉 task의 작업 시간이 250ms이면 <code>TBT</code>는 200ms이다.</p>
+<h4 id="최적화-방법-6">최적화 방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#최적화-방법-6"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<ul>
+<li>타사 코드의 영향 범위 감소</li>
+<li>JS 실행시간 단축</li>
+<li>메인 스레드 작업 최소화</li>
+<li>요청 수를 줄이고 전송 크기를 작게 유지</li>
+</ul>
+<h2 id="ssr과-csr에서의-성능-메트릭">SSR과 CSR에서의 성능 메트릭<a class="autolink" aria-hidden="true" tabIndex="-1" href="#ssr과-csr에서의-성능-메트릭"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+
+<figure><picture>
+	<source type="image/png" srcset="/_astro/image-7.56ca501b_14M9CV.png 480w,/_astro/image-7.56ca501b_2lA2p4.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-7.56ca501b_Z1V39GC.webp 480w,/_astro/image-7.56ca501b_20o9vT.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
+	<img alt="" src="/_astro/image-7.56ca501b_20o9vT.webp" loading="lazy" decoding="async" alt="">
+</picture><figcaption></figcaption></figure>
+<h3 id="ssr-server-side-rendering">SSR (Server Side Rendering)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#ssr-server-side-rendering"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><code>SSR</code>은 일반적으로 빠른 <code>FP</code>와 <code>FCP</code>를 가진다. 또한 많은 JS를 서버단에서 실행하므로 <code>TTI</code>도 빠르게 수행할 수 있다. 다만 서버에서 페이지를 생성하는데 시간이 걸리기 때문에 <code>TTFB</code>가 느려질 수 있다.</p>
+<h4 id="ssr-with-hydration">SSR with hydration<a class="autolink" aria-hidden="true" tabIndex="-1" href="#ssr-with-hydration"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h4>
+<p>유려한 페이지 전환과 인터랙션을 위해 첫 페이지 렌더는 <code>SSR</code>, 이후에는 <code>CSR</code>로 이루어지는 <code>SSR with hydration</code>이라는 기법도 존재한다. <code>Next.js</code>를 활용하면 쉽게 구현할 수 있다.</p>
+<h3 id="csr-client-side-rendering">CSR (Client Side Rendering)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#csr-client-side-rendering"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<p><code>CSR</code>에서는 리소스를 가져오기만 하면 되기 때문에 빠른 <code>TTFB</code>를 가진다. 하지만 <code>FCP</code>가 느리고 자연히 <code>TTI</code>는 그보다 더 느리다는 단점이 있다.</p>
+<h2 id="측정방법">측정방법<a class="autolink" aria-hidden="true" tabIndex="-1" href="#측정방법"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<ul>
+<li><strong>lab</strong> : 개발하면서 테스트
+<ul>
+<li><a href="https://developers.google.com/web/tools/lighthouse/" target="_blank" rel="nofollow">Lighthouse</a></li>
+<li><a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank" rel="nofollow">Google PageSpeed Insights</a></li>
+<li><a href="https://www.webpagetest.org/" target="_blank" rel="nofollow">WebpageTest</a></li>
+</ul>
+</li>
+<li><strong>field</strong> : 실제 사용자 모니터링
+<ul>
+<li><a href="https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/#performance-tracking" target="_blank" rel="nofollow">Google Analytics</a>를 통한 추적</li>
+<li><a href="https://github.com/GoogleChrome/web-vitals" target="_blank" rel="nofollow">Web Vitals</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<ul>
+<li><a href="https://github.com/csabapalfi/awesome-pagespeed-metrics" target="_blank" rel="nofollow">https://github.com/csabapalfi/awesome-pagespeed-metrics</a></li>
+<li><a href="https://web.dev/user-centric-performance-metrics/" target="_blank" rel="nofollow">https://web.dev/user-centric-performance-metrics/</a></li>
+<li><a href="https://developers.google.com/web/updates/2019/02/rendering-on-the-web" target="_blank" rel="nofollow">https://developers.google.com/web/updates/2019/02/rendering-on-the-web</a></li>
+<li><a href="https://markoskon.com/performance/" target="_blank" rel="nofollow">https://markoskon.com/performance/</a></li>
+</ul>
+  </div>
+</article><div class="flex mt-10 -mb-10">
+  <div class="max-w-2/5">
+    <a href="2021-03-09-web-worker-service-worker" class="hover:text-violet-700 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+  viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+</svg>
+          <div>
+            <div class="text-xs text-slate-500">Previous</div>
+            <div>Web Worker와 Service Worker</div>
+          </div>
+        </a>
+  </div>
+  <div class="max-w-2/5 text-right ml-auto">
+    <a href="2021-03-08-browser-rendering" class="hover:text-violet-700 flex items-center">
+          <div>
+            <div class="text-xs text-slate-500">Next</div>
+            <div>브라우저 렌더링에 대한 이해와 최적화</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+  viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+</svg>
+        </a>
+  </div>
+</div><div class="mt-20 relative" style="min-height:269">
+  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-09-web-vital" label="comment" theme="github-light" crossorigin="anonymous" async></script>
+</div>
+      </main>
+      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
+  <span class="mr-1 text-sm sm:text-base">
+    Copyright &copy; 2023
+  </span>
+  <span>nana</span>
+</footer>
+    </div>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body></html>

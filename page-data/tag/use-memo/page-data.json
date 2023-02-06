@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/use-memo",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-08-26-usememo","excerpt":"공식 설명에도 computeExpensiveValue라고 설명하고 있다. 즉 비싼 연산을 언급하는 것이다. 예를 들면 데이터 만개를 변경한다던가... a === b는 전혀 비싼 연산이 아니다! 이 경우, 메모하는 메모리 비용에다가 [a, b]로 들어간 디펜던시에서 리…","frontmatter":{"title":"간단한 연산에 useMemo 쓰지 말자","date":"2021-08-26T11:15:48+09:00","tags":["React","useMemo"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"text","value":"공식 설명에도 computeExpensiveValue라고 설명하고 있다. 즉 비싼 연산을 언급하는 것이다. "},{"type":"element","tagName":"code","properties":{},"children":[{"type":"text","value":"a === b"}]},{"type":"text","value":"는 비싼 연산이 아니다!"}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"useMemo"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

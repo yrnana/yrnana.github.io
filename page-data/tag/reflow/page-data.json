@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/reflow",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-03-25-offsettop-reflow","excerpt":"What forces layout / reflow 라는 문서를 보는데 Getting box metrics 즉 offsetTop, getBoundingClientRect() 등을 호출하는 api도 적혀 있었다. 아니 이게 무슨 소리야...내가 reflow를 마구 발생시…","frontmatter":{"title":"OffsetTop을 읽으면 reflow가 발생한다?","date":"2021-03-25T20:38:50+09:00","tags":["Browser","reflow"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"element","tagName":"code","properties":{},"children":[{"type":"text","value":"offsetTop"}]},{"type":"text","value":"을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 "},{"type":"element","tagName":"code","properties":{},"children":[{"type":"text","value":"offsetTop"}]},{"type":"text","value":"을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다."}]}],"data":{"quirksMode":false}}}}]}},"pageContext":{"tag":"reflow"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

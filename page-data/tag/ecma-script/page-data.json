@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/ecma-script",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-03-13-ecmascript-2021","excerpt":"1. String.prototype.replaceAll 2. Promise.any() Promise.all()이 모든 promise들이 resolve 되면 resolve 되는 함수라면, Promise.any()는 하나라도 resolve 된다면 resolve 된다. 3…","frontmatter":{"title":"ECMAScript 2021","date":"2021-03-13T20:25:15+09:00","tags":["ECMAScript"],"excerptAst":null}}]}},"pageContext":{"tag":"ECMAScript"}},
-    "staticQueryHashes": ["1957264973","5457840"]}

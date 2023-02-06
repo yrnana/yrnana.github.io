@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-list-by-tag-template-tsx",
-    "path": "/tag/test",
-    "result": {"data":{"allMarkdownRemark":{"nodes":[{"slug":"/post/2021-08-15-testing-library","excerpt":"리액트로 개발하다보면 테스트는 거의 jest + testing-library 조합을 깔고 가는 듯 하다. CRA도 이 조합으로 기본적으로 세팅되어서 나온다. 가장 최근 State of JS 테스팅 툴 부문에서도 testing-library가 만족도 랭킹 1위를 기록했…","frontmatter":{"title":"testing-library 사용팁","date":"2021-08-15T12:29:37+09:00","tags":["test","Testing Library"],"excerptAst":{"type":"root","children":[{"type":"element","tagName":"p","properties":{},"children":[{"type":"text","value":"요점은 사용자 관점에서 테스트를 작성하자는 것이다."}]}],"data":{"quirksMode":false}}}},{"slug":"/post/2021-02-08-imported-constant-mock","excerpt":"함수를 mock 하는 법은 많은데 의외로 import 된 상수를 mock 하는 방법을 찾기 어려웠다. (아니면 그냥 내가 검색을 못하는 걸 수도...) 예를 들면 아래와 같은 코드에서 modeToText 함수를 테스트 하는 경우 isProduction를 mock 해야…","frontmatter":{"title":"imported constant를 mock 하는 법","date":"2021-02-08T01:43:13+09:00","tags":["Jest","test"],"excerptAst":null}}]}},"pageContext":{"tag":"test"}},
-    "staticQueryHashes": ["1957264973","5457840"]}
