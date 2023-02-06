@@ -18,3 +18,8 @@ body {
 .utterances {
   @apply max-w-none !important;
 }
+
+/* preview */
+.preview picture img {
+  @apply mx-auto;
+}
