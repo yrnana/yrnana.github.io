@@ -23,3 +23,22 @@ body {
 .preview picture img {
   @apply mx-auto;
 }
+
+/* applause */
+.applause {
+  .style-root {
+    @apply !text-purple-500;
+  }
+  .count {
+    @apply text-sm text-purple-500;
+  }
+  .count-container {
+    @apply -top-1/2;
+  }
+  svg {
+    @apply !overflow-hidden;
+    path {
+      @apply fill-purple-500;
+    }
+  }
+}
