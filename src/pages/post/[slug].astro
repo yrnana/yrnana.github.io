@@ -21,6 +21,8 @@ export async function getStaticPaths() {
   }));
 }
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 type Props = {
   post: Post;
   prev?: Post;
@@ -56,6 +58,7 @@ const { tags, title, excerpt, preview } = post.data;
         class="applause"
         multiclap="true"
         style="width: 58px; height: 58px;"
+        url={canonicalURL}
       >
       </applause-button>
     </div>
