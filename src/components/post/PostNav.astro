@@ -14,7 +14,10 @@ const { prev, next } = Astro.props;
   <div class="max-w-2/5">
     {
       prev && (
-        <a href={prev.slug} class="hover:text-violet-700 flex items-center">
+        <a
+          href={`/post/${prev.slug}`}
+          class="hover:text-violet-700 flex items-center"
+        >
           <Fragment set:html={BigArrowLeftSvg} />
           <div>
             <div class="text-xs text-slate-500">Previous</div>
@@ -27,7 +30,10 @@ const { prev, next } = Astro.props;
   <div class="max-w-2/5 text-right ml-auto">
     {
       next && (
-        <a href={next.slug} class="hover:text-violet-700 flex items-center">
+        <a
+          href={`/post/${next.slug}`}
+          class="hover:text-violet-700 flex items-center"
+        >
           <div>
             <div class="text-xs text-slate-500">Next</div>
             <div>{next.data.title}</div>
