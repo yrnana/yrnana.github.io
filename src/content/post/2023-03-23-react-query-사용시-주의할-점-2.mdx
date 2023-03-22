@@ -1,0 +1,94 @@
+---
+slug: '2023-03-23-react-query-2'
+title: 'React Query 사용시 주의할 점 2'
+excerpt: 'React Query를 사용할때 알아두면 좋은 나노 팁 2 : useQueryErrorResetBoundary 의 원리와 refetch의 throwOnError 옵션'
+date: '2023-03-23T00:00:00+09:00'
+tags: [React Query]
+draft: false
+---
+
+숨 쉬었는데 1년 지난거 실화인감?
+아무튼 너무 사내 정보글만 적어서 블로그도...
+
+## `const { reset } = useQueryErrorResetBoundary()`의 `reset` 함수는 invalidate를 trigger 하는 함수가 아니다
+
+[에러바운더리](https://tanstack.com/query/v4/docs/react/reference/useQueryErrorResetBoundary)와 함께 많이 사용하는 `useQueryErrorResetBoundary`는 메서드 이름이나 용법만 보면 현재 실행되어 있는 모든 쿼리의 상태값을 reset 하는 메서드 처럼 보인다.
+
+하지만 실제로 내부 코드를 살펴보면 아래와 같이 매우 단순한 구조로 작성되어있음을 알 수 있다.
+
+```ts
+function createValue(): QueryErrorResetBoundaryValue {
+  let isReset = false;
+  return {
+    clearReset: () => {
+      isReset = false;
+    },
+    reset: () => {
+      isReset = true;
+    },
+    isReset: () => {
+      return isReset;
+    },
+  };
+}
+
+const QueryErrorResetBoundaryContext = React.createContext(createValue());
+
+export const useQueryErrorResetBoundary = () =>
+  React.useContext(QueryErrorResetBoundaryContext);
+```
+
+`reset()`은 `isReset()`을 `true`로 변경시키고, 그로 인해 `useBaseQuery`의 내부 코드에서 `getHasError`가 `false`를 가지도록 하면서 그 순간에는 throw error가 되지 않는다. 최초 렌더링 이후에는 [useClearResetErrorBoundary](https://github.com/TanStack/query/blob/aa2f94420f17d6ea4d47241e31a0322fe265ee27/packages/react-query/src/errorBoundaryUtils.ts#L36)가 실행되면서 `isReset()`는 다시 `false`를 반환하게 된다.
+
+즉, `reset()` 메서드가 cache invalidate를 trigger 한다고 생각하기 쉽지만, 실제로는 react-error-boundary 라이브러리가 `onReset`에 매칭한 함수를 실행하면 에러 상태를 풀고 fallback 컴포넌트에서 다시 children 컴포넌트를 마운트 하면서 children 컴포넌트의 useQuery들이 `refetchOnMount`로 인해 호출되는 것 뿐이다.
+
+```ts
+export const getHasError = ({
+  result,
+  errorResetBoundary,
+  useErrorBoundary,
+  query,
+}) => {
+  return (
+    result.isError &&
+    !errorResetBoundary.isReset() &&
+    !result.isFetching &&
+    shouldThrowError(useErrorBoundary, [result.error, query])
+  );
+};
+
+// Handle error boundary
+if (
+  getHasError({
+    result,
+    errorResetBoundary,
+    useErrorBoundary: defaultedOptions.useErrorBoundary,
+    query: observer.getCurrentQuery(),
+  })
+) {
+  throw result.error;
+}
+```
+
+여기서 발생할 수 있는 문제가 아래와 같은 옵션의 쿼리를 refetch 메서드로 호출했다가 오류가 발생하는 케이스다.
+`enabled: false` 이므로, 다시 mount 되더라도 refetch가 되지 않았다가 리렌더링이 한번이라도 일어난 시점에서 오류를 발생시킨다.
+
+```ts
+const { refetch } = useQuery({ enabled: false, useErrorBoundary: true });
+```
+
+이런 경우는 가능한 이러한 쿼리의 `cacheTime`을 짧게 잡거나, 아니면 `useMutation`을 쓰는게 맞는 것 같다.
+
+## useQuery에서 반환하는 refetch를 사용할 때 오류 옵션을 확인하자
+
+`throwOnError`라는 옵션이 있는데 기본값이 `false`이다.
+이 값이 없으면 refetch 발생시 오류가 발생하더라도 로직이 catch 되지 않는다 (ㅠㅠ)
+
+```ts
+try {
+  await refetch(); // 에러발생
+  console.log('찍힘');
+} catch (e) {
+  console.log('안찍힘');
+}
+```
