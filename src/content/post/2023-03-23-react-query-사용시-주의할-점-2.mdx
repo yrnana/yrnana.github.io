@@ -10,11 +10,11 @@ draft: false
 숨 쉬었는데 1년 지난거 실화인감?
 아무튼 너무 사내 정보글만 적어서 블로그도...
 
-## `const { reset } = useQueryErrorResetBoundary()`의 `reset` 함수는 invalidate를 trigger 하는 함수가 아니다
+## const { reset } = useQueryErrorResetBoundary()의 `reset` 함수는 cache invalidate를 trigger 하는 함수가 아니다
 
 [에러바운더리](https://tanstack.com/query/v4/docs/react/reference/useQueryErrorResetBoundary)와 함께 많이 사용하는 `useQueryErrorResetBoundary`는 메서드 이름이나 용법만 보면 현재 실행되어 있는 모든 쿼리의 상태값을 reset 하는 메서드 처럼 보인다.
 
-하지만 실제로 내부 코드를 살펴보면 아래와 같이 매우 단순한 구조로 작성되어있음을 알 수 있다.
+하지만 실제로 [내부 코드](https://github.com/TanStack/query/blob/v4.28.0/packages/react-query/src/QueryErrorResetBoundary.tsx)를 살펴보면 아래와 같이 매우 단순한 구조로 작성되어있음을 알 수 있다.
 
 ```ts
 function createValue(): QueryErrorResetBoundaryValue {
@@ -74,15 +74,18 @@ if (
 `enabled: false` 이므로, 다시 mount 되더라도 refetch가 되지 않았다가 리렌더링이 한번이라도 일어난 시점에서 오류를 발생시킨다.
 
 ```ts
-const { refetch } = useQuery({ enabled: false, useErrorBoundary: true });
+const { refetch } = useQuery({
+  enabled: false,
+  useErrorBoundary: true,
+});
 ```
 
-이런 경우는 가능한 이러한 쿼리의 `cacheTime`을 짧게 잡거나, 아니면 `useMutation`을 쓰는게 맞는 것 같다.
+이런 경우는 쿼리의 `cacheTime`을 짧게 잡거나, 사실 `useMutation`을 쓰는게 맞는 것 같다.
 
 ## useQuery에서 반환하는 refetch를 사용할 때 오류 옵션을 확인하자
 
 `throwOnError`라는 옵션이 있는데 기본값이 `false`이다.
-이 값이 없으면 refetch 발생시 오류가 발생하더라도 로직이 catch 되지 않는다 (ㅠㅠ)
+이 값이 없으면 refetch 발생시 오류가 발생하더라도 로직이 중단되지 않는다. (ㅠㅠ)
 
 ```ts
 try {
