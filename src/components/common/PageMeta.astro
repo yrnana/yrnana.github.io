@@ -1,5 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
+import { ViewTransitions } from 'astro:transitions';
 
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/helpers/config';
 import { getPostImage } from '~/helpers/utils';
@@ -86,3 +87,5 @@ const metaTitle = title
   async
   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940"
   crossOrigin="anonymous"></script>
+
+<ViewTransitions />
