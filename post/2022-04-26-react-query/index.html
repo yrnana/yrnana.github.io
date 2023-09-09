@@ -1,81 +1,12 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2022-04-26-react-query/">
-
-<!-- Primary Meta Tags -->
-<title>React Query 사용시 주의할 점 | nana.log</title>
-<meta name="title" content="React Query 사용시 주의할 점 | nana.log">
-<meta name="description" content="React Query를 사용할때 알아두면 좋은 나노 팁">
-<meta name="keywords" content="React Query">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2022-04-26-react-query/">
-<meta property="og:title" content="React Query 사용시 주의할 점 | nana.log">
-<meta property="og:description" content="React Query를 사용할때 알아두면 좋은 나노 팁">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2022-04-26-react-query/">
-<meta property="twitter:title" content="React Query 사용시 주의할 점 | nana.log">
-<meta property="twitter:description" content="React Query를 사용할때 알아두면 좋은 나노 팁">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">React Query 사용시 주의할 점</h1>
-    <div class="text-slate-500 mt-4">Apr 26, 2022</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/react-query" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>React Query</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <p>React Query 를 1년간 사용하면서 요즘들어 내가 잘 모르고 사용했구나 생각한 적이 종종 있어서, 복기를 해보고자 한다.</p>
-<h2 id="usequery의-onsuccess-onerror-등은-선언한-인스턴스의-수만큼-실행된다">useQuery의 onSuccess, onError 등은 선언한 인스턴스의 수만큼 실행된다<a class="autolink" aria-hidden="true" tabIndex="-1" href="#usequery의-onsuccess-onerror-등은-선언한-인스턴스의-수만큼-실행된다"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2022-04-26-react-query/"><!-- Primary Meta Tags --><title>React Query 사용시 주의할 점 | nana.log</title><meta name="title" content="React Query 사용시 주의할 점 | nana.log"><meta name="description" content="React Query를 사용할때 알아두면 좋은 나노 팁"><meta name="keywords" content="React Query"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2022-04-26-react-query/"><meta property="og:title" content="React Query 사용시 주의할 점 | nana.log"><meta property="og:description" content="React Query를 사용할때 알아두면 좋은 나노 팁"><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2022-04-26-react-query/"><meta property="twitter:title" content="React Query 사용시 주의할 점 | nana.log"><meta property="twitter:description" content="React Query를 사용할때 알아두면 좋은 나노 팁"><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">React Query 사용시 주의할 점</h1><div class="text-slate-500 mt-4">Apr 26, 2022</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/react-query" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>React Query</span></a></div></header><div class="markdown"><p>React Query 를 1년간 사용하면서 요즘들어 내가 잘 모르고 사용했구나 생각한 적이 종종 있어서, 복기를 해보고자 한다.</p>
+<h2 id="usequery의-onsuccess-onerror-등은-선언한-인스턴스의-수만큼-실행된다">useQuery의 onSuccess, onError 등은 선언한 인스턴스의 수만큼 실행된다</h2>
 <p>예를 들면 아래와 같이 사용한다고 하자.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useUserQuery</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> () </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useUserQuery</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> () </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useQuery</span><span style="color:#ABB2BF">([</span><span style="color:#98C379">&#39;user&#39;</span><span style="color:#ABB2BF">], </span><span style="color:#E06C75">getUser</span><span style="color:#ABB2BF">, {</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#61AFEF">onSuccess</span><span style="color:#ABB2BF">: (</span><span style="color:#E06C75">data</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;onSuccess&#39;</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">data</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#61AFEF">onSuccess</span><span style="color:#ABB2BF">: (</span><span style="color:#E06C75;font-style:italic">data</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;onSuccess&#39;</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">data</span><span style="color:#ABB2BF">),</span></span>
 <span class="line"><span style="color:#ABB2BF">  });</span></span>
 <span class="line"><span style="color:#ABB2BF">};</span></span>
 <span class="line"></span>
@@ -95,21 +26,21 @@
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> &lt;</span><span style="color:#E5C07B">div</span><span style="color:#ABB2BF"> /&gt;;</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
 <p><code>&lt;Child /&gt;</code> 컴포넌트가 3개 선언되었으므로 <code>useUserQuery()</code> 인스턴스는 총 3개 생성되었다. 이렇게 되면 <code>queryFn</code>인 <code>getUser</code>는 <strong>한번만</strong> 호출되지만, <code>onSuccess</code>는 <strong>쿼리 인스턴스 갯수만큼</strong>, 즉 3번 실행된다. <code>onSuccess</code> 뿐만이 아니라 이렇게 지정되는 모든 옵션은 인스턴스 갯수만큼 실행된다. 따라서 <code>useSelector</code>처럼 <code>useCustomQuery</code>를 쓴다면 이 부분을 주의해야 한다.</p>
-<h2 id="suspense-모드를-사용하면-쿼리가-직렬로-실행된다">suspense 모드를 사용하면 쿼리가 직렬로 실행된다<a class="autolink" aria-hidden="true" tabIndex="-1" href="#suspense-모드를-사용하면-쿼리가-직렬로-실행된다"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="suspense-모드를-사용하면-쿼리가-직렬로-실행된다">suspense 모드를 사용하면 쿼리가 직렬로 실행된다</h2>
 <blockquote>
-<p><a href="https://react-query.tanstack.com/guides/parallel-queries" target="_blank" rel="nofollow">https://react-query.tanstack.com/guides/parallel-queries</a><br/>
+<p><a href="https://react-query.tanstack.com/guides/parallel-queries" rel="nofollow" target="_blank">https://react-query.tanstack.com/guides/parallel-queries</a><br/>
 When using React Query in suspense mode, this pattern of parallelism does not work, since the first query would throw a promise internally and would suspend the component before the other queries run. To get around this, you’ll either need to use the useQueries hook (which is suggested) or orchestrate your own parallelism with separate components for each useQuery instance (which is lame).</p>
 </blockquote>
 <p>다만 실제로 react-query v3 / v4 + suspense true / false + useQuery / useQueries 다양한 조합으로 네트워크 테스트를 수행했을때 별다른 차이는 없었다.</p>
-<h2 id="react-query-v3의-suspense-모드는-experimental-기능이다">React Query v3의 suspense 모드는 experimental 기능이다.<a class="autolink" aria-hidden="true" tabIndex="-1" href="#react-query-v3의-suspense-모드는-experimental-기능이다"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<p>리액트에서 data fetch에 따른 suspense(지연) 모드는 React 18에서 도입된 기능이고, 이전까지는 <code>React.lazy</code>를 활용한 코드 스플리팅만 지원했다. 그런데 <a href="https://react-query.tanstack.com/guides/suspense" target="_blank" rel="nofollow">React Query를 사용하면</a> 마법처럼 이 기능을 사용할 수 있었다. 다만, React Query 문서에서 나왔듯이 이는 experimental 기능이며 React 17에서 실행하게 되면 React 18의 정식 기능과는 차이가 존재한다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#ABB2BF">&lt;</span><span style="color:#E5C07B">Suspense</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">fallback</span><span style="color:#56B6C2">=</span><span style="color:#C678DD">{</span><span style="color:#ABB2BF">&lt;</span><span style="color:#E5C07B">Fallback</span><span style="color:#ABB2BF"> /&gt;</span><span style="color:#C678DD">}</span><span style="color:#ABB2BF">&gt;</span></span>
+<h2 id="react-query-v3의-suspense-모드는-experimental-기능이다">React Query v3의 suspense 모드는 experimental 기능이다.</h2>
+<p>리액트에서 data fetch에 따른 suspense(지연) 모드는 React 18에서 도입된 기능이고, 이전까지는 <code>React.lazy</code>를 활용한 코드 스플리팅만 지원했다. 그런데 <a href="https://react-query.tanstack.com/guides/suspense" rel="nofollow" target="_blank">React Query를 사용하면</a> 마법처럼 이 기능을 사용할 수 있었다. 다만, React Query 문서에서 나왔듯이 이는 experimental 기능이며 React 17에서 실행하게 되면 React 18의 정식 기능과는 차이가 존재한다.</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#ABB2BF">&lt;</span><span style="color:#E5C07B">Suspense</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66;font-style:italic">fallback</span><span style="color:#56B6C2">=</span><span style="color:#C678DD">{</span><span style="color:#ABB2BF">&lt;</span><span style="color:#E5C07B">Fallback</span><span style="color:#ABB2BF"> /&gt;</span><span style="color:#C678DD">}</span><span style="color:#ABB2BF">&gt;</span></span>
 <span class="line"><span style="color:#ABB2BF">  &lt;</span><span style="color:#E5C07B">Wrapper</span><span style="color:#ABB2BF">&gt;</span></span>
 <span class="line"><span style="color:#ABB2BF">    &lt;</span><span style="color:#E5C07B">DataFetch</span><span style="color:#ABB2BF"> /&gt;</span></span>
 <span class="line"><span style="color:#ABB2BF">  &lt;/</span><span style="color:#E5C07B">Wrapper</span><span style="color:#ABB2BF">&gt;</span></span>
 <span class="line"><span style="color:#ABB2BF">&lt;/</span><span style="color:#E5C07B">Suspense</span><span style="color:#ABB2BF">&gt;;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">Wrapper</span><span style="color:#ABB2BF">({ </span><span style="color:#E06C75">children</span><span style="color:#ABB2BF"> }) {</span></span>
+<span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">Wrapper</span><span style="color:#ABB2BF">({ </span><span style="color:#E06C75;font-style:italic">children</span><span style="color:#ABB2BF"> }) {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#61AFEF">useEffect</span><span style="color:#ABB2BF">(() </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
 <span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;Wrapper&#39;</span><span style="color:#ABB2BF">);</span></span>
 <span class="line"><span style="color:#ABB2BF">  }, []);</span></span>
@@ -120,45 +51,11 @@ When using React Query in suspense mode, this pattern of parallelism does not wo
 <li><strong>React 17</strong> : Wrapper -&gt; Fallback -&gt; Child</li>
 <li><strong>React 18</strong> : Fallback -&gt; Child -&gt; Wrapper</li>
 </ul>
-<p>suspense 모드를 사용한다면 이런 차이점들을 인지해야 할 것 같다.</p>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2022-04-26-react-query/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2023-03-22-calculation-is-expensive" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<p>suspense 모드를 사용한다면 이런 차이점들을 인지해야 할 것 같다.</p></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2022-04-26-react-query/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2023-03-22-calculation-is-expensive" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>비싼 연산의 기준은 무엇일까?</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2022-04-12-react-18" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>React 18 둘러보기</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>비싼 연산의 기준은 무엇일까?</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2022-04-12-react-18" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>React 18 둘러보기</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2022-04-26-react-query" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2022-04-26-react-query" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

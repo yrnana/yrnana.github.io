@@ -1,155 +1,49 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-03-13-progressive-web-app/">
-
-<!-- Primary Meta Tags -->
-<title>Progressive Web App | nana.log</title>
-<meta name="title" content="Progressive Web App | nana.log">
-<meta name="description" content="Progressive Web App은 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다.">
-<meta name="keywords" content="Service Worker,PWA">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-03-13-progressive-web-app/">
-<meta property="og:title" content="Progressive Web App | nana.log">
-<meta property="og:description" content="Progressive Web App은 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다.">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-13-progressive-web-app/">
-<meta property="twitter:title" content="Progressive Web App | nana.log">
-<meta property="twitter:description" content="Progressive Web App은 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다.">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">Progressive Web App</h1>
-    <div class="text-slate-500 mt-4">Mar 13, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/service-worker" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Service Worker</span>
-  
-</a><a href="/tag/pwa" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>PWA</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <h2 id="progressive-web-app이란">Progressive Web App이란?<a class="autolink" aria-hidden="true" tabIndex="-1" href="#progressive-web-app이란"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-03-13-progressive-web-app/"><!-- Primary Meta Tags --><title>Progressive Web App | nana.log</title><meta name="title" content="Progressive Web App | nana.log"><meta name="description" content="Progressive Web App은 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다."><meta name="keywords" content="Service Worker,PWA"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-03-13-progressive-web-app/"><meta property="og:title" content="Progressive Web App | nana.log"><meta property="og:description" content="Progressive Web App은 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다."><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-03-13-progressive-web-app/"><meta property="twitter:title" content="Progressive Web App | nana.log"><meta property="twitter:description" content="Progressive Web App은 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다."><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">Progressive Web App</h1><div class="text-slate-500 mt-4">Mar 13, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/service-worker" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Service Worker</span></a><a href="/tag/pwa" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>PWA</span></a></div></header><div class="markdown"><h2 id="progressive-web-app이란">Progressive Web App이란?</h2>
 <ul>
 <li><strong>웹 앱</strong> : 모든 사람들, 모든 장소, 모든 디바이스에서 접속이 가능하다.</li>
 <li><strong>플랫폼 네이티브 앱</strong> : 하드웨어에 접근할 수 있고 기기 데이터와 상호작용할 수 있는 등 장치의 기능을 활용할 수 있다. 설치할 수 있으므로 오프라인에서도 동작한다.</li>
 <li><strong>PWA (Progressive Web App)</strong> 는 모던 API로 구축되어 네이티브 앱처럼 기능성, 안정성을 제공하는 것과 동시에 웹 앱처럼 모든 사람, 모든 장소, 모든 디바이스에서 접근할 수 있도록 개발된 웹 앱을 말한다.</li>
 </ul>
-<h2 id="pwa-요소">PWA 요소<a class="autolink" aria-hidden="true" tabIndex="-1" href="#pwa-요소"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<h3 id="유능함">유능함<a class="autolink" aria-hidden="true" tabIndex="-1" href="#유능함"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h2 id="pwa-요소">PWA 요소</h2>
+<h3 id="유능함">유능함</h3>
 <p>웹은 그 자체로도 다양한 기능을 갖추고 있다. 예를 들면 <code>WebRTC</code>, <code>Geolocation API</code>, <code>Push notification</code> 등을 활용하면 비디오 채팅 앱을 개발할 수 있다. <code>Web Assembly</code>가 등장하면서 개발자는 <code>C</code>, <code>Rust</code>로 작업한 기능들을 웹에 적용할 수도 있다.</p>
-<h3 id="신뢰할-수-있음">신뢰할 수 있음<a class="autolink" aria-hidden="true" tabIndex="-1" href="#신뢰할-수-있음"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="신뢰할-수-있음">신뢰할 수 있음</h3>
 <p>PWA는 네트워크 속도에 관계 없이 빠르고 신뢰할 수 있어야 한다. 페이지 로드가 빨리 되어야 하고, 버튼 클릭이 오류 없이 동작해야만 하며, 버벅이는 증상이 없어야 한다. 또한 사용자는 네트워크가 느리거나 오프라인이더라도 앱이 정상적으로 나오거나 문제가 있음을 넌지시 알려주길 원한다. <code>Service Worker</code>과 <code>Cache API</code>를 활용하면 네트워크 독립적인 앱 개발이 가능하다.</p>
 <ul>
-<li><a href="https://serviceworke.rs/offline-fallback_demo.html" target="_blank" rel="nofollow">offline 예제</a></li>
-<li><a href="https://serviceworke.rs/strategy-network-or-cache_demo.html" target="_blank" rel="nofollow">network or cache 예제</a></li>
-<li><a href="https://web.dev/offline-fallback-page/" target="_blank" rel="nofollow">offline 예제 2</a></li>
+<li><a href="https://serviceworke.rs/offline-fallback_demo.html" rel="nofollow" target="_blank">offline 예제</a></li>
+<li><a href="https://serviceworke.rs/strategy-network-or-cache_demo.html" rel="nofollow" target="_blank">network or cache 예제</a></li>
+<li><a href="https://web.dev/offline-fallback-page/" rel="nofollow" target="_blank">offline 예제 2</a></li>
 </ul>
-<h3 id="설치-가능함">설치 가능함<a class="autolink" aria-hidden="true" tabIndex="-1" href="#설치-가능함"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="설치-가능함">설치 가능함</h3>
 <p>설치된 PWA는 브라우저 탭 대신 독립 실행형 창 위에서 실행될 수 있다.</p>
-<h3 id="발견이-가능함">발견이 가능함<a class="autolink" aria-hidden="true" tabIndex="-1" href="#발견이-가능함"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="발견이-가능함">발견이 가능함</h3>
 <p>검색엔진을 통해 찾을 수 있다. <code>&lt;meta&gt;</code> 태그를 사용하여 메타 데이터를 지정하거나, <code>web app manifest</code>를 정의하면 된다.</p>
 <ul>
-<li><a href="https://web.dev/add-manifest/" target="_blank" rel="nofollow">web app manifest 정의</a></li>
+<li><a href="https://web.dev/add-manifest/" rel="nofollow" target="_blank">web app manifest 정의</a></li>
 </ul>
-<h3 id="연결-가능함">연결 가능함<a class="autolink" aria-hidden="true" tabIndex="-1" href="#연결-가능함"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="연결-가능함">연결 가능함</h3>
 <p>URL으로 공유가 가능해야 한다. 앱 스토어에서 설치하지 않아도 URL만으로도 앱에 연결할 수 있는 것이 웹의 장점이다.</p>
-<h3 id="progressive-점진적이어야-함">progressive (점진적이어야 함)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#progressive-점진적이어야-함"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="progressive-점진적이어야-함">progressive (점진적이어야 함)</h3>
 <p>구형 브라우저에서도 기본적으로 접근은 가능해야 하고, 신형 브라우저에서는 모든 기능을 제공할 수 있어야 한다.</p>
-<h3 id="re-engageable-재참여가능">Re-engageable (재참여가능)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#re-engageable-재참여가능"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="re-engageable-재참여가능">Re-engageable (재참여가능)</h3>
 <p>새 컨텐츠가 있을때 알림을 보낼 수 있다. <code>Web Push API</code>와 <code>Notifications API</code>를 활용하면 이 작업을 수행할 수 있다.</p>
 <ul>
-<li><a href="https://serviceworke.rs/push-payload_demo.html" target="_blank" rel="nofollow">Push 예제</a></li>
+<li><a href="https://serviceworke.rs/push-payload_demo.html" rel="nofollow" target="_blank">Push 예제</a></li>
 </ul>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://web.dev/what-are-pwas" target="_blank" rel="nofollow">https://web.dev/what-are-pwas</a></li>
-<li><a href="https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps" target="_blank" rel="nofollow">https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps</a></li>
-<li><a href="https://serviceworke.rs" target="_blank" rel="nofollow">https://serviceworke.rs</a></li>
-<li><a href="https://create-react-app.dev/docs/making-a-progressive-web-app" target="_blank" rel="nofollow">https://create-react-app.dev/docs/making-a-progressive-web-app</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-13-progressive-web-app/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-03-14-intersection-observer-api" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://web.dev/what-are-pwas" rel="nofollow" target="_blank">https://web.dev/what-are-pwas</a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps" rel="nofollow" target="_blank">https://developer.mozilla.org/ko/docs/Web/Progressive_web_apps</a></li>
+<li><a href="https://serviceworke.rs" rel="nofollow" target="_blank">https://serviceworke.rs</a></li>
+<li><a href="https://create-react-app.dev/docs/making-a-progressive-web-app" rel="nofollow" target="_blank">https://create-react-app.dev/docs/making-a-progressive-web-app</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-13-progressive-web-app/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-03-14-intersection-observer-api" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>Intersection Observer API</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-03-13-ecmascript-2021" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>ECMAScript 2021</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>Intersection Observer API</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-03-13-ecmascript-2021" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>ECMAScript 2021</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-13-progressive-web-app" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-13-progressive-web-app" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

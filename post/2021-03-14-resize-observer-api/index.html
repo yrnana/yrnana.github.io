@@ -1,136 +1,27 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-03-14-resize-observer-api/">
-
-<!-- Primary Meta Tags -->
-<title>Resize Observer API | nana.log</title>
-<meta name="title" content="Resize Observer API | nana.log">
-<meta name="description" content="Resize Observer API는 요소의 크기 변화를 감지하고 콜백을 실행한다.">
-<meta name="keywords" content="Resize Observer API,Web API">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-03-14-resize-observer-api/">
-<meta property="og:title" content="Resize Observer API | nana.log">
-<meta property="og:description" content="Resize Observer API는 요소의 크기 변화를 감지하고 콜백을 실행한다.">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-14-resize-observer-api/">
-<meta property="twitter:title" content="Resize Observer API | nana.log">
-<meta property="twitter:description" content="Resize Observer API는 요소의 크기 변화를 감지하고 콜백을 실행한다.">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">Resize Observer API</h1>
-    <div class="text-slate-500 mt-4">Mar 13, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/resize-observer-api" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Resize Observer API</span>
-  
-</a><a href="/tag/web-api" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Web API</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <p><code>Resize Observer API</code>는 요소의 크기 변화를 감지하고 콜백을 실행한다. 기존에는 Viewport 크기 변화는 <code>window</code>의 <code>resize</code> 이벤트 또는 <code>window.matchMedia</code>로 감지할 수 있지만 요소의 크기 변화를 직접적으로 감지할 수 있는 방법은 없었다. 이 API를 이용하면 브라우저 크기 변화에 의존하지 않고 요소의 크기 변화를 직접적으로 관찰하고 대응할 수 있다.</p>
-<h2 id="resize-observer-생성-및-적용">Resize Observer 생성 및 적용<a class="autolink" aria-hidden="true" tabIndex="-1" href="#resize-observer-생성-및-적용"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">targetElement</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">document</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">querySelector</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;#target&#39;</span><span style="color:#ABB2BF">);</span></span>
-<span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">observer</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">new</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">ResizeObserver</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75">entries</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
-<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E5C07B">entries</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">forEach</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75">entry</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#7F848E">// borderBoxSize, contentBoxSize</span></span>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-03-14-resize-observer-api/"><!-- Primary Meta Tags --><title>Resize Observer API | nana.log</title><meta name="title" content="Resize Observer API | nana.log"><meta name="description" content="Resize Observer API는 요소의 크기 변화를 감지하고 콜백을 실행한다."><meta name="keywords" content="Resize Observer API,Web API"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-03-14-resize-observer-api/"><meta property="og:title" content="Resize Observer API | nana.log"><meta property="og:description" content="Resize Observer API는 요소의 크기 변화를 감지하고 콜백을 실행한다."><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-03-14-resize-observer-api/"><meta property="twitter:title" content="Resize Observer API | nana.log"><meta property="twitter:description" content="Resize Observer API는 요소의 크기 변화를 감지하고 콜백을 실행한다."><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">Resize Observer API</h1><div class="text-slate-500 mt-4">Mar 13, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/resize-observer-api" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Resize Observer API</span></a><a href="/tag/web-api" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Web API</span></a></div></header><div class="markdown"><p><code>Resize Observer API</code>는 요소의 크기 변화를 감지하고 콜백을 실행한다. 기존에는 Viewport 크기 변화는 <code>window</code>의 <code>resize</code> 이벤트 또는 <code>window.matchMedia</code>로 감지할 수 있지만 요소의 크기 변화를 직접적으로 감지할 수 있는 방법은 없었다. 이 API를 이용하면 브라우저 크기 변화에 의존하지 않고 요소의 크기 변화를 직접적으로 관찰하고 대응할 수 있다.</p>
+<h2 id="resize-observer-생성-및-적용">Resize Observer 생성 및 적용</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">targetElement</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">document</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">querySelector</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;#target&#39;</span><span style="color:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">observer</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">new</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">ResizeObserver</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75;font-style:italic">entries</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E5C07B">entries</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">forEach</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75;font-style:italic">entry</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#7F848E;font-style:italic">// borderBoxSize, contentBoxSize</span></span>
 <span class="line"><span style="color:#ABB2BF">  });</span></span>
 <span class="line"><span style="color:#ABB2BF">});</span></span>
 <span class="line"><span style="color:#E5C07B">observer</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">observe</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">targetElement</span><span style="color:#ABB2BF">);</span></span></code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/contentBoxSize" target="_blank" rel="nofollow">contentBoxSize</a>는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/borderBoxSize" target="_blank" rel="nofollow">borderBoxSize</a>에서 <code>padding</code>과 <code>border</code>를 뺀 값이다.</p>
-<h2 id="호환성">호환성<a class="autolink" aria-hidden="true" tabIndex="-1" href="#호환성"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<p><figure><picture>
-	<source type="image/png" srcset="/_astro/image-14.9d52bcd7_Z159rlF.png 480w,/_astro/image-14.9d52bcd7_Z17KqHD.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-14.9d52bcd7_2cs3WE.webp 480w,/_astro/image-14.9d52bcd7_REnMF.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
-	<img alt="" src="/_astro/image-14.9d52bcd7_REnMF.webp" loading="lazy" decoding="async" alt="">
-</picture><figcaption></figcaption></figure><br/>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/contentBoxSize" rel="nofollow" target="_blank">contentBoxSize</a>는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/borderBoxSize" rel="nofollow" target="_blank">borderBoxSize</a>에서 <code>padding</code>과 <code>border</code>를 뺀 값이다.</p>
+<h2 id="호환성">호환성</h2>
+<p><img src="/_astro/image-14.9d52bcd7_1E1MwT.webp" alt="" width="865" height="212" loading="lazy" decoding="async"><br/>
 아직 호환성이 많이 아쉬운 API다. 특히 <code>ios safari</code> 기준 <code>13.7</code>(2020년 이후 업데이트) 이상이어야 대응하므로 사용에 주의가 필요하다.</p>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API" target="_blank" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-14-resize-observer-api/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-03-14-screen-capture-api" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API" rel="nofollow" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-14-resize-observer-api/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-03-14-screen-capture-api" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>Screen Capture API</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-03-14-mutation-observer" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>Mutation Observer</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>Screen Capture API</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-03-14-mutation-observer" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>Mutation Observer</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-14-resize-observer-api" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-14-resize-observer-api" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

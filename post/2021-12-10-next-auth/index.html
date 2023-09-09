@@ -1,89 +1,14 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-12-10-next-auth/">
-
-<!-- Primary Meta Tags -->
-<title>next-auth와 카카오 로그인 연동 | nana.log</title>
-<meta name="title" content="next-auth와 카카오 로그인 연동 | nana.log">
-<meta name="description" content="next-auth와 카카오 로그인을 연동하는 방법">
-<meta name="keywords" content="Next.js,next-auth,snippet">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-12-10-next-auth/">
-<meta property="og:title" content="next-auth와 카카오 로그인 연동 | nana.log">
-<meta property="og:description" content="next-auth와 카카오 로그인을 연동하는 방법">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-12-10-next-auth/">
-<meta property="twitter:title" content="next-auth와 카카오 로그인 연동 | nana.log">
-<meta property="twitter:description" content="next-auth와 카카오 로그인을 연동하는 방법">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">next-auth와 카카오 로그인 연동</h1>
-    <div class="text-slate-500 mt-4">Dec 10, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/next-js" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Next.js</span>
-  
-</a><a href="/tag/next-auth" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>next-auth</span>
-  
-</a><a href="/tag/snippet" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>snippet</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <p><del><code>next-auth</code>가 v4로 업데이트 되면서 기존 <a href="https://next-auth.js.org/providers/kakao" target="_blank" rel="nofollow">카카오 프로바이더</a> 코드를 적용하면 돌아가지 않아서 정리해본다.</del></p>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-12-10-next-auth/"><!-- Primary Meta Tags --><title>next-auth와 카카오 로그인 연동 | nana.log</title><meta name="title" content="next-auth와 카카오 로그인 연동 | nana.log"><meta name="description" content="next-auth와 카카오 로그인을 연동하는 방법"><meta name="keywords" content="Next.js,next-auth,snippet"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-12-10-next-auth/"><meta property="og:title" content="next-auth와 카카오 로그인 연동 | nana.log"><meta property="og:description" content="next-auth와 카카오 로그인을 연동하는 방법"><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-12-10-next-auth/"><meta property="twitter:title" content="next-auth와 카카오 로그인 연동 | nana.log"><meta property="twitter:description" content="next-auth와 카카오 로그인을 연동하는 방법"><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">next-auth와 카카오 로그인 연동</h1><div class="text-slate-500 mt-4">Dec 10, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/next-js" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Next.js</span></a><a href="/tag/next-auth" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>next-auth</span></a><a href="/tag/snippet" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>snippet</span></a></div></header><div class="markdown"><p><del><code>next-auth</code>가 v4로 업데이트 되면서 기존 <a href="https://next-auth.js.org/providers/kakao" rel="nofollow" target="_blank">카카오 프로바이더</a> 코드를 적용하면 돌아가지 않아서 정리해본다.</del></p>
 <blockquote>
 <p>2022.04.10 기준 카카오 프로바이더도 업데이트가 되어서 추가 설정없이 적용할 수 있다.</p>
 </blockquote>
-<h2 id="install-packages">install packages<a class="autolink" aria-hidden="true" tabIndex="-1" href="#install-packages"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#ABB2BF">npm i next-auth @next-auth/prisma-adapter</span></span></code></pre>
-<h2 id="prismaschemaprisma">prisma/schema.prisma<a class="autolink" aria-hidden="true" tabIndex="-1" href="#prismaschemaprisma"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">enum</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Role</span><span style="color:#ABB2BF"> {</span></span>
+<h2 id="install-packages">install packages</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#61AFEF">npm</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">i</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">next-auth</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">@next-auth/prisma-adapter</span></span></code></pre>
+<h2 id="prismaschemaprisma">prisma/schema.prisma</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">enum</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Role</span><span style="color:#ABB2BF"> {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">USER</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">ADMIN</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span>
@@ -105,7 +30,7 @@
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">provider</span><span style="color:#ABB2BF">                 </span><span style="color:#E5C07B">String</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">providerAccountId</span><span style="color:#ABB2BF">        </span><span style="color:#E5C07B">String</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">userId</span><span style="color:#ABB2BF">                   </span><span style="color:#E5C07B">String</span></span>
-<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">user</span><span style="color:#ABB2BF">                     </span><span style="color:#E5C07B">User</span><span style="color:#ABB2BF">    </span><span style="color:#61AFEF">@relation</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">fields</span><span style="color:#ABB2BF">: [userId], </span><span style="color:#E06C75">references</span><span style="color:#ABB2BF">: [id], </span><span style="color:#E06C75">onDelete</span><span style="color:#ABB2BF">: Cascade)</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">user</span><span style="color:#ABB2BF">                     </span><span style="color:#E5C07B">User</span><span style="color:#ABB2BF">    </span><span style="color:#61AFEF">@relation</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75;font-style:italic">fields</span><span style="color:#ABB2BF">: [userId], </span><span style="color:#E06C75;font-style:italic">references</span><span style="color:#ABB2BF">: [id], </span><span style="color:#E06C75;font-style:italic">onDelete</span><span style="color:#ABB2BF">: Cascade)</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">refresh_token</span><span style="color:#ABB2BF">            </span><span style="color:#E5C07B">String</span><span style="color:#ABB2BF">?</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">refresh_token_expires_in</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Int</span><span style="color:#ABB2BF">?</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">access_token</span><span style="color:#ABB2BF">             </span><span style="color:#E5C07B">String</span><span style="color:#ABB2BF">?</span></span>
@@ -122,21 +47,21 @@
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">sessionToken</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">String</span><span style="color:#ABB2BF">   </span><span style="color:#61AFEF">@unique</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">expires</span><span style="color:#ABB2BF">      </span><span style="color:#E5C07B">DateTime</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">userId</span><span style="color:#ABB2BF">       </span><span style="color:#E5C07B">String</span></span>
-<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">user</span><span style="color:#ABB2BF">         </span><span style="color:#E5C07B">User</span><span style="color:#ABB2BF">     </span><span style="color:#61AFEF">@relation</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">fields</span><span style="color:#ABB2BF">: [userId], </span><span style="color:#E06C75">references</span><span style="color:#ABB2BF">: [id], </span><span style="color:#E06C75">onDelete</span><span style="color:#ABB2BF">: Cascade)</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">user</span><span style="color:#ABB2BF">         </span><span style="color:#E5C07B">User</span><span style="color:#ABB2BF">     </span><span style="color:#61AFEF">@relation</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75;font-style:italic">fields</span><span style="color:#ABB2BF">: [userId], </span><span style="color:#E06C75;font-style:italic">references</span><span style="color:#ABB2BF">: [id], </span><span style="color:#E06C75;font-style:italic">onDelete</span><span style="color:#ABB2BF">: Cascade)</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
-<h2 id="helpersprismats">~/helpers/prisma.ts<a class="autolink" aria-hidden="true" tabIndex="-1" href="#helpersprismats"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">PrismaClient</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;@prisma/client&#39;</span><span style="color:#ABB2BF">;</span></span>
+<h2 id="helpersprismats">~/helpers/prisma.ts</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">PrismaClient</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;@prisma/client&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#C678DD">declare</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">global</span><span style="color:#ABB2BF"> {</span></span>
-<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#7F848E">// eslint-disable-next-line no-var</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#7F848E;font-style:italic">// eslint-disable-next-line no-var</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">var</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">prisma</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">PrismaClient</span><span style="color:#ABB2BF"> | </span><span style="color:#E5C07B">undefined</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#C678DD">export</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">prisma</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">global</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">prisma</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">||</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">new</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">PrismaClient</span><span style="color:#ABB2BF">();</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#C678DD">if</span><span style="color:#ABB2BF"> (</span><span style="color:#E5C07B">process</span><span style="color:#ABB2BF">.</span><span style="color:#E5C07B">env</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">NODE_ENV</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">===</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;development&#39;</span><span style="color:#ABB2BF">) </span><span style="color:#E5C07B">global</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">prisma</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">prisma</span><span style="color:#ABB2BF">;</span></span></code></pre>
-<h2 id="env">.env<a class="autolink" aria-hidden="true" tabIndex="-1" href="#env"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#abb2bf"># prisma</span></span>
+<h2 id="env">.env</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#abb2bf"># prisma</span></span>
 <span class="line"><span style="color:#abb2bf">DATABASE_URL=</span></span>
 <span class="line"><span style="color:#abb2bf"></span></span>
 <span class="line"><span style="color:#abb2bf"># next-auth</span></span>
@@ -147,8 +72,8 @@
 <span class="line"><span style="color:#abb2bf"># kakao</span></span>
 <span class="line"><span style="color:#abb2bf">KAKAO_CLIENT_ID=</span></span>
 <span class="line"><span style="color:#abb2bf">KAKAO_CLIENT_SECRET=</span></span></code></pre>
-<h2 id="pagesapiauthnextauthts">pages/api/auth/[…nextauth].ts<a class="autolink" aria-hidden="true" tabIndex="-1" href="#pagesapiauthnextauthts"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">PrismaAdapter</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;@next-auth/prisma-adapter&#39;</span><span style="color:#ABB2BF">;</span></span>
+<h2 id="pagesapiauthnextauthts">pages/api/auth/[…nextauth].ts</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">PrismaAdapter</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;@next-auth/prisma-adapter&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">NextAuth</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;next-auth&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">KakaoProvider</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;next-auth/providers/kakao&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> {</span></span>
@@ -169,67 +94,33 @@
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">secret</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">SECRET</span><span style="color:#ABB2BF">,</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">session</span><span style="color:#ABB2BF">: {</span></span>
 <span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">strategy</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">&#39;jwt&#39;</span><span style="color:#ABB2BF">,</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">maxAge</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">30</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">24</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF">, </span><span style="color:#7F848E">// 30 days</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">updateAge</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">24</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF">, </span><span style="color:#7F848E">// 24 hours</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">maxAge</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">30</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">24</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF">, </span><span style="color:#7F848E;font-style:italic">// 30 days</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">updateAge</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">24</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">*</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">60</span><span style="color:#ABB2BF">, </span><span style="color:#7F848E;font-style:italic">// 24 hours</span></span>
 <span class="line"><span style="color:#ABB2BF">  },</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">jwt</span><span style="color:#ABB2BF">: {</span></span>
 <span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">secret</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">SECRET</span><span style="color:#ABB2BF">,</span></span>
 <span class="line"><span style="color:#ABB2BF">  },</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">pages</span><span style="color:#ABB2BF">: {</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">signIn</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">&#39;/auth/signin&#39;</span><span style="color:#ABB2BF">, </span><span style="color:#7F848E">// 로그인 페이지</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">signIn</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">&#39;/auth/signin&#39;</span><span style="color:#ABB2BF">, </span><span style="color:#7F848E;font-style:italic">// 로그인 페이지</span></span>
 <span class="line"><span style="color:#ABB2BF">  },</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">callbacks</span><span style="color:#ABB2BF">: {</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#C678DD">async</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">jwt</span><span style="color:#ABB2BF">({ </span><span style="color:#E06C75">token</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">user</span><span style="color:#ABB2BF"> }) {</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#C678DD">async</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">jwt</span><span style="color:#ABB2BF">({ </span><span style="color:#E06C75;font-style:italic">token</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75;font-style:italic">user</span><span style="color:#ABB2BF"> }) {</span></span>
 <span class="line"><span style="color:#ABB2BF">      </span><span style="color:#C678DD">if</span><span style="color:#ABB2BF"> (</span><span style="color:#E06C75">user</span><span style="color:#ABB2BF">) {</span></span>
 <span class="line"><span style="color:#ABB2BF">        </span><span style="color:#E5C07B">token</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">role</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">user</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">role</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">      }</span></span>
 <span class="line"><span style="color:#ABB2BF">      </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">token</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">    },</span></span>
-<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#C678DD">async</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">session</span><span style="color:#ABB2BF">({ </span><span style="color:#E06C75">session</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">token</span><span style="color:#ABB2BF"> }) {</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#C678DD">async</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">session</span><span style="color:#ABB2BF">({ </span><span style="color:#E06C75;font-style:italic">session</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75;font-style:italic">token</span><span style="color:#ABB2BF"> }) {</span></span>
 <span class="line"><span style="color:#ABB2BF">      </span><span style="color:#E5C07B">session</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">role</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">token</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">role</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">      </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">session</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">    },</span></span>
 <span class="line"><span style="color:#ABB2BF">  },</span></span>
 <span class="line"><span style="color:#ABB2BF">});</span></span></code></pre>
-<p>이 패키지 덕분에 <code>Next.js</code>에서 카카오 로그인을 쉽게 해결할 수 있었다.</p>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-12-10-next-auth/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2022-02-04-enum-union-type" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<p>이 패키지 덕분에 <code>Next.js</code>에서 카카오 로그인을 쉽게 해결할 수 있었다.</p></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-12-10-next-auth/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2022-02-04-enum-union-type" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>enum 보다 union type을 사용하자</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-12-09-next.js" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>Next.js에서 카카오맵 사용하기</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>enum 보다 union type을 사용하자</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-12-09-next.js" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>Next.js에서 카카오맵 사용하기</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-12-10-next-auth" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-12-10-next-auth" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

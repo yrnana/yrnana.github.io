@@ -1,150 +1,44 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/">
-
-<!-- Primary Meta Tags -->
-<title>Web Worker와 Service Worker | nana.log</title>
-<meta name="title" content="Web Worker와 Service Worker | nana.log">
-<meta name="description" content="Web Worker와 Service Worker의 공통점과 차이점">
-<meta name="keywords" content="Service Worker,Web Worker">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/">
-<meta property="og:title" content="Web Worker와 Service Worker | nana.log">
-<meta property="og:description" content="Web Worker와 Service Worker의 공통점과 차이점">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/">
-<meta property="twitter:title" content="Web Worker와 Service Worker | nana.log">
-<meta property="twitter:description" content="Web Worker와 Service Worker의 공통점과 차이점">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">Web Worker와 Service Worker</h1>
-    <div class="text-slate-500 mt-4">Mar 9, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/service-worker" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Service Worker</span>
-  
-</a><a href="/tag/web-worker" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Web Worker</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <p>브라우저는 자바스크립트를 실행하기 위해서 <strong>싱글 스레드</strong>를 사용하므로 거대한 자바스크립트 코드를 돌리면 메인 스레드가 block 되고 사용자 경험이 악화될 것이다. 앱에서 다중 스레딩 모델을 사용하는 것 처럼, 웹에서는 <code>Worker</code>를 사용해서 백그라운드 스레드에서 스크립트를 실행할 수 있다.</p>
-<h2 id="web-worker와-service-worker">Web Worker와 Service Worker<a class="autolink" aria-hidden="true" tabIndex="-1" href="#web-worker와-service-worker"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<h3 id="공통점">공통점<a class="autolink" aria-hidden="true" tabIndex="-1" href="#공통점"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/"><!-- Primary Meta Tags --><title>Web Worker와 Service Worker | nana.log</title><meta name="title" content="Web Worker와 Service Worker | nana.log"><meta name="description" content="Web Worker와 Service Worker의 공통점과 차이점"><meta name="keywords" content="Service Worker,Web Worker"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/"><meta property="og:title" content="Web Worker와 Service Worker | nana.log"><meta property="og:description" content="Web Worker와 Service Worker의 공통점과 차이점"><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/"><meta property="twitter:title" content="Web Worker와 Service Worker | nana.log"><meta property="twitter:description" content="Web Worker와 Service Worker의 공통점과 차이점"><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">Web Worker와 Service Worker</h1><div class="text-slate-500 mt-4">Mar 9, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/service-worker" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Service Worker</span></a><a href="/tag/web-worker" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Web Worker</span></a></div></header><div class="markdown"><p>브라우저는 자바스크립트를 실행하기 위해서 <strong>싱글 스레드</strong>를 사용하므로 거대한 자바스크립트 코드를 돌리면 메인 스레드가 block 되고 사용자 경험이 악화될 것이다. 앱에서 다중 스레딩 모델을 사용하는 것 처럼, 웹에서는 <code>Worker</code>를 사용해서 백그라운드 스레드에서 스크립트를 실행할 수 있다.</p>
+<h2 id="web-worker와-service-worker">Web Worker와 Service Worker</h2>
+<h3 id="공통점">공통점</h3>
 <ul>
 <li>추가 스레드에서 실행되므로 메인 스레드를 블록하지 않고 실행될 수 있다.</li>
 <li><code>Window</code>나 <code>Document</code> 객체에 접근할 수 없어서 DOM과 직접적으로 interact 할 수 없고 browser API에 접근하는데 한정적이다.</li>
 </ul>
-<h3 id="차이점">차이점<a class="autolink" aria-hidden="true" tabIndex="-1" href="#차이점"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="차이점">차이점</h3>
 <ul>
 <li>서비스 워커는 <code>fetch</code> event와 같은 네트워크 요청을 탈취하거나 <code>push</code> event와 같은 Push API를 listen 할 수 있다.</li>
 <li>페이지는 여러개의 웹 워커를 생성할 수 있지만, 단일 서비스 워커는 등록된 scope내에서 모든 활성 탭을 제어한다.</li>
 <li>웹 워커의 수명은 자신이 속한 탭과 밀접하게 결합되는 반면, 서비스 워커의 수명은 독립적이다. 따라서 웹 워커가 실행중인 탭을 닫으면 워커가 종료되지만, 서비스 워커는 활성 탭이 열려있지 않아도 백그라운드에서 계속 실행될 수 있다.</li>
 </ul>
-<h2 id="사용-사례">사용 사례<a class="autolink" aria-hidden="true" tabIndex="-1" href="#사용-사례"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<h3 id="web-workers">Web Workers<a class="autolink" aria-hidden="true" tabIndex="-1" href="#web-workers"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h2 id="사용-사례">사용 사례</h2>
+<h3 id="web-workers">Web Workers</h3>
 <p>웹 워커는 주로 UI block을 피하기 위해 무거운 연산이 소요되는 작업(AI, games, image encoding, etc)을 보조 스레드에서 실행하기 위해 사용된다.</p>
 <ul>
-<li><a href="https://github.com/GoogleChromeLabs/comlink" target="_blank" rel="nofollow">Comlink</a></li>
-<li><a href="https://dassur.ma/things/react-redux-comlink/" target="_blank" rel="nofollow">React + Redux + Comlink</a> : off the main thread (OMT) 아키텍처를 리액트에서 구축하는 방법</li>
-<li><a href="https://github.com/GoogleChromeLabs/worker-plugin" target="_blank" rel="nofollow">Webpack용 플러그인</a></li>
+<li><a href="https://github.com/GoogleChromeLabs/comlink" rel="nofollow" target="_blank">Comlink</a></li>
+<li><a href="https://dassur.ma/things/react-redux-comlink/" rel="nofollow" target="_blank">React + Redux + Comlink</a> : off the main thread (OMT) 아키텍처를 리액트에서 구축하는 방법</li>
+<li><a href="https://github.com/GoogleChromeLabs/worker-plugin" rel="nofollow" target="_blank">Webpack용 플러그인</a></li>
 </ul>
-<h3 id="service-workers">Service Workers<a class="autolink" aria-hidden="true" tabIndex="-1" href="#service-workers"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="service-workers">Service Workers</h3>
 <p>서비스 워커는 일반적으로 네트워크 프록시 같은 역할이나 백그라운드 작업, 캐싱, 오프라인을 처리하는데 사용된다.</p>
 <ul>
-<li><a href="https://developers.google.com/web/tools/workbox" target="_blank" rel="nofollow">Workbox</a></li>
-<li><a href="https://web.dev/two-way-communication-guide/" target="_blank" rel="nofollow">페이지와 서비스 워커간 양방향 통신 사례</a></li>
-<li><a href="https://web.dev/broadcast-updates-guide/" target="_blank" rel="nofollow">Broadcast Updates</a> : Window to Service Workers 사례</li>
-<li><a href="https://web.dev/imperative-caching-guide/" target="_blank" rel="nofollow">명령형 캐싱</a> : 페이지에서 서비스워커를 호출하여 리소스를 미리 캐싱</li>
+<li><a href="https://developers.google.com/web/tools/workbox" rel="nofollow" target="_blank">Workbox</a></li>
+<li><a href="https://web.dev/two-way-communication-guide/" rel="nofollow" target="_blank">페이지와 서비스 워커간 양방향 통신 사례</a></li>
+<li><a href="https://web.dev/broadcast-updates-guide/" rel="nofollow" target="_blank">Broadcast Updates</a> : Window to Service Workers 사례</li>
+<li><a href="https://web.dev/imperative-caching-guide/" rel="nofollow" target="_blank">명령형 캐싱</a> : 페이지에서 서비스워커를 호출하여 리소스를 미리 캐싱</li>
 </ul>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://web.dev/workers-overview/" target="_blank" rel="nofollow">https://web.dev/workers-overview/</a></li>
-<li><a href="https://developers.google.com/web/fundamentals/primers/service-workers" target="_blank" rel="nofollow">https://developers.google.com/web/fundamentals/primers/service-workers</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-03-13-ecmascript-2021" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://web.dev/workers-overview/" rel="nofollow" target="_blank">https://web.dev/workers-overview/</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/primers/service-workers" rel="nofollow" target="_blank">https://developers.google.com/web/fundamentals/primers/service-workers</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-09-web-worker-service-worker/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-03-13-ecmascript-2021" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>ECMAScript 2021</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-03-09-web-vital" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>웹사이트 성능 메트릭</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>ECMAScript 2021</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-03-09-web-vital" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>웹사이트 성능 메트릭</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-09-web-worker-service-worker" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-09-web-worker-service-worker" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

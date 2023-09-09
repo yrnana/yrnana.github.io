@@ -1,89 +1,17 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-03-21-prettier-eslint/">
-
-<!-- Primary Meta Tags -->
-<title>prettier와 eslint를 구분해서 사용하자 | nana.log</title>
-<meta name="title" content="prettier와 eslint를 구분해서 사용하자 | nana.log">
-<meta name="description" content="결론부터 말하자면 오류를 잡으려면 린터, 스타일을 교정하려면 포맷터를 사용하자.">
-<meta name="keywords" content="ESLint,Prettier">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-03-21-prettier-eslint/">
-<meta property="og:title" content="prettier와 eslint를 구분해서 사용하자 | nana.log">
-<meta property="og:description" content="결론부터 말하자면 오류를 잡으려면 린터, 스타일을 교정하려면 포맷터를 사용하자.">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-21-prettier-eslint/">
-<meta property="twitter:title" content="prettier와 eslint를 구분해서 사용하자 | nana.log">
-<meta property="twitter:description" content="결론부터 말하자면 오류를 잡으려면 린터, 스타일을 교정하려면 포맷터를 사용하자.">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">prettier와 eslint를 구분해서 사용하자</h1>
-    <div class="text-slate-500 mt-4">Mar 21, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/es-lint" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>ESLint</span>
-  
-</a><a href="/tag/prettier" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Prettier</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <h2 id="prettier와-eslint">Prettier와 eslint<a class="autolink" aria-hidden="true" tabIndex="-1" href="#prettier와-eslint"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-03-21-prettier-eslint/"><!-- Primary Meta Tags --><title>prettier와 eslint를 구분해서 사용하자 | nana.log</title><meta name="title" content="prettier와 eslint를 구분해서 사용하자 | nana.log"><meta name="description" content="결론부터 말하자면 오류를 잡으려면 린터, 스타일을 교정하려면 포맷터를 사용하자."><meta name="keywords" content="ESLint,Prettier"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-03-21-prettier-eslint/"><meta property="og:title" content="prettier와 eslint를 구분해서 사용하자 | nana.log"><meta property="og:description" content="결론부터 말하자면 오류를 잡으려면 린터, 스타일을 교정하려면 포맷터를 사용하자."><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-03-21-prettier-eslint/"><meta property="twitter:title" content="prettier와 eslint를 구분해서 사용하자 | nana.log"><meta property="twitter:description" content="결론부터 말하자면 오류를 잡으려면 린터, 스타일을 교정하려면 포맷터를 사용하자."><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">prettier와 eslint를 구분해서 사용하자</h1><div class="text-slate-500 mt-4">Mar 21, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/es-lint" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>ESLint</span></a><a href="/tag/prettier" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Prettier</span></a></div></header><div class="markdown"><h2 id="prettier와-eslint">Prettier와 eslint</h2>
 <p><code>Prettier</code>는 <strong>formatter</strong>고 <code>eslint</code>는 <strong>linter</strong>이다. 두 개의 차이점과 사용법을 알아야 더 스마트하게 사용할 수 있다.</p>
 <blockquote>
 <p>결론부터 말하자면 <strong>오류를 잡으려면 린터, 스타일을 교정하려면 포맷터</strong>를 사용하자.</p>
 </blockquote>
 <p>린터 룰은 크게 포맷팅(스타일) 룰과 코드 퀄리티 룰이라는 두가지 카테고리로 나눌 수 있다. 사용되지 않은 변수를 오류로 분류하는 <code>no-unused-vars</code> 같은 코드 퀄리티 룰은 prettier 같은 포맷터가 잡아낼 수 없다. prettier는 코드 포맷팅에 특화되어 있으므로 eslint가 할 수 없는 최대 글자 길이에 맞춘 자동 포맷팅을 할 수 있다.</p>
-<h2 id="prettier와-eslint를-같이-사용하기">Prettier와 eslint를 같이 사용하기<a class="autolink" aria-hidden="true" tabIndex="-1" href="#prettier와-eslint를-같이-사용하기"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="prettier와-eslint를-같이-사용하기">Prettier와 eslint를 같이 사용하기</h2>
 <p>그렇다면 prettie와 eslint를 동시에 사용하려면 어떻게 설정해야 할까?<br/>
 예를 들면 facebook 팀에서 제공하는 <code>eslint-config-react-app</code>(<code>CRA</code>를 사용하면 기본적으로 세팅되어있는 eslint config)을 사용하는 경우 non-style 룰만 포함되어 있기 때문에 별다른 설정 없이 prettier를 같이 사용해도 문제가 안 된다.</p>
 <p>그런데 일부 eslint config (e.g. <code>eslint:recommended</code>)를 설치해서 사용하려는데 prettier와 충돌하는 경우 어떻게 해야할까? 여러가지 접근법이 있는데, prettier 실행 후 eslint를 실행하는 방법(<code>prettier-eslint</code>)이 있고, <strong>충돌하는 eslint 규칙을 전부 꺼주는 방법</strong>(<code>eslint-config-prettier</code>)도 있다. 앞서 설명했다시피 두 개의 역할을 구분하는 것이 좋으므로 후자의 방법을 추천한다. <code>prettier-eslint</code>의 메인테이너도 2017년에 이미 이 패키지를 사용하지 않는다고 밝혔다.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">PSA: I&#39;m no longer using prettier-eslint. I use raw prettier and disable all eslint style rules.<br/><br/>My life has been better ever since...</p>— Kent C. Dodds 🌌 (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/913760103118991361?ref_src=twsrc%5Etfw" target="_blank" rel="nofollow">September 29, 2017</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">PSA: I&#39;m no longer using prettier-eslint. I use raw prettier and disable all eslint style rules.<br/><br/>My life has been better ever since...</p>— Kent C. Dodds 🌌 (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/913760103118991361?ref_src=twsrc%5Etfw" rel="nofollow" target="_blank">September 29, 2017</a></blockquote>
 <p>린터 rules인 것 처럼 prettier를 실행하는 플러그인인 <code>eslint-plugin-prettier</code>는 <span style="color: red">사용하지 말자</span>. 특정 상황에서 유용할 수도 있지만 prettier를 직접 실행하는 것 보다 느리다.</p>
 <p>번호를 매겨 정리하자면 다음과 같다.</p>
 <blockquote>
@@ -96,20 +24,20 @@
 prettier를 단독으로 실행하는 것 보다 훨씬 느리다.</li>
 </ol>
 </blockquote>
-<h2 id="vscode에서-eslint-prettier-사용하기">vscode에서 eslint, prettier 사용하기<a class="autolink" aria-hidden="true" tabIndex="-1" href="#vscode에서-eslint-prettier-사용하기"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="vscode에서-eslint-prettier-사용하기">vscode에서 eslint, prettier 사용하기</h2>
 <ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="nofollow">eslint</a>, <a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="nofollow">prettier</a> vscode extension을 설치한다.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" rel="nofollow" target="_blank">eslint</a>, <a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" rel="nofollow" target="_blank">prettier</a> vscode extension을 설치한다.</li>
 <li>프로젝트에 eslint와 prettier를 설치한다.</li>
 </ul>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E"># CRA를 사용하는 경우 eslint는 이미 설치되어있으므로 prettier만 설치해도 된다</span></span>
-<span class="line"><span style="color:#ABB2BF">npm i -D eslint prettier</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic"># CRA를 사용하는 경우 eslint는 이미 설치되어있으므로 prettier만 설치해도 된다</span></span>
+<span class="line"><span style="color:#61AFEF">npm</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">i</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">-D</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">eslint</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">prettier</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#7F848E"># yarn 사용자라면</span></span>
-<span class="line"><span style="color:#ABB2BF">yarn add -D eslint prettier</span></span></code></pre>
+<span class="line"><span style="color:#7F848E;font-style:italic"># yarn 사용자라면</span></span>
+<span class="line"><span style="color:#61AFEF">yarn</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">add</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">-D</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">eslint</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">prettier</span></span></code></pre>
 <ul>
 <li>vscode setting에서 prettier를 기본 포맷터로 지정한다.</li>
 </ul>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// .vscode/settings.json</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// .vscode/settings.json</span></span>
 <span class="line"><span style="color:#ABB2BF">{</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">&quot;editor.formatOnSave&quot;</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">true</span><span style="color:#ABB2BF">,</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">&quot;editor.defaultFormatter&quot;</span><span style="color:#ABB2BF">: </span><span style="color:#98C379">&quot;esbenp.prettier-vscode&quot;</span><span style="color:#ABB2BF">,</span></span>
@@ -126,58 +54,24 @@ prettier를 단독으로 실행하는 것 보다 훨씬 느리다.</li>
 </ul>
 </li>
 </ul>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#ABB2BF">npm i -D eslint-config-prettier</span></span></code></pre>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// .eslintrc</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#61AFEF">npm</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">i</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">-D</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">eslint-config-prettier</span></span></code></pre>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// .eslintrc</span></span>
 <span class="line"><span style="color:#ABB2BF">{</span></span>
-<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#7F848E">// eslint-config-airbnb의 설정을 추가하고,</span></span>
-<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#7F848E">// eslint-config-prettier에서 prettier와 충돌되는 스타일 옵션을 꺼버린다</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#7F848E;font-style:italic">// eslint-config-airbnb의 설정을 추가하고,</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#7F848E;font-style:italic">// eslint-config-prettier에서 prettier와 충돌되는 스타일 옵션을 꺼버린다</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">&quot;extends&quot;</span><span style="color:#ABB2BF">: [</span><span style="color:#98C379">&quot;airbnb&quot;</span><span style="color:#ABB2BF">, </span><span style="color:#98C379">&quot;prettier&quot;</span><span style="color:#ABB2BF">]</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://prettier.io/docs/en/comparison.html" target="_blank" rel="nofollow">https://prettier.io/docs/en/comparison.html</a></li>
-<li><a href="https://prettier.io/docs/en/integrating-with-linters.html" target="_blank" rel="nofollow">https://prettier.io/docs/en/integrating-with-linters.html</a></li>
-<li><a href="https://duncanleung.com/profile-measure-find-remove-slow-eslint-rules/" target="_blank" rel="nofollow">https://duncanleung.com/profile-measure-find-remove-slow-eslint-rules/</a></li>
-<li><a href="https://github.com/prettier/prettier-eslint/issues/101#issuecomment-313233479" target="_blank" rel="nofollow">https://github.com/prettier/prettier-eslint/issues/101#issuecomment-313233479</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-21-prettier-eslint/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-03-24-table-of-contents-using-intersection-observer-api" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://prettier.io/docs/en/comparison.html" rel="nofollow" target="_blank">https://prettier.io/docs/en/comparison.html</a></li>
+<li><a href="https://prettier.io/docs/en/integrating-with-linters.html" rel="nofollow" target="_blank">https://prettier.io/docs/en/integrating-with-linters.html</a></li>
+<li><a href="https://duncanleung.com/profile-measure-find-remove-slow-eslint-rules/" rel="nofollow" target="_blank">https://duncanleung.com/profile-measure-find-remove-slow-eslint-rules/</a></li>
+<li><a href="https://github.com/prettier/prettier-eslint/issues/101#issuecomment-313233479" rel="nofollow" target="_blank">https://github.com/prettier/prettier-eslint/issues/101#issuecomment-313233479</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-21-prettier-eslint/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-03-24-table-of-contents-using-intersection-observer-api" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>Table Of Contents using Intersection Observer API</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-03-21-code-spell-checker" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>Code Spell Checker</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>Table Of Contents using Intersection Observer API</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-03-21-code-spell-checker" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>Code Spell Checker</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-21-prettier-eslint" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-21-prettier-eslint" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

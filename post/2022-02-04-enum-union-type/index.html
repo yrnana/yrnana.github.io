@@ -1,97 +1,22 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2022-02-04-enum-union-type/">
-
-<!-- Primary Meta Tags -->
-<title>enum 보다 union type을 사용하자 | nana.log</title>
-<meta name="title" content="enum 보다 union type을 사용하자 | nana.log">
-<meta name="description" content="union type을 사용하는게 좋은 이유와 같이 보면 좋은 tsconfig.json 옵션">
-<meta name="keywords" content="TypeScript,enum,union type">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2022-02-04-enum-union-type/">
-<meta property="og:title" content="enum 보다 union type을 사용하자 | nana.log">
-<meta property="og:description" content="union type을 사용하는게 좋은 이유와 같이 보면 좋은 tsconfig.json 옵션">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2022-02-04-enum-union-type/">
-<meta property="twitter:title" content="enum 보다 union type을 사용하자 | nana.log">
-<meta property="twitter:description" content="union type을 사용하는게 좋은 이유와 같이 보면 좋은 tsconfig.json 옵션">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">enum 보다 union type을 사용하자</h1>
-    <div class="text-slate-500 mt-4">Feb 4, 2022</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/type-script" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>TypeScript</span>
-  
-</a><a href="/tag/enum" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>enum</span>
-  
-</a><a href="/tag/union-type" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>union type</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <h2 id="union-type을-사용하는게-좋은-이유">union type을 사용하는게 좋은 이유<a class="autolink" aria-hidden="true" tabIndex="-1" href="#union-type을-사용하는게-좋은-이유"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<h3 id="enum을-쓰는-경우">enum을 쓰는 경우<a class="autolink" aria-hidden="true" tabIndex="-1" href="#enum을-쓰는-경우"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// fruit.ts</span></span>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2022-02-04-enum-union-type/"><!-- Primary Meta Tags --><title>enum 보다 union type을 사용하자 | nana.log</title><meta name="title" content="enum 보다 union type을 사용하자 | nana.log"><meta name="description" content="union type을 사용하는게 좋은 이유와 같이 보면 좋은 tsconfig.json 옵션"><meta name="keywords" content="TypeScript,enum,union type"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2022-02-04-enum-union-type/"><meta property="og:title" content="enum 보다 union type을 사용하자 | nana.log"><meta property="og:description" content="union type을 사용하는게 좋은 이유와 같이 보면 좋은 tsconfig.json 옵션"><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2022-02-04-enum-union-type/"><meta property="twitter:title" content="enum 보다 union type을 사용하자 | nana.log"><meta property="twitter:description" content="union type을 사용하는게 좋은 이유와 같이 보면 좋은 tsconfig.json 옵션"><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">enum 보다 union type을 사용하자</h1><div class="text-slate-500 mt-4">Feb 4, 2022</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/type-script" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>TypeScript</span></a><a href="/tag/enum" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>enum</span></a><a href="/tag/union-type" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>union type</span></a></div></header><div class="markdown"><h2 id="union-type을-사용하는게-좋은-이유">union type을 사용하는게 좋은 이유</h2>
+<h3 id="enum을-쓰는-경우">enum을 쓰는 경우</h3>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// fruit.ts</span></span>
 <span class="line"><span style="color:#C678DD">export</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">enum</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Fruit</span><span style="color:#ABB2BF"> {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">Apple</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF">,</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">Orange</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Orange&#39;</span><span style="color:#ABB2BF">,</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">Grape</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Grape&#39;</span><span style="color:#ABB2BF">,</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// import_enum.ts</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// import_enum.ts</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;./fruit&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">fruit</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">Fruit</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Fruit</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">Apple</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF">);</span></span></code></pre>
 <p>이를 tsc로 트랜스파일링 후 rollup으로 번들링하면 아래와 같이 변환된다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">var</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF">;</span></span>
-<span class="line"><span style="color:#ABB2BF">(</span><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> (</span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF">) {</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">var</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#ABB2BF">(</span><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> (</span><span style="color:#E06C75;font-style:italic">Fruit</span><span style="color:#ABB2BF">) {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF">[</span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF">] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF">[</span><span style="color:#98C379">&#39;Orange&#39;</span><span style="color:#ABB2BF">] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Orange&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF">[</span><span style="color:#98C379">&#39;Grape&#39;</span><span style="color:#ABB2BF">] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Grape&#39;</span><span style="color:#ABB2BF">;</span></span>
@@ -99,107 +24,73 @@
 <span class="line"></span>
 <span class="line"><span style="color:#C678DD">var</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Fruit</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">Apple</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF">);</span></span></code></pre>
-<h3 id="union-type을-쓰는-경우">union type을 쓰는 경우<a class="autolink" aria-hidden="true" tabIndex="-1" href="#union-type을-쓰는-경우"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// fruit.ts</span></span>
+<h3 id="union-type을-쓰는-경우">union type을 쓰는 경우</h3>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// fruit.ts</span></span>
 <span class="line"><span style="color:#C678DD">export</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">type</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">Fruit</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF"> | </span><span style="color:#98C379">&#39;Orange&#39;</span><span style="color:#ABB2BF"> | </span><span style="color:#98C379">&#39;Grape&#39;</span><span style="color:#ABB2BF">;</span></span></code></pre>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// import_union.ts</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// import_union.ts</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">Fruit</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;./fruit&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">fruit</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">Fruit</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF">);</span></span></code></pre>
 <p>이를 트랜스파일링 및 번들링 하면 아래와 같다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">var</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF">;</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">var</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;Apple&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#E5C07B">console</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">log</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">fruit</span><span style="color:#ABB2BF">);</span></span></code></pre>
-<h3 id="union-type을-쓰는-경우-장점">union type을 쓰는 경우 장점<a class="autolink" aria-hidden="true" tabIndex="-1" href="#union-type을-쓰는-경우-장점"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="union-type을-쓰는-경우-장점">union type을 쓰는 경우 장점</h3>
 <ol>
 <li>js로 변환시 코드가 줄어든다. enum은 js로 트랜스파일링 될때 타입과는 달리 사라지지 않기 때문에 코드양을 증가시킨다.</li>
 <li>enum과 달리 import를 하지 않아도 사용할 수 있다. (컴포넌트의 props 등에 지정되어 있을때)</li>
 <li>enum보다 선언 방법이 간단하다. <code>ts↦type Fruit = &#39;Apple&#39; | &#39;Orange&#39; | &#39;Grape&#39;</code></li>
 <li>union type을 사용해도 ide (e.g. vscode)의 auto complete 기능이 활성화된다.</li>
 </ol>
-<h2 id="같이-보면-좋은-tsconfigjson-옵션">같이 보면 좋은 <code>tsconfig.json</code> 옵션<a class="autolink" aria-hidden="true" tabIndex="-1" href="#같이-보면-좋은-tsconfigjson-옵션"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<h3 id="esmoduleinterop-default-false"><code>esModuleInterop</code> (default: false)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#esmoduleinterop-default-false"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h2 id="같이-보면-좋은-tsconfigjson-옵션">같이 보면 좋은 <code>tsconfig.json</code> 옵션</h2>
+<h3 id="esmoduleinterop-default-false"><code>esModuleInterop</code> (default: false)</h3>
 <p>이 옵션이 <code>false</code> 또는 <code>not set</code> 이라면 CommonJS/AMD/UMD 모듈을 ESM처럼 취급한다.<br/>
 문제가 되는 경우는 아래처럼 CJS 모듈을 ESM 코드베이스로 가져오려고 할 때다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// node_modules/moment/index.js</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// node_modules/moment/index.js</span></span>
 <span class="line"><span style="color:#E5C07B">exports</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">moment</span><span style="color:#ABB2BF">;</span></span></code></pre>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// app/index.ts</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// app/index.ts</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">*</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">as</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">moment</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;moment&#39;</span><span style="color:#ABB2BF">;</span></span>
-<span class="line"><span style="color:#61AFEF">moment</span><span style="color:#ABB2BF">(); </span><span style="color:#7F848E">// moment는 순수 객체만 될 수 있어서 이렇게 사용하는 것은 ESM 스펙을 준수하지 않음!</span></span>
+<span class="line"><span style="color:#61AFEF">moment</span><span style="color:#ABB2BF">(); </span><span style="color:#7F848E;font-style:italic">// moment는 순수 객체만 될 수 있어서 이렇게 사용하는 것은 ESM 스펙을 준수하지 않음!</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#7F848E">// 트랜스파일링된 결과</span></span>
+<span class="line"><span style="color:#7F848E;font-style:italic">// 트랜스파일링된 결과</span></span>
 <span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">moment</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">require</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;moment&#39;</span><span style="color:#ABB2BF">);</span></span>
 <span class="line"><span style="color:#61AFEF">moment</span><span style="color:#ABB2BF">();</span></span></code></pre>
 <p><code>esModuleInterop</code>를 활성화하면 ESM 사양에 따라 CJS 모듈을 가져올 수 있다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// app/index.ts</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// app/index.ts</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">moment</span><span style="color:#ABB2BF"> </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;moment&#39;</span><span style="color:#ABB2BF">;</span></span>
-<span class="line"><span style="color:#61AFEF">moment</span><span style="color:#ABB2BF">(); </span><span style="color:#7F848E">// ESM 스펙을 준수함</span></span>
+<span class="line"><span style="color:#61AFEF">moment</span><span style="color:#ABB2BF">(); </span><span style="color:#7F848E;font-style:italic">// ESM 스펙을 준수함</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#7F848E">// 트랜스파일링된 결과</span></span>
+<span class="line"><span style="color:#7F848E;font-style:italic">// 트랜스파일링된 결과</span></span>
 <span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">moment</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">__importDefault</span><span style="color:#ABB2BF">(</span><span style="color:#61AFEF">require</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;moment&#39;</span><span style="color:#ABB2BF">));</span></span>
 <span class="line"><span style="color:#E5C07B">moment</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">default</span><span style="color:#ABB2BF">();</span></span></code></pre>
-<h3 id="isolatedmodules-default-false"><code>isolatedModules</code> (default: false)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#isolatedmodules-default-false"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="isolatedmodules-default-false"><code>isolatedModules</code> (default: false)</h3>
 <p>Babel이나 다른 빌드툴은 한번에 하나의 하나의 파일에서만 작동하므로 <code>const enum</code>이나 <code>namespace</code>같은 타입스크립트 기능을 사용하는데 런타임 문제가 발생할 수 있다. 이 옵션을 <code>true</code>로 설정하면 단일 파일 변환 프로세스에서 올바르게 해석할 수 없는 코드를 작성할 경우 경고를 받게 된다.<br/>
 대표적으로 모든 실행 파일들은 모듈이어야 한다는 규칙이 있다.</p>
-<h3 id="importsnotusedasvalues-default-remove"><code>importsNotUsedAsValues</code> (default: remove)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#importsnotusedasvalues-default-remove"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="importsnotusedasvalues-default-remove"><code>importsNotUsedAsValues</code> (default: remove)</h3>
 <p>import가 어떻게 처리되는지를 결정하는 플래그이다.</p>
 <ul>
 <li>remove : 참조 타입만 drop</li>
 <li>preserve : 사용되지 않는 값이나 타입들도 전부 보존한다. side-effects를 일으킬 수도 있음</li>
 <li>error : 모든 import를 보존하지만, value import가 값처럼 사용되면 error을 출력</li>
 </ul>
-<h3 id="preservevalueimports-default-false"><code>preserveValueImports</code> (default: false)<a class="autolink" aria-hidden="true" tabIndex="-1" href="#preservevalueimports-default-false"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h3>
+<h3 id="preservevalueimports-default-false"><code>preserveValueImports</code> (default: false)</h3>
 <p>타입스크립트가 import를 사용하고 있음을 감지하지 못하는 경우가 있다. Svelte나 Vue처럼 Compiles to HTML 언어를 사용하거나 아래와 같은 경우다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">Animal</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;./animal.js&#39;</span><span style="color:#ABB2BF">;</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">Animal</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;./animal.js&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#7F848E">// eval에서 Animal을 사용하지만 string이므로 인식하지 못한다</span></span>
+<span class="line"><span style="color:#7F848E;font-style:italic">// eval에서 Animal을 사용하지만 string이므로 인식하지 못한다</span></span>
 <span class="line"><span style="color:#61AFEF">eval</span><span style="color:#ABB2BF">(</span><span style="color:#98C379">&#39;console.log(new Animal().isDangerous())&#39;</span><span style="color:#ABB2BF">);</span></span></code></pre>
 <p><code>isolatedModules</code> 옵션과 함께 사용되는 경우, import 된 타입은 컴파일러가 이 import 가 사용되지 않는 값인지 또는 삭제되어야 하는 type 인지 알 수 없기 때문에 <code>type-only</code>로 지정해야 한다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// ts 4.5부터 modifier를 붙일 수 있음</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// ts 4.5부터 modifier를 붙일 수 있음</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">TitleComponent</span><span style="color:#ABB2BF">, </span><span style="color:#C678DD">type</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">TitleComponentProps</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;./TitleComponent.js&#39;</span><span style="color:#ABB2BF">;</span></span></code></pre>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/" target="_blank" rel="nofollow">https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/</a></li>
-<li><a href="https://newbedev.com/understanding-esmoduleinterop-in-tsconfig-file" target="_blank" rel="nofollow">https://newbedev.com/understanding-esmoduleinterop-in-tsconfig-file</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2022-02-04-enum-union-type/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2022-03-02-typescript-4.6" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/" rel="nofollow" target="_blank">https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/</a></li>
+<li><a href="https://newbedev.com/understanding-esmoduleinterop-in-tsconfig-file" rel="nofollow" target="_blank">https://newbedev.com/understanding-esmoduleinterop-in-tsconfig-file</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2022-02-04-enum-union-type/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2022-03-02-typescript-4.6" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>TypeScript 4.6에 추가된 기능</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-12-10-next-auth" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>next-auth와 카카오 로그인 연동</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>TypeScript 4.6에 추가된 기능</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-12-10-next-auth" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>next-auth와 카카오 로그인 연동</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2022-02-04-enum-union-type" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2022-02-04-enum-union-type" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

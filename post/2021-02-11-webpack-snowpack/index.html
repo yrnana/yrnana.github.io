@@ -1,141 +1,30 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-02-11-webpack-snowpack/">
-
-<!-- Primary Meta Tags -->
-<title>Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log</title>
-<meta name="title" content="Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log">
-<meta name="description" content="스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.">
-<meta name="keywords" content="esbuild,Snowpack">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-02-11-webpack-snowpack/">
-<meta property="og:title" content="Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log">
-<meta property="og:description" content="스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.">
-<meta property="og:image" content="https://yrnana.dev/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z22c48f.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-02-11-webpack-snowpack/">
-<meta property="twitter:title" content="Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log">
-<meta property="twitter:description" content="스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z22c48f.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    <div class="preview mb-10">
-          <picture>
-	<source type="image/png" srcset="/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_q22XP.png 480w,/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_2jGwDg.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z1MFWMV.webp 480w,/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_12GvJ0.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
-	<img alt="Webpack 보다 더 빠른 빌드툴, Snowpack" src="/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_12GvJ0.webp" loading="lazy" decoding="async" alt="Webpack 보다 더 빠른 빌드툴, Snowpack">
-</picture>
-        </div>
-    <h1 class="text-3xl font-semibold">Webpack 보다 더 빠른 빌드툴, Snowpack</h1>
-    <div class="text-slate-500 mt-4">Feb 10, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/esbuild" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>esbuild</span>
-  
-</a><a href="/tag/snowpack" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Snowpack</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <blockquote>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-02-11-webpack-snowpack/"><!-- Primary Meta Tags --><title>Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log</title><meta name="title" content="Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log"><meta name="description" content="스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다."><meta name="keywords" content="esbuild,Snowpack"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-02-11-webpack-snowpack/"><meta property="og:title" content="Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log"><meta property="og:description" content="스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다."><meta property="og:image" content="https://yrnana.dev/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z12UoYL.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-02-11-webpack-snowpack/"><meta property="twitter:title" content="Webpack 보다 더 빠른 빌드툴, Snowpack | nana.log"><meta property="twitter:description" content="스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다."><meta property="twitter:image" content="https://yrnana.dev/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z12UoYL.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><div class="preview mb-10"><figure><picture><source type="image/png" srcset="/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z12UoYL.png 480w,/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_19cK4g.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z28kXEq.webp 480w,/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z4LJfy.webp 790w" sizes="(max-width: 790px) 100vw, 790px"><img alt="Webpack 보다 더 빠른 빌드툴, Snowpack" src="/_astro/1_p8BBVAqCByV9kA24Vxo6Pg.9e54c4f5_Z4LJfy.webp" width="790" height="391" loading="lazy" decoding="async"></picture></figure></div><h1 class="text-3xl font-semibold">Webpack 보다 더 빠른 빌드툴, Snowpack</h1><div class="text-slate-500 mt-4">Feb 10, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/esbuild" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>esbuild</span></a><a href="/tag/snowpack" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Snowpack</span></a></div></header><div class="markdown"><blockquote>
 <p>🚨 <strong>Update</strong><br/>
 <a href="/post/2021-05-26-webpack-vite">https://yrnana.dev/post/2021-05-26-webpack-vite</a><br/>
 <code>Snowpack</code>과 유사한 컨셉의 <code>Vite</code>를 추천하는 이유</p>
 </blockquote>
-<h1 id="snowpack">Snowpack<a class="autolink" aria-hidden="true" tabIndex="-1" href="#snowpack"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h1>
+<h1 id="snowpack">Snowpack</h1>
 <p>스노우팩은 unbundled during development 즉 개발중에 번들링을 하지 않겠다는 컨셉의 프론트엔트 빌드툴이다.</p>
-<h2 id="unbundled-development">Unbundled Development<a class="autolink" aria-hidden="true" tabIndex="-1" href="#unbundled-development"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<p><figure><picture>
-	<source type="image/png" srcset="/_astro/image-12.f809aed2_1OJEIO.png 480w,/_astro/image-12.f809aed2_Z1lsc1.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-12.f809aed2_14S415.webp 480w,/_astro/image-12.f809aed2_Zs2mQy.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
-	<img alt="" src="/_astro/image-12.f809aed2_Zs2mQy.webp" loading="lazy" decoding="async" alt="">
-</picture><figcaption></figcaption></figure><br/>
+<h2 id="unbundled-development">Unbundled Development</h2>
+<p><img src="/_astro/image-12.f809aed2_186Fqp.webp" alt="" width="1812" height="1028" loading="lazy" decoding="async"><br/>
 예를들면 현재 빌드툴로 가장 많이 사용되는 <code>webpack</code> 같은 경우, 파일 하나가 변경될 경우 연관된 모든 파일을 다시 빌드하고 다시 번들링 해야 한다. 그래서 시간 복잡도를 <code>O(n)</code> 으로 가져가야 한다.<br/>
 스노우팩은 개발중에 모든 파일들을 단일 파일로 빌드하고 <code>esm</code> 방식으로 import 한다. 만약 어떤 파일이 변경되면 그 파일만 새로 빌드된다. 즉 <code>O(1)</code> 빌드 시스템인 셈이다.</p>
 <p>npm 패키지의 경우 <code>CommonJS</code> 구문으로 작성되어 있을수도 있기 때문에 개발자가 직접 작성하는 파일처럼 패키지 내 모든 파일들이 하나하나 import 되지 않고, 아래와 같이 단일 파일로 빌드해서 import 한다.</p>
 <blockquote>
 <p><code>node_modules/react/**/* -&gt; http://localhost:3000/web_modules/react.js</code> &gt; <code>node_modules/react-dom/**/* -&gt; http://localhost:3000/web_modules/react-dom.js</code></p>
 </blockquote>
-<h2 id="create-snowpack-app">Create Snowpack App<a class="autolink" aria-hidden="true" tabIndex="-1" href="#create-snowpack-app"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<p>Create React App 처럼 <a href="https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli" target="_blank" rel="nofollow">Create Snowpack App</a>을 제공하기 때문에 좀더 쉽게 접할 수 있다. 확장성이 떨어지는 zero-config를 추구하는 CRA와는 달리, <a href="https://www.snowpack.dev/reference/configuration" target="_blank" rel="nofollow">snowpack.config.js</a> 라는 파일이 존재하고 이 파일을 기반으로 커스텀이 가능하다. 그렇지만 webpack.config.js 보다는 훨씬 다루기가 쉽다!<br/>
+<h2 id="create-snowpack-app">Create Snowpack App</h2>
+<p>Create React App 처럼 <a href="https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli" rel="nofollow" target="_blank">Create Snowpack App</a>을 제공하기 때문에 좀더 쉽게 접할 수 있다. 확장성이 떨어지는 zero-config를 추구하는 CRA와는 달리, <a href="https://www.snowpack.dev/reference/configuration" rel="nofollow" target="_blank">snowpack.config.js</a> 라는 파일이 존재하고 이 파일을 기반으로 커스텀이 가능하다. 그렇지만 webpack.config.js 보다는 훨씬 다루기가 쉽다!<br/>
 특이한 점은 기본 테스트 라이브러리로 <code>jest</code>가 아닌 <code>@web/test-runner</code>을 채택했다. 물론 <code>jest</code>도 사용할 수 있지만, 자체 테스트에서 <code>@web/test-runner</code>가 성능이 더 좋았다고 한다.</p>
-<h2 id="esbuild">esbuild<a class="autolink" aria-hidden="true" tabIndex="-1" href="#esbuild"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<p><figure><picture>
-	<source type="image/png" srcset="/_astro/image-13.ff9a40e0_1Sdd2Q.png 480w,/_astro/image-13.ff9a40e0_2jJPGq.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/image-13.ff9a40e0_Z2eN97P.webp 480w,/_astro/image-13.ff9a40e0_14ncl5.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
-	<img alt="" src="/_astro/image-13.ff9a40e0_14ncl5.webp" loading="lazy" decoding="async" alt="">
-</picture><figcaption></figcaption></figure><br/>
-<code>esbuild</code>는 go로 쓰여진 자바스크립트 번들러로 자체 벤치마크상에서 <code>webpack</code>보다 100배 이상의 성능을 낸다고 내걸고 있다. 스노우팩은 내부적으로 <code>esbuild</code>를 단일파일빌더로 사용하고 있는데, 스노우팩 V3부터는 <code>esbuild</code> 기반 내장 빌드 최적화 파이프라인을 지원한다. 여기서 최적화 파이프라인이라는 것은 production을 위한 최종 빌드 과정에서 bundle, minify, code splitting, treeshake, targetting, preload 등을 하는 것이다. 이렇게 스노우팩은 <code>esbuild</code>를 활용해서 자바스크립트라는 언어의 성능상 한계를 극복하려고 한다. 다만, 아직 esbuild 자체가 <a href="https://esbuild.github.io/faq/#production-readiness" target="_blank" rel="nofollow">not yet production-ready</a> 이다보니 스노우팩도 큰 규모의 프로젝트에서는 <a href="https://www.npmjs.com/package/@snowpack/plugin-webpack" target="_blank" rel="nofollow">웹팩 플러그인</a> 사용을 권장하고 있다.</p>
-<h2 id="정리">정리<a class="autolink" aria-hidden="true" tabIndex="-1" href="#정리"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
-<p>스노우팩이 아직 완벽하게 웹팩을 대체할 수 있는 건 아니다. FE개발자들이 많이 사용하는 스토리북이 웹팩 기반이기도 하고 (같이 사용하기엔 <a href="https://www.snowpack.dev/reference/environment-variables" target="_blank" rel="nofollow">환경변수</a> 매칭이 복잡함) <code>esbuild</code>가 React17의 <code>JSX Transform</code>을 지원하지 않는 문제도 있다. 그럼에도 <a href="https://2020.stateofjs.com/en-US/technologies/build-tools/" target="_blank" rel="nofollow">2020 state of js</a>에서 <code>webpack</code>을 제치고 매우 높은 만족도를 얻은 점도 그렇고 <code>unbundled development</code>라는 컨셉도 그렇고 상당히 기대가 되는 빌드툴인 것 같다. 현재 레포가 그다지 큰 프로젝트도 아닌데 fast refresh 속도나 스토리북이 실행되는 속도가 썩 빠르지 않은지라 스노우팩의 등장이 더욱더 흥미진진하다. 개인적으로는 토이플젝에서 자주 쓰게 될 것 같다.</p>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-02-11-webpack-snowpack/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-02-13-framer-motion-react-motion-gesture" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<h2 id="esbuild">esbuild</h2>
+<p><img src="/_astro/image-13.ff9a40e0_1WVfFr.webp" alt="" width="800" height="170" loading="lazy" decoding="async"><br/>
+<code>esbuild</code>는 go로 쓰여진 자바스크립트 번들러로 자체 벤치마크상에서 <code>webpack</code>보다 100배 이상의 성능을 낸다고 내걸고 있다. 스노우팩은 내부적으로 <code>esbuild</code>를 단일파일빌더로 사용하고 있는데, 스노우팩 V3부터는 <code>esbuild</code> 기반 내장 빌드 최적화 파이프라인을 지원한다. 여기서 최적화 파이프라인이라는 것은 production을 위한 최종 빌드 과정에서 bundle, minify, code splitting, treeshake, targetting, preload 등을 하는 것이다. 이렇게 스노우팩은 <code>esbuild</code>를 활용해서 자바스크립트라는 언어의 성능상 한계를 극복하려고 한다. 다만, 아직 esbuild 자체가 <a href="https://esbuild.github.io/faq/#production-readiness" rel="nofollow" target="_blank">not yet production-ready</a> 이다보니 스노우팩도 큰 규모의 프로젝트에서는 <a href="https://www.npmjs.com/package/@snowpack/plugin-webpack" rel="nofollow" target="_blank">웹팩 플러그인</a> 사용을 권장하고 있다.</p>
+<h2 id="정리">정리</h2>
+<p>스노우팩이 아직 완벽하게 웹팩을 대체할 수 있는 건 아니다. FE개발자들이 많이 사용하는 스토리북이 웹팩 기반이기도 하고 (같이 사용하기엔 <a href="https://www.snowpack.dev/reference/environment-variables" rel="nofollow" target="_blank">환경변수</a> 매칭이 복잡함) <code>esbuild</code>가 React17의 <code>JSX Transform</code>을 지원하지 않는 문제도 있다. 그럼에도 <a href="https://2020.stateofjs.com/en-US/technologies/build-tools/" rel="nofollow" target="_blank">2020 state of js</a>에서 <code>webpack</code>을 제치고 매우 높은 만족도를 얻은 점도 그렇고 <code>unbundled development</code>라는 컨셉도 그렇고 상당히 기대가 되는 빌드툴인 것 같다. 현재 레포가 그다지 큰 프로젝트도 아닌데 fast refresh 속도나 스토리북이 실행되는 속도가 썩 빠르지 않은지라 스노우팩의 등장이 더욱더 흥미진진하다. 개인적으로는 토이플젝에서 자주 쓰게 될 것 같다.</p></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-02-11-webpack-snowpack/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-02-13-framer-motion-react-motion-gesture" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>framer-motion : react를 위한 motion &amp; gesture 라이브러리</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-02-11-webpack-snowpack" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>framer-motion : react를 위한 motion &amp; gesture 라이브러리</div></div></a></div><div class="max-w-2/5 text-right ml-auto"></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-02-11-webpack-snowpack" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

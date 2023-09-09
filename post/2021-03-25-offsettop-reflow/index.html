@@ -1,92 +1,20 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-03-25-offsettop-reflow/">
-
-<!-- Primary Meta Tags -->
-<title>OffsetTop을 읽으면 reflow가 발생한다? | nana.log</title>
-<meta name="title" content="OffsetTop을 읽으면 reflow가 발생한다? | nana.log">
-<meta name="description" content="offsetTop을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 offsetTop을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다.">
-<meta name="keywords" content="Browser,reflow">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-03-25-offsettop-reflow/">
-<meta property="og:title" content="OffsetTop을 읽으면 reflow가 발생한다? | nana.log">
-<meta property="og:description" content="offsetTop을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 offsetTop을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다.">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-03-25-offsettop-reflow/">
-<meta property="twitter:title" content="OffsetTop을 읽으면 reflow가 발생한다? | nana.log">
-<meta property="twitter:description" content="offsetTop을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 offsetTop을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다.">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">OffsetTop을 읽으면 reflow가 발생한다?</h1>
-    <div class="text-slate-500 mt-4">Mar 25, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/browser" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>Browser</span>
-  
-</a><a href="/tag/reflow" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>reflow</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <p><a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" target="_blank" rel="nofollow">What forces layout / reflow</a> 라는 문서를 보는데 <strong>Getting box metrics</strong> 즉 <code>offsetTop</code>, <code>getBoundingClientRect()</code> 등을 호출하는 api도 적혀 있었다.<br/>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-03-25-offsettop-reflow/"><!-- Primary Meta Tags --><title>OffsetTop을 읽으면 reflow가 발생한다? | nana.log</title><meta name="title" content="OffsetTop을 읽으면 reflow가 발생한다? | nana.log"><meta name="description" content="offsetTop을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 offsetTop을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다."><meta name="keywords" content="Browser,reflow"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-03-25-offsettop-reflow/"><meta property="og:title" content="OffsetTop을 읽으면 reflow가 발생한다? | nana.log"><meta property="og:description" content="offsetTop을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 offsetTop을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다."><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-03-25-offsettop-reflow/"><meta property="twitter:title" content="OffsetTop을 읽으면 reflow가 발생한다? | nana.log"><meta property="twitter:description" content="offsetTop을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 offsetTop을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다."><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">OffsetTop을 읽으면 reflow가 발생한다?</h1><div class="text-slate-500 mt-4">Mar 25, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/browser" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>Browser</span></a><a href="/tag/reflow" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>reflow</span></a></div></header><div class="markdown"><p><a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" rel="nofollow" target="_blank">What forces layout / reflow</a> 라는 문서를 보는데 <strong>Getting box metrics</strong> 즉 <code>offsetTop</code>, <code>getBoundingClientRect()</code> 등을 호출하는 api도 적혀 있었다.<br/>
 아니 이게 무슨 소리야…내가 reflow를 마구 발생시키고 있었다니…?</p>
 <p>그런데 댓글을 보다보니 퍼포먼스탭에서 reflow를 확인할 수 없었다는 얘기도 있어서 실제로 <code>offsetTop</code>을 읽는 테스트 화면을 구현해서 퍼포먼스탭을 보니 reflow가 발생하지 않았다. 음?</p>
 <p>이 부분이 궁금해서 여러가지 글들을 읽어봤는데, <code>offsetTop</code>을 읽는 것 자체가 무조건 reflow를 발생시키지는 않는다. 하지만 <code>offsetTop</code>을 읽기 위해서 브라우저가 렌더링 큐에 쌓인 모든 작업을 수행하면서 reflow를 발생시킬 수 있다고 한다.<br/>
 브라우저는 <strong>최적화</strong>를 위해 reflow가 필요한 여러개의 작업을 묶어서 큐에 쌓아서 대기하다가 <strong>한번의 reflow로 전부 처리</strong>할 수 있도록 하는데, <code>offsetTop</code> 등의 계산된 스타일에 get 요청을 하면 최신값을 읽기 위해 큐를 flush하고 모든 변경사항을 적용한다.</p>
-<p>구글 개발자들이 렌더링 퍼포먼스를 개선하는 방법으로 작성한 글 중 <a href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko" target="_blank" rel="nofollow">강제 동기식 레이아웃 피하기 &amp; 레이아웃 스래싱 피하기</a>도 같은 원리다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// bad</span></span>
+<p>구글 개발자들이 렌더링 퍼포먼스를 개선하는 방법으로 작성한 글 중 <a href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko" rel="nofollow" target="_blank">강제 동기식 레이아웃 피하기 &amp; 레이아웃 스래싱 피하기</a>도 같은 원리다.</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// bad</span></span>
 <span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">resizeAllParagraphsToMatchBlockWidth</span><span style="color:#ABB2BF">() {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">for</span><span style="color:#ABB2BF"> (</span><span style="color:#C678DD">let</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">i</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">; </span><span style="color:#E06C75">i</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">&lt;</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">paragraphs</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">length</span><span style="color:#ABB2BF">; </span><span style="color:#E06C75">i</span><span style="color:#56B6C2">++</span><span style="color:#ABB2BF">) {</span></span>
 <span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E06C75">paragraphs</span><span style="color:#ABB2BF">[</span><span style="color:#E06C75">i</span><span style="color:#ABB2BF">].</span><span style="color:#E5C07B">style</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">width</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">box</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">offsetWidth</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">+</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;px&#39;</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#ABB2BF">  }</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#7F848E">// good</span></span>
+<span class="line"><span style="color:#7F848E;font-style:italic">// good</span></span>
 <span class="line"><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">width</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">box</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">offsetWidth</span><span style="color:#ABB2BF">;</span></span>
 <span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">resizeAllParagraphsToMatchBlockWidth</span><span style="color:#ABB2BF">() {</span></span>
 <span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">for</span><span style="color:#ABB2BF"> (</span><span style="color:#C678DD">let</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">i</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">; </span><span style="color:#E06C75">i</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">&lt;</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">paragraphs</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">length</span><span style="color:#ABB2BF">; </span><span style="color:#E06C75">i</span><span style="color:#56B6C2">++</span><span style="color:#ABB2BF">) {</span></span>
@@ -94,51 +22,17 @@
 <span class="line"><span style="color:#ABB2BF">  }</span></span>
 <span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
 <p>위와 아래 코드의 결과는 동일하지만 성능 차이가 나는 이유이기도 하다. 단순히 <code>box.offsetWidth</code>를 읽는게 문제가 아니고, <code>paragraphs[i]</code>의 너비가 변경되면서 스타일이 변경되었기 때문에 <code>box.offsetWidth</code>의 정확한 계산값을 얻기 위해 큐를 flush하고 스타일을 적용해야 하므로 화면을 반복해서 reflow - repaint 하게 된다.</p>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" target="_blank" rel="nofollow">https://gist.github.com/paulirish/5d52fb081b3570c81e3a</a></li>
-<li><a href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" target="_blank" rel="nofollow">https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/</a></li>
-<li><a href="https://developer.chrome.com/docs/devtools/evaluate-performance/" target="_blank" rel="nofollow">https://developer.chrome.com/docs/devtools/evaluate-performance/</a></li>
-<li><a href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko" target="_blank" rel="nofollow">https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-25-offsettop-reflow/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-03-26-similar-library" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" rel="nofollow" target="_blank">https://gist.github.com/paulirish/5d52fb081b3570c81e3a</a></li>
+<li><a href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/" rel="nofollow" target="_blank">https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/evaluate-performance/" rel="nofollow" target="_blank">https://developer.chrome.com/docs/devtools/evaluate-performance/</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko" rel="nofollow" target="_blank">https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-03-25-offsettop-reflow/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-03-26-similar-library" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>비슷한 라이브러리 비교해보는 글</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-03-24-table-of-contents-using-intersection-observer-api" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>Table Of Contents using Intersection Observer API</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>비슷한 라이브러리 비교해보는 글</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-03-24-table-of-contents-using-intersection-observer-api" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>Table Of Contents using Intersection Observer API</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-25-offsettop-reflow" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-03-25-offsettop-reflow" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>

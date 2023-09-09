@@ -1,85 +1,12 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <!-- Global Metadata --><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="/favicon.ico">
-<meta name="generator" content="Astro v2.0.6">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/">
-
-<!-- Primary Meta Tags -->
-<title>lodash 대신 lodash-es 쓰자 | nana.log</title>
-<meta name="title" content="lodash 대신 lodash-es 쓰자 | nana.log">
-<meta name="description" content="lodash-es를 써야 tree shaking이 된다.">
-<meta name="keywords" content="lodash">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/">
-<meta property="og:title" content="lodash 대신 lodash-es 쓰자 | nana.log">
-<meta property="og:description" content="lodash-es를 써야 tree shaking이 된다.">
-<meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/">
-<meta property="twitter:title" content="lodash 대신 lodash-es 쓰자 | nana.log">
-<meta property="twitter:description" content="lodash-es를 써야 tree shaking이 된다.">
-<meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Z1XgAIx.png">
-
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-
-<!-- Google Ads -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
-  <link rel="stylesheet" href="/_astro/about.4d05d472.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
-<script type="module" src="/_astro/page.b7cc8384.js"></script></head>
-  <body>
-    <div class="container mx-auto px-4 flex flex-col min-h-screen">
-      <header class="mt-4 sm:mt-6 flex flex-row items-center">
-  <div class="mr-auto">
-    <a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
-      nana.log
-    </a>
-  </div>
-  <nav class="flex flex-row items-center space-x-4">
-    <a href="/about" class="text-sm sm:text-base hover:text-violet-500">
-          About
-        </a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">
-          Archive
-        </a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">
-          Tags
-        </a>
-  </nav>
-</header>
-      <main class="py-10 flex-grow">
-        <article class="mb-20">
-  <header class="text-center mt-10 mb-20">
-    
-    <h1 class="text-3xl font-semibold">lodash 대신 lodash-es 쓰자</h1>
-    <div class="text-slate-500 mt-4">Nov 28, 2021</div>
-    <div class="flex flex-row flex-wrap justify-center space-x-3 mt-4">
-          <a href="/tag/lodash" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200">
-  <span>lodash</span>
-  
-</a>
-        </div>
-  </header>
-  <div class="markdown">
-    <p>자바스크립트 유틸 라이브러리인 <code>lodash</code>는 자바스크립트 개발자들이 가장 많이 사용하는 라이브러리 중 하나다. 비슷한 라이브러리로 <code>underscore</code>가 있는데, lodash가 underscore의 superset 개념이고 성능이 더 우수하다고 한다.</p>
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.0.12"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/"><!-- Primary Meta Tags --><title>lodash 대신 lodash-es 쓰자 | nana.log</title><meta name="title" content="lodash 대신 lodash-es 쓰자 | nana.log"><meta name="description" content="lodash-es를 써야 tree shaking이 된다."><meta name="keywords" content="lodash"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/"><meta property="og:title" content="lodash 대신 lodash-es 쓰자 | nana.log"><meta property="og:description" content="lodash-es를 써야 tree shaking이 된다."><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/"><meta property="twitter:title" content="lodash 대신 lodash-es 쓰자 | nana.log"><meta property="twitter:description" content="lodash-es를 써야 tree shaking이 된다."><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.69edc630.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">lodash 대신 lodash-es 쓰자</h1><div class="text-slate-500 mt-4">Nov 28, 2021</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/lodash" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>lodash</span></a></div></header><div class="markdown"><p>자바스크립트 유틸 라이브러리인 <code>lodash</code>는 자바스크립트 개발자들이 가장 많이 사용하는 라이브러리 중 하나다. 비슷한 라이브러리로 <code>underscore</code>가 있는데, lodash가 underscore의 superset 개념이고 성능이 더 우수하다고 한다.</p>
 <p>프론트엔드에서는 전송 사이즈를 줄이기 위해 <code>tree shaking</code> 즉 사용하지 않는 코드를 제거하는데, webpack이나 rollup 등의 번들러에 포함된 기능이다. 다만 es6 형식으로 export 된 라이브러리가 아니라면 트리셰이킹을 적용하기 어렵다. (commonJS 방식의 라이브러리를 트리셰이킹 하는 것이 아예 불가능한 것은 아니나, 잘 안 될 가능성이 높다)</p>
 <p><code>lodash</code> 또한 아래와 같이 작성해도 트리셰이킹이 적용되지 않는다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// 69.6K (gzipped: 24.6k)</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// 69.6K (gzipped: 24.6k)</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">debounce</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">throttle</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;lodash&#39;</span><span style="color:#ABB2BF">;</span></span></code></pre>
-
-<p><figure><picture>
-	<source type="image/png" srcset="/_astro/lodash.15dc1d67_Z1fjjHt.png 480w,/_astro/lodash.15dc1d67_ZASugU.png 790w" sizes="(max-width: 790px) 100vw, 790px"><source type="image/webp" srcset="/_astro/lodash.15dc1d67_27D5GG.webp 480w,/_astro/lodash.15dc1d67_1NX8Ue.webp 790w" sizes="(max-width: 790px) 100vw, 790px">
-	<img alt="lodash" src="/_astro/lodash.15dc1d67_1NX8Ue.webp" loading="lazy" decoding="async" alt="lodash">
-</picture><figcaption>lodash</figcaption></figure></p>
+<p><img src="/_astro/lodash.15dc1d67_uuW15.webp" alt="lodash" width="478" height="225" loading="lazy" decoding="async"></p>
 <p>lodash는 꽤 용량이 큰 라이브러리라, 무심코 트리셰이킹이 되었다고 생각하고 쓰지 않도록 주의해야 한다. 이를 해결하기 위한 방법은 아래와 같다.</p>
 <ul>
 <li>es6 구문으로 쓰여진 <code>lodash-es</code>를 사용한다. ✅</li>
@@ -87,50 +14,16 @@
 <li><code>babel-plugin-lodash</code>를 설치한다.</li>
 </ul>
 <p>이 중에서는 <code>lodash-es</code>를 사용하는 방법이 간편하다.</p>
-<pre class="astro-code" style="background-color:#282c34;overflow-x:auto"><code><span class="line"><span style="color:#7F848E">// 2.7K (gzipped: 1.2k)</span></span>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabIndex="0"><code><span class="line"><span style="color:#7F848E;font-style:italic">// 2.7K (gzipped: 1.2k)</span></span>
 <span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">debounce</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">throttle</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;lodash-es&#39;</span><span style="color:#ABB2BF">;</span></span></code></pre>
-<h2 id="참고">참고<a class="autolink" aria-hidden="true" tabIndex="-1" href="#참고"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M9.199 13.599a5.99 5.99 0 0 0 3.949 2.345 5.987 5.987 0 0 0 5.105-1.702l2.995-2.994a5.992 5.992 0 0 0 1.695-4.285 5.976 5.976 0 0 0-1.831-4.211 5.99 5.99 0 0 0-6.431-1.242 6.003 6.003 0 0 0-1.905 1.24l-1.731 1.721a.999.999 0 1 0 1.41 1.418l1.709-1.699a3.985 3.985 0 0 1 2.761-1.123 3.975 3.975 0 0 1 2.799 1.122 3.997 3.997 0 0 1 .111 5.644l-3.005 3.006a3.982 3.982 0 0 1-3.395 1.126 3.987 3.987 0 0 1-2.632-1.563A1 1 0 0 0 9.201 13.6zm5.602-3.198a5.99 5.99 0 0 0-3.949-2.345 5.987 5.987 0 0 0-5.105 1.702l-2.995 2.994a5.992 5.992 0 0 0-1.695 4.285 5.976 5.976 0 0 0 1.831 4.211 5.99 5.99 0 0 0 6.431 1.242 6.003 6.003 0 0 0 1.905-1.24l1.723-1.723a.999.999 0 1 0-1.414-1.414L9.836 19.81a3.985 3.985 0 0 1-2.761 1.123 3.975 3.975 0 0 1-2.799-1.122 3.997 3.997 0 0 1-.111-5.644l3.005-3.006a3.982 3.982 0 0 1 3.395-1.126 3.987 3.987 0 0 1 2.632 1.563 1 1 0 0 0 1.602-1.198z"></path></svg></a></h2>
+<h2 id="참고">참고</h2>
 <ul>
-<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking" target="_blank" rel="nofollow">https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking</a></li>
-</ul>
-  </div>
-</article><div class="flex items-center justify-center">
-      <applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/"></applause-button>
-    </div><div class="flex mt-10 -mb-10">
-  <div class="max-w-2/5">
-    <a href="/post/2021-12-08-blog-move" class="hover:text-violet-700 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
+<li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking" rel="nofollow" target="_blank">https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking</a></li>
+</ul></div></article><div class="flex items-center justify-center"><applause-button class="applause" multiclap="true" style="width: 58px; height: 58px;" url="https://yrnana.dev/post/2021-11-28-lodash-lodash-es/"></applause-button></div><div class="flex mt-10 -mb-10"><div class="max-w-2/5"><a href="/post/2021-12-08-blog-move" class="hover:text-violet-700 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 mr-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-</svg>
-          <div>
-            <div class="text-xs text-slate-500">Previous</div>
-            <div>블로그 이사 후기</div>
-          </div>
-        </a>
-  </div>
-  <div class="max-w-2/5 text-right ml-auto">
-    <a href="/post/2021-10-25-when-should-you-not-use-react.memo" class="hover:text-violet-700 flex items-center">
-          <div>
-            <div class="text-xs text-slate-500">Next</div>
-            <div>Q. When should you NOT use React.memo?</div>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+</svg><div><div class="text-xs text-slate-500">Previous</div><div>블로그 이사 후기</div></div></a></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2021-10-25-when-should-you-not-use-react.memo" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>Q. When should you NOT use React.memo?</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
   viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-</svg>
-        </a>
-  </div>
-</div><div class="mt-20 relative" style="min-height:269">
-  <script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-11-28-lodash-lodash-es" label="comment" theme="github-light" crossorigin="anonymous" async></script>
-</div>
-      </main>
-      <footer class="mb-4 sm:mb-6 text-center text-slate-700">
-  <span class="mr-1 text-sm sm:text-base">
-    Copyright &copy; 2023
-  </span>
-  <span>nana</span>
-</footer>
-    </div>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </body></html>
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://utteranc.es/client.js" repo="yrnana/yrnana.github.io" issue-term="2021-11-28-lodash-lodash-es" label="comment" theme="github-light" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>
