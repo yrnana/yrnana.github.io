@@ -1,19 +1,18 @@
----
-type Props = {
-  id: string;
-};
-
-const { id } = Astro.props;
----
-
 <div class="mt-20 relative" style={{ minHeight: 269 }}>
   <script
-    src="https://utteranc.es/client.js"
-    repo="yrnana/yrnana.github.io"
-    issue-term={id}
-    label="comment"
-    theme="github-light"
+    src="https://giscus.app/client.js"
+    data-repo="yrnana/yrnana.github.io"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyNjEzOTQ4NjY="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOD5SRss4B_Hhs"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light_protanopia"
+    data-lang="ko"
+    data-loading="lazy"
     crossorigin="anonymous"
-    async
-  ></script>
+    async></script>
 </div>

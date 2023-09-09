@@ -21,8 +21,6 @@ export async function getStaticPaths() {
   }));
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 type Props = {
   post: Post;
   prev?: Post;
@@ -43,28 +41,11 @@ const { tags, title, excerpt, preview } = post.data;
     keywords={tags.join(',')}
     image={preview}
   />
-  <Fragment slot="meta">
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/applause-button/dist/applause-button.css"
-    />
-    <script src="https://unpkg.com/applause-button/dist/applause-button.js"
-    ></script>
-  </Fragment>
   <Fragment slot="main">
     <PostComponent {...post} />
-    <div class="flex items-center justify-center">
-      <applause-button
-        class="applause"
-        multiclap="true"
-        style="width: 58px; height: 58px;"
-        url={canonicalURL.href}
-      >
-      </applause-button>
-    </div>
     <GoogleAdsense slot="4448901342" />
     {(prev || next) && <PostNav prev={prev} next={next} />}
-    <Comments id={post.slug} />
+    <Comments />
   </Fragment>
   <Fragment slot="script">
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"
