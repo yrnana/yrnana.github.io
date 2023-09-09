@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment */
-import image from '@astrojs/image';
-import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
@@ -16,7 +14,6 @@ import rehypeExternalLinks from 'rehype-external-links';
 import remarkBreaks from 'remark-breaks';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-// import { remarkExcerpt } from './plugins/remark-excerpt';
 import { remarkMdxImages } from './plugins/remark-mdx-images';
 
 // https://astro.build/config
@@ -44,7 +41,7 @@ export default defineConfig({
       // remarkExcerpt,
       remarkBreaks,
       remarkUnwrapImages, // paragraph unwrap
-      remarkMdxImages, // figure + caption, @astrojs/image 대응
+      // remarkMdxImages, // figure + caption, @astrojs/image 대응
       [
         // @ts-ignore
         remarkEmbedder,
@@ -54,7 +51,6 @@ export default defineConfig({
       ],
     ],
     rehypePlugins: [
-      rehypeHeadingIds,
       [
         rehypeExternalLinks,
         {
@@ -95,10 +91,6 @@ export default defineConfig({
   integrations: [
     mdx(),
     react(),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-      cacheDir: './.cache/image',
-    }),
     prefetch(),
     sitemap({
       changefreq: 'weekly' as any,

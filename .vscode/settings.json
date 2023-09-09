@@ -9,6 +9,5 @@
     "astro", // Enable .astro
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx
-  ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  ]
 }

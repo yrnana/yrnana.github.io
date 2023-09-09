@@ -1,8 +1,8 @@
 ---
-import { getPicture } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/helpers/config';
-import { getImageSrc, getPostImage } from '~/helpers/utils';
+import { getPostImage } from '~/helpers/utils';
 
 export type Props = {
   type?: 'article' | 'website';
@@ -25,13 +25,13 @@ const {
 } = Astro.props;
 
 // 썸네일 계산
-const { sources } = await getPicture({
+const { src } = await getImage({
   src: getPostImage(image),
   alt: 'nana.log',
-  widths: [480],
-  formats: ['png'],
+  width: 480,
+  format: 'png',
 });
-const imageUrl = new URL(getImageSrc(sources), Astro.url).href;
+const imageUrl = new URL(src, Astro.url).href;
 
 // 타이틀 계산
 const metaTitle = title
@@ -85,5 +85,4 @@ const metaTitle = title
 <script
   async
   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940"
-  crossOrigin="anonymous"
-></script>
+  crossOrigin="anonymous"></script>

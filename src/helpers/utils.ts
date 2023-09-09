@@ -23,7 +23,7 @@ export const getPosts = async () =>
         return data.draft !== true;
       },
     )
-  ).sort(orderByDateDesc) as Post[];
+  ).sort(orderByDateDesc);
 
 /**
  * 글에서 모든 태그를 가져옴
@@ -51,7 +51,7 @@ export const getTags: (posts?: Post[]) => Promise<Tag[]> = async (posts) => {
 const images = import.meta.glob<boolean, string, ImportImage>([
   '~/assets/**.*',
   '!~/assets/**.{ts,svg}',
-]);
+]) as Record<string, () => Promise<ImportImage>>;
 
 /**
  * 이미지를 반환하는 함수
@@ -68,13 +68,3 @@ export function getPostImage(imagePath: string) {
   }
   return loader();
 }
-
-type Sources = {
-  type: string;
-  srcset: string;
-}[];
-
-export const getImageSrc = (sources: Sources): string => {
-  const image = sources.find(({ type }) => type === 'image/png')?.srcset ?? '';
-  return image.replace(/\s[\d]+w$/, '');
-};

@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { getImage } from 'astro:assets';
 
 import type { Post } from '~/types';
 import { getPostImage } from '~/helpers/utils';
@@ -9,12 +9,52 @@ type Props = {
 };
 
 const { post } = Astro.props;
+
+const source = getPostImage(post.data.preview!);
+const imageSet = {
+  webp: {
+    480: await getImage({
+      src: source,
+      width: 480,
+      format: 'webp',
+    }),
+    790: await getImage({
+      src: source,
+      width: 790,
+      format: 'webp',
+    }),
+  },
+  png: {
+    480: await getImage({
+      src: source,
+      width: 480,
+      format: 'png',
+    }),
+    790: await getImage({
+      src: source,
+      width: 790,
+      format: 'png',
+    }),
+  },
+};
 ---
 
-<Picture
-  src={getPostImage(post.data.preview!)}
-  alt={post.data.title}
-  formats={['png', 'webp']}
-  widths={[480, 790]}
-  sizes="(max-width: 790px) 100vw, 790px"
-/>
+<figure>
+  <picture>
+    <source
+      type="image/png"
+      srcset={`${imageSet.png[480].src} 480w,${imageSet.png[790].src} 790w`}
+      sizes="(max-width: 790px) 100vw, 790px"
+    />
+    <source
+      type="image/webp"
+      srcset={`${imageSet.webp[480].src} 480w,${imageSet.webp[790].src} 790w`}
+      sizes="(max-width: 790px) 100vw, 790px"
+    />
+    <img
+      alt={post.data.title}
+      src={imageSet.webp[790].src}
+      {...imageSet.webp[790].attributes}
+    />
+  </picture>
+</figure>
