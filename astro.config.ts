@@ -14,8 +14,6 @@ import rehypeExternalLinks from 'rehype-external-links';
 import remarkBreaks from 'remark-breaks';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { remarkMdxImages } from './plugins/remark-mdx-images';
-
 // https://astro.build/config
 export default defineConfig({
   site: import.meta.env.DEV ? 'http://localhost:8000' : 'https://yrnana.dev',
