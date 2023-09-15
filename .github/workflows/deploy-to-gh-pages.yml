@@ -49,9 +49,6 @@ jobs:
       - name: Build 🔧
         run: pnpm build
 
-      - name: Add .nojekyll
-        run: touch dist/.nojekyll
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
