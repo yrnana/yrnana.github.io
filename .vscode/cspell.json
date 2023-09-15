@@ -31,6 +31,7 @@
     "shiki",
     "techlog",
     "tsconfigs",
-    "unist"
+    "unist",
+    "withastro"
   ]
 }

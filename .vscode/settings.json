@@ -1,6 +1,5 @@
 {
   "search.exclude": {
-    "**/.yarn": true,
     "**/dist": true
   },
   "eslint.validate": [

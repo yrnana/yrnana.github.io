@@ -28,7 +28,7 @@
     "type-check": "astro check && tsc -p config.json"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.0.3",
+    "@astrojs/mdx": "^1.1.0",
     "@astrojs/prefetch": "^0.4.0",
     "@astrojs/react": "^3.0.2",
     "@astrojs/rss": "^3.0.0",
@@ -37,7 +37,7 @@
     "@nanostores/react": "^0.7.1",
     "@remark-embedder/core": "^3.0.2",
     "@remark-embedder/transformer-oembed": "^3.0.0",
-    "astro": "^3.0.12",
+    "astro": "^3.1.0",
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "lodash-es": "^4.17.21",
@@ -46,10 +46,14 @@
     "react-dom": "^18.2.0",
     "rehype-autolink-headings": "^7.0.0",
     "rehype-external-links": "^3.0.0",
-    "remark-breaks": "^3.0.2",
-    "remark-stringify": "^10.0.2",
+    "rehype-stringify": "^10.0.0",
+    "remark-breaks": "^3.0.3",
+    "remark-parse": "^10.0.2",
+    "remark-rehype": "^10.1.0",
+    "remark-stringify": "^10.0.3",
     "remark-unwrap-images": "^3.0.1",
-    "sharp": "^0.32.5"
+    "sharp": "^0.32.5",
+    "unified": "^11.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
@@ -64,18 +68,18 @@
     "cssnano": "^6.0.1",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-astro": "^0.29.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "hastscript": "^8.0.0",
     "postcss": "^8.4.29",
     "postcss-import": "^15.1.0",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
-  },
-  "packageManager": "yarn@3.6.3"
+  }
 }

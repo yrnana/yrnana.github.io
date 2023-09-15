@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "downlevelIteration": true,
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",

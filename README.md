@@ -13,7 +13,7 @@
 ### 설치 및 개발환경 실행
 
 ```sh
-yarn install --immutable --immutable-cache
+pnpm install
 ```
 
 ## Route
