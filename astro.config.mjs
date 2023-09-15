@@ -19,6 +19,7 @@ export default defineConfig({
   site: import.meta.env.DEV ? 'http://localhost:8000' : 'https://yrnana.dev',
   trailingSlash: 'never',
   output: 'static',
+  cacheDir: './.cache',
   vite: {
     resolve: {
       alias: {
