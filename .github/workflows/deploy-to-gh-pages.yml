@@ -46,8 +46,24 @@ jobs:
       - name: Install
         run: pnpm install
 
+      - name: Restore cached images
+        id: cache-images-restore
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            node_modules/.astro/assets
+          key: ${{ runner.os }}-images
+
       - name: Build 🔧
         run: pnpm build
+
+      - name: Save images
+        id: cache-images-save
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            node_modules/.astro/assets
+          key: ${{ steps.cache-images-restore.outputs.cache-primary-key }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
