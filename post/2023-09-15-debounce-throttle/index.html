@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="ko"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="icon" href="/favicon.ico"><meta name="generator" content="Astro v3.1.0"><!-- Canonical URL --><link rel="canonical" href="https://yrnana.dev/post/2023-09-15-debounce-throttle/"><!-- Primary Meta Tags --><title>debounce 및 throttle를 react에서 사용할 때 주의할 점 | nana.log</title><meta name="title" content="debounce 및 throttle를 react에서 사용할 때 주의할 점 | nana.log"><meta name="description" content="debounce를 그대로 적용하면 리렌더링 할 때 함수가 재 호출되므로 의도한 대로 동작하지 않을 수 있습니다."><meta name="keywords" content="debounce,throttle"><!-- Open Graph / Facebook --><meta property="og:type" content="article"><meta property="og:url" content="https://yrnana.dev/post/2023-09-15-debounce-throttle/"><meta property="og:title" content="debounce 및 throttle를 react에서 사용할 때 주의할 점 | nana.log"><meta property="og:description" content="debounce를 그대로 적용하면 리렌더링 할 때 함수가 재 호출되므로 의도한 대로 동작하지 않을 수 있습니다."><meta property="og:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yrnana.dev/post/2023-09-15-debounce-throttle/"><meta property="twitter:title" content="debounce 및 throttle를 react에서 사용할 때 주의할 점 | nana.log"><meta property="twitter:description" content="debounce를 그대로 적용하면 리렌더링 할 때 함수가 재 호출되므로 의도한 대로 동작하지 않을 수 있습니다."><meta property="twitter:image" content="https://yrnana.dev/_astro/nana.log.1a2324ba_Zs7AU.png"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"><!-- Google Ads --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4675264961434940" crossOrigin="anonymous"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.10a58b93.css" /><script type="module" src="/_astro/hoisted.a23147bd.js"></script>
+<script type="module" src="/_astro/page.30c903a1.js"></script></head><body><div class="container mx-auto px-4 flex flex-col min-h-screen"><header class="mt-4 sm:mt-6 flex flex-row items-center"><div class="mr-auto"><a href="/" class="select-none text-xl sm:text-2xl font-semibold font-mono hover:text-violet-500">
+nana.log
+</a></div><nav class="flex flex-row items-center space-x-4"><a href="/about" class="text-sm sm:text-base hover:text-violet-500">About</a><a href="/archive" class="text-sm sm:text-base hover:text-violet-500">Archive</a><a href="/tags" class="text-sm sm:text-base hover:text-violet-500">Tags</a></nav></header><main class="py-10 flex-grow"><article class="mb-20"><header class="text-center mt-10 mb-20"><h1 class="text-3xl font-semibold">debounce 및 throttle를 react에서 사용할 때 주의할 점</h1><div class="text-slate-500 mt-4">Sep 14, 2023</div><div class="flex flex-row flex-wrap justify-center space-x-3 mt-4"><a href="/tag/debounce" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>debounce</span></a><a href="/tag/throttle" class="select-none inline-flex items-center text-sm leading-4 rounded-full px-4 py-1.5 text-violet-500 bg-violet-100 hover:text-violet-700 hover:bg-violet-200"><span>throttle</span></a></div></header><div class="markdown"><h2 id="debounce-throttle이란"><code>debounce</code>, <code>throttle</code>이란?</h2>
+<p><code>debounce</code>와 <code>throttle</code>은 성능 향상을 위해 함수 실행을 지연시켜 함수의 빈번한 호출을 제한하는 프로그래밍 패턴 또는 기술이다. 아래와 같은 차이점이 존재한다.</p>
+<ul>
+<li><strong>디바운싱</strong>
+<ul>
+<li>함수를 다시 호출하기 전에 일정 시간 동안 기다림</li>
+<li>이벤트가 여러 번 트리거 되더라도 함수가 한 번만 호출되도록 함</li>
+<li>특정 비활성 기간이 지날 때까지 함수 호출을 지연하려는 경우 유용함</li>
+</ul>
+</li>
+<li><strong>쓰로틀링</strong>
+<ul>
+<li>특정 시간 동안 함수가 호출될 수 있는 횟수를 제한함</li>
+<li>이벤트가 여러 번 트리거 되는 경우에도 함수가 정기적으로 호출되도록 함</li>
+<li>함수 호출 빈도를 나열하려는 경우 유용함</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://lodash.com/" rel="nofollow" target="_blank">lodash</a> 등으로 쉽게 사용이 가능하다.</p>
+<h2 id="문제">문제</h2>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">debounce</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;lodash-es&#39;</span><span style="color:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">useState</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;react&#39;</span><span style="color:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">App</span><span style="color:#ABB2BF">() {</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> [</span><span style="color:#E5C07B">count</span><span style="color:#ABB2BF">, </span><span style="color:#E5C07B">setCount</span><span style="color:#ABB2BF">] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useState</span><span style="color:#ABB2BF">(</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">debouncedFn</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">debounce</span><span style="color:#ABB2BF">(</span></span>
+<span class="line"><span style="color:#ABB2BF">    () </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF">      </span><span style="color:#61AFEF">setCount</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75;font-style:italic">c</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">c</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">+</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#ABB2BF">    },</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#D19A66">1000</span><span style="color:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#ABB2BF">    { </span><span style="color:#E06C75">trailing</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">false</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">leading</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">true</span><span style="color:#ABB2BF"> },</span></span>
+<span class="line"><span style="color:#ABB2BF">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> (</span></span>
+<span class="line"><span style="color:#ABB2BF">    &lt;</span><span style="color:#E06C75">div</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">      &lt;</span><span style="color:#E06C75">button</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66;font-style:italic">type</span><span style="color:#56B6C2">=</span><span style="color:#98C379">&quot;button&quot;</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66;font-style:italic">onClick</span><span style="color:#56B6C2">=</span><span style="color:#C678DD">{</span><span style="color:#E06C75">debouncedFn</span><span style="color:#C678DD">}</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">        add count</span></span>
+<span class="line"><span style="color:#ABB2BF">      &lt;/</span><span style="color:#E06C75">button</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">    &lt;/</span><span style="color:#E06C75">div</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">  );</span></span>
+<span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
+<p>위의 코드는 1s 동안 <code>setCount</code> 실행을 방지하기 위해 <code>debounce</code>를 적용하였지만, 의도한 대로 작동하지 않는다.<br/>
+이유는 함수가 실행될 때 count가 증가하면서 리렌더링이 발생하고, 그때마다 <code>debounce</code> 함수가 재실행되면서 새로운 함수가 생성되어 <code>debounce</code>의 타이머 처리가 무의미해지기 때문이다.<br/>
+리렌더링이 발생하지 않는 컴포넌트라면 위와 같이 사용해도 대응이 가능하지만, 대부분의 리액트 컴포넌트는 렌더링을 가정하고 작성하기 때문에 의도하지 않는 동작이 될 수 있다.</p>
+<h2 id="해결방법">해결방법</h2>
+<p>따라서 아래와 같은 훅을 작성해서 대응이 가능하다. 이렇게 작성하면 <code>useLayoutEffect</code>에 의해서 함수 인자가 변경되더라도 <code>debounce</code>에서 변경된 함수를 실행하지만, 리렌더링으로 인한 <code>debounce</code> 함수의 재호출은 방지할 수 있다.</p>
+<pre is:raw="" class="astro-code one-dark-pro" style="background-color:#282c34;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#C678DD">import</span><span style="color:#ABB2BF"> { </span><span style="color:#E06C75">debounce</span><span style="color:#ABB2BF"> } </span><span style="color:#C678DD">from</span><span style="color:#ABB2BF"> </span><span style="color:#98C379">&#39;lodash-es&#39;</span><span style="color:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#7F848E;font-style:italic">// 함수를 debounce 함수로 만들어주는 훅</span></span>
+<span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useDebounce</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75;font-style:italic">func</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75;font-style:italic">delay</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75;font-style:italic">leading</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">true</span><span style="color:#ABB2BF">) {</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">funcRef</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useRef</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">func</span><span style="color:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#61AFEF">useLayoutEffect</span><span style="color:#ABB2BF">(() </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#E5C07B">funcRef</span><span style="color:#ABB2BF">.</span><span style="color:#E06C75">current</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">func</span><span style="color:#ABB2BF">;</span></span>
+<span class="line"><span style="color:#ABB2BF">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useMemo</span><span style="color:#ABB2BF">(</span></span>
+<span class="line"><span style="color:#ABB2BF">    () </span><span style="color:#C678DD">=&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">      </span><span style="color:#61AFEF">debounce</span><span style="color:#ABB2BF">((...</span><span style="color:#E06C75;font-style:italic">args</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">funcRef</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">current</span><span style="color:#ABB2BF">(...</span><span style="color:#E06C75">args</span><span style="color:#ABB2BF">), </span><span style="color:#E06C75">delay</span><span style="color:#ABB2BF">, {</span></span>
+<span class="line"><span style="color:#ABB2BF">        </span><span style="color:#E06C75">leading</span><span style="color:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#ABB2BF">        </span><span style="color:#E06C75">trailing</span><span style="color:#ABB2BF">: </span><span style="color:#56B6C2">!</span><span style="color:#E06C75">leading</span><span style="color:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#ABB2BF">      }),</span></span>
+<span class="line"><span style="color:#ABB2BF">    [</span><span style="color:#E06C75">delay</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">leading</span><span style="color:#ABB2BF">],</span></span>
+<span class="line"><span style="color:#ABB2BF">  );</span></span>
+<span class="line"><span style="color:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C678DD">function</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">App</span><span style="color:#ABB2BF">() {</span></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> [</span><span style="color:#E5C07B">count</span><span style="color:#ABB2BF">, </span><span style="color:#E5C07B">setCount</span><span style="color:#ABB2BF">] </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useState</span><span style="color:#ABB2BF">(</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">const</span><span style="color:#ABB2BF"> </span><span style="color:#E5C07B">debouncedFn</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> </span><span style="color:#61AFEF">useDebounce</span><span style="color:#ABB2BF">(</span></span>
+<span class="line"><span style="color:#ABB2BF">    () </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#ABB2BF">      </span><span style="color:#61AFEF">setCount</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75;font-style:italic">c</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">=&gt;</span><span style="color:#ABB2BF"> </span><span style="color:#E06C75">c</span><span style="color:#ABB2BF"> </span><span style="color:#56B6C2">+</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">);</span></span>
+<span class="line"><span style="color:#ABB2BF">    },</span></span>
+<span class="line"><span style="color:#ABB2BF">    </span><span style="color:#D19A66">1000</span><span style="color:#ABB2BF">,</span></span>
+<span class="line"><span style="color:#ABB2BF">    { </span><span style="color:#E06C75">trailing</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">false</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">leading</span><span style="color:#ABB2BF">: </span><span style="color:#D19A66">true</span><span style="color:#ABB2BF"> },</span></span>
+<span class="line"><span style="color:#ABB2BF">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#ABB2BF">  </span><span style="color:#C678DD">return</span><span style="color:#ABB2BF"> (</span></span>
+<span class="line"><span style="color:#ABB2BF">    &lt;</span><span style="color:#E06C75">div</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">      &lt;</span><span style="color:#E06C75">button</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66;font-style:italic">type</span><span style="color:#56B6C2">=</span><span style="color:#98C379">&quot;button&quot;</span><span style="color:#ABB2BF"> </span><span style="color:#D19A66;font-style:italic">onClick</span><span style="color:#56B6C2">=</span><span style="color:#C678DD">{</span><span style="color:#E06C75">debouncedFn</span><span style="color:#C678DD">}</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">        add count</span></span>
+<span class="line"><span style="color:#ABB2BF">      &lt;/</span><span style="color:#E06C75">button</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">    &lt;/</span><span style="color:#E06C75">div</span><span style="color:#ABB2BF">&gt;</span></span>
+<span class="line"><span style="color:#ABB2BF">  );</span></span>
+<span class="line"><span style="color:#ABB2BF">}</span></span></code></pre>
+<h2 id="참고">참고</h2>
+<ul>
+<li><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" rel="nofollow" target="_blank">https://css-tricks.com/debouncing-throttling-explained-examples/</a></li>
+<li><a href="https://epicreact.dev/how-react-uses-closures-to-avoid-bugs/" rel="nofollow" target="_blank">https://epicreact.dev/how-react-uses-closures-to-avoid-bugs/</a></li>
+</ul></div></article><div class="flex mt-10 -mb-10"><div class="max-w-2/5"></div><div class="max-w-2/5 text-right ml-auto"><a href="/post/2023-03-23-react-query-2" class="hover:text-violet-700 flex items-center"><div><div class="text-xs text-slate-500">Next</div><div>React Query 사용시 주의할 점 2</div></div><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 ml-1 flex-shrink-0" fill="none"
+  viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+</svg></a></div></div><div class="mt-20 relative" style="min-height:269"><script src="https://giscus.app/client.js" data-repo="yrnana/yrnana.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyNjEzOTQ4NjY=" data-category="Announcements" data-category-id="DIC_kwDOD5SRss4B_Hhs" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia" data-lang="ko" data-loading="lazy" crossorigin="anonymous" async></script></div></main><footer class="mb-4 sm:mb-6 text-center text-slate-700"><span class="mr-1 text-sm sm:text-base">
+Copyright &copy; 2023</span><span>nana</span></footer></div><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body></html>
