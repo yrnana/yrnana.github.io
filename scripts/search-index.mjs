@@ -25,7 +25,6 @@ import strip from 'strip-markdown';
         .then((file) => {
           resolve({
             slug,
-            category: 'blog',
             title,
             excerpt,
             tags,
