@@ -71,7 +71,16 @@ import './SearchInput.css';
     }
   };
 
-  const bigramTokeniser = (obj: any, metadata: any): lunr.Token[] => {
+  type TokenMetadata = {
+    fields: string[];
+    index: number;
+    position: [number, number];
+  };
+
+  const bigramTokeniser = (
+    obj: any,
+    metadata: { fields: string[] },
+  ): lunr.Token[] => {
     if (obj === null || obj === undefined) {
       return [];
     }
@@ -81,7 +90,7 @@ import './SearchInput.css';
 
     for (let i = 0; i <= str.length - 2; i++) {
       // @ts-ignore
-      let tokenMetadata = lunr.utils.clone(metadata) || {};
+      let tokenMetadata: TokenMetadata = lunr.utils.clone(metadata) || {};
       tokenMetadata['position'] = [i, i + 2];
       tokenMetadata['index'] = tokens.length;
       tokens.push(new lunr.Token(str.slice(i, i + 2), tokenMetadata));
@@ -109,7 +118,7 @@ import './SearchInput.css';
 
   /**
    * Rendering search results
-   * @param {Object[]} results Array of search results
+   * @param results Array of search results
    */
   const renderResults = (results: Page[]) => {
     const query = searchBox.value;
