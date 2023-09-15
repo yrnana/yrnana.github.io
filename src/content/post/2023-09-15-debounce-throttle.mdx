@@ -1,0 +1,105 @@
+---
+slug: '2023-09-15-debounce-throttle'
+title: 'debounce 및 throttle를 react에서 사용할 때 주의할 점'
+excerpt: 'debounce를 그대로 적용하면 리렌더링 할 때 함수가 재 호출되므로 의도한 대로 동작하지 않을 수 있습니다.'
+date: '2023-09-15T00:00:00+09:00'
+tags: [debounce, throttle]
+draft: true
+---
+
+## `debounce`, `throttle`이란?
+
+`debounce`와 `throttle`은 성능 향상을 위해 함수 실행을 지연시켜 함수의 빈번한 호출을 제한하는 프로그래밍 패턴 또는 기술이다. 아래와 같은 차이점이 존재한다.
+
+- **디바운싱**
+  - 함수를 다시 호출하기 전에 일정 시간 동안 기다림
+  - 이벤트가 여러 번 트리거 되더라도 함수가 한 번만 호출되도록 함
+  - 특정 비활성 기간이 지날 때까지 함수 호출을 지연하려는 경우 유용함
+- **쓰로틀링**
+  - 특정 시간 동안 함수가 호출될 수 있는 횟수를 제한함
+  - 이벤트가 여러 번 트리거 되는 경우에도 함수가 정기적으로 호출되도록 함
+  - 함수 호출 빈도를 나열하려는 경우 유용함
+
+[lodash](https://lodash.com/) 등으로 쉽게 사용이 가능하다.
+
+## 문제
+
+```js
+import { debounce } from 'lodash-es';
+import { useState } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const debouncedFn = debounce(
+    () => {
+      setCount((c) => c + 1);
+    },
+    1000,
+    { trailing: false, leading: true },
+  );
+
+  return (
+    <div>
+      <button type="button" onClick={debouncedFn}>
+        add count
+      </button>
+    </div>
+  );
+}
+```
+
+위의 코드는 1s 동안 `setCount` 실행을 방지하기 위해 `debounce`를 적용하였지만, 의도한 대로 작동하지 않는다.
+이유는 함수가 실행될 때 count가 증가하면서 리렌더링이 발생하고, 그때마다 `debounce` 함수가 재실행되면서 새로운 함수가 생성되어 `debounce`의 타이머 처리가 무의미해지기 때문이다.
+리렌더링이 발생하지 않는 컴포넌트라면 위와 같이 사용해도 대응이 가능하지만, 대부분의 리액트 컴포넌트는 렌더링을 가정하고 작성하기 때문에 의도하지 않는 동작이 될 수 있다.
+
+## 해결방법
+
+따라서 아래와 같은 훅을 작성해서 대응이 가능하다. 이렇게 작성하면 `useLayoutEffect`에 의해서 함수 인자가 변경되더라도 `debounce`에서 변경된 함수를 실행하지만, 리렌더링으로 인한 `debounce` 함수의 재호출은 방지할 수 있다.
+
+```js
+import { debounce } from 'lodash-es';
+
+// 함수를 debounce 함수로 만들어주는 훅
+function useDebounce(func, delay, leading = true) {
+  const funcRef = useRef(func);
+
+  useLayoutEffect(() => {
+    funcRef.current = func;
+  });
+
+  return useMemo(
+    () =>
+      debounce((...args) => funcRef.current(...args), delay, {
+        leading,
+        trailing: !leading,
+      }),
+    [delay, leading],
+  );
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const debouncedFn = useDebounce(
+    () => {
+      setCount((c) => c + 1);
+    },
+    1000,
+    { trailing: false, leading: true },
+  );
+
+  return (
+    <div>
+      <button type="button" onClick={debouncedFn}>
+        add count
+      </button>
+    </div>
+  );
+}
+```
+
+## 참고
+
+- https://css-tricks.com/debouncing-throttling-explained-examples/
+- https://epicreact.dev/how-react-uses-closures-to-avoid-bugs/
