@@ -1,0 +1,14 @@
+---
+import PageMeta from '~/components/common/PageMeta.astro';
+import Layout from '~/components/layout/Layout.astro';
+import SearchInput from '~/components/search/SearchInput.astro';
+
+let seoTitle = 'Search | Creek';
+---
+
+<Layout>
+  <PageMeta slot="meta" title={seoTitle} />
+  <Fragment slot="main">
+    <SearchInput />
+  </Fragment>
+</Layout>

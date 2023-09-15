@@ -1,0 +1,183 @@
+---
+import './SearchInput.css';
+---
+
+<section class="max-w-3xl mx-auto">
+  <div class="flex items-center">
+    <label for="searchBox" class="sr-only">Search</label>
+    <div class="relative w-full">
+      <div class="svg-wrap">
+        <svg
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+        </svg>
+      </div>
+      <input type="text" id="search-box" placeholder="Search..." required />
+    </div>
+  </div>
+
+  <!-- Search Results -->
+  <div id="search-results"></div>
+
+  <!-- Search JS -->
+  <script>
+    import lunr from 'lunr';
+    import Mark from 'mark.js';
+
+    let pagesIndex;
+    let lunrIndex;
+    let lunrResult;
+
+    const searchBox = document.getElementById('search-box');
+    const searchResults = document.getElementById('search-results');
+
+    const initLunr = async () => {
+      try {
+        const response = await fetch('/search-index.json');
+        pagesIndex = await response.json();
+        lunrIndex = lunr(function () {
+          this.tokenizer = bigramTokeniser;
+          this.pipeline.reset();
+          this.ref('slug');
+          this.field('title', { boost: 10 });
+          this.field('body');
+          this.metadataWhitelist = ['position'];
+          pagesIndex.forEach((page) => {
+            this.add(page);
+          }, this);
+        });
+      } catch (error) {
+        console.error('Error getting search-index.json');
+      }
+    };
+
+    const bigramTokeniser = (obj, metadata) => {
+      if (obj === null || obj === undefined) {
+        return [];
+      }
+
+      let str = obj.toString().trim().toLowerCase();
+      let tokens = [];
+
+      for (let i = 0; i <= str.length - 2; i++) {
+        let tokenMetadata = lunr.utils.clone(metadata) || {};
+        tokenMetadata['position'] = [i, i + 2];
+        tokenMetadata['index'] = tokens.length;
+        tokens.push(new lunr.Token(str.slice(i, i + 2), tokenMetadata));
+      }
+
+      return tokens;
+    };
+
+    const initUI = () => {
+      searchBox.addEventListener('keyup', (event) => {
+        let query = event.currentTarget.value;
+
+        // Only trigger a search when 2 chars. at least have been provided
+        if (query.length < 2) {
+          searchResults.style.display = 'none';
+          return;
+        }
+
+        // Display search results
+        renderResults(search(query));
+        searchResults.style.display = 'block';
+      });
+    };
+
+    /**
+     * Rendering search results
+     * @param {Object[]} results Array of search results
+     */
+    const renderResults = (results) => {
+      const query = searchBox.value;
+      const BODY_LENGTH = 100;
+      const MAX_PAGES = 10;
+
+      // Clear search result
+      while (searchResults.firstChild) {
+        searchResults.removeChild(searchResults.firstChild);
+      }
+
+      // Show message when results is empty
+      if (!results.length) {
+        let resultPage = document.createElement('div');
+        resultPage.className = 'search-result-page';
+        resultPage.innerHTML = '결과가 없습니다';
+        searchResults.append(resultPage);
+        return;
+      }
+
+      let instance = new Mark(searchResults);
+      // Only show the ten first results
+      results.slice(0, MAX_PAGES).forEach((result, idx) => {
+        let resultPage = document.createElement('div');
+        resultPage.className = 'search-result-page';
+        let metadata = lunrResult[idx].matchData.metadata;
+        let matchPosition =
+          metadata[Object.keys(metadata)[0]].body.position[0][0];
+        let bodyStartPosition =
+          matchPosition - BODY_LENGTH / 2 > 0
+            ? matchPosition - BODY_LENGTH / 2
+            : 0;
+
+        let resultTitle = document.createElement('a');
+        resultTitle.className = 'search-result-title';
+        resultTitle.href = `/post/${result.slug}`;
+        resultTitle.innerHTML = result.title;
+        resultPage.append(resultTitle);
+
+        let resultBody = document.createElement('div');
+        resultBody.className = 'search-result-body';
+        resultBody.innerHTML = result.body.substr(
+          bodyStartPosition,
+          BODY_LENGTH,
+        );
+        resultPage.append(resultBody);
+        searchResults.append(resultPage);
+
+        instance.mark(query);
+      });
+    };
+
+    /**
+     * Searching pages using lunr
+     * @param {String} query Query string for searching
+     * @return {Object[]} Array of search results
+     */
+    const search = (query) => {
+      lunrResult = lunrIndex.search(queryNgramSeparator(query));
+      return lunrResult.map((result) => {
+        return pagesIndex.filter((page) => {
+          return page.slug === result.ref;
+        })[0];
+      });
+    };
+
+    const queryNgramSeparator = (query) => {
+      const str = query.toString().trim().toLowerCase();
+      const tokens = [];
+
+      for (let i = 0; i <= str.length - 2; i++) {
+        tokens.push(str.slice(i, i + 2));
+      }
+
+      return tokens.join(' ');
+    };
+
+    // initialize
+    initLunr();
+    initUI();
+
+    searchBox.focus();
+  </script>
+</section>
