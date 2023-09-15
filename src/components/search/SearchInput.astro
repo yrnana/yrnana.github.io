@@ -86,7 +86,7 @@ import './SearchInput.css';
     }
 
     let str = obj.toString().trim().toLowerCase();
-    let tokens = [];
+    let tokens: lunr.Token[] = [];
 
     for (let i = 0; i <= str.length - 2; i++) {
       // @ts-ignore
@@ -145,8 +145,10 @@ import './SearchInput.css';
       let resultPage = document.createElement('div');
       resultPage.className = 'search-result-page';
       let metadata: Record<string, any> = lunrResult[idx].matchData.metadata;
+
       let matchPosition =
-        metadata[Object.keys(metadata)[0]].body.position[0][0];
+        metadata[Object.keys(metadata)[0]].body?.position[0][0] ||
+        metadata[Object.keys(metadata)[0]].title?.position[0][0];
       let bodyStartPosition =
         matchPosition - BODY_LENGTH / 2 > 0
           ? matchPosition - BODY_LENGTH / 2

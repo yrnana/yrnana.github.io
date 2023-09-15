@@ -28,6 +28,7 @@
     "oembed",
     "peaceiris",
     "playsinline",
+    "postbuild",
     "Rehype",
     "shiki",
     "techlog",
