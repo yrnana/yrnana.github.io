@@ -13,7 +13,7 @@ interface ImportMeta {
 }
 
 declare global {
-  interface Window {
-    adsbygoogle?: Record<string, unknown>[];
-  }
+  let adsbygoogle: Record<string, unknown>[] | undefined;
 }
+
+export {};
