@@ -15,7 +15,10 @@ import strip from 'strip-markdown';
   const contentFilePaths = await globby([contentFilePattern]);
 
   const getIndex = (data, content) => {
-    const { title, slug } = data;
+    const { title, slug, draft } = data;
+
+    if (draft) return Promise.resolve(null);
+
     return new Promise((resolve, reject) => {
       remark()
         .use(strip, {
@@ -47,7 +50,7 @@ import strip from 'strip-markdown';
       }),
     );
 
-    await fs.writeFile(indexFile, JSON.stringify(index));
+    await fs.writeFile(indexFile, JSON.stringify(index.filter(Boolean)));
 
     console.log(
       `Indexed ${index.length} documents from ${contentDir} to ${indexFile}`,
