@@ -1,13 +1,12 @@
-#search-box {
+#search-input {
   @apply text-sm rounded-lg block w-full pl-10 p-2.5 border;
   @apply text-gray-900 bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500;
-  @apply dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500;
 }
 
 .svg-wrap {
   @apply absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none;
   svg {
-    @apply w-4 h-4 text-gray-500 dark:text-gray-400;
+    @apply w-4 h-4 text-gray-500;
   }
 }
 

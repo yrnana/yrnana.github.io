@@ -1,5 +1,7 @@
 ---
 import './SearchInput.css';
+
+import { SearchIconSvg } from '~/assets';
 ---
 
 <section class="max-w-3xl mx-auto">
@@ -7,21 +9,9 @@ import './SearchInput.css';
     <label for="searchBox" class="sr-only">Search</label>
     <div class="relative w-full">
       <div class="svg-wrap">
-        <svg
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 20 20"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
-        </svg>
+        <Fragment set:html={SearchIconSvg} />
       </div>
-      <input type="text" id="search-box" placeholder="Search..." required />
+      <input type="text" id="search-input" placeholder="Search..." required />
     </div>
   </div>
 
@@ -31,172 +21,127 @@ import './SearchInput.css';
 
 <!-- Search JS -->
 <script>
-  import lunr from 'lunr';
   import Mark from 'mark.js';
 
-  type Page = {
+  import Document from './module/document.js';
+  import cjk from './module/lang/cjk/default.js';
+  import lang from './module/lang/en.js';
+  import charset from './module/lang/latin/advanced.js';
+
+  const fsDocument = {
+    id: 'slug',
+    index: ['title', 'body'],
+    store: ['title', 'body'],
+  };
+
+  const enIndex = new Document({
+    preset: 'performance',
+    charset: charset,
+    lang: lang,
+    document: fsDocument,
+  });
+
+  const koIndex = new Document({
+    preset: 'performance',
+    document: fsDocument,
+    ...cjk,
+  });
+
+  type Doc = {
     slug: string;
     title: string;
-    excerpt: string;
-    tags: string[];
     body: string;
   };
 
-  let pagesIndex: Page[];
-  let lunrIndex: lunr.Index;
-  let lunrResult: lunr.Index.Result[];
+  const response = await fetch('/search-index.json');
+  const data: Doc[] = await response.json();
 
-  const searchBox = document.getElementById('search-box') as HTMLInputElement;
-  const searchResults = document.getElementById(
-    'search-results',
-  ) as HTMLDivElement;
+  data.forEach((doc) => {
+    enIndex.add(doc);
+    koIndex.add(doc);
+  });
 
-  const initLunr = async () => {
-    try {
-      const response = await fetch('/search-index.json');
-      pagesIndex = await response.json();
-      lunrIndex = lunr(function () {
-        this.tokenizer = bigramTokeniser as typeof lunr.tokenizer;
-        this.pipeline.reset();
-        this.ref('slug');
-        this.field('title', { boost: 10 });
-        this.field('body');
-        this.metadataWhitelist = ['position'];
-        pagesIndex.forEach((page) => {
-          this.add(page);
-        }, this);
-      });
-    } catch (error) {
-      console.error('Error getting search-index.json');
-    }
-  };
+  const inputEl = document.getElementById('search-input') as HTMLInputElement;
+  const listEl = document.getElementById('search-results') as HTMLDivElement;
 
-  type TokenMetadata = {
-    fields: string[];
-    index: number;
-    position: [number, number];
-  };
+  const instance = new Mark(listEl);
 
-  const bigramTokeniser = (
-    obj: any,
-    metadata: { fields: string[] },
-  ): lunr.Token[] => {
-    if (obj === null || obj === undefined) {
-      return [];
-    }
+  inputEl.focus();
 
-    let str = obj.toString().trim().toLowerCase();
-    let tokens: lunr.Token[] = [];
+  inputEl.addEventListener('keyup', (event) => {
+    if (!(event.currentTarget instanceof HTMLInputElement)) return;
 
-    for (let i = 0; i <= str.length - 2; i++) {
-      // @ts-ignore
-      let tokenMetadata: TokenMetadata = lunr.utils.clone(metadata) || {};
-      tokenMetadata['position'] = [i, i + 2];
-      tokenMetadata['index'] = tokens.length;
-      tokens.push(new lunr.Token(str.slice(i, i + 2), tokenMetadata));
-    }
+    const query = event.currentTarget.value;
 
-    return tokens;
-  };
-
-  const initUI = () => {
-    searchBox.addEventListener('keyup', (event) => {
-      // @ts-ignore
-      let query = event.currentTarget.value;
-
-      // Only trigger a search when 2 chars. at least have been provided
-      if (query.length < 2) {
-        searchResults.style.display = 'none';
-        return;
-      }
-
-      // Display search results
-      renderResults(search(query));
-      searchResults.style.display = 'block';
-    });
-  };
-
-  /**
-   * Rendering search results
-   * @param results Array of search results
-   */
-  const renderResults = (results: Page[]) => {
-    const query = searchBox.value;
-    const BODY_LENGTH = 100;
-    const MAX_PAGES = 10;
-
-    // Clear search result
-    while (searchResults.firstChild) {
-      searchResults.removeChild(searchResults.firstChild);
-    }
-
-    // Show message when results is empty
-    if (!results.length) {
-      let resultPage = document.createElement('div');
-      resultPage.className = 'search-result-page';
-      resultPage.innerHTML = '결과가 없습니다';
-      searchResults.append(resultPage);
+    if (query.length < 2) {
+      listEl.style.display = 'none';
       return;
     }
 
-    let instance = new Mark(searchResults);
-    // Only show the ten first results
-    results.slice(0, MAX_PAGES).forEach((result, idx) => {
-      let resultPage = document.createElement('div');
+    renderList(query);
+    listEl.style.display = 'block';
+  });
+
+  type Data = {
+    field: 'title' | 'body';
+    result: {
+      id: string;
+      doc: Omit<Doc, 'slug'>;
+    }[];
+  };
+
+  function renderList(query: string) {
+    const results: Data[] = search(query);
+
+    // clear
+    listEl.innerHTML = '';
+
+    // show message when results is empty
+    if (!results.length) {
+      const resultPage = document.createElement('div');
       resultPage.className = 'search-result-page';
-      let metadata: Record<string, any> = lunrResult[idx].matchData.metadata;
-
-      let matchPosition =
-        metadata[Object.keys(metadata)[0]].body?.position[0][0] ||
-        metadata[Object.keys(metadata)[0]].title?.position[0][0];
-      let bodyStartPosition =
-        matchPosition - BODY_LENGTH / 2 > 0
-          ? matchPosition - BODY_LENGTH / 2
-          : 0;
-
-      let resultTitle = document.createElement('a');
-      resultTitle.className = 'search-result-title';
-      resultTitle.href = `/post/${result.slug}`;
-      resultTitle.innerHTML = result.title;
-      resultPage.append(resultTitle);
-
-      let resultBody = document.createElement('div');
-      resultBody.className = 'search-result-body';
-      resultBody.innerHTML = result.body.substring(
-        bodyStartPosition,
-        bodyStartPosition + BODY_LENGTH,
-      );
-      resultPage.append(resultBody);
-      searchResults.append(resultPage);
-
-      instance.mark(query);
-    });
-  };
-
-  /**
-   * Searching pages using lunr
-   * @param {String} query Query string for searching
-   * @return {Object[]} Array of search results
-   */
-  const search = (query: any): Page[] => {
-    lunrResult = lunrIndex.search(queryNgramSeparator(query));
-    return lunrResult.map((result) => {
-      return pagesIndex.filter((page) => page.slug === result.ref)[0];
-    });
-  };
-
-  const queryNgramSeparator = (query: any) => {
-    const str = query.toString().trim().toLowerCase();
-    const tokens = [];
-    for (let i = 0; i <= str.length - 2; i++) {
-      tokens.push(str.slice(i, i + 2));
+      resultPage.innerHTML = '검색 결과가 없습니다.';
+      listEl.append(resultPage);
+      return;
     }
-    return tokens.join(' ');
-  };
 
-  // initialize
-  initLunr();
-  initUI();
+    results.forEach(({ field, result }) => {
+      result.forEach(({ id: slug, doc }) => {
+        let position = 0;
 
-  searchBox.focus();
+        if (field === 'body') {
+          const pos = doc.body.indexOf(query);
+          position = Math.max(pos, 0);
+        }
+
+        const resultPage = document.createElement('div');
+        resultPage.className = 'search-result-page';
+
+        const resultTitle = document.createElement('a');
+        resultTitle.className = 'search-result-title';
+        resultTitle.href = `/post/${slug}`;
+        resultTitle.innerHTML = doc.title;
+        resultPage.append(resultTitle);
+
+        const resultBody = document.createElement('div');
+        resultBody.className = 'search-result-body';
+        resultBody.innerHTML = doc.body.substring(position, position + 100);
+        resultPage.append(resultBody);
+
+        listEl.append(resultPage);
+      });
+    });
+
+    // marking
+    instance.mark(query);
+  }
+
+  const isAlphanumeric = (str: string) => /^[a-zA-Z0-9]+$/.test(str);
+
+  function search(query: string) {
+    return (isAlphanumeric(query) ? enIndex : koIndex).search(query, {
+      limit: 10,
+      enrich: true,
+    });
+  }
 </script>

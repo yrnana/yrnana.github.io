@@ -1,4 +1,6 @@
 ---
+import { SearchIconSvg } from '~/assets';
+
 const pathname = Astro.url.pathname;
 
 const navs = [
@@ -13,6 +15,10 @@ const navs = [
   {
     href: '/tags',
     label: 'Tags',
+  },
+  {
+    href: '/search',
+    label: SearchIconSvg,
   },
 ];
 ---
@@ -36,9 +42,19 @@ const navs = [
             { 'text-violet-500': nav.href === pathname },
           ]}
         >
-          {nav.label}
+          {nav.label.startsWith('<svg') ? (
+            <Fragment set:html={nav.label} />
+          ) : (
+            nav.label
+          )}
         </a>
       ))
     }
   </nav>
 </header>
+
+<style>
+  nav :global(svg) {
+    @apply w-4 h-4 ml-1;
+  }
+</style>

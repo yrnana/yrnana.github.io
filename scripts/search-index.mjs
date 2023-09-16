@@ -15,7 +15,7 @@ import strip from 'strip-markdown';
   const contentFilePaths = await globby([contentFilePattern]);
 
   const getIndex = (data, content) => {
-    const { title, excerpt, tags, slug } = data;
+    const { title, slug } = data;
     return new Promise((resolve, reject) => {
       remark()
         .use(strip, {
@@ -26,8 +26,6 @@ import strip from 'strip-markdown';
           resolve({
             slug,
             title,
-            excerpt,
-            tags,
             body: String(file).replaceAll('\\.', '.'),
           });
         })

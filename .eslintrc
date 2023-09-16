@@ -3,7 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["simple-import-sort"],
   "extends": ["eslint:recommended", "plugin:astro/recommended", "prettier"],
-  "ignorePatterns": ["types.d.ts"],
+  "ignorePatterns": ["types.d.ts", "**/search/module/**/*"],
   "env": {
     "es2020": true
   },
